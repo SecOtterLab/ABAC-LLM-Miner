@@ -1,0 +1,15 @@
+#EXPECTED TEXT FILE
+
+#Max Iterations
+
+1
+
+#API To run
+
+gemini_api
+
+#organization(gt_acl_file; gt_abac_rules_file; attribute_data_description_file; attribute_data_file; output_path )
+
+#healthcare(ground-truth-ACL/healthcare-gt-ACL.txt; ground-truth-ABAC-rules/healthcare-abac-rules.txt ;    DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt ; DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt; tracebook/healthcare; output/healthcare )
+
+university(ground-truth-ACL/university-gt-ACL.txt; ground-truth-ABAC-rules/university-abac-rules.txt; DATASETS-for-LLM/university/university-attribute-data-description.txt; DATASETS-for-LLM/university/university-attribute-data.txt; tracebook/university; output/university )

@@ -1,0 +1,11 @@
+#Chat GPT generated rules for university
+rule(position [ {applicant student}; type [ {application}; {checkStatus}; uid = student)
+rule(position [ {staff}, department [ {admissions}; type [ {application}; {read setStatus}; )
+rule(position [ {staff}, department [ {registrar}; type [ {transcript}; {read}; )
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+rule(position [ {student}; type [ {transcript}; {read}; uid = student)
+rule(position [ {faculty}; type [ {gradebook}; {readScore addScore assignGrade changeScore}; crsTaught ] crs)
+rule(position [ {student}; type [ {gradebook}; {readScore addScore}; crsTaught ] crs)
+rule(; type [ {roster}; {read}; crsTaught ] crs)
+rule(position [ {staff}, department [ {registrar}; type [ {roster}; {read write}; )
+rule(position [ {student}; type [ {gradebook}; {readMyScores}; crsTaken ] crs)

@@ -1,0 +1,33 @@
+# ['position [ {coach}'] <=> ['position [ {coach manager}']
+        #TESTING: one thing missing from the set
+        #inter: 3
+        #union: 4
+# 0.75
+# ['type [ {roster trainingPlan}', 'medical [ {false}'] <=> ['type [ {roster trainingPlan}']
+        #TESTING: Missing an atomic condition entirely
+        #inter: 4
+        #union: 7
+# 0.57
+# ['{read update delete}'] <=> ['{read share create delete update}']
+        #TESTING: extra action
+        #inter: 3
+        #union: 5
+# 0.60
+# ['assignedTeams ] teamId', 'season [ seasons'] <=> ['assignedTeams ] teamId', 'season [ seasons', 'sport = sport']
+        #TESTING: Extra condtion
+        #inter: 6
+        #union: 9
+# 0.67
+
+
+# gt_set.append("rule(; somethibg [ {playbook ab te az gg zz}, type [ {HRitem a r b i}; {read a r b i}; specialties > topics, teams ] treatingTeam)")
+# gt_set.append("rule(; type [ {HR a r b i}; {addNote a r b i}; agentFor ] patient)")
+# llm_set.append("rule(position [ {doctor a r b i} ; type [ {HRitem a r b i} ; {read a r b i} ; specialties > topics, teams ] treatingTeam)")
+# llm_set.append("rule(; type [ {HR a r b i} ; {addNote a r b i} ; agentFor ] patient)")
+
+gt_set.append(
+    "rule(position [ {coach}; type [ {roster trainingPlan}, medical [ {false}; {read update delete}; assignedTeams ] teamId, season [ seasons)"
+)
+llm_set.append(
+    "rule(position [ {coach manager}; type [ {roster trainingPlan}; {read share create delete update}; assignedTeams ] teamId, season [ seasons, sport = sport)"
+)

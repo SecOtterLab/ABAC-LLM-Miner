@@ -1,0 +1,24 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {registrar}; departments [ {cs}; type [ {transcript}; read)
+rule(position [ {registrar}; departments [ {ee}; type [ {transcript}; read)
+rule(position [ {csChair}; type [ {transcript}; departments [ {cs}; read)
+rule(position [ {eeChair}; type [ {transcript}; departments [ {ee}; read)
+rule(position [ {student}, department [ {cs}, crsTaken ] {cs602}; type [ {gradebook}; readScore)
+rule(position [ {student}, department [ {ee}, crsTaken ] {ee101}; type [ {gradebook}; addScore, readScore)
+rule(position [ {student}, department [ {cs}, crsTaken ] {cs601}; type [ {gradebook}; readMyScores)
+rule(position [ {student}, department [ {ee}, crsTaken ] {ee602}; type [ {gradebook}; readMyScores)
+rule(position [ {student}, department [ {applicant}; type [ {application}; checkStatus)
+rule(position [ {faculty}, department [ {ee}, crsTaught ] {ee601}; type [ {roster, gradebook}; read)
+rule(position [ {faculty}, department [ {cs}, crsTaught ] {cs101}; type [ {roster, gradebook}; read)
+rule(position [ {staff}, department [ {registrar}; type [ {roster}; write, read)
+rule(position [ {staff}, department [ {admissions}; type [ {application}; setStatus, read)
+rule(position [ {student}, department [ {cs}, crsTaken ] {cs601}; type [ {gradebook}; addScore)
+rule(position [ {student}, department [ {cs}, crsTaken ] {cs101}; type [ {gradebook}; readMyScores, addScore, readScore)
+rule(position [ {student}, department [ {ee}, crsTaken ] {ee601}; type [ {gradebook}; readMyScores)
+rule(position [ {faculty}, department [ {cs}, crsTaught ] {cs101}; type [ {gradebook}; addScore, changeScore, assignGrade, readScore)
+rule(position [ {faculty}, department [ {ee}, crsTaught ] {ee601}; type [ {gradebook}; addScore, changeScore, assignGrade, readScore)
+rule(position [ {student}, department [ {ee}; type [ {transcript}; read)
+rule(position [ {student}, department [ {cs}; type [ {transcript}; read)

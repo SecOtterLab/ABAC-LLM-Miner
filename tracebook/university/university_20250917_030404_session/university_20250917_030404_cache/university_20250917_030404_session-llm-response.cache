@@ -1,0 +1,25 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {registrar}; student = student, type [ {transcript}, departments ] departments; {read};)
+rule(position [ {csChair}; student = student, type [ {transcript}, departments ] {cs}; {read};)
+rule(position [ {eeChair}; student = student, type [ {transcript}, departments ] {ee}; {read};)
+rule(position [ {student}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {readScore};)
+rule(position [ {student}, department [ {ee}; type [ {gradebook}, departments ] {ee}; {readScore};)
+rule(position [ {student}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {readMyScores};)
+rule(position [ {student}, department [ {ee}; type [ {gradebook}, departments ] {ee}; {readMyScores};)
+rule(position [ {staff}, department [ {registrar}; type [ {roster}; {write};)
+rule(position [ {faculty}, department [ {cs}; type [ {roster}, departments ] {cs}; {read};)
+rule(position [ {faculty}, department [ {ee}; type [ {roster}, departments ] {ee}; {read};)
+rule(position [ {faculty}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {addScore, changeScore, assignGrade};)
+rule(position [ {faculty}, department [ {ee}; type [ {gradebook}, departments ] {ee}; {addScore, changeScore, assignGrade};)
+rule(position [ {applicant, student}; type [ {application}, student ] uid; {checkStatus};)
+rule(position [ {staff}, department [ {admissions}; type [ {application}, student ] student; {setStatus, read};)
+rule(position [ {student}; type [ {application}, student ] uid; {checkStatus};)
+rule(position [ {student}; type [ {transcript}, student ] uid; {read};)
+rule(position [ {staff}, department [ {registrar}; type [ {roster}, departments ] departments; {read};)
+rule(position [ {staff}, department [ {registrar}; type [ {gradebook}, departments ] departments; {read};)
+rule(position [ {student}, crsTaught ] crs; crs = crs, type [ {gradebook}; {addScore, readScore};)
+rule(position [ {student}, crsTaught ] crs; crs = crs, type [ {roster}; {read, write};)
+rule(position [ {faculty}; department = departments, crsTaught ] crs; crs = crs, type [ {roster, gradebook}; {addScore, readScore, write, read, changeScore, assignGrade};)

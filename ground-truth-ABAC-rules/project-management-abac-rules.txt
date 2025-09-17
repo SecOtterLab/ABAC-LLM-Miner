@@ -1,0 +1,19 @@
+#------------------------------------------------------------
+# ABAC Rules
+#------------------------------------------------------------
+# 1.	A project leader can read and write the project schedule and budget
+rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)
+
+# 2.	A user working on a project can read the project schedule
+rule( ; type [ {schedule}; {read}; projects ] project)
+
+# 3.	A user can update the status of tasks assigned to him/her
+rule( ; type [ {task}; {setStatus}; tasks ] rid)
+
+# 4.	A user working on a project can read and request to work on a non-proprietary
+# task whose required areas of expertise are among his/her areas of expertise
+rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise)
+
+# 5.	An employee working on a project can read and request to work on any
+# task whose required areas of expertise are among his/her areas of expertise
+rule(isEmployee [ {True} ; type [ {task}; {request read}; projects ] project, expertise > expertise)

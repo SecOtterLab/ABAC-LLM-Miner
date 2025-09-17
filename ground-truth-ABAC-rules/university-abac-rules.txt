@@ -1,0 +1,44 @@
+#------------------------------------------------------------
+# ABAC Rules
+#------------------------------------------------------------
+# 1.	A user can read his/her own scores in gradebooks for courses they have taken.
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+
+# 2.	The instructor or TA can add scores and read scores in the gradebook for courses that they are teaching. 
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs;)
+
+# 3.	The instructor for a course can change scores and assign final grades in the gradebook for that course.
+rule(position [ {faculty}; type [ {gradebook}; {changeScore assignGrade}; crsTaught ] crs)
+
+#------------------------------------------------------------
+# rules for rosters
+#------------------------------------------------------------
+
+# 4.	A user in registrar’s office can read and modify all rosters.
+rule(department [ {registrar}; type [ {roster}; {read write}; )
+
+# 5.	The instructor of a course can read the course roster.
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
+
+#------------------------------------------------------------
+# rules for transcripts
+#------------------------------------------------------------
+
+# 6.	A user can read their own transcript. 
+rule(; type [ {transcript}; {read}; uid=student)
+
+# 7.	The chair of a department can read the transcripts of all students in that department. 
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+
+# 8.	A user in the registrar’s office can read every student’s transcript.
+rule(department [ {registrar}; type [ {transcript}; {read}; )
+
+#------------------------------------------------------------
+# rules for applications for admission
+#------------------------------------------------------------
+
+# 9.	A user can check the status of their own application. 
+rule(; type [ {application}; {checkStatus}; uid=student)
+
+# 10.	A user in the admissions office can read and update the status of every application. 
+rule(department [ {admissions}; type [ {application}; {read setStatus}; )

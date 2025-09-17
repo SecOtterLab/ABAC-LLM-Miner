@@ -1,0 +1,11 @@
+university20250917_031054
+1
+gemini_api
+university
+ground-truth-ACL/university-gt-ACL.txt
+ground-truth-ABAC-rules/university-abac-rules.txt
+DATASETS-for-LLM/university/university-attribute-data-description.txt
+DATASETS-for-LLM/university/university-attribute-data.txt
+tracebook/university
+output/university
+

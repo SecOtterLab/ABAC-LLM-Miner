@@ -1,0 +1,139 @@
+**READ THE ENTIRE REQUEST BEFORE GENERATING ANYTHING**
+
+The following text is a request to fix ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
+
+	PROMPT section:  This will be the main request we need accomplished through the query.
+
+    ATTRIBUTE_DESCRIPTION section: is a sample policy for a healthcare organization.
+     Analyze this file to better understand ABAC rule attributes for our organization. Also use this section to better understand the ATTRIBUTE_DATA section    
+
+    ATTRIBUTE_DATA_FORMAT_DESCRIPTION: This section explains the format of the ATTRIBUTE DATA described in the attribute data section.
+
+    ATTRIBUTE_DATA section: is the attribute data for our organization. This includes resources and users. Use these to create the ABAC rules being requested. 
+
+    RULES_FORMAT_DESCRIPTION: This section explains the format of the ABAC rules that we need you (the LLM) to generate.
+
+    GROUND_TRUTH_ACL section: This section contains our organizations entire ACL (access Control List), this is the list that needs to be converted into a set of
+     ABAC rules that grant the exact same permissions. 
+     this is also known as the ground truth ACL.
+
+	ADDITIONAL_INSTRUCTIONS section: contains additional instructions you need to follow. instructions that have to do with output results,
+     the process, and other rules to help you (the LLM model) generate the exact results needed.
+
+
+## PROMPT ##
+    Our organization needs you (the LLM) to use the 
+    ATTRIBUTE_DESCRIPTION , ATTRIBUTE_DATA_FORMAT_DESCRIPTION, ATTRIBUTE_DATA, RULES_FORMAT_DESCRIPTION, and ADDITIONAL_INSTRUCTIONS sections
+    to generate a set of ABAC Rules that will give the same exact permissions that the GROUND_TRUTH_ACL gives. No less permission and no more permissions
+    than what is in the GROUND_TRUTH_ACL.
+        THE GOAL IS TO CREATE A SET OF ABAC RULES THAT WILL GENERATE THE SAME SET OF PERMISSIONS THAT THE ACL IN THE GROUND_TRUTH_ACL section,
+        ANY PERMISSION THAT IS MISSED, BY YOUR GENERATED ABAC RULES, OR THAT IS OVER PEMRITTED BY YOUR ABAC RULE SET WILL BE CONSIDERED A FAILURE.
+            This is mission critical so accuracy is critical.
+    You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
+
+
+## ATTRIBUTE_DESCRIPTION ##
+
+## ATTRIBUTE_DATA_FORMAT_DESCRIPTION ##
+
+    This section outlines the format of attribute data described in the ATTRIBUTE DATA section. 
+
+   ATTRIBUTE_DATA section contains lines of the forms:
+
+    userAttrib(uid, attribute1=value1, attribute2=value2, ...)
+
+    resourceAttrib(rid, attribute1=value1, attribute2=value2, ...)
+    
+
+    The `userAttrib` and `resourceAttrib` lines define the users (subjects) and resources in the policy, respectively.
+    - The first argument of a `userAttrib` is automatically assigned to an attribute named `uid`, which is the id of the user. 
+    The first argument of a `resourceAttrib` is automatically assigned to an attribute named `rid`, which is the id of the resource.  
+    - `value1`, `value2`, ... are atomic values or sets of atomic values.
+    - An atomic value is a string that starts with a character other than a left curly brace.  
+    - A set has the form `{element1 element2 ...}`. **Note that elements of a set are separated by spaces, not commas.**
+
+## ATTRIBUTE_DATA ##
+
+## RULES_FORMAT_DESCRIPTION ##
+    All of the output ABAC rules must follow the following format:
+        rule(subCond; resCond; acts; cons)
+    
+    - `subCond` is a subject condition. It is a conjunction, with the conjuncts separated by commas. Each conjunct has the form 
+    `attr [ {value1 value2 ...}`, where `attr` is a single-valued user attribute and `[` denotes the "in" 
+    operator (note that elements of a set are separated by spaces, not commas), or 
+    `attr ] value`
+    , where attr is a muli-valued attribute, value is an atomic value, and `]` denotes the "contains" operator.
+
+    - `resCond` is a resource condition. The syntax is analogous to the syntax for subject condition.
+
+    - `acts` is a set of actions.
+
+    - `cons` is a constraint. It is a conjunction of atomic constraints, with the
+    conjuncts separated by commas. An atomic constraint is a formula of one of the following forms:
+    
+    aum > arm 
+    aus [ arm
+    aum ] ars
+    aus = ars
+    
+    , where `aus` is a single-valued user attribute,
+    `aum` is a multi-valued user attribute,
+    `ars` is a single-valued resource attribute,
+    `arm` is a multi-valued resource attribute. Note that `>` denotes the "supseteq" (⊇) operator.
+
+    This is an example of a rule:
+        rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+
+
+## GROUND_TRUTH_ACL ##
+
+## ADDITIONAL_INSTRUCTIONS
+
+        This section provides additional instructions to assist you output propper ABAC rules.
+
+        This is also divided into sections, the following is a description on the sections. 
+        Failure to adhere to any of these rules will result in a failed query on your (the LLM) part.
+
+            OUTPUT_FORMAT section: The output section describes how to format your (the LLMs) response. Including syntax, restrictions, and content. 
+            
+            ABAC_RULES section, is section dedicated to helping you (the LLM) produce more consistent and correct abac rules. You (the LLM) are to follow these rules strictly.
+
+            The LLM_IMPROVEMENT section, has other instructions to help you (the LLM) produce better results.
+
+
+
+        OUTPUT_FORMAT:
+            1. Only respond with the ABAC rules being requested.
+            2. Each rule should follow strict syntax described in the RULES_FORMAT_DESCRIPTION section.
+            3. Each rule should be in its own line.
+                    verify for each line:
+                    line.startswith("rule(") and line.endswith(")")
+                    line.count(";") == 3                
+            4. Respond only with plain text, no mark-up or other type of formatting. 
+                a. unseen values are forbidden.
+            9. DO NOT INCLUDE ANY ``` at the beginnig or end of a response
+         
+
+
+        ABAC_RULES:
+            
+            1. ABAC rules should avoid using uid and rid attributes. 
+                a. Do not hard code any ids, the rules should be dynamic.
+            2. The generated rules must as concise as possible.
+                a. Check all ABAC rules for redundancy, keep rules to strict minimum. 
+                b. Consider removing any conjuncts in subject condition, resource condition, and constraints if that does not affect the permission given by the rule.
+            6. You (the LLM) are allowed to combine rules for actions if they should grant the same access. 
+                a. For example: rule (; subj ] {math}; {read, write, createNote}; class=class )
+            7. ABAC rules do not need to dictate permit or deny as a section.
+                a. INCORRECT = rule (; subj ] {math}; {read}; class=class, PERMIT )
+            8. DO NOT ADD, REMOVE, OR EDIT ATTRIBUTES.
+            9. Do not use synonyms when describing actions, stick to the action on the ACL list ONLY.
+
+
+     
+
+
+
+
+
+

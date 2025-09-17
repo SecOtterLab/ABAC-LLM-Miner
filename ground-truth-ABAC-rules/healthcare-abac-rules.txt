@@ -1,0 +1,28 @@
+#------------------------------------------------------------
+# ABAC Rules
+#------------------------------------------------------------
+#------------------------------------------------------------
+# rules for health records
+#------------------------------------------------------------
+
+# 1.	A nurse can add an item in a HR for a patient in the ward in which he/she works
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)
+
+# 2.	A user can add an item in a HR for a patient treated by one of the teams of which he/she is a member.
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam)
+
+# 3.	A user can add an item with topic "note" in his/her own HR
+rule(; type [ {HR}; {addNote}; uid=patient)
+
+# 4.	A user can add an item with topic "note" in the HR of a patient for which he/she is an agent
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+
+#------------------------------------------------------------
+# rules for health record items
+#------------------------------------------------------------
+
+# 5.	The author of an item can read it
+rule(; type [ {HRitem}; {read}; uid=author)
+
+# 6.	A user can read an item in a HR for a patient treated by one of the teams of which he/she is a member, if the topics of the item are among his/her specialties.
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)

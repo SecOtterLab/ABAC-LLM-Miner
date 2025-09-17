@@ -1,0 +1,171 @@
+#------------------------------------------------------------
+# ABAC Rules
+#------------------------------------------------------------
+
+#------------------------------
+# eWorkforce 
+#------------------------------
+
+# eWorkforce Helpdesk
+#-----
+# 1. Only helpdesk operators can create work orders that apply to active contracts of a Primary Tenant for which he/she is assigned responsible.
+rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+
+# 2. Helpdesk operators can only modify or remove work orders that apply to active contracts of a Primary Tenant for which he/she is assigned responsible.
+rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {workOrder}, contractStatus [ {active}, tenantType [ {primary}; {modify delete}; assignedTenant = tenant)
+
+
+# Application Admins
+#-----
+# 3. Application admins can create appointments for all tenants of eWorkforce.
+rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )
+
+# 4. Application admins can modify and delete appointments for all tenants of eWorkforce.
+rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {workOrder}, isAppointment [ {True}; {modify delete}; )
+
+
+# Internal Workforce
+#-----
+# 5. Only employees of the workforce team can access tasks.
+rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )
+
+# 6. Employees can only access tasks of customers which relate to their department.
+# Employees can only access tasks of active projects/contracts.
+rule(provider [ {eWorkforce}; type [ {task}, contractStatus [ {active}; {view}; department = department)
+
+# 7. Technicians can only view and complete tasks that are assigned to them.
+rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)
+
+# 8. Workforce Managers can view and complete all tasks assigned to a Technician for which they are assigned responsible.
+rule(provider [ {eWorkforce}, position [ {workforceManager}; type [ {task}; {view complete}; managedStaff ] assignedTechnician)
+
+
+# Internal Warehouse
+#-----
+# 9. All warehouse managers can mark a stock refill request sent to the warehouse as completed.
+rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )
+
+# 10. A warehouse operator can only view or complete resource requests assigned to him/her.
+rule(provider [ {eWorkforce}, position [ {warehouseOperator}; type [ {resourceRequest}; {view complete}; uid = assignedEmployee)
+
+# 11. A warehouse manager can view and complete any resource request assigned to any warehouse operator of the warehouse.
+rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {resourceRequest}; {view complete}; managedStaff ] assignedEmployee)
+
+
+#------------------------------
+# PowerProtection
+#------------------------------
+
+# PowerProtection Sales Managers
+#-----
+# 12. All sales managers can create work orders.
+# Sales managers can only create one-time work orders.
+rule(provider [ {powerProtection}, position [ {salesManager}; type [ {contract}, tenant [ {powerProtection}; {createOneTimeWorkOrder}; )
+
+# 13. All sales managers can view all work orders.
+rule(provider [ {powerProtection}, position [ {salesManager}; type [ {workOrder}, tenant [ {powerProtection}; {view}; )
+
+
+# PowerProtection Maintenance Managers
+#-----
+# 14. All maintenance managers can create work orders.
+# Maintenance managers can create one-time and recurrent work orders.
+rule(provider [ {powerProtection}, position [ {maintenanceManager}; type [ {contract}, tenant [ {powerProtection}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )
+
+
+# PowerProtection Stock Refill Notifications
+#-----
+# 15. Only members of the Provisioning group can receive stock refill notifications.
+rule(provider [ {powerProtection}, group [ {provisioning}; type [ {stockRefillRequest}, tenant [ {powerProtection}; {receive}; )
+
+
+#------------------------------
+# TelCo
+#------------------------------
+
+# TelCo Work Orders
+#-----
+# 16. Every employee of TelCo which is member of Customer Support can use the application to create work orders.
+rule(provider [ {telco}, isCustomerSupport [ {True}; type [ {contract}, tenant [ {telco}; {createOneTimeWorkOrder}; )
+
+# 17. Members of Customer Support which are part of the Company Support group can only send one-time work orders. They can also create recurring work orders if they are Sales Managers or Maintenance Managers.
+rule(provider [ {telco}, isCustomerSupport [ {True}, group [ {companySupport}, position [ {salesManager maintenanceManager}; type [ {contract}, tenant [ {telco}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )
+
+# 18. Only Members of Customer Support which are part of the Residential Support group and are Maintenance Managers can create recurring work orders, the rest can only create one-time work orders.
+rule(provider [ {telco}, position [ {maintenanceManager}, isCustomerSupport [ {True}, group [ {residentialSupport}; type [ {contract}, tenant [ {telco}; {createRecurrentWorkOrder}; )
+
+
+# TelCo Stock Refill Notifications
+#-----
+# 19. Only members of Technician Support can receive stock refill notifications.
+# All members of Technician Support can receive stock refill notifications.
+rule(provider [ {telco}, group [ {techSupport}; type [ {stockRefillRequest}, tenant [ {telco}; {receive}; )
+
+
+#------------------------------
+# Helpdesk Supplier
+#------------------------------
+
+# Helpdesk Supplier Helpdesk Operators
+#-----
+# 20. All Helpdesk Operators can create a new work order.
+rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )
+
+# 21. All Helpdesk Operators can modify a new work order.
+rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )
+
+
+# Helpdesk Supplier Helpdesk Managers
+#-----
+# 22. Helpdesk Managers can only view work orders.
+# Helpdesk Managers can only view work orders created by Helpdesk Operators which are members of the team they are responsible for.
+rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskManager}; type [ {workOrder}; {view}; managedStaff ] createdBy)
+
+
+#------------------------------
+# Workforce Supplier
+#------------------------------
+
+# Workforce Supplier General
+#-----
+# 23. Only Technicians or Workforce Managers can access tasks.
+# Employees of a Workforce Supplier can only access tasks of customers which relate to their department
+# Employees of a Workforce Supplier can only access tasks of active projects/contracts.
+rule(provider [ {externalWorkforceSupplier}, position [ {workforceManager technician}; type [ {task}, contractStatus [ {active}; {view}; department = department)
+
+
+# Workforce Supplier Technicians
+#-----
+# 24. Technicians can only view and complete tasks that are assigned to them.
+rule(provider [ {externalWorkforceSupplier}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)
+
+
+# Workforce Supplier Workforce Managers
+#-----
+# 25. Workforce Managers can view and complete all tasks assigned to a Technician for which they are assigned responsible.
+rule(provider [ {externalWorkforceSupplier}, position [ {workforceManager}; type [ {task}; {view complete}; managedStaff ] assignedTechnician)
+
+
+#------------------------------
+# Subcontractor
+#------------------------------
+
+# Subcontractor General
+#-----
+# 26. Only Technicians or Workforce Managers can access tasks.
+# Employees of a Workforce Supplier can only access tasks of customers which relate to their department.
+# Employees of a Workforce Supplier can only access tasks of active projects/contracts.
+rule(provider [ {subcontractor}, position [ {workforceManager technician}; type [ {task}, contractStatus [ {active}; {view}; department = department)
+
+
+# Subcontractor Technicians
+#-----
+# 27. Technicians can only view and complete tasks that are assigned to them.
+rule(provider [ {subcontractor}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)
+
+
+# Subcontractor Workforce Managers
+#-----
+# 28. Workforce Managers can view and complete all tasks assigned to a Technician in their team.
+rule(provider [ {subcontractor}, position [ {workforceManager}; type [ {task}; {view complete}; managedStaff ] assignedTechnician)
+

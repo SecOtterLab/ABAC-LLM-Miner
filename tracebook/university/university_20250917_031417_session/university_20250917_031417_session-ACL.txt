@@ -1,0 +1,136 @@
+eeStu3, csStu4trans, read
+eeStu3, eeStu4trans, read
+registrar2, cs601roster, write, read
+csStu1, eeStu5trans, read
+csStu5, eeStu1trans, read
+admissions1, application1, setStatus, read
+admissions1, eeStu1application, setStatus, read
+csStu1, csStu2trans, read
+eeStu5, eeStu4trans, read
+eeStu1, csStu2trans, read
+csStu3, csStu5trans, read
+eeStu2, csStu4trans, read
+eeStu3, eeStu1trans, read
+eeStu4, eeStu5trans, read
+csStu3, csStu4trans, read
+eeStu4, csStu4trans, read
+admissions1, csStu2application, setStatus, read
+csStu3, csStu3trans, read
+eeStu2, csStu5trans, read
+admissions1, csStu5application, setStatus, read
+csStu4, csStu3trans, read
+eeStu4, eeStu4trans, read
+csStu4, csStu5trans, read
+csStu2, csStu4trans, read
+eeStu2, eeStu5trans, read
+eeStu1, eeStu1trans, read
+eeStu3, eeStu3trans, read
+registrar1, cs101roster, write, read
+eeStu1, csStu3trans, read
+eeStu5, csStu4trans, read
+csStu4, csStu4trans, read
+csStu5, eeStu4trans, read
+eeStu3, eeStu2trans, read
+eeStu2, eeStu2trans, read
+csStu1, csStu4trans, read
+csStu2, csStu2trans, read
+csStu1, csStu5trans, read
+csStu4, eeStu3trans, read
+eeStu1, eeStu5trans, read
+admissions1, eeStu2application, setStatus, read
+eeStu4, eeStu3trans, read
+eeStu1, eeStu3trans, read
+csStu4, eeStu2trans, read
+eeStu2, csStu2trans, read
+eeStu5, csStu2trans, read
+eeStu4, csStu3trans, read
+eeStu5, csStu5trans, read
+admissions1, eeStu4application, setStatus, read
+admissions1, csStu4application, setStatus, read
+csStu5, csStu5trans, read
+registrar1, cs601roster, write, read
+eeStu3, csStu2trans, read
+csStu4, csStu2trans, read
+csStu4, eeStu1trans, read
+eeStu5, csStu1trans, read
+csStu3, csStu1trans, read
+admissions2, csStu1application, setStatus, read
+registrar2, ee101roster, write, read
+eeStu5, eeStu3trans, read
+csStu3, eeStu3trans, read
+admissions2, csStu2application, setStatus, read
+eeStu1, eeStu4trans, read
+csStu5, csStu4trans, read
+csStu1, csStu3trans, read
+admissions2, eeStu5application, setStatus, read
+eeStu2, eeStu3trans, read
+csStu4, eeStu4trans, read
+csStu3, csStu2trans, read
+admissions2, eeStu4application, setStatus, read
+registrar2, cs101roster, write, read
+registrar2, ee601roster, write, read
+eeStu5, csStu3trans, read
+admissions1, csStu3application, setStatus, read
+csStu3, eeStu1trans, read
+eeStu5, eeStu2trans, read
+eeStu3, csStu5trans, read
+eeStu4, csStu2trans, read
+csStu4, csStu1trans, read
+csStu5, eeStu5trans, read
+admissions2, eeStu3application, setStatus, read
+csStu2, csStu3trans, read
+csStu2, eeStu5trans, read
+admissions1, eeStu5application, setStatus, read
+admissions2, csStu4application, setStatus, read
+admissions2, application2, setStatus, read
+eeStu4, csStu5trans, read
+csStu1, eeStu4trans, read
+registrar1, ee101roster, write, read
+csStu5, eeStu3trans, read
+csStu1, eeStu3trans, read
+csStu2, csStu5trans, read
+admissions1, eeStu3application, setStatus, read
+eeStu1, csStu4trans, read
+eeStu3, eeStu5trans, read
+registrar1, ee601roster, write, read
+csStu2, csStu1trans, read
+csStu2, eeStu2trans, read
+csStu5, csStu3trans, read
+csStu2, eeStu1trans, read
+csStu1, csStu1trans, read
+eeStu5, eeStu1trans, read
+eeStu2, eeStu4trans, read
+csStu2, eeStu4trans, read
+eeStu1, csStu5trans, read
+eeStu2, csStu1trans, read
+registrar1, cs602roster, write, read
+eeStu5, eeStu5trans, read
+registrar2, ee602roster, write, read
+csStu1, eeStu2trans, read
+eeStu1, csStu1trans, read
+eeStu2, eeStu1trans, read
+csStu3, eeStu4trans, read
+csStu3, eeStu5trans, read
+eeStu3, csStu3trans, read
+admissions2, eeStu1application, setStatus, read
+eeStu4, eeStu1trans, read
+csStu2, eeStu3trans, read
+admissions1, application2, setStatus, read
+eeStu2, csStu3trans, read
+admissions2, eeStu2application, setStatus, read
+eeStu4, csStu1trans, read
+csStu5, csStu2trans, read
+csStu3, eeStu2trans, read
+csStu4, eeStu5trans, read
+csStu5, csStu1trans, read
+eeStu1, eeStu2trans, read
+eeStu4, eeStu2trans, read
+csStu5, eeStu2trans, read
+registrar2, cs602roster, write, read
+admissions1, csStu1application, setStatus, read
+csStu1, eeStu1trans, read
+admissions2, csStu5application, setStatus, read
+eeStu3, csStu1trans, read
+admissions2, application1, setStatus, read
+admissions2, csStu3application, setStatus, read
+registrar1, ee602roster, write, read
