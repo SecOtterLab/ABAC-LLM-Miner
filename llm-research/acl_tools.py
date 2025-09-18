@@ -29,9 +29,14 @@ def compare_acl (acl1, acl2):
     lines.append("")
     lines.append(f"Total different lines: {len(only_in_acl1 ^ only_in_acl2)}")
 
+    jacc_val = jaccard(acl1 , acl2)
+
+    temp_str = (f"jaccVal : {jacc_val} | intersection : {len(common)} underPermissions : {len(only_in_acl1)} | overPermissions : {len(only_in_acl2)}")
+    print(temp_str)
+
     #if there is a 100% match then lists that have unique ACL line will return true
     complete_match = False
-    if((len(acl1) == 0 and len(only_in_acl2) == 0) and (len(acl1) == len(acl2))):
+    if(jacc_val > .98):
         complete_match = True
 
     return lines, complete_match
@@ -90,6 +95,34 @@ def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
     print(f"permission Count {i}")
 
     return
+
+
+
+def jaccard(set1, set2):
+
+    s1, s2 = set(set1), set(set2)
+
+    intersection = len(s1 & s2)
+    union = len(s1 | s2)
+
+    jacc_value = float(intersection / union)
+    return jacc_value
+
+
+
+def main():
+
+    gt_set = file_to_set("ground-truth-ACL/healthcare-gt-ACL.txt")
+    llm_set = file_to_set("jaccard-testing-ACL.txt")
+    val = ((jaccard(gt_set,llm_set)))
+    compare_acl("ground-truth-ACL/healthcare-gt-ACL.txt", "jaccard-testing-ACL.txt")
+    
+    print(repr(val))
+
+    return
+
+if __name__ == "__main__":
+    main()
 
 
 
