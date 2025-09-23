@@ -3,15 +3,9 @@ import json
 import requests
 from helper_functions import read_entire_file, iterate_api_requests
 
-def gemini_api(gt_acl_file, attribute_data_file, attribute_data_description_file, max_num_it):
+def gemini_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
 
-    #Parameters
-        # gt_acl_file: the acl file to feed to the LLM
-        # llm_abac_policy_file: file with all user and resource information
-        # attribute_despolicy_description_fileription_file the description of the attributes listed above.
-
-    #generate the prompt, calls a helper function to combine all the text files into one.
-    iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_description_file,  gemini_api_call, max_num_it)
+    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, gemini_api_call)
     return
    
 def gemini_api_call(request_text):

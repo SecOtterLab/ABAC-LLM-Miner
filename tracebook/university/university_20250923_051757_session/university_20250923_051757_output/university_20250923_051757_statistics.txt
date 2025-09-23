@@ -1,0 +1,5 @@
+it : 0 |jaccVal : 0.04 , gt_acl : 168 , llm_acl : 144 , intersection : 12 underPermissions : 156 , overPermissions : 132
+it : 1 | jaccVal : 0.0 , gt_acl : 168 , llm_acl : 20 , intersection : 0 underPermissions : 168 , overPermissions : 20
+it : 2 | jaccVal : 0.04905660377358491 , gt_acl : 168 , llm_acl : 388 , intersection : 26 underPermissions : 142 , overPermissions : 362
+it : 3 | jaccVal : 0.023809523809523808 , gt_acl : 168 , llm_acl : 4 , intersection : 4 underPermissions : 164 , overPermissions : 0
+it : 4 | jaccVal : 0.125 , gt_acl : 168 , llm_acl : 48 , intersection : 24 underPermissions : 144 , overPermissions : 24

@@ -18,6 +18,9 @@ def unwrap_rule(str) -> str:
 def split_rule(str):
     #split the string and convert to arr at ';'
     atomic_arr = [s.strip() for s in str.split(";")]
+
+    if len(atomic_arr) < 4:
+        atomic_arr += [""] * (4 - len(atomic_arr))
     
     #if there are empty ones we note them as empty
     # helps with debugging and will prevent breaking incase llm rules are poor
@@ -92,8 +95,6 @@ def str_set_to_arr(str):
     atomic_arr = [s.strip().replace("{", "").replace("}","") for s in str.split("*")]
     return atomic_arr
 
-def tokenize(str):
-    return str.replace("{", " ").replace("}", " ").split()
     
 def jaccard(str1, str2):
     #arguements are string
@@ -109,16 +110,23 @@ def jaccard(str1, str2):
     return float(intersection / union)
 
 
-def rule_set_compare(rules1, rules2, rule_map):
+def rule_set_syntax_analyzer(rules1, rules2):
+
+    # accept paths or lists
+    if isinstance(rules1, str):
+        rules1 = load_rules_from_file(rules1)
+    if isinstance(rules2, str):
+        rules2 = load_rules_from_file(rules2)
+
     arr1 = rule_to_data_set(rules1, "GT")
-    arr2 = rule_to_data_set(rules2, "LLM")
+    arr2 = rule_to_data_set(rules2, "LLM") 
+    jacc_total = 0
+    best_match ={}
+
 
     for rule1 in arr1:
-
         # print(gt_rule)
-      
-
-        rule_map[rule1['rule']] =("EMPTY_BY_DEFAULT", -1 )
+        best_match[rule1['rule']] =("EMPTY_BY_DEFAULT", -1 )
 
         for rule2 in arr2:
             # print(llm_rule)
@@ -139,13 +147,18 @@ def rule_set_compare(rules1, rules2, rule_map):
 
             avg_value = (sum_value/4)
 
-            if avg_value > rule_map[rule1['rule']][1]:
-                rule_map[rule1['rule']] = (rule2["rule"], avg_value)
+            if avg_value > best_match[rule1['rule']][1]:
+                best_match[rule1['rule']] = (rule2["rule"], avg_value)
 
 
+    for key, value in best_match.items():
+        print(f"{key} => {value}\n")
+        jacc_total += value[1]
 
+    jacc_avg = jacc_total/len(best_match)
+    print(f"TOTAL JACC  AVG: {jacc_avg}")
 
-    return rule_map
+    return jacc_avg, best_match
 
 
 def populate_empty_tag(arr, amount):
@@ -159,13 +172,7 @@ def analyze_atomic(section1, section2):
     atomic_arr_1 = atomic_section(section1)
     atomic_arr_2 = atomic_section(section2)
 
-    total_value = 0
-
-
     for atomic_condition_1 in atomic_arr_1:
-
-        # print("=====================\n")
-        total_value = 0
         total_count = 0
         total_matching = 0
 
@@ -174,10 +181,7 @@ def analyze_atomic(section1, section2):
             len_1 = len(subatomic_values_1)
             subatomic_values_2 = sub_atomic_section(atomic_condition_2)
             len_2 = len(subatomic_values_2)
-           
-            # total_count = 0
-            # total_matching = 0
-
+                  
             if len_1 != len_2:
                 diff = (len_2-len_1)
                 if diff > 0:
@@ -210,8 +214,7 @@ def analyze_atomic(section1, section2):
 
     
     # print(f"total matching: {total_matching}      total count {total_count}  avg: {total_matching/total_count}")
-
-            # print(f"{subatomic_values_1} <=> {subatomic_values_2} || matching {total_matching} total {total_count}")
+    # print(f"{subatomic_values_1} <=> {subatomic_values_2} || matching {total_matching} total {total_count}")
     return total_matching/total_count
 
 
@@ -221,11 +224,6 @@ def analyze_atomic(section1, section2):
            
 
 
-
-#TODO compare sets 
-
-
-    return
 
 def main():
     gt_set = []
@@ -238,11 +236,11 @@ def main():
     gt_set = load_rules_from_file("ground-truth-ABAC-rules/university-abac-rules.txt")
 
 
-    rule_set_compare(gt_set, llm_set, matching_rules)
+    rule_set_syntax_analyzer(gt_set, llm_set)
 
-    for key, value in matching_rules.items():
-        print(f"{key} => {value}\n")
-    return
+    # for key, value in matching_rules.items():
+    #     print(f"{key} => {value}\n")
+    # return
 
 
 if __name__ == "__main__":

@@ -2,8 +2,9 @@
 #includes but is not limmited to files to open text files
 # combine text files
 import os, sys
-from acl_tools import compare_acl, generate_acl
+from acl_tools import compare_acl, generate_acl, rule_semantic_analyzer
 from myabac import parse_abac_file
+from rule_syntax_analyzer import rule_set_syntax_analyzer
 
 
 def write_to_file(filename, lines):
@@ -132,7 +133,7 @@ def clear_text_files(folder_path):
 
 
 
-def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_description_file,  api_call, max_num_it):
+def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, attribute_data_description_file, max_num_it, api_call):
     # generated file #: declare the location on the complete request being made
     # this file should contain everyhting we are feeding the LLM to make the rules.
     complete_request_file = "prompts/complete-prompt.txt"
@@ -144,7 +145,6 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
     append_from_file("llm-research/session/output/complete-initial-prompt.txt", complete_request_file )
     print("ITERATING API CALLS..")
 
-    #TODO: delcare output stats files and write to them
     
     is_match = False
     counter = 0
@@ -170,6 +170,12 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
         with open(session_llm_response_file, "w", encoding="utf-8") as of:
             of.write(payload_text)
     
+    #generate syntax comparison
+    syntax_jacc_avg, syntax_map = rule_set_syntax_analyzer(gt_abac_rules_file, session_llm_response_file)
+
+    #generate semantic comparison
+    semantic_jacc_avg , semantic_map = rule_semantic_analyzer(gt_abac_rules_file, session_llm_response_file, attribute_data_file)
+
     stats_text = f"it : {counter} |"
     append_to_file( "llm-research/session/output/statistics.txt", stats_text )
     is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
@@ -198,6 +204,13 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
             with open(session_llm_response_file, "w", encoding="utf-8") as of:
                 of.write(payload_text)
 
+        #generate syntax comparison
+        syntax_jacc_avg, syntax_map = rule_set_syntax_analyzer(gt_abac_rules_file, session_llm_response_file)
+
+        #generate semantic comparison
+        semantic_jacc_avg , semantic_map = rule_semantic_analyzer(gt_abac_rules_file, session_llm_response_file, attribute_data_file)
+
+        #TODO write these values into files
         stats_text = f"it : {counter} | "
         append_to_file( "llm-research/session/output/statistics.txt", stats_text )
         is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
@@ -226,7 +239,7 @@ def create_session_data(session_abac_file, attribute_data_file, session_response
         generate_acl(user2, res2, rule2, llm_acl_file)
 
         #store the comparison in a text object
-        stats_text, debug_text, is_match, pass_by = compare_acl(gt_acl_file,llm_acl_file)
+        stats_text, debug_text, is_match, _ = compare_acl(gt_acl_file,llm_acl_file)
         append_to_file( "llm-research/session/output/statistics.txt", stats_text)
         #write the comparison to a text file
         write_to_file(session_comparison_file, debug_text)

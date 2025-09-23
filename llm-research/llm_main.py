@@ -3,34 +3,6 @@ from helper_functions import clear_text_files, write_text_to_file
 from file_manip import move_and_rename_all
 import datetime
 
-def parse_config_file(file):
-    with open(file, "r", encoding="utf-8") as f:
-        lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
-
-
-    max_iterations = int(lines[0])
-    api_to_run = lines[1]
-
-    for org_line in lines[2:]:
-        org_name, rest = org_line.split("(", 1)
-        org_name = org_name.strip()
-        parts = rest.rstrip(")").split(";")
-        parts = [p.strip() for p in parts]
-
-        organization = org_name
-        ground_truth_acl = parts[0]
-        ground_truth_abac_rules = parts[1]
-        attribute_data_description = parts[2]
-        attribute_data = parts[3]
-        output_dir = parts[4]
-
-
-        print(f"{max_iterations}\n{api_to_run}\n{organization}\n{ground_truth_acl}\n{ground_truth_abac_rules}\n{attribute_data_description}\n{attribute_data}\n{output_dir}\n")
-        
-    return
-
-
-
 def main():
     config_file = "config/config.txt"
 
@@ -66,7 +38,7 @@ def main():
 
 
             # A call to any API should be made here
-            gemini_api( gt_acl_file, attribute_data_file, attribute_data_description_file, max_num_it)
+            gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
 
             #TODO: generate analytics here
 

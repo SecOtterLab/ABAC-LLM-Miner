@@ -46,7 +46,7 @@ def compare_acl (acl1, acl2):
 
     jacc_val = jaccard(acl1 , acl2)
 
-    stats_text = (f"jaccVal : {jacc_val} | gt_acl : {len(acl1)} | llm_acl : {len(acl2)} | intersection : {len(common)} underPermissions : {len(only_in_acl1)} | overPermissions : {len(only_in_acl2)}\n")
+    stats_text = (f"jaccVal : {jacc_val} , gt_acl : {len(acl1)} , llm_acl : {len(acl2)} , intersection : {len(common)} underPermissions : {len(only_in_acl1)} , overPermissions : {len(only_in_acl2)}\n")
     print(stats_text)
 
     #if there is a 100% match then lists that have unique ACL line will return true
@@ -112,43 +112,44 @@ def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
     return
 
 
-def acl_generate_single_rule(file_1, file_2):
+def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
 
 
     arr_1 = load_rules_from_file(file_1)
     arr_2 = load_rules_from_file(file_2)
 
     #pass in the file where we want to store the abac file that is about to be generated
-    abac_file = "llm-research/session/session-abac.abac"
 
     #generate the abac data structures
-    user, res, _  = parse_abac_file(abac_file)
+    user, res, _  = parse_abac_file(attribute_data_file)
+    jacc_total = 0
 
     best_match ={}
-
-
     for rule1 in arr_1:
         rule_manager = RuleManager()
         rule_manager.parse_rule(rule1)
-        generate_acl(user, res, rule_manager, "rule-test-1.txt")
+        generate_acl(user, res, rule_manager, "llm-research/session/session-ACL-single-rule-file-1.txt")
 
         best_match[rule1] =("EMPTY_BY_DEFAULT", -1 )
 
         for rule2 in arr_2:
             rule_manager_2 = RuleManager()
             rule_manager_2.parse_rule(rule2)
-            generate_acl(user, res, rule_manager_2, "rule-test-2.txt")
+            generate_acl(user, res, rule_manager_2, "llm-research/session/session-ACL-single-rule-file-2.txt")
 
-            _, _, _, jaccVal = compare_acl("rule-test-1.txt", "rule-test-2.txt")
+            _, _, _, jaccVal = compare_acl("llm-research/session/session-ACL-single-rule-file-1.txt", "llm-research/session/session-ACL-single-rule-file-2.txt")
   
             if jaccVal > best_match[rule1][1]:
                 best_match[rule1] = (rule2, jaccVal)
-
-    print("test1")
+        #TODO: make session folders for the files above
     for key, value in best_match.items():
         print(f"{key} => {value}\n")
-    
-    return
+        jacc_total += value[1]
+
+    jacc_avg = jacc_total / len(best_match)
+
+    print(f"TOTAL JACC  AVG: {jacc_avg}")
+    return jacc_avg, best_match
 
 
 def jaccard(set1, set2):
@@ -168,12 +169,14 @@ def jaccard(set1, set2):
 
 def main():
 
-    gt_set = file_to_set("ground-truth-ACL/healthcare-gt-ACL.txt")
-    llm_set = file_to_set("jaccard-testing-ACL.txt")
-    val = ((jaccard(gt_set,llm_set)))
-    compare_acl("ground-truth-ACL/healthcare-gt-ACL.txt", "jaccard-testing-ACL.txt")
+    # gt_set = file_to_set("ground-truth-ACL/healthcare-gt-ACL.txt")
+    # llm_set = file_to_set("jaccard-testing-ACL.txt")
+    # val = ((jaccard(gt_set,llm_set)))
+    # compare_acl("ground-truth-ACL/healthcare-gt-ACL.txt", "jaccard-testing-ACL.txt")
     
-    print(repr(val))
+    # print(repr(val))
+
+    rule_semantic_analyzer("ground-truth-ABAC-rules/healthcare-abac-rules.txt", "ground-truth-ABAC-rules/healthcare-abac-rules.txt")
 
     return
 
