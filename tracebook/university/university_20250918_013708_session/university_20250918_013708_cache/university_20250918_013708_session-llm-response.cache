@@ -1,0 +1,17 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {registrar}; student = student, type [ {transcript}, departments ] departments; {read};)
+rule(position [ {csChair}; student = student, type [ {transcript}, departments ] {cs}; {read};)
+rule(position [ {eeChair}; student = student, type [ {transcript}, departments ] {ee}; {read};)
+rule(position [ {student}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {readScore};)
+rule(position [ {student}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {readMyScores,addScore};)
+rule(position [ {student}, department [ {ee}; type [ {gradebook}, departments ] {ee}; {readScore,addScore,readMyScores};)
+rule(position [ {faculty}, department [ {ee}; type [ {gradebook}, departments ] {ee}; {readScore,addScore,changeScore,assignGrade};)
+rule(position [ {faculty}, department [ {cs}; type [ {gradebook}, departments ] {cs}; {readScore,addScore,changeScore,assignGrade};)
+rule(position [ {staff}, department [ {registrar}; type [ {roster}, departments ] departments; {read,write};)
+rule(position [ {faculty}, department [ {cs}; type [ {roster}, departments ] {cs}; {read};)
+rule(position [ {faculty}, department [ {ee}; type [ {roster}, departments ] {ee}; {read};)
+rule(position [ {applicant, student}; student = uid, type [ {application}; {}; {checkStatus};)
+rule(position [ {staff}, department [ {admissions}; student = student, type [ {application}; {}; {read,setStatus};)

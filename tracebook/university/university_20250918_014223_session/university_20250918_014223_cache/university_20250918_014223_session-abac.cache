@@ -1,0 +1,716 @@
+
+===============================================================
+ITERATION : 4
+===============================================================
+# ABAC policy for a university.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# applicants for admission to the university
+
+userAttrib(applicant1, position=applicant)
+userAttrib(applicant2, position=applicant)
+
+# students
+
+userAttrib(csStu1, position=student, department=cs, crsTaken={cs101})
+userAttrib(csStu2, position=student, department=cs, crsTaken={cs601}, crsTaught={cs101 cs602})
+userAttrib(csStu3, position=student, department=cs, crsTaken={cs602}, crsTaught={cs601})
+userAttrib(csStu4, position=student, department=cs, crsTaken={cs601})
+userAttrib(csStu5, position=student, department=cs, crsTaken={cs601 cs602})
+
+userAttrib(eeStu1, position=student, department=ee, crsTaken={ee101})
+userAttrib(eeStu2, position=student, department=ee, crsTaken={ee601}, crsTaught={ee101 ee602})
+userAttrib(eeStu3, position=student, department=ee, crsTaken={ee602}, crsTaught={ee601})
+userAttrib(eeStu4, position=student, department=ee, crsTaken={ee601})
+userAttrib(eeStu5, position=student, department=ee, crsTaken={ee601 ee602})
+
+# faculty
+
+userAttrib(csFac1, position=faculty, department=cs, crsTaught={cs101})
+userAttrib(csFac2, position=faculty, department=cs, crsTaught={cs601})
+userAttrib(csChair, isChair=True, department=cs)
+
+userAttrib(eeFac1, position=faculty, department=ee, crsTaught={ee101})
+userAttrib(eeFac2, position=faculty, department=ee, crsTaught={ee601})
+userAttrib(eeChair, isChair=True, department=ee)
+
+# staff
+
+userAttrib(registrar1, position=staff, department=registrar)
+userAttrib(registrar2, position=staff, department=registrar)
+
+userAttrib(admissions1, position=staff, department=admissions)
+userAttrib(admissions2, position=staff, department=admissions)
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# applications.  applications exist for applicants and students (accepted
+# applicants).
+
+resourceAttrib(application1, type=application, student=applicant1)
+resourceAttrib(application2, type=application, student=applicant2)
+
+resourceAttrib(csStu1application, type=application, student=csStu1)
+resourceAttrib(csStu2application, type=application, student=csStu2)
+resourceAttrib(csStu3application, type=application, student=csStu3)
+resourceAttrib(csStu4application, type=application, student=csStu4)
+resourceAttrib(csStu5application, type=application, student=csStu5)
+
+resourceAttrib(eeStu1application, type=application, student=eeStu1)
+resourceAttrib(eeStu2application, type=application, student=eeStu2)
+resourceAttrib(eeStu3application, type=application, student=eeStu3)
+resourceAttrib(eeStu4application, type=application, student=eeStu4)
+resourceAttrib(eeStu5application, type=application, student=eeStu5)
+
+# gradebooks
+
+resourceAttrib(cs101gradebook, departments={cs}, crs=cs101, type=gradebook)
+resourceAttrib(cs601gradebook, departments={cs}, crs=cs601, type=gradebook)
+resourceAttrib(cs602gradebook, departments={cs}, crs=cs602, type=gradebook)
+
+resourceAttrib(ee101gradebook, departments={ee}, crs=ee101, type=gradebook)
+resourceAttrib(ee601gradebook, departments={ee}, crs=ee601, type=gradebook)
+resourceAttrib(ee602gradebook, departments={ee}, crs=ee602, type=gradebook)
+
+# rosters
+
+resourceAttrib(cs101roster, departments={cs}, crs=cs101, type=roster)
+resourceAttrib(cs601roster, departments={cs}, crs=cs601, type=roster)
+resourceAttrib(cs602roster, departments={cs}, crs=cs602, type=roster)
+
+resourceAttrib(ee101roster, departments={ee}, crs=ee101, type=roster)
+resourceAttrib(ee601roster, departments={ee}, crs=ee601, type=roster)
+resourceAttrib(ee602roster, departments={ee}, crs=ee602, type=roster)
+
+# transcripts
+
+resourceAttrib(csStu1trans, student=csStu1, departments={cs}, type=transcript)
+resourceAttrib(csStu2trans, student=csStu2, departments={cs}, type=transcript)
+resourceAttrib(csStu3trans, student=csStu3, departments={cs}, type=transcript)
+resourceAttrib(csStu4trans, student=csStu4, departments={cs}, type=transcript)
+resourceAttrib(csStu5trans, student=csStu5, departments={cs}, type=transcript)
+
+resourceAttrib(eeStu1trans, student=eeStu1, departments={ee}, type=transcript)
+resourceAttrib(eeStu2trans, student=eeStu2, departments={ee}, type=transcript)
+resourceAttrib(eeStu3trans, student=eeStu3, departments={ee}, type=transcript)
+resourceAttrib(eeStu4trans, student=eeStu4, departments={ee}, type=transcript)
+resourceAttrib(eeStu5trans, student=eeStu5, departments={ee}, type=transcript)
+
+rule(position [ {registrar}; type [ {transcript}; read)
+rule(position [ {registrar}; type [ {roster}; write)
+rule(position [ {registrar}; crs = crs; type [ {roster}; read)
+rule(position [ {admissions}; type [ {application}; {read setStatus})
+rule(position [ {faculty}, department = department; type [ {gradebook}, departments ] department; {readScore addScore changeScore assignGrade})
+rule(position [ {student}, crsTaken ] crs; crs = crs; type [ {gradebook}; readScore)
+rule(position [ {student}, crsTaken ] crs; crs = crs; type [ {gradebook}; readMyScores)
+rule(position [ {student}; type [ {transcript}, student = uid; read)
+rule(position [ {applicant}; type [ {application}, student = uid; checkStatus)
+rule(position [ {student}; type [ {application}, student = uid; checkStatus)
+rule(position [ {faculty}, isChair = True, department = department; type [ {transcript}, departments ] department; read)
+rule(position [ {student}, crsTaught ] crs; type [ {roster}, crs = crs; read)
+rule(position [ {student}; type [ {application}, student = uid; setStatus)
+rule(position [ {student}; type [ {gradebook}, crs = crs, departments ] department; addScore)
+
+===============================================================
+ITERATION : 3
+===============================================================
+# ABAC policy for a university.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# applicants for admission to the university
+
+userAttrib(applicant1, position=applicant)
+userAttrib(applicant2, position=applicant)
+
+# students
+
+userAttrib(csStu1, position=student, department=cs, crsTaken={cs101})
+userAttrib(csStu2, position=student, department=cs, crsTaken={cs601}, crsTaught={cs101 cs602})
+userAttrib(csStu3, position=student, department=cs, crsTaken={cs602}, crsTaught={cs601})
+userAttrib(csStu4, position=student, department=cs, crsTaken={cs601})
+userAttrib(csStu5, position=student, department=cs, crsTaken={cs601 cs602})
+
+userAttrib(eeStu1, position=student, department=ee, crsTaken={ee101})
+userAttrib(eeStu2, position=student, department=ee, crsTaken={ee601}, crsTaught={ee101 ee602})
+userAttrib(eeStu3, position=student, department=ee, crsTaken={ee602}, crsTaught={ee601})
+userAttrib(eeStu4, position=student, department=ee, crsTaken={ee601})
+userAttrib(eeStu5, position=student, department=ee, crsTaken={ee601 ee602})
+
+# faculty
+
+userAttrib(csFac1, position=faculty, department=cs, crsTaught={cs101})
+userAttrib(csFac2, position=faculty, department=cs, crsTaught={cs601})
+userAttrib(csChair, isChair=True, department=cs)
+
+userAttrib(eeFac1, position=faculty, department=ee, crsTaught={ee101})
+userAttrib(eeFac2, position=faculty, department=ee, crsTaught={ee601})
+userAttrib(eeChair, isChair=True, department=ee)
+
+# staff
+
+userAttrib(registrar1, position=staff, department=registrar)
+userAttrib(registrar2, position=staff, department=registrar)
+
+userAttrib(admissions1, position=staff, department=admissions)
+userAttrib(admissions2, position=staff, department=admissions)
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# applications.  applications exist for applicants and students (accepted
+# applicants).
+
+resourceAttrib(application1, type=application, student=applicant1)
+resourceAttrib(application2, type=application, student=applicant2)
+
+resourceAttrib(csStu1application, type=application, student=csStu1)
+resourceAttrib(csStu2application, type=application, student=csStu2)
+resourceAttrib(csStu3application, type=application, student=csStu3)
+resourceAttrib(csStu4application, type=application, student=csStu4)
+resourceAttrib(csStu5application, type=application, student=csStu5)
+
+resourceAttrib(eeStu1application, type=application, student=eeStu1)
+resourceAttrib(eeStu2application, type=application, student=eeStu2)
+resourceAttrib(eeStu3application, type=application, student=eeStu3)
+resourceAttrib(eeStu4application, type=application, student=eeStu4)
+resourceAttrib(eeStu5application, type=application, student=eeStu5)
+
+# gradebooks
+
+resourceAttrib(cs101gradebook, departments={cs}, crs=cs101, type=gradebook)
+resourceAttrib(cs601gradebook, departments={cs}, crs=cs601, type=gradebook)
+resourceAttrib(cs602gradebook, departments={cs}, crs=cs602, type=gradebook)
+
+resourceAttrib(ee101gradebook, departments={ee}, crs=ee101, type=gradebook)
+resourceAttrib(ee601gradebook, departments={ee}, crs=ee601, type=gradebook)
+resourceAttrib(ee602gradebook, departments={ee}, crs=ee602, type=gradebook)
+
+# rosters
+
+resourceAttrib(cs101roster, departments={cs}, crs=cs101, type=roster)
+resourceAttrib(cs601roster, departments={cs}, crs=cs601, type=roster)
+resourceAttrib(cs602roster, departments={cs}, crs=cs602, type=roster)
+
+resourceAttrib(ee101roster, departments={ee}, crs=ee101, type=roster)
+resourceAttrib(ee601roster, departments={ee}, crs=ee601, type=roster)
+resourceAttrib(ee602roster, departments={ee}, crs=ee602, type=roster)
+
+# transcripts
+
+resourceAttrib(csStu1trans, student=csStu1, departments={cs}, type=transcript)
+resourceAttrib(csStu2trans, student=csStu2, departments={cs}, type=transcript)
+resourceAttrib(csStu3trans, student=csStu3, departments={cs}, type=transcript)
+resourceAttrib(csStu4trans, student=csStu4, departments={cs}, type=transcript)
+resourceAttrib(csStu5trans, student=csStu5, departments={cs}, type=transcript)
+
+resourceAttrib(eeStu1trans, student=eeStu1, departments={ee}, type=transcript)
+resourceAttrib(eeStu2trans, student=eeStu2, departments={ee}, type=transcript)
+resourceAttrib(eeStu3trans, student=eeStu3, departments={ee}, type=transcript)
+resourceAttrib(eeStu4trans, student=eeStu4, departments={ee}, type=transcript)
+resourceAttrib(eeStu5trans, student=eeStu5, departments={ee}, type=transcript)
+
+rule(position [ {registrar}; student = student, departments ] departments, type [ {transcript}; {read}; ])
+rule(position [ {csStu2}; crs ] crs, type [ {gradebook}; {readScore, addScore}; ])
+rule(isChair [ {True}; student = student, departments ] departments, type [ {transcript}; {read}; ])
+rule(position [ {student}; uid = student, departments ] departments, type [ {transcript}; {read}; ])
+rule(position [ {registrar}; crs = crs, type [ {roster}; {write}; ])
+rule(position [ {faculty}; crs ] crs, type [ {roster}; {read}; ])
+rule(position [ {student}; uid = student, type [ {application}; {checkStatus}; ])
+rule(position [ {admissions}; student = student, type [ {application}; {setStatus, read}; ])
+rule(position [ {faculty}; crs ] crs, type [ {gradebook}; {readScore, addScore, changeScore, assignGrade}; ])
+rule(position [ {student}; crs ] crs, type [ {gradebook}; {readMyScores}; ])
+rule(position [ {applicant}; uid = student, type [ {application}; {checkStatus}; ])
+rule(position [ {student}; uid = student, type [ {application}; {checkStatus}; ])
+rule(position [ {student}; crs ] crs, type [ {gradebook}; {readScore, addScore}; ])
+
+===============================================================
+ITERATION : 2
+===============================================================
+# ABAC policy for a university.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# applicants for admission to the university
+
+userAttrib(applicant1, position=applicant)
+userAttrib(applicant2, position=applicant)
+
+# students
+
+userAttrib(csStu1, position=student, department=cs, crsTaken={cs101})
+userAttrib(csStu2, position=student, department=cs, crsTaken={cs601}, crsTaught={cs101 cs602})
+userAttrib(csStu3, position=student, department=cs, crsTaken={cs602}, crsTaught={cs601})
+userAttrib(csStu4, position=student, department=cs, crsTaken={cs601})
+userAttrib(csStu5, position=student, department=cs, crsTaken={cs601 cs602})
+
+userAttrib(eeStu1, position=student, department=ee, crsTaken={ee101})
+userAttrib(eeStu2, position=student, department=ee, crsTaken={ee601}, crsTaught={ee101 ee602})
+userAttrib(eeStu3, position=student, department=ee, crsTaken={ee602}, crsTaught={ee601})
+userAttrib(eeStu4, position=student, department=ee, crsTaken={ee601})
+userAttrib(eeStu5, position=student, department=ee, crsTaken={ee601 ee602})
+
+# faculty
+
+userAttrib(csFac1, position=faculty, department=cs, crsTaught={cs101})
+userAttrib(csFac2, position=faculty, department=cs, crsTaught={cs601})
+userAttrib(csChair, isChair=True, department=cs)
+
+userAttrib(eeFac1, position=faculty, department=ee, crsTaught={ee101})
+userAttrib(eeFac2, position=faculty, department=ee, crsTaught={ee601})
+userAttrib(eeChair, isChair=True, department=ee)
+
+# staff
+
+userAttrib(registrar1, position=staff, department=registrar)
+userAttrib(registrar2, position=staff, department=registrar)
+
+userAttrib(admissions1, position=staff, department=admissions)
+userAttrib(admissions2, position=staff, department=admissions)
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# applications.  applications exist for applicants and students (accepted
+# applicants).
+
+resourceAttrib(application1, type=application, student=applicant1)
+resourceAttrib(application2, type=application, student=applicant2)
+
+resourceAttrib(csStu1application, type=application, student=csStu1)
+resourceAttrib(csStu2application, type=application, student=csStu2)
+resourceAttrib(csStu3application, type=application, student=csStu3)
+resourceAttrib(csStu4application, type=application, student=csStu4)
+resourceAttrib(csStu5application, type=application, student=csStu5)
+
+resourceAttrib(eeStu1application, type=application, student=eeStu1)
+resourceAttrib(eeStu2application, type=application, student=eeStu2)
+resourceAttrib(eeStu3application, type=application, student=eeStu3)
+resourceAttrib(eeStu4application, type=application, student=eeStu4)
+resourceAttrib(eeStu5application, type=application, student=eeStu5)
+
+# gradebooks
+
+resourceAttrib(cs101gradebook, departments={cs}, crs=cs101, type=gradebook)
+resourceAttrib(cs601gradebook, departments={cs}, crs=cs601, type=gradebook)
+resourceAttrib(cs602gradebook, departments={cs}, crs=cs602, type=gradebook)
+
+resourceAttrib(ee101gradebook, departments={ee}, crs=ee101, type=gradebook)
+resourceAttrib(ee601gradebook, departments={ee}, crs=ee601, type=gradebook)
+resourceAttrib(ee602gradebook, departments={ee}, crs=ee602, type=gradebook)
+
+# rosters
+
+resourceAttrib(cs101roster, departments={cs}, crs=cs101, type=roster)
+resourceAttrib(cs601roster, departments={cs}, crs=cs601, type=roster)
+resourceAttrib(cs602roster, departments={cs}, crs=cs602, type=roster)
+
+resourceAttrib(ee101roster, departments={ee}, crs=ee101, type=roster)
+resourceAttrib(ee601roster, departments={ee}, crs=ee601, type=roster)
+resourceAttrib(ee602roster, departments={ee}, crs=ee602, type=roster)
+
+# transcripts
+
+resourceAttrib(csStu1trans, student=csStu1, departments={cs}, type=transcript)
+resourceAttrib(csStu2trans, student=csStu2, departments={cs}, type=transcript)
+resourceAttrib(csStu3trans, student=csStu3, departments={cs}, type=transcript)
+resourceAttrib(csStu4trans, student=csStu4, departments={cs}, type=transcript)
+resourceAttrib(csStu5trans, student=csStu5, departments={cs}, type=transcript)
+
+resourceAttrib(eeStu1trans, student=eeStu1, departments={ee}, type=transcript)
+resourceAttrib(eeStu2trans, student=eeStu2, departments={ee}, type=transcript)
+resourceAttrib(eeStu3trans, student=eeStu3, departments={ee}, type=transcript)
+resourceAttrib(eeStu4trans, student=eeStu4, departments={ee}, type=transcript)
+resourceAttrib(eeStu5trans, student=eeStu5, departments={ee}, type=transcript)
+
+rule(position [ {registrar}; student ] departments, type [ {transcript}; {read})
+rule(position [ {registrar}; departments = departments, type [ {roster}; {write, read})
+rule(position [ {staff}, department [ {admissions}; type [ {application}; {setStatus, read})
+rule(position [ {faculty}, crsTaught ] crs; type [ {gradebook}; {readScore, assignGrade, changeScore, addScore})
+rule(position [ {student}, crsTaken ] crs; type [ {gradebook}; readScore})
+rule(position [ {student}; type [ {transcript}, student = uid; {read})
+rule(position [ {student}; type [ {application}, student = uid; {checkStatus})
+rule(position [ {student}, crsTaught ] crs; type [ {gradebook}; {readMyScores, addScore})
+rule(position [ {student}, crsTaken ] crs; type [ {gradebook}; readMyScores})
+rule(isChair [ {True}; student ] departments, type [ {transcript}; {read})
+rule(position [ {applicant}; type [ {application}, student = uid; checkStatus})
+
+===============================================================
+ITERATION : 1
+===============================================================
+# ABAC policy for a university.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# applicants for admission to the university
+
+userAttrib(applicant1, position=applicant)
+userAttrib(applicant2, position=applicant)
+
+# students
+
+userAttrib(csStu1, position=student, department=cs, crsTaken={cs101})
+userAttrib(csStu2, position=student, department=cs, crsTaken={cs601}, crsTaught={cs101 cs602})
+userAttrib(csStu3, position=student, department=cs, crsTaken={cs602}, crsTaught={cs601})
+userAttrib(csStu4, position=student, department=cs, crsTaken={cs601})
+userAttrib(csStu5, position=student, department=cs, crsTaken={cs601 cs602})
+
+userAttrib(eeStu1, position=student, department=ee, crsTaken={ee101})
+userAttrib(eeStu2, position=student, department=ee, crsTaken={ee601}, crsTaught={ee101 ee602})
+userAttrib(eeStu3, position=student, department=ee, crsTaken={ee602}, crsTaught={ee601})
+userAttrib(eeStu4, position=student, department=ee, crsTaken={ee601})
+userAttrib(eeStu5, position=student, department=ee, crsTaken={ee601 ee602})
+
+# faculty
+
+userAttrib(csFac1, position=faculty, department=cs, crsTaught={cs101})
+userAttrib(csFac2, position=faculty, department=cs, crsTaught={cs601})
+userAttrib(csChair, isChair=True, department=cs)
+
+userAttrib(eeFac1, position=faculty, department=ee, crsTaught={ee101})
+userAttrib(eeFac2, position=faculty, department=ee, crsTaught={ee601})
+userAttrib(eeChair, isChair=True, department=ee)
+
+# staff
+
+userAttrib(registrar1, position=staff, department=registrar)
+userAttrib(registrar2, position=staff, department=registrar)
+
+userAttrib(admissions1, position=staff, department=admissions)
+userAttrib(admissions2, position=staff, department=admissions)
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# applications.  applications exist for applicants and students (accepted
+# applicants).
+
+resourceAttrib(application1, type=application, student=applicant1)
+resourceAttrib(application2, type=application, student=applicant2)
+
+resourceAttrib(csStu1application, type=application, student=csStu1)
+resourceAttrib(csStu2application, type=application, student=csStu2)
+resourceAttrib(csStu3application, type=application, student=csStu3)
+resourceAttrib(csStu4application, type=application, student=csStu4)
+resourceAttrib(csStu5application, type=application, student=csStu5)
+
+resourceAttrib(eeStu1application, type=application, student=eeStu1)
+resourceAttrib(eeStu2application, type=application, student=eeStu2)
+resourceAttrib(eeStu3application, type=application, student=eeStu3)
+resourceAttrib(eeStu4application, type=application, student=eeStu4)
+resourceAttrib(eeStu5application, type=application, student=eeStu5)
+
+# gradebooks
+
+resourceAttrib(cs101gradebook, departments={cs}, crs=cs101, type=gradebook)
+resourceAttrib(cs601gradebook, departments={cs}, crs=cs601, type=gradebook)
+resourceAttrib(cs602gradebook, departments={cs}, crs=cs602, type=gradebook)
+
+resourceAttrib(ee101gradebook, departments={ee}, crs=ee101, type=gradebook)
+resourceAttrib(ee601gradebook, departments={ee}, crs=ee601, type=gradebook)
+resourceAttrib(ee602gradebook, departments={ee}, crs=ee602, type=gradebook)
+
+# rosters
+
+resourceAttrib(cs101roster, departments={cs}, crs=cs101, type=roster)
+resourceAttrib(cs601roster, departments={cs}, crs=cs601, type=roster)
+resourceAttrib(cs602roster, departments={cs}, crs=cs602, type=roster)
+
+resourceAttrib(ee101roster, departments={ee}, crs=ee101, type=roster)
+resourceAttrib(ee601roster, departments={ee}, crs=ee601, type=roster)
+resourceAttrib(ee602roster, departments={ee}, crs=ee602, type=roster)
+
+# transcripts
+
+resourceAttrib(csStu1trans, student=csStu1, departments={cs}, type=transcript)
+resourceAttrib(csStu2trans, student=csStu2, departments={cs}, type=transcript)
+resourceAttrib(csStu3trans, student=csStu3, departments={cs}, type=transcript)
+resourceAttrib(csStu4trans, student=csStu4, departments={cs}, type=transcript)
+resourceAttrib(csStu5trans, student=csStu5, departments={cs}, type=transcript)
+
+resourceAttrib(eeStu1trans, student=eeStu1, departments={ee}, type=transcript)
+resourceAttrib(eeStu2trans, student=eeStu2, departments={ee}, type=transcript)
+resourceAttrib(eeStu3trans, student=eeStu3, departments={ee}, type=transcript)
+resourceAttrib(eeStu4trans, student=eeStu4, departments={ee}, type=transcript)
+resourceAttrib(eeStu5trans, student=eeStu5, departments={ee}, type=transcript)
+
+rule(position [ {registrar}; student = student, type [ {transcript}, departments ] departments; {read}; )
+rule(position [ {csStu2}; rid = cs602gradebook; {readScore}; )
+rule(isChair [ {True}, department [ {cs}; student = student, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {csStu2}; student = csStu2, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {registrar}; crs = cs101, type [ {roster}; {write}; )
+rule(position [ {csStu4}; student = csStu4, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {registrar}; student = student, type [ {transcript}; {read}; )
+rule(position [ {admissions}; student = eeStu3, type [ {application}; {setStatus}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee101; crs = ee101, type [ {gradebook}; {readScore}; )
+rule(position [ {admissions}; type [ {application}, student = applicant1; {read}; )
+rule(position [ {registrar}; crs = ee101, type [ {roster}; {write}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs101; crs = cs101, type [ {roster}; {read}; )
+rule(position [ {csStu1}; student = csStu1, type [ {application}; {checkStatus}; )
+rule(position [ {registrar}; crs = cs602, type [ {roster}; {read}; )
+rule(position [ {admissions}; student = eeStu5, type [ {application}; {setStatus}; )
+rule(position [ {registrar}; crs = ee101, type [ {roster}; {write}; )
+rule(position [ {csStu3}; rid = cs601gradebook; {readScore}; )
+rule(position [ {registrar}; student = eeStu1, type [ {transcript}; {read}; )
+rule(position [ {admissions}; student = csStu4, type [ {application}; {read}; )
+rule(position [ {admissions}; student = eeStu1, type [ {application}; {setStatus}; )
+rule(position [ {csStu5}; rid = cs601gradebook; {readMyScores}; )
+rule(position [ {csStu5}; student = csStu5, type [ {application}; {checkStatus}; )
+rule(position [ {eeStu5}; student = eeStu5, departments [ {ee}, type [ {transcript}; {read}; )
+rule(isChair [ {True}, department [ {ee}; student = eeStu1, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {registrar}; student = csStu3, type [ {transcript}; {read}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs101; crs = cs101, type [ {gradebook}; {addScore}; )
+rule(position [ {csStu3}; student = csStu3, type [ {application}; {checkStatus}; )
+rule(position [ {eeStu2}; crs = ee101, type [ {gradebook}; {addScore}; )
+rule(position [ {eeStu2}; crs = ee602, type [ {gradebook}; {addScore}; )
+rule(position [ {eeStu4}; student = eeStu4, type [ {application}; {checkStatus}; )
+rule(isChair [ {True}, department [ {ee}; student = eeStu2, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {applicant}; type [ {application}, student = applicant1; {checkStatus}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee601; crs = ee601, type [ {roster}; {read}; )
+rule(position [ {admissions}; student = csStu2, type [ {application}; {read}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee601; crs = ee601, type [ {gradebook}; {readScore}; )
+rule(position [ {registrar}; crs = ee601, type [ {roster}; {read}; )
+rule(position [ {registrar}; crs = cs602, type [ {roster}; {write}; )
+rule(position [ {admissions}; type [ {application}, student = applicant2; {read, setStatus}; )
+rule(isChair [ {True}, department [ {cs}; student = csStu1, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {admissions}; student = eeStu2, type [ {application}; {setStatus}; )
+rule(position [ {admissions}; student = csStu5, type [ {application}; {read}; )
+rule(position [ {admissions}; student = csStu1, type [ {application}; {read}; )
+rule(position [ {csStu3}; crs = cs601, type [ {gradebook}; {addScore}; )
+rule(position [ {eeStu2}; rid = ee602gradebook; {readScore}; )
+rule(position [ {csStu3}; rid = cs602gradebook; {readMyScores}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee101; crs = ee101, type [ {gradebook}; {assignGrade}; )
+rule(position [ {admissions}; student = csStu2, type [ {application}; {read}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {gradebook}; {readScore}; )
+rule(position [ {registrar}; crs = cs601, type [ {roster}; {write}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {roster}; {read}; )
+rule(isChair [ {True}, department [ {cs}; student = csStu3, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {admissions}; student = csStu4, type [ {application}; {setStatus}; )
+rule(position [ {registrar}; student = eeStu3, type [ {transcript}; {read}; )
+rule(position [ {eeStu5}; rid = ee602gradebook; {readMyScores}; )
+rule(position [ {admissions}; student = csStu3, type [ {application}; {setStatus}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs101; crs = cs101, type [ {gradebook}; {changeScore}; )
+rule(isChair [ {True}, department [ {ee}; student = eeStu5, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {registrar}; crs = ee602, type [ {roster}; {read}; )
+rule(isChair [ {True}, department [ {ee}; student = eeStu4, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {registrar}; student = csStu1, type [ {transcript}; {read}; )
+rule(position [ {registrar}; crs = cs101, type [ {roster}; {read}; )
+rule(position [ {admissions}; student = csStu5, type [ {application}; {read}; )
+rule(position [ {eeStu2}; student = eeStu2, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {admissions}; student = csStu5, type [ {application}; {setStatus}; )
+rule(position [ {registrar}; crs = cs601, type [ {roster}; {read}; )
+rule(position [ {admissions}; student = eeStu1, type [ {application}; {read}; )
+rule(position [ {admissions}; student = csStu3, type [ {application}; {setStatus}; )
+rule(position [ {csStu2}; rid = cs601gradebook; {readMyScores}; )
+rule(position [ {eeStu2}; rid = ee601gradebook; {readMyScores}; )
+rule(position [ {admissions}; student = eeStu3, type [ {application}; {read}; )
+rule(position [ {eeStu1}; student = eeStu1, type [ {application}; {checkStatus}; )
+rule(position [ {admissions}; student = eeStu4, type [ {application}; {read}; )
+rule(position [ {registrar}; crs = ee602, type [ {roster}; {write}; )
+rule(position [ {admissions}; student = eeStu2, type [ {application}; {read}; )
+rule(position [ {admissions}; student = csStu1, type [ {application}; {setStatus}; )
+rule(position [ {admissions}; student = eeStu5, type [ {application}; {read}; )
+rule(position [ {registrar}; crs = ee601, type [ {roster}; {write}; )
+rule(position [ {eeStu3}; crs = ee601, type [ {gradebook}; {addScore}; )
+rule(position [ {csStu3}; student = csStu3, departments [ {cs}, type [ {transcript}; {read}; )
+rule(isChair [ {True}, department [ {ee}; student = eeStu3, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {csStu4}; student = csStu4, type [ {application}; {checkStatus}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs101; crs = cs101, type [ {gradebook}; {assignGrade}; )
+rule(position [ {admissions}; student = csStu5, type [ {application}; {setStatus}; )
+rule(position [ {eeStu4}; student = eeStu4, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {eeStu2}; crs = ee101, type [ {gradebook}; {readScore}; )
+rule(position [ {admissions}; student = eeStu2, type [ {application}; {read}; )
+rule(position [ {csStu4}; rid = cs601gradebook; {readMyScores}; )
+rule(position [ {admissions}; student = csStu1, type [ {application}; {setStatus}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee101; crs = ee101, type [ {roster}; {read}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee601; crs = ee601, type [ {gradebook}; {changeScore}; )
+rule(position [ {registrar}; crs = ee101, type [ {roster}; {read}; )
+rule(position [ {eeStu3}; crs = ee601, type [ {gradebook}; {readScore}; )
+rule(position [ {admissions}; student = csStu2, type [ {application}; {setStatus}; )
+rule(position [ {registrar}; crs = cs601, type [ {write}; )
+rule(position [ {admissions}; student = csStu3, type [ {application}; {read}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {gradebook}; {changeScore}; )
+rule(position [ {csStu2}; student = csStu2, type [ {application}; {checkStatus}; )
+rule(position [ {registrar}; crs = ee602, type [ {roster}; {read}; )
+rule(position [ {eeStu5}; rid = ee601gradebook; {readMyScores}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {gradebook}; {assignGrade}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs101; crs = cs101, type [ {gradebook}; {readScore}; )
+rule(position [ {registrar}; crs = cs601, type [ {read}; )
+rule(position [ {eeStu1}; student = eeStu1, departments [ {ee}, type [ {transcript}; {read}; )
+rule(position [ {admissions}; type [ {application}, student = applicant1; {read, setStatus}; )
+rule(position [ {admissions}; student = eeStu4, type [ {application}; {setStatus}; )
+rule(position [ {eeStu3}; rid = ee602gradebook; {readMyScores}; )
+rule(position [ {applicant}; type [ {application}, student = applicant2; {checkStatus}; )
+rule(position [ {eeStu2}; student = eeStu2, type [ {application}; {checkStatus}; )
+rule(position [ {csStu5}; rid = cs602gradebook; {readMyScores}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee101; crs = ee101, type [ {gradebook}; {addScore}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {gradebook}; {addScore}; )
+rule(position [ {admissions}; student = eeStu5, type [ {application}; {setStatus}; )
+rule(position [ {admissions}; student = csStu3, type [ {application}; {read}; )
+rule(position [ {registrar}; crs = cs101, type [ {roster}; {read}; )
+rule(position [ {eeStu1}; rid = ee101gradebook; {readMyScores}; )
+rule(position [ {faculty}, department [ {ee}, crsTaught ] ee601; crs = ee601, type [ {gradebook}; {addScore}; )
+rule(position [ {eeStu3}; student = eeStu3, type [ {application}; {checkStatus}; )
+rule(position [ {csStu2}; crs = cs101, type [ {gradebook}; {readScore, addScore}; )
+rule(position [ {faculty}, department [ {cs}, crsTaught ] cs601; crs = cs601, type [ {gradebook}; {addScore}; )
+rule(position [ {admissions}; student = csStu4, type [ {application}; {setStatus}; )
+rule(position [ {eeStu5}; student = csStu5, type [ {application}; {read, checkStatus}; )
+rule(isChair [ {True}, department [ {cs}; student = csStu5, departments [ {cs}, type [ {transcript}; {read}; )
+rule(position [ {csStu1}; rid = cs101gradebook; {readMyScores}; )
+rule(position [ {admissions}; student = eeStu2, type [ {application}; {setStatus}; )
+rule(position [ {eeStu4}; rid = ee601gradebook; {readMyScores}; )
+rule(position [ {admissions}; student = eeStu5, type [ {application}; {read}; )
+rule(position [ {csStu1}; student = csStu1, departments [ {cs}, type [ {transcript}; {read}; )
+
+===============================================================
+ITERATION : 0
+===============================================================
+# ABAC policy for a university.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# applicants for admission to the university
+
+userAttrib(applicant1, position=applicant)
+userAttrib(applicant2, position=applicant)
+
+# students
+
+userAttrib(csStu1, position=student, department=cs, crsTaken={cs101})
+userAttrib(csStu2, position=student, department=cs, crsTaken={cs601}, crsTaught={cs101 cs602})
+userAttrib(csStu3, position=student, department=cs, crsTaken={cs602}, crsTaught={cs601})
+userAttrib(csStu4, position=student, department=cs, crsTaken={cs601})
+userAttrib(csStu5, position=student, department=cs, crsTaken={cs601 cs602})
+
+userAttrib(eeStu1, position=student, department=ee, crsTaken={ee101})
+userAttrib(eeStu2, position=student, department=ee, crsTaken={ee601}, crsTaught={ee101 ee602})
+userAttrib(eeStu3, position=student, department=ee, crsTaken={ee602}, crsTaught={ee601})
+userAttrib(eeStu4, position=student, department=ee, crsTaken={ee601})
+userAttrib(eeStu5, position=student, department=ee, crsTaken={ee601 ee602})
+
+# faculty
+
+userAttrib(csFac1, position=faculty, department=cs, crsTaught={cs101})
+userAttrib(csFac2, position=faculty, department=cs, crsTaught={cs601})
+userAttrib(csChair, isChair=True, department=cs)
+
+userAttrib(eeFac1, position=faculty, department=ee, crsTaught={ee101})
+userAttrib(eeFac2, position=faculty, department=ee, crsTaught={ee601})
+userAttrib(eeChair, isChair=True, department=ee)
+
+# staff
+
+userAttrib(registrar1, position=staff, department=registrar)
+userAttrib(registrar2, position=staff, department=registrar)
+
+userAttrib(admissions1, position=staff, department=admissions)
+userAttrib(admissions2, position=staff, department=admissions)
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# applications.  applications exist for applicants and students (accepted
+# applicants).
+
+resourceAttrib(application1, type=application, student=applicant1)
+resourceAttrib(application2, type=application, student=applicant2)
+
+resourceAttrib(csStu1application, type=application, student=csStu1)
+resourceAttrib(csStu2application, type=application, student=csStu2)
+resourceAttrib(csStu3application, type=application, student=csStu3)
+resourceAttrib(csStu4application, type=application, student=csStu4)
+resourceAttrib(csStu5application, type=application, student=csStu5)
+
+resourceAttrib(eeStu1application, type=application, student=eeStu1)
+resourceAttrib(eeStu2application, type=application, student=eeStu2)
+resourceAttrib(eeStu3application, type=application, student=eeStu3)
+resourceAttrib(eeStu4application, type=application, student=eeStu4)
+resourceAttrib(eeStu5application, type=application, student=eeStu5)
+
+# gradebooks
+
+resourceAttrib(cs101gradebook, departments={cs}, crs=cs101, type=gradebook)
+resourceAttrib(cs601gradebook, departments={cs}, crs=cs601, type=gradebook)
+resourceAttrib(cs602gradebook, departments={cs}, crs=cs602, type=gradebook)
+
+resourceAttrib(ee101gradebook, departments={ee}, crs=ee101, type=gradebook)
+resourceAttrib(ee601gradebook, departments={ee}, crs=ee601, type=gradebook)
+resourceAttrib(ee602gradebook, departments={ee}, crs=ee602, type=gradebook)
+
+# rosters
+
+resourceAttrib(cs101roster, departments={cs}, crs=cs101, type=roster)
+resourceAttrib(cs601roster, departments={cs}, crs=cs601, type=roster)
+resourceAttrib(cs602roster, departments={cs}, crs=cs602, type=roster)
+
+resourceAttrib(ee101roster, departments={ee}, crs=ee101, type=roster)
+resourceAttrib(ee601roster, departments={ee}, crs=ee601, type=roster)
+resourceAttrib(ee602roster, departments={ee}, crs=ee602, type=roster)
+
+# transcripts
+
+resourceAttrib(csStu1trans, student=csStu1, departments={cs}, type=transcript)
+resourceAttrib(csStu2trans, student=csStu2, departments={cs}, type=transcript)
+resourceAttrib(csStu3trans, student=csStu3, departments={cs}, type=transcript)
+resourceAttrib(csStu4trans, student=csStu4, departments={cs}, type=transcript)
+resourceAttrib(csStu5trans, student=csStu5, departments={cs}, type=transcript)
+
+resourceAttrib(eeStu1trans, student=eeStu1, departments={ee}, type=transcript)
+resourceAttrib(eeStu2trans, student=eeStu2, departments={ee}, type=transcript)
+resourceAttrib(eeStu3trans, student=eeStu3, departments={ee}, type=transcript)
+resourceAttrib(eeStu4trans, student=eeStu4, departments={ee}, type=transcript)
+resourceAttrib(eeStu5trans, student=eeStu5, departments={ee}, type=transcript)
+
+rule(position [ {registrar}; student = student, type [ {transcript}; {read}; departments = departments)
+rule(position [ {csChair}; student = student, type [ {transcript}; {read}; departments = {cs})
+rule(position [ {eeChair}; student = student, type [ {transcript}; {read}; departments = {ee})
+rule(uid = csStu2; type [ {transcript}; {read}; student = csStu2)
+rule(uid = csStu4; type [ {transcript}; {read}; student = csStu4)
+rule(uid = eeStu5; type [ {transcript}; {read}; student = eeStu5)
+rule(position [ {faculty}, student ] {eeStu2}; type [ {gradebook}; {addScore, readScore}; crs ] crsTaught, departments = departments)
+rule(position [ {faculty}; type [ {roster}; {read, write}; crs ] crsTaught, departments = departments)
+rule(position [ {faculty}; type [ {gradebook}; {addScore, changeScore, assignGrade}; crs ] crsTaught, departments = departments)
+rule(position [ {student}; type [ {gradebook}; {readMyScores, addScore, readScore}; crs ] crsTaught)
+rule(position [ {student}; type [ {application}; {checkStatus}; student = uid)
+rule(position [ {applicant}; type [ {application}; {checkStatus}; student = uid)
+rule(position [ {staff}, department ] {admissions}; type [ {application}; {read, setStatus}; student = student)
+rule(position [ {student}; type [ {gradebook}; {readScore}; crsTaken ] crs)
+rule(department [ {cs}; student = student, type [ {transcript}; {read}; departments = departments)
+rule(position [ {student}; type [ {gradebook}; {readMyScores}; crsTaken ] crs)

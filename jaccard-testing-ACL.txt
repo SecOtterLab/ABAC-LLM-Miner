@@ -38,3 +38,6 @@ oncDoc4, oncPat2HR, addItem
 oncNurse2, oncPat1HR, addItem
 anesDoc1, carPat1HR, addItem
 oncNurse1, oncPat2HR, addItem
+carDoc1, carPat1carItem, read
+oncNurse2, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read

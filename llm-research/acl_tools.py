@@ -31,15 +31,15 @@ def compare_acl (acl1, acl2):
 
     jacc_val = jaccard(acl1 , acl2)
 
-    temp_str = (f"jaccVal : {jacc_val} | intersection : {len(common)} underPermissions : {len(only_in_acl1)} | overPermissions : {len(only_in_acl2)}")
-    print(temp_str)
+    stats_text = (f"jaccVal : {jacc_val} | gt_acl : {len(acl1)} | llm_acl : {len(acl2)} | intersection : {len(common)} underPermissions : {len(only_in_acl1)} | overPermissions : {len(only_in_acl2)}\n")
+    # print(stats_text)
 
     #if there is a 100% match then lists that have unique ACL line will return true
     complete_match = False
     if(jacc_val > .98):
         complete_match = True
 
-    return lines, complete_match
+    return stats_text, lines, complete_match
 
 
 #Snipets of code taken from core.myabac generate_heatmap_data
@@ -92,7 +92,7 @@ def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
             f.write(line +"\n")
 
 
-    print(f"permission Count {i}")
+    # print(f"permission Count {i}")
 
     return
 

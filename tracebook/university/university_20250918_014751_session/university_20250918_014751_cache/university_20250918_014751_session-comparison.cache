@@ -1,0 +1,2683 @@
+
+===============================================================
+ITERATION : 4
+===============================================================
+Commong lines / Lines that are correct: 50
+admissions1, application1, setStatus
+admissions1, application2, setStatus
+admissions1, csStu1application, setStatus
+admissions1, csStu2application, setStatus
+admissions1, csStu3application, setStatus
+admissions1, csStu4application, setStatus
+admissions1, csStu5application, setStatus
+admissions1, eeStu1application, setStatus
+admissions1, eeStu2application, setStatus
+admissions1, eeStu3application, setStatus
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, setStatus
+admissions2, application1, setStatus
+admissions2, application2, setStatus
+admissions2, csStu1application, setStatus
+admissions2, csStu2application, setStatus
+admissions2, csStu3application, setStatus
+admissions2, csStu4application, setStatus
+admissions2, csStu5application, setStatus
+admissions2, eeStu1application, setStatus
+admissions2, eeStu2application, setStatus
+admissions2, eeStu3application, setStatus
+admissions2, eeStu4application, setStatus
+admissions2, eeStu5application, setStatus
+csFac1, cs101roster, read
+csFac2, cs601roster, read
+csStu1, csStu1trans, read
+csStu2, csStu2trans, read
+csStu3, csStu3trans, read
+csStu4, csStu4trans, read
+csStu5, csStu5trans, read
+eeFac1, ee101roster, read
+eeFac2, ee601roster, read
+eeStu1, eeStu1trans, read
+eeStu2, eeStu2trans, read
+eeStu3, eeStu3trans, read
+eeStu4, eeStu4trans, read
+eeStu5, eeStu5trans, read
+registrar1, cs101roster, write
+registrar1, cs601roster, write
+registrar1, cs602roster, write
+registrar1, ee101roster, write
+registrar1, ee601roster, write
+registrar1, ee602roster, write
+registrar2, cs101roster, write
+registrar2, cs601roster, write
+registrar2, cs602roster, write
+registrar2, ee101roster, write
+registrar2, ee601roster, write
+registrar2, ee602roster, write
+
+Only in ground truth ACL (under permissions): 118
+admissions1, application1, read
+admissions1, application2, read
+admissions1, csStu1application, read
+admissions1, csStu2application, read
+admissions1, csStu3application, read
+admissions1, csStu4application, read
+admissions1, csStu5application, read
+admissions1, eeStu1application, read
+admissions1, eeStu2application, read
+admissions1, eeStu3application, read
+admissions1, eeStu4application, read
+admissions1, eeStu5application, read
+admissions2, application1, read
+admissions2, application2, read
+admissions2, csStu1application, read
+admissions2, csStu2application, read
+admissions2, csStu3application, read
+admissions2, csStu4application, read
+admissions2, csStu5application, read
+admissions2, eeStu1application, read
+admissions2, eeStu2application, read
+admissions2, eeStu3application, read
+admissions2, eeStu4application, read
+admissions2, eeStu5application, read
+applicant1, application1, checkStatus
+applicant2, application2, checkStatus
+csChair, csStu1trans, read
+csChair, csStu2trans, read
+csChair, csStu3trans, read
+csChair, csStu4trans, read
+csChair, csStu5trans, read
+csFac1, cs101gradebook, addScore
+csFac1, cs101gradebook, assignGrade
+csFac1, cs101gradebook, changeScore
+csFac1, cs101gradebook, readScore
+csFac2, cs601gradebook, addScore
+csFac2, cs601gradebook, assignGrade
+csFac2, cs601gradebook, changeScore
+csFac2, cs601gradebook, readScore
+csStu1, cs101gradebook, readMyScores
+csStu1, csStu1application, checkStatus
+csStu2, cs101gradebook, addScore
+csStu2, cs101gradebook, readScore
+csStu2, cs601gradebook, readMyScores
+csStu2, cs602gradebook, addScore
+csStu2, cs602gradebook, readScore
+csStu2, csStu2application, checkStatus
+csStu3, cs601gradebook, addScore
+csStu3, cs601gradebook, readScore
+csStu3, cs602gradebook, readMyScores
+csStu3, csStu3application, checkStatus
+csStu4, cs601gradebook, readMyScores
+csStu4, csStu4application, checkStatus
+csStu5, cs601gradebook, readMyScores
+csStu5, cs602gradebook, readMyScores
+csStu5, csStu5application, checkStatus
+eeChair, eeStu1trans, read
+eeChair, eeStu2trans, read
+eeChair, eeStu3trans, read
+eeChair, eeStu4trans, read
+eeChair, eeStu5trans, read
+eeFac1, ee101gradebook, addScore
+eeFac1, ee101gradebook, assignGrade
+eeFac1, ee101gradebook, changeScore
+eeFac1, ee101gradebook, readScore
+eeFac2, ee601gradebook, addScore
+eeFac2, ee601gradebook, assignGrade
+eeFac2, ee601gradebook, changeScore
+eeFac2, ee601gradebook, readScore
+eeStu1, ee101gradebook, readMyScores
+eeStu1, eeStu1application, checkStatus
+eeStu2, ee101gradebook, addScore
+eeStu2, ee101gradebook, readScore
+eeStu2, ee601gradebook, readMyScores
+eeStu2, ee602gradebook, addScore
+eeStu2, ee602gradebook, readScore
+eeStu2, eeStu2application, checkStatus
+eeStu3, ee601gradebook, addScore
+eeStu3, ee601gradebook, readScore
+eeStu3, ee602gradebook, readMyScores
+eeStu3, eeStu3application, checkStatus
+eeStu4, ee601gradebook, readMyScores
+eeStu4, eeStu4application, checkStatus
+eeStu5, ee601gradebook, readMyScores
+eeStu5, ee602gradebook, readMyScores
+eeStu5, eeStu5application, checkStatus
+registrar1, cs101roster, read
+registrar1, cs601roster, read
+registrar1, cs602roster, read
+registrar1, csStu1trans, read
+registrar1, csStu2trans, read
+registrar1, csStu3trans, read
+registrar1, csStu4trans, read
+registrar1, csStu5trans, read
+registrar1, ee101roster, read
+registrar1, ee601roster, read
+registrar1, ee602roster, read
+registrar1, eeStu1trans, read
+registrar1, eeStu2trans, read
+registrar1, eeStu3trans, read
+registrar1, eeStu4trans, read
+registrar1, eeStu5trans, read
+registrar2, cs101roster, read
+registrar2, cs601roster, read
+registrar2, cs602roster, read
+registrar2, csStu1trans, read
+registrar2, csStu2trans, read
+registrar2, csStu3trans, read
+registrar2, csStu4trans, read
+registrar2, csStu5trans, read
+registrar2, ee101roster, read
+registrar2, ee601roster, read
+registrar2, ee602roster, read
+registrar2, eeStu1trans, read
+registrar2, eeStu2trans, read
+registrar2, eeStu3trans, read
+registrar2, eeStu4trans, read
+registrar2, eeStu5trans, read
+
+Only in LLM ACL (over permissions): 146
+admissions1, application1, read,
+admissions1, application2, read,
+admissions1, csStu1application, read,
+admissions1, csStu2application, read,
+admissions1, csStu3application, read,
+admissions1, csStu4application, read,
+admissions1, csStu5application, read,
+admissions1, eeStu1application, read,
+admissions1, eeStu2application, read,
+admissions1, eeStu3application, read,
+admissions1, eeStu4application, read,
+admissions1, eeStu5application, read,
+admissions2, application1, read,
+admissions2, application2, read,
+admissions2, csStu1application, read,
+admissions2, csStu2application, read,
+admissions2, csStu3application, read,
+admissions2, csStu4application, read,
+admissions2, csStu5application, read,
+admissions2, eeStu1application, read,
+admissions2, eeStu2application, read,
+admissions2, eeStu3application, read,
+admissions2, eeStu4application, read,
+admissions2, eeStu5application, read,
+csFac1, cs601roster, read
+csFac1, cs602roster, read
+csFac1, ee101roster, read
+csFac1, ee601roster, read
+csFac1, ee602roster, read
+csFac2, cs101roster, read
+csFac2, cs602roster, read
+csFac2, ee101roster, read
+csFac2, ee601roster, read
+csFac2, ee602roster, read
+csStu1, csStu2trans, read
+csStu1, csStu3trans, read
+csStu1, csStu4trans, read
+csStu1, csStu5trans, read
+csStu1, eeStu1trans, read
+csStu1, eeStu2trans, read
+csStu1, eeStu3trans, read
+csStu1, eeStu4trans, read
+csStu1, eeStu5trans, read
+csStu2, csStu1trans, read
+csStu2, csStu3trans, read
+csStu2, csStu4trans, read
+csStu2, csStu5trans, read
+csStu2, eeStu1trans, read
+csStu2, eeStu2trans, read
+csStu2, eeStu3trans, read
+csStu2, eeStu4trans, read
+csStu2, eeStu5trans, read
+csStu3, csStu1trans, read
+csStu3, csStu2trans, read
+csStu3, csStu4trans, read
+csStu3, csStu5trans, read
+csStu3, eeStu1trans, read
+csStu3, eeStu2trans, read
+csStu3, eeStu3trans, read
+csStu3, eeStu4trans, read
+csStu3, eeStu5trans, read
+csStu4, csStu1trans, read
+csStu4, csStu2trans, read
+csStu4, csStu3trans, read
+csStu4, csStu5trans, read
+csStu4, eeStu1trans, read
+csStu4, eeStu2trans, read
+csStu4, eeStu3trans, read
+csStu4, eeStu4trans, read
+csStu4, eeStu5trans, read
+csStu5, csStu1trans, read
+csStu5, csStu2trans, read
+csStu5, csStu3trans, read
+csStu5, csStu4trans, read
+csStu5, eeStu1trans, read
+csStu5, eeStu2trans, read
+csStu5, eeStu3trans, read
+csStu5, eeStu4trans, read
+csStu5, eeStu5trans, read
+eeFac1, cs101roster, read
+eeFac1, cs601roster, read
+eeFac1, cs602roster, read
+eeFac1, ee601roster, read
+eeFac1, ee602roster, read
+eeFac2, cs101roster, read
+eeFac2, cs601roster, read
+eeFac2, cs602roster, read
+eeFac2, ee101roster, read
+eeFac2, ee602roster, read
+eeStu1, csStu1trans, read
+eeStu1, csStu2trans, read
+eeStu1, csStu3trans, read
+eeStu1, csStu4trans, read
+eeStu1, csStu5trans, read
+eeStu1, eeStu2trans, read
+eeStu1, eeStu3trans, read
+eeStu1, eeStu4trans, read
+eeStu1, eeStu5trans, read
+eeStu2, csStu1trans, read
+eeStu2, csStu2trans, read
+eeStu2, csStu3trans, read
+eeStu2, csStu4trans, read
+eeStu2, csStu5trans, read
+eeStu2, eeStu1trans, read
+eeStu2, eeStu3trans, read
+eeStu2, eeStu4trans, read
+eeStu2, eeStu5trans, read
+eeStu3, csStu1trans, read
+eeStu3, csStu2trans, read
+eeStu3, csStu3trans, read
+eeStu3, csStu4trans, read
+eeStu3, csStu5trans, read
+eeStu3, eeStu1trans, read
+eeStu3, eeStu2trans, read
+eeStu3, eeStu4trans, read
+eeStu3, eeStu5trans, read
+eeStu4, csStu1trans, read
+eeStu4, csStu2trans, read
+eeStu4, csStu3trans, read
+eeStu4, csStu4trans, read
+eeStu4, csStu5trans, read
+eeStu4, eeStu1trans, read
+eeStu4, eeStu2trans, read
+eeStu4, eeStu3trans, read
+eeStu4, eeStu5trans, read
+eeStu5, csStu1trans, read
+eeStu5, csStu2trans, read
+eeStu5, csStu3trans, read
+eeStu5, csStu4trans, read
+eeStu5, csStu5trans, read
+eeStu5, eeStu1trans, read
+eeStu5, eeStu2trans, read
+eeStu5, eeStu3trans, read
+eeStu5, eeStu4trans, read
+registrar1, cs101roster, read,
+registrar1, cs601roster, read,
+registrar1, cs602roster, read,
+registrar1, ee101roster, read,
+registrar1, ee601roster, read,
+registrar1, ee602roster, read,
+registrar2, cs101roster, read,
+registrar2, cs601roster, read,
+registrar2, cs602roster, read,
+registrar2, ee101roster, read,
+registrar2, ee601roster, read,
+registrar2, ee602roster, read,
+
+Total different lines: 264
+
+===============================================================
+ITERATION : 3
+===============================================================
+Commong lines / Lines that are correct: 120
+admissions1, application1, read
+admissions1, application2, read
+admissions1, csStu1application, read
+admissions1, csStu2application, read
+admissions1, csStu3application, read
+admissions1, csStu4application, read
+admissions1, csStu5application, read
+admissions1, eeStu1application, read
+admissions1, eeStu2application, read
+admissions1, eeStu3application, read
+admissions1, eeStu4application, read
+admissions1, eeStu5application, read
+admissions2, application1, read
+admissions2, application2, read
+admissions2, csStu1application, read
+admissions2, csStu2application, read
+admissions2, csStu3application, read
+admissions2, csStu4application, read
+admissions2, csStu5application, read
+admissions2, eeStu1application, read
+admissions2, eeStu2application, read
+admissions2, eeStu3application, read
+admissions2, eeStu4application, read
+admissions2, eeStu5application, read
+applicant1, application1, checkStatus
+applicant2, application2, checkStatus
+csChair, csStu1trans, read
+csChair, csStu2trans, read
+csChair, csStu3trans, read
+csChair, csStu4trans, read
+csChair, csStu5trans, read
+csFac1, cs101gradebook, addScore
+csFac1, cs101gradebook, assignGrade
+csFac1, cs101gradebook, changeScore
+csFac1, cs101gradebook, readScore
+csFac1, cs101roster, read
+csFac2, cs601gradebook, addScore
+csFac2, cs601gradebook, assignGrade
+csFac2, cs601gradebook, changeScore
+csFac2, cs601gradebook, readScore
+csFac2, cs601roster, read
+csStu1, cs101gradebook, readMyScores
+csStu1, csStu1application, checkStatus
+csStu1, csStu1trans, read
+csStu2, cs101gradebook, addScore
+csStu2, cs101gradebook, readScore
+csStu2, cs601gradebook, readMyScores
+csStu2, cs602gradebook, addScore
+csStu2, cs602gradebook, readScore
+csStu2, csStu2application, checkStatus
+csStu2, csStu2trans, read
+csStu3, cs601gradebook, addScore
+csStu3, cs601gradebook, readScore
+csStu3, cs602gradebook, readMyScores
+csStu3, csStu3application, checkStatus
+csStu3, csStu3trans, read
+csStu4, cs601gradebook, readMyScores
+csStu4, csStu4application, checkStatus
+csStu4, csStu4trans, read
+csStu5, cs601gradebook, readMyScores
+csStu5, cs602gradebook, readMyScores
+csStu5, csStu5application, checkStatus
+csStu5, csStu5trans, read
+eeChair, eeStu1trans, read
+eeChair, eeStu2trans, read
+eeChair, eeStu3trans, read
+eeChair, eeStu4trans, read
+eeChair, eeStu5trans, read
+eeFac1, ee101gradebook, addScore
+eeFac1, ee101gradebook, assignGrade
+eeFac1, ee101gradebook, changeScore
+eeFac1, ee101gradebook, readScore
+eeFac1, ee101roster, read
+eeFac2, ee601gradebook, addScore
+eeFac2, ee601gradebook, assignGrade
+eeFac2, ee601gradebook, changeScore
+eeFac2, ee601gradebook, readScore
+eeFac2, ee601roster, read
+eeStu1, ee101gradebook, readMyScores
+eeStu1, eeStu1application, checkStatus
+eeStu1, eeStu1trans, read
+eeStu2, ee101gradebook, addScore
+eeStu2, ee101gradebook, readScore
+eeStu2, ee601gradebook, readMyScores
+eeStu2, ee602gradebook, addScore
+eeStu2, ee602gradebook, readScore
+eeStu2, eeStu2application, checkStatus
+eeStu2, eeStu2trans, read
+eeStu3, ee601gradebook, addScore
+eeStu3, ee601gradebook, readScore
+eeStu3, ee602gradebook, readMyScores
+eeStu3, eeStu3application, checkStatus
+eeStu3, eeStu3trans, read
+eeStu4, ee601gradebook, readMyScores
+eeStu4, eeStu4application, checkStatus
+eeStu4, eeStu4trans, read
+eeStu5, ee601gradebook, readMyScores
+eeStu5, ee602gradebook, readMyScores
+eeStu5, eeStu5application, checkStatus
+eeStu5, eeStu5trans, read
+registrar1, csStu1trans, read
+registrar1, csStu2trans, read
+registrar1, csStu3trans, read
+registrar1, csStu4trans, read
+registrar1, csStu5trans, read
+registrar1, eeStu1trans, read
+registrar1, eeStu2trans, read
+registrar1, eeStu3trans, read
+registrar1, eeStu4trans, read
+registrar1, eeStu5trans, read
+registrar2, csStu1trans, read
+registrar2, csStu2trans, read
+registrar2, csStu3trans, read
+registrar2, csStu4trans, read
+registrar2, csStu5trans, read
+registrar2, eeStu1trans, read
+registrar2, eeStu2trans, read
+registrar2, eeStu3trans, read
+registrar2, eeStu4trans, read
+registrar2, eeStu5trans, read
+
+Only in ground truth ACL (under permissions): 48
+admissions1, application1, setStatus
+admissions1, application2, setStatus
+admissions1, csStu1application, setStatus
+admissions1, csStu2application, setStatus
+admissions1, csStu3application, setStatus
+admissions1, csStu4application, setStatus
+admissions1, csStu5application, setStatus
+admissions1, eeStu1application, setStatus
+admissions1, eeStu2application, setStatus
+admissions1, eeStu3application, setStatus
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, setStatus
+admissions2, application1, setStatus
+admissions2, application2, setStatus
+admissions2, csStu1application, setStatus
+admissions2, csStu2application, setStatus
+admissions2, csStu3application, setStatus
+admissions2, csStu4application, setStatus
+admissions2, csStu5application, setStatus
+admissions2, eeStu1application, setStatus
+admissions2, eeStu2application, setStatus
+admissions2, eeStu3application, setStatus
+admissions2, eeStu4application, setStatus
+admissions2, eeStu5application, setStatus
+registrar1, cs101roster, read
+registrar1, cs101roster, write
+registrar1, cs601roster, read
+registrar1, cs601roster, write
+registrar1, cs602roster, read
+registrar1, cs602roster, write
+registrar1, ee101roster, read
+registrar1, ee101roster, write
+registrar1, ee601roster, read
+registrar1, ee601roster, write
+registrar1, ee602roster, read
+registrar1, ee602roster, write
+registrar2, cs101roster, read
+registrar2, cs101roster, write
+registrar2, cs601roster, read
+registrar2, cs601roster, write
+registrar2, cs602roster, read
+registrar2, cs602roster, write
+registrar2, ee101roster, read
+registrar2, ee101roster, write
+registrar2, ee601roster, read
+registrar2, ee601roster, write
+registrar2, ee602roster, read
+registrar2, ee602roster, write
+
+Only in LLM ACL (over permissions): 1408
+admissions1, application1, checkStatus
+admissions1, application2, checkStatus
+admissions1, cs101gradebook, readMyScores
+admissions1, cs601gradebook, readMyScores
+admissions1, cs602gradebook, readMyScores
+admissions1, csStu1application, checkStatus
+admissions1, csStu1trans, read
+admissions1, csStu2application, checkStatus
+admissions1, csStu2trans, read
+admissions1, csStu3application, checkStatus
+admissions1, csStu3trans, read
+admissions1, csStu4application, checkStatus
+admissions1, csStu4trans, read
+admissions1, csStu5application, checkStatus
+admissions1, csStu5trans, read
+admissions1, ee101gradebook, readMyScores
+admissions1, ee601gradebook, readMyScores
+admissions1, ee602gradebook, readMyScores
+admissions1, eeStu1application, checkStatus
+admissions1, eeStu1trans, read
+admissions1, eeStu2application, checkStatus
+admissions1, eeStu2trans, read
+admissions1, eeStu3application, checkStatus
+admissions1, eeStu3trans, read
+admissions1, eeStu4application, checkStatus
+admissions1, eeStu4trans, read
+admissions1, eeStu5application, checkStatus
+admissions1, eeStu5trans, read
+admissions2, application1, checkStatus
+admissions2, application2, checkStatus
+admissions2, cs101gradebook, readMyScores
+admissions2, cs601gradebook, readMyScores
+admissions2, cs602gradebook, readMyScores
+admissions2, csStu1application, checkStatus
+admissions2, csStu1trans, read
+admissions2, csStu2application, checkStatus
+admissions2, csStu2trans, read
+admissions2, csStu3application, checkStatus
+admissions2, csStu3trans, read
+admissions2, csStu4application, checkStatus
+admissions2, csStu4trans, read
+admissions2, csStu5application, checkStatus
+admissions2, csStu5trans, read
+admissions2, ee101gradebook, readMyScores
+admissions2, ee601gradebook, readMyScores
+admissions2, ee602gradebook, readMyScores
+admissions2, eeStu1application, checkStatus
+admissions2, eeStu1trans, read
+admissions2, eeStu2application, checkStatus
+admissions2, eeStu2trans, read
+admissions2, eeStu3application, checkStatus
+admissions2, eeStu3trans, read
+admissions2, eeStu4application, checkStatus
+admissions2, eeStu4trans, read
+admissions2, eeStu5application, checkStatus
+admissions2, eeStu5trans, read
+applicant1, application1, read
+applicant1, application2, checkStatus
+applicant1, application2, read
+applicant1, cs101gradebook, readMyScores
+applicant1, cs601gradebook, readMyScores
+applicant1, cs602gradebook, readMyScores
+applicant1, csStu1application, checkStatus
+applicant1, csStu1application, read
+applicant1, csStu1trans, read
+applicant1, csStu2application, checkStatus
+applicant1, csStu2application, read
+applicant1, csStu2trans, read
+applicant1, csStu3application, checkStatus
+applicant1, csStu3application, read
+applicant1, csStu3trans, read
+applicant1, csStu4application, checkStatus
+applicant1, csStu4application, read
+applicant1, csStu4trans, read
+applicant1, csStu5application, checkStatus
+applicant1, csStu5application, read
+applicant1, csStu5trans, read
+applicant1, ee101gradebook, readMyScores
+applicant1, ee601gradebook, readMyScores
+applicant1, ee602gradebook, readMyScores
+applicant1, eeStu1application, checkStatus
+applicant1, eeStu1application, read
+applicant1, eeStu1trans, read
+applicant1, eeStu2application, checkStatus
+applicant1, eeStu2application, read
+applicant1, eeStu2trans, read
+applicant1, eeStu3application, checkStatus
+applicant1, eeStu3application, read
+applicant1, eeStu3trans, read
+applicant1, eeStu4application, checkStatus
+applicant1, eeStu4application, read
+applicant1, eeStu4trans, read
+applicant1, eeStu5application, checkStatus
+applicant1, eeStu5application, read
+applicant1, eeStu5trans, read
+applicant2, application1, checkStatus
+applicant2, application1, read
+applicant2, application2, read
+applicant2, cs101gradebook, readMyScores
+applicant2, cs601gradebook, readMyScores
+applicant2, cs602gradebook, readMyScores
+applicant2, csStu1application, checkStatus
+applicant2, csStu1application, read
+applicant2, csStu1trans, read
+applicant2, csStu2application, checkStatus
+applicant2, csStu2application, read
+applicant2, csStu2trans, read
+applicant2, csStu3application, checkStatus
+applicant2, csStu3application, read
+applicant2, csStu3trans, read
+applicant2, csStu4application, checkStatus
+applicant2, csStu4application, read
+applicant2, csStu4trans, read
+applicant2, csStu5application, checkStatus
+applicant2, csStu5application, read
+applicant2, csStu5trans, read
+applicant2, ee101gradebook, readMyScores
+applicant2, ee601gradebook, readMyScores
+applicant2, ee602gradebook, readMyScores
+applicant2, eeStu1application, checkStatus
+applicant2, eeStu1application, read
+applicant2, eeStu1trans, read
+applicant2, eeStu2application, checkStatus
+applicant2, eeStu2application, read
+applicant2, eeStu2trans, read
+applicant2, eeStu3application, checkStatus
+applicant2, eeStu3application, read
+applicant2, eeStu3trans, read
+applicant2, eeStu4application, checkStatus
+applicant2, eeStu4application, read
+applicant2, eeStu4trans, read
+applicant2, eeStu5application, checkStatus
+applicant2, eeStu5application, read
+applicant2, eeStu5trans, read
+csChair, application1, checkStatus
+csChair, application1, read
+csChair, application2, checkStatus
+csChair, application2, read
+csChair, cs101gradebook, readMyScores
+csChair, cs101gradebook, type [ {transcript}, student ] csStu1
+csChair, cs101gradebook, type [ {transcript}, student ] csStu2
+csChair, cs101gradebook, type [ {transcript}, student ] csStu3
+csChair, cs101gradebook, type [ {transcript}, student ] csStu4
+csChair, cs101gradebook, type [ {transcript}, student ] csStu5
+csChair, cs101gradebook, type [ {transcript}, student ] eeStu1
+csChair, cs101gradebook, type [ {transcript}, student ] eeStu2
+csChair, cs101gradebook, type [ {transcript}, student ] eeStu4
+csChair, cs101gradebook, type [ {transcript}, student ] eeStu5
+csChair, cs101roster, type [ {transcript}, student ] csStu1
+csChair, cs101roster, type [ {transcript}, student ] csStu2
+csChair, cs101roster, type [ {transcript}, student ] csStu3
+csChair, cs101roster, type [ {transcript}, student ] csStu4
+csChair, cs101roster, type [ {transcript}, student ] csStu5
+csChair, cs101roster, type [ {transcript}, student ] eeStu1
+csChair, cs101roster, type [ {transcript}, student ] eeStu2
+csChair, cs101roster, type [ {transcript}, student ] eeStu4
+csChair, cs101roster, type [ {transcript}, student ] eeStu5
+csChair, cs601gradebook, readMyScores
+csChair, cs601gradebook, type [ {transcript}, student ] csStu1
+csChair, cs601gradebook, type [ {transcript}, student ] csStu2
+csChair, cs601gradebook, type [ {transcript}, student ] csStu3
+csChair, cs601gradebook, type [ {transcript}, student ] csStu4
+csChair, cs601gradebook, type [ {transcript}, student ] csStu5
+csChair, cs601gradebook, type [ {transcript}, student ] eeStu1
+csChair, cs601gradebook, type [ {transcript}, student ] eeStu2
+csChair, cs601gradebook, type [ {transcript}, student ] eeStu4
+csChair, cs601gradebook, type [ {transcript}, student ] eeStu5
+csChair, cs601roster, type [ {transcript}, student ] csStu1
+csChair, cs601roster, type [ {transcript}, student ] csStu2
+csChair, cs601roster, type [ {transcript}, student ] csStu3
+csChair, cs601roster, type [ {transcript}, student ] csStu4
+csChair, cs601roster, type [ {transcript}, student ] csStu5
+csChair, cs601roster, type [ {transcript}, student ] eeStu1
+csChair, cs601roster, type [ {transcript}, student ] eeStu2
+csChair, cs601roster, type [ {transcript}, student ] eeStu4
+csChair, cs601roster, type [ {transcript}, student ] eeStu5
+csChair, cs602gradebook, readMyScores
+csChair, cs602gradebook, type [ {transcript}, student ] csStu1
+csChair, cs602gradebook, type [ {transcript}, student ] csStu2
+csChair, cs602gradebook, type [ {transcript}, student ] csStu3
+csChair, cs602gradebook, type [ {transcript}, student ] csStu4
+csChair, cs602gradebook, type [ {transcript}, student ] csStu5
+csChair, cs602gradebook, type [ {transcript}, student ] eeStu1
+csChair, cs602gradebook, type [ {transcript}, student ] eeStu2
+csChair, cs602gradebook, type [ {transcript}, student ] eeStu4
+csChair, cs602gradebook, type [ {transcript}, student ] eeStu5
+csChair, cs602roster, type [ {transcript}, student ] csStu1
+csChair, cs602roster, type [ {transcript}, student ] csStu2
+csChair, cs602roster, type [ {transcript}, student ] csStu3
+csChair, cs602roster, type [ {transcript}, student ] csStu4
+csChair, cs602roster, type [ {transcript}, student ] csStu5
+csChair, cs602roster, type [ {transcript}, student ] eeStu1
+csChair, cs602roster, type [ {transcript}, student ] eeStu2
+csChair, cs602roster, type [ {transcript}, student ] eeStu4
+csChair, cs602roster, type [ {transcript}, student ] eeStu5
+csChair, csStu1application, checkStatus
+csChair, csStu1application, read
+csChair, csStu1trans, type [ {transcript}, student ] csStu1
+csChair, csStu1trans, type [ {transcript}, student ] csStu2
+csChair, csStu1trans, type [ {transcript}, student ] csStu3
+csChair, csStu1trans, type [ {transcript}, student ] csStu4
+csChair, csStu1trans, type [ {transcript}, student ] csStu5
+csChair, csStu1trans, type [ {transcript}, student ] eeStu1
+csChair, csStu1trans, type [ {transcript}, student ] eeStu2
+csChair, csStu1trans, type [ {transcript}, student ] eeStu4
+csChair, csStu1trans, type [ {transcript}, student ] eeStu5
+csChair, csStu2application, checkStatus
+csChair, csStu2application, read
+csChair, csStu2trans, type [ {transcript}, student ] csStu1
+csChair, csStu2trans, type [ {transcript}, student ] csStu2
+csChair, csStu2trans, type [ {transcript}, student ] csStu3
+csChair, csStu2trans, type [ {transcript}, student ] csStu4
+csChair, csStu2trans, type [ {transcript}, student ] csStu5
+csChair, csStu2trans, type [ {transcript}, student ] eeStu1
+csChair, csStu2trans, type [ {transcript}, student ] eeStu2
+csChair, csStu2trans, type [ {transcript}, student ] eeStu4
+csChair, csStu2trans, type [ {transcript}, student ] eeStu5
+csChair, csStu3application, checkStatus
+csChair, csStu3application, read
+csChair, csStu3trans, type [ {transcript}, student ] csStu1
+csChair, csStu3trans, type [ {transcript}, student ] csStu2
+csChair, csStu3trans, type [ {transcript}, student ] csStu3
+csChair, csStu3trans, type [ {transcript}, student ] csStu4
+csChair, csStu3trans, type [ {transcript}, student ] csStu5
+csChair, csStu3trans, type [ {transcript}, student ] eeStu1
+csChair, csStu3trans, type [ {transcript}, student ] eeStu2
+csChair, csStu3trans, type [ {transcript}, student ] eeStu4
+csChair, csStu3trans, type [ {transcript}, student ] eeStu5
+csChair, csStu4application, checkStatus
+csChair, csStu4application, read
+csChair, csStu4trans, type [ {transcript}, student ] csStu1
+csChair, csStu4trans, type [ {transcript}, student ] csStu2
+csChair, csStu4trans, type [ {transcript}, student ] csStu3
+csChair, csStu4trans, type [ {transcript}, student ] csStu4
+csChair, csStu4trans, type [ {transcript}, student ] csStu5
+csChair, csStu4trans, type [ {transcript}, student ] eeStu1
+csChair, csStu4trans, type [ {transcript}, student ] eeStu2
+csChair, csStu4trans, type [ {transcript}, student ] eeStu4
+csChair, csStu4trans, type [ {transcript}, student ] eeStu5
+csChair, csStu5application, checkStatus
+csChair, csStu5application, read
+csChair, csStu5trans, type [ {transcript}, student ] csStu1
+csChair, csStu5trans, type [ {transcript}, student ] csStu2
+csChair, csStu5trans, type [ {transcript}, student ] csStu3
+csChair, csStu5trans, type [ {transcript}, student ] csStu4
+csChair, csStu5trans, type [ {transcript}, student ] csStu5
+csChair, csStu5trans, type [ {transcript}, student ] eeStu1
+csChair, csStu5trans, type [ {transcript}, student ] eeStu2
+csChair, csStu5trans, type [ {transcript}, student ] eeStu4
+csChair, csStu5trans, type [ {transcript}, student ] eeStu5
+csChair, ee101gradebook, readMyScores
+csChair, ee101gradebook, type [ {transcript}, student ] csStu1
+csChair, ee101gradebook, type [ {transcript}, student ] csStu2
+csChair, ee101gradebook, type [ {transcript}, student ] csStu3
+csChair, ee101gradebook, type [ {transcript}, student ] csStu4
+csChair, ee101gradebook, type [ {transcript}, student ] csStu5
+csChair, ee101gradebook, type [ {transcript}, student ] eeStu1
+csChair, ee101gradebook, type [ {transcript}, student ] eeStu2
+csChair, ee101gradebook, type [ {transcript}, student ] eeStu4
+csChair, ee101gradebook, type [ {transcript}, student ] eeStu5
+csChair, ee101roster, type [ {transcript}, student ] csStu1
+csChair, ee101roster, type [ {transcript}, student ] csStu2
+csChair, ee101roster, type [ {transcript}, student ] csStu3
+csChair, ee101roster, type [ {transcript}, student ] csStu4
+csChair, ee101roster, type [ {transcript}, student ] csStu5
+csChair, ee101roster, type [ {transcript}, student ] eeStu1
+csChair, ee101roster, type [ {transcript}, student ] eeStu2
+csChair, ee101roster, type [ {transcript}, student ] eeStu4
+csChair, ee101roster, type [ {transcript}, student ] eeStu5
+csChair, ee601gradebook, readMyScores
+csChair, ee601gradebook, type [ {transcript}, student ] csStu1
+csChair, ee601gradebook, type [ {transcript}, student ] csStu2
+csChair, ee601gradebook, type [ {transcript}, student ] csStu3
+csChair, ee601gradebook, type [ {transcript}, student ] csStu4
+csChair, ee601gradebook, type [ {transcript}, student ] csStu5
+csChair, ee601gradebook, type [ {transcript}, student ] eeStu1
+csChair, ee601gradebook, type [ {transcript}, student ] eeStu2
+csChair, ee601gradebook, type [ {transcript}, student ] eeStu4
+csChair, ee601gradebook, type [ {transcript}, student ] eeStu5
+csChair, ee601roster, type [ {transcript}, student ] csStu1
+csChair, ee601roster, type [ {transcript}, student ] csStu2
+csChair, ee601roster, type [ {transcript}, student ] csStu3
+csChair, ee601roster, type [ {transcript}, student ] csStu4
+csChair, ee601roster, type [ {transcript}, student ] csStu5
+csChair, ee601roster, type [ {transcript}, student ] eeStu1
+csChair, ee601roster, type [ {transcript}, student ] eeStu2
+csChair, ee601roster, type [ {transcript}, student ] eeStu4
+csChair, ee601roster, type [ {transcript}, student ] eeStu5
+csChair, ee602gradebook, readMyScores
+csChair, ee602gradebook, type [ {transcript}, student ] csStu1
+csChair, ee602gradebook, type [ {transcript}, student ] csStu2
+csChair, ee602gradebook, type [ {transcript}, student ] csStu3
+csChair, ee602gradebook, type [ {transcript}, student ] csStu4
+csChair, ee602gradebook, type [ {transcript}, student ] csStu5
+csChair, ee602gradebook, type [ {transcript}, student ] eeStu1
+csChair, ee602gradebook, type [ {transcript}, student ] eeStu2
+csChair, ee602gradebook, type [ {transcript}, student ] eeStu4
+csChair, ee602gradebook, type [ {transcript}, student ] eeStu5
+csChair, ee602roster, type [ {transcript}, student ] csStu1
+csChair, ee602roster, type [ {transcript}, student ] csStu2
+csChair, ee602roster, type [ {transcript}, student ] csStu3
+csChair, ee602roster, type [ {transcript}, student ] csStu4
+csChair, ee602roster, type [ {transcript}, student ] csStu5
+csChair, ee602roster, type [ {transcript}, student ] eeStu1
+csChair, ee602roster, type [ {transcript}, student ] eeStu2
+csChair, ee602roster, type [ {transcript}, student ] eeStu4
+csChair, ee602roster, type [ {transcript}, student ] eeStu5
+csChair, eeStu1application, checkStatus
+csChair, eeStu1application, read
+csChair, eeStu1trans, read
+csChair, eeStu1trans, type [ {transcript}, student ] csStu1
+csChair, eeStu1trans, type [ {transcript}, student ] csStu2
+csChair, eeStu1trans, type [ {transcript}, student ] csStu3
+csChair, eeStu1trans, type [ {transcript}, student ] csStu4
+csChair, eeStu1trans, type [ {transcript}, student ] csStu5
+csChair, eeStu1trans, type [ {transcript}, student ] eeStu1
+csChair, eeStu1trans, type [ {transcript}, student ] eeStu2
+csChair, eeStu1trans, type [ {transcript}, student ] eeStu4
+csChair, eeStu1trans, type [ {transcript}, student ] eeStu5
+csChair, eeStu2application, checkStatus
+csChair, eeStu2application, read
+csChair, eeStu2trans, read
+csChair, eeStu2trans, type [ {transcript}, student ] csStu1
+csChair, eeStu2trans, type [ {transcript}, student ] csStu2
+csChair, eeStu2trans, type [ {transcript}, student ] csStu3
+csChair, eeStu2trans, type [ {transcript}, student ] csStu4
+csChair, eeStu2trans, type [ {transcript}, student ] csStu5
+csChair, eeStu2trans, type [ {transcript}, student ] eeStu1
+csChair, eeStu2trans, type [ {transcript}, student ] eeStu2
+csChair, eeStu2trans, type [ {transcript}, student ] eeStu4
+csChair, eeStu2trans, type [ {transcript}, student ] eeStu5
+csChair, eeStu3application, checkStatus
+csChair, eeStu3application, read
+csChair, eeStu3trans, read
+csChair, eeStu3trans, type [ {transcript}, student ] csStu1
+csChair, eeStu3trans, type [ {transcript}, student ] csStu2
+csChair, eeStu3trans, type [ {transcript}, student ] csStu3
+csChair, eeStu3trans, type [ {transcript}, student ] csStu4
+csChair, eeStu3trans, type [ {transcript}, student ] csStu5
+csChair, eeStu3trans, type [ {transcript}, student ] eeStu1
+csChair, eeStu3trans, type [ {transcript}, student ] eeStu2
+csChair, eeStu3trans, type [ {transcript}, student ] eeStu4
+csChair, eeStu3trans, type [ {transcript}, student ] eeStu5
+csChair, eeStu4application, checkStatus
+csChair, eeStu4application, read
+csChair, eeStu4trans, read
+csChair, eeStu4trans, type [ {transcript}, student ] csStu1
+csChair, eeStu4trans, type [ {transcript}, student ] csStu2
+csChair, eeStu4trans, type [ {transcript}, student ] csStu3
+csChair, eeStu4trans, type [ {transcript}, student ] csStu4
+csChair, eeStu4trans, type [ {transcript}, student ] csStu5
+csChair, eeStu4trans, type [ {transcript}, student ] eeStu1
+csChair, eeStu4trans, type [ {transcript}, student ] eeStu2
+csChair, eeStu4trans, type [ {transcript}, student ] eeStu4
+csChair, eeStu4trans, type [ {transcript}, student ] eeStu5
+csChair, eeStu5application, checkStatus
+csChair, eeStu5application, read
+csChair, eeStu5trans, read
+csChair, eeStu5trans, type [ {transcript}, student ] csStu1
+csChair, eeStu5trans, type [ {transcript}, student ] csStu2
+csChair, eeStu5trans, type [ {transcript}, student ] csStu3
+csChair, eeStu5trans, type [ {transcript}, student ] csStu4
+csChair, eeStu5trans, type [ {transcript}, student ] csStu5
+csChair, eeStu5trans, type [ {transcript}, student ] eeStu1
+csChair, eeStu5trans, type [ {transcript}, student ] eeStu2
+csChair, eeStu5trans, type [ {transcript}, student ] eeStu4
+csChair, eeStu5trans, type [ {transcript}, student ] eeStu5
+csFac1, application1, checkStatus
+csFac1, application1, read
+csFac1, application2, checkStatus
+csFac1, application2, read
+csFac1, cs101gradebook, addScore,
+csFac1, cs101gradebook, changeScore,
+csFac1, cs101gradebook, readMyScores
+csFac1, cs601gradebook, addScore
+csFac1, cs601gradebook, addScore,
+csFac1, cs601gradebook, assignGrade
+csFac1, cs601gradebook, changeScore
+csFac1, cs601gradebook, changeScore,
+csFac1, cs601gradebook, readMyScores
+csFac1, cs601gradebook, readScore
+csFac1, cs601roster, read
+csFac1, cs602gradebook, addScore
+csFac1, cs602gradebook, addScore,
+csFac1, cs602gradebook, assignGrade
+csFac1, cs602gradebook, changeScore
+csFac1, cs602gradebook, changeScore,
+csFac1, cs602gradebook, readMyScores
+csFac1, cs602gradebook, readScore
+csFac1, cs602roster, read
+csFac1, csStu1application, checkStatus
+csFac1, csStu1application, read
+csFac1, csStu1trans, read
+csFac1, csStu2application, checkStatus
+csFac1, csStu2application, read
+csFac1, csStu2trans, read
+csFac1, csStu3application, checkStatus
+csFac1, csStu3application, read
+csFac1, csStu3trans, read
+csFac1, csStu4application, checkStatus
+csFac1, csStu4application, read
+csFac1, csStu4trans, read
+csFac1, csStu5application, checkStatus
+csFac1, csStu5application, read
+csFac1, csStu5trans, read
+csFac1, ee101gradebook, addScore
+csFac1, ee101gradebook, addScore,
+csFac1, ee101gradebook, assignGrade
+csFac1, ee101gradebook, changeScore
+csFac1, ee101gradebook, changeScore,
+csFac1, ee101gradebook, readMyScores
+csFac1, ee101gradebook, readScore
+csFac1, ee101roster, read
+csFac1, ee601gradebook, addScore
+csFac1, ee601gradebook, addScore,
+csFac1, ee601gradebook, assignGrade
+csFac1, ee601gradebook, changeScore
+csFac1, ee601gradebook, changeScore,
+csFac1, ee601gradebook, readMyScores
+csFac1, ee601gradebook, readScore
+csFac1, ee601roster, read
+csFac1, ee602gradebook, addScore
+csFac1, ee602gradebook, addScore,
+csFac1, ee602gradebook, assignGrade
+csFac1, ee602gradebook, changeScore
+csFac1, ee602gradebook, changeScore,
+csFac1, ee602gradebook, readMyScores
+csFac1, ee602gradebook, readScore
+csFac1, ee602roster, read
+csFac1, eeStu1application, checkStatus
+csFac1, eeStu1application, read
+csFac1, eeStu1trans, read
+csFac1, eeStu2application, checkStatus
+csFac1, eeStu2application, read
+csFac1, eeStu2trans, read
+csFac1, eeStu3application, checkStatus
+csFac1, eeStu3application, read
+csFac1, eeStu3trans, read
+csFac1, eeStu4application, checkStatus
+csFac1, eeStu4application, read
+csFac1, eeStu4trans, read
+csFac1, eeStu5application, checkStatus
+csFac1, eeStu5application, read
+csFac1, eeStu5trans, read
+csFac2, application1, checkStatus
+csFac2, application1, read
+csFac2, application2, checkStatus
+csFac2, application2, read
+csFac2, cs101gradebook, addScore
+csFac2, cs101gradebook, assignGrade
+csFac2, cs101gradebook, changeScore
+csFac2, cs101gradebook, readMyScores
+csFac2, cs101gradebook, readScore
+csFac2, cs101roster, read
+csFac2, cs601gradebook, readMyScores
+csFac2, cs602gradebook, addScore
+csFac2, cs602gradebook, assignGrade
+csFac2, cs602gradebook, changeScore
+csFac2, cs602gradebook, readMyScores
+csFac2, cs602gradebook, readScore
+csFac2, cs602roster, read
+csFac2, csStu1application, checkStatus
+csFac2, csStu1application, read
+csFac2, csStu1trans, read
+csFac2, csStu2application, checkStatus
+csFac2, csStu2application, read
+csFac2, csStu2trans, read
+csFac2, csStu3application, checkStatus
+csFac2, csStu3application, read
+csFac2, csStu3trans, read
+csFac2, csStu4application, checkStatus
+csFac2, csStu4application, read
+csFac2, csStu4trans, read
+csFac2, csStu5application, checkStatus
+csFac2, csStu5application, read
+csFac2, csStu5trans, read
+csFac2, ee101gradebook, addScore
+csFac2, ee101gradebook, assignGrade
+csFac2, ee101gradebook, changeScore
+csFac2, ee101gradebook, readMyScores
+csFac2, ee101gradebook, readScore
+csFac2, ee101roster, read
+csFac2, ee601gradebook, addScore
+csFac2, ee601gradebook, assignGrade
+csFac2, ee601gradebook, changeScore
+csFac2, ee601gradebook, readMyScores
+csFac2, ee601gradebook, readScore
+csFac2, ee601roster, read
+csFac2, ee602gradebook, addScore
+csFac2, ee602gradebook, assignGrade
+csFac2, ee602gradebook, changeScore
+csFac2, ee602gradebook, readMyScores
+csFac2, ee602gradebook, readScore
+csFac2, ee602roster, read
+csFac2, eeStu1application, checkStatus
+csFac2, eeStu1application, read
+csFac2, eeStu1trans, read
+csFac2, eeStu2application, checkStatus
+csFac2, eeStu2application, read
+csFac2, eeStu2trans, read
+csFac2, eeStu3application, checkStatus
+csFac2, eeStu3application, read
+csFac2, eeStu3trans, read
+csFac2, eeStu4application, checkStatus
+csFac2, eeStu4application, read
+csFac2, eeStu4trans, read
+csFac2, eeStu5application, checkStatus
+csFac2, eeStu5application, read
+csFac2, eeStu5trans, read
+csStu1, application1, checkStatus
+csStu1, application1, read
+csStu1, application2, checkStatus
+csStu1, application2, read
+csStu1, cs101gradebook, addScore
+csStu1, cs101gradebook, readScore
+csStu1, cs601gradebook, addScore
+csStu1, cs601gradebook, readMyScores
+csStu1, cs601gradebook, readScore
+csStu1, cs602gradebook, addScore
+csStu1, cs602gradebook, readMyScores
+csStu1, cs602gradebook, readScore
+csStu1, csStu1application, read
+csStu1, csStu2application, checkStatus
+csStu1, csStu2application, read
+csStu1, csStu2trans, read
+csStu1, csStu3application, checkStatus
+csStu1, csStu3application, read
+csStu1, csStu3trans, read
+csStu1, csStu4application, checkStatus
+csStu1, csStu4application, read
+csStu1, csStu4trans, read
+csStu1, csStu5application, checkStatus
+csStu1, csStu5application, read
+csStu1, csStu5trans, read
+csStu1, ee101gradebook, addScore
+csStu1, ee101gradebook, readMyScores
+csStu1, ee101gradebook, readScore
+csStu1, ee601gradebook, addScore
+csStu1, ee601gradebook, readMyScores
+csStu1, ee601gradebook, readScore
+csStu1, ee602gradebook, addScore
+csStu1, ee602gradebook, readMyScores
+csStu1, ee602gradebook, readScore
+csStu1, eeStu1application, checkStatus
+csStu1, eeStu1application, read
+csStu1, eeStu1trans, read
+csStu1, eeStu2application, checkStatus
+csStu1, eeStu2application, read
+csStu1, eeStu2trans, read
+csStu1, eeStu3application, checkStatus
+csStu1, eeStu3application, read
+csStu1, eeStu3trans, read
+csStu1, eeStu4application, checkStatus
+csStu1, eeStu4application, read
+csStu1, eeStu4trans, read
+csStu1, eeStu5application, checkStatus
+csStu1, eeStu5application, read
+csStu1, eeStu5trans, read
+csStu2, application1, checkStatus
+csStu2, application1, read
+csStu2, application2, checkStatus
+csStu2, application2, read
+csStu2, cs101gradebook, readMyScores
+csStu2, cs601gradebook, addScore
+csStu2, cs601gradebook, readScore
+csStu2, cs602gradebook, readMyScores
+csStu2, csStu1application, checkStatus
+csStu2, csStu1application, read
+csStu2, csStu1trans, read
+csStu2, csStu2application, read
+csStu2, csStu3application, checkStatus
+csStu2, csStu3application, read
+csStu2, csStu3trans, read
+csStu2, csStu4application, checkStatus
+csStu2, csStu4application, read
+csStu2, csStu4trans, read
+csStu2, csStu5application, checkStatus
+csStu2, csStu5application, read
+csStu2, csStu5trans, read
+csStu2, ee101gradebook, addScore
+csStu2, ee101gradebook, readMyScores
+csStu2, ee101gradebook, readScore
+csStu2, ee601gradebook, addScore
+csStu2, ee601gradebook, readMyScores
+csStu2, ee601gradebook, readScore
+csStu2, ee602gradebook, addScore
+csStu2, ee602gradebook, readMyScores
+csStu2, ee602gradebook, readScore
+csStu2, eeStu1application, checkStatus
+csStu2, eeStu1application, read
+csStu2, eeStu1trans, read
+csStu2, eeStu2application, checkStatus
+csStu2, eeStu2application, read
+csStu2, eeStu2trans, read
+csStu2, eeStu3application, checkStatus
+csStu2, eeStu3application, read
+csStu2, eeStu3trans, read
+csStu2, eeStu4application, checkStatus
+csStu2, eeStu4application, read
+csStu2, eeStu4trans, read
+csStu2, eeStu5application, checkStatus
+csStu2, eeStu5application, read
+csStu2, eeStu5trans, read
+csStu3, application1, checkStatus
+csStu3, application1, read
+csStu3, application2, checkStatus
+csStu3, application2, read
+csStu3, cs101gradebook, addScore
+csStu3, cs101gradebook, readMyScores
+csStu3, cs101gradebook, readScore
+csStu3, cs601gradebook, readMyScores
+csStu3, cs602gradebook, addScore
+csStu3, cs602gradebook, readScore
+csStu3, csStu1application, checkStatus
+csStu3, csStu1application, read
+csStu3, csStu1trans, read
+csStu3, csStu2application, checkStatus
+csStu3, csStu2application, read
+csStu3, csStu2trans, read
+csStu3, csStu3application, read
+csStu3, csStu4application, checkStatus
+csStu3, csStu4application, read
+csStu3, csStu4trans, read
+csStu3, csStu5application, checkStatus
+csStu3, csStu5application, read
+csStu3, csStu5trans, read
+csStu3, ee101gradebook, addScore
+csStu3, ee101gradebook, readMyScores
+csStu3, ee101gradebook, readScore
+csStu3, ee601gradebook, addScore
+csStu3, ee601gradebook, readMyScores
+csStu3, ee601gradebook, readScore
+csStu3, ee602gradebook, addScore
+csStu3, ee602gradebook, readMyScores
+csStu3, ee602gradebook, readScore
+csStu3, eeStu1application, checkStatus
+csStu3, eeStu1application, read
+csStu3, eeStu1trans, read
+csStu3, eeStu2application, checkStatus
+csStu3, eeStu2application, read
+csStu3, eeStu2trans, read
+csStu3, eeStu3application, checkStatus
+csStu3, eeStu3application, read
+csStu3, eeStu3trans, read
+csStu3, eeStu4application, checkStatus
+csStu3, eeStu4application, read
+csStu3, eeStu4trans, read
+csStu3, eeStu5application, checkStatus
+csStu3, eeStu5application, read
+csStu3, eeStu5trans, read
+csStu4, application1, checkStatus
+csStu4, application1, read
+csStu4, application2, checkStatus
+csStu4, application2, read
+csStu4, cs101gradebook, addScore
+csStu4, cs101gradebook, readMyScores
+csStu4, cs101gradebook, readScore
+csStu4, cs601gradebook, addScore
+csStu4, cs601gradebook, readScore
+csStu4, cs602gradebook, addScore
+csStu4, cs602gradebook, readMyScores
+csStu4, cs602gradebook, readScore
+csStu4, csStu1application, checkStatus
+csStu4, csStu1application, read
+csStu4, csStu1trans, read
+csStu4, csStu2application, checkStatus
+csStu4, csStu2application, read
+csStu4, csStu2trans, read
+csStu4, csStu3application, checkStatus
+csStu4, csStu3application, read
+csStu4, csStu3trans, read
+csStu4, csStu4application, read
+csStu4, csStu5application, checkStatus
+csStu4, csStu5application, read
+csStu4, csStu5trans, read
+csStu4, ee101gradebook, addScore
+csStu4, ee101gradebook, readMyScores
+csStu4, ee101gradebook, readScore
+csStu4, ee601gradebook, addScore
+csStu4, ee601gradebook, readMyScores
+csStu4, ee601gradebook, readScore
+csStu4, ee602gradebook, addScore
+csStu4, ee602gradebook, readMyScores
+csStu4, ee602gradebook, readScore
+csStu4, eeStu1application, checkStatus
+csStu4, eeStu1application, read
+csStu4, eeStu1trans, read
+csStu4, eeStu2application, checkStatus
+csStu4, eeStu2application, read
+csStu4, eeStu2trans, read
+csStu4, eeStu3application, checkStatus
+csStu4, eeStu3application, read
+csStu4, eeStu3trans, read
+csStu4, eeStu4application, checkStatus
+csStu4, eeStu4application, read
+csStu4, eeStu4trans, read
+csStu4, eeStu5application, checkStatus
+csStu4, eeStu5application, read
+csStu4, eeStu5trans, read
+csStu5, application1, checkStatus
+csStu5, application1, read
+csStu5, application2, checkStatus
+csStu5, application2, read
+csStu5, cs101gradebook, addScore
+csStu5, cs101gradebook, readMyScores
+csStu5, cs101gradebook, readScore
+csStu5, cs601gradebook, addScore
+csStu5, cs601gradebook, readScore
+csStu5, cs602gradebook, addScore
+csStu5, cs602gradebook, readScore
+csStu5, csStu1application, checkStatus
+csStu5, csStu1application, read
+csStu5, csStu1trans, read
+csStu5, csStu2application, checkStatus
+csStu5, csStu2application, read
+csStu5, csStu2trans, read
+csStu5, csStu3application, checkStatus
+csStu5, csStu3application, read
+csStu5, csStu3trans, read
+csStu5, csStu4application, checkStatus
+csStu5, csStu4application, read
+csStu5, csStu4trans, read
+csStu5, csStu5application, read
+csStu5, ee101gradebook, addScore
+csStu5, ee101gradebook, readMyScores
+csStu5, ee101gradebook, readScore
+csStu5, ee601gradebook, addScore
+csStu5, ee601gradebook, readMyScores
+csStu5, ee601gradebook, readScore
+csStu5, ee602gradebook, addScore
+csStu5, ee602gradebook, readMyScores
+csStu5, ee602gradebook, readScore
+csStu5, eeStu1application, checkStatus
+csStu5, eeStu1application, read
+csStu5, eeStu1trans, read
+csStu5, eeStu2application, checkStatus
+csStu5, eeStu2application, read
+csStu5, eeStu2trans, read
+csStu5, eeStu3application, checkStatus
+csStu5, eeStu3application, read
+csStu5, eeStu3trans, read
+csStu5, eeStu4application, checkStatus
+csStu5, eeStu4application, read
+csStu5, eeStu4trans, read
+csStu5, eeStu5application, checkStatus
+csStu5, eeStu5application, read
+csStu5, eeStu5trans, read
+eeChair, application1, checkStatus
+eeChair, application1, read
+eeChair, application2, checkStatus
+eeChair, application2, read
+eeChair, cs101gradebook, readMyScores
+eeChair, cs101gradebook, type [ {transcript}, student ] csStu1
+eeChair, cs101gradebook, type [ {transcript}, student ] csStu2
+eeChair, cs101gradebook, type [ {transcript}, student ] csStu3
+eeChair, cs101gradebook, type [ {transcript}, student ] csStu4
+eeChair, cs101gradebook, type [ {transcript}, student ] csStu5
+eeChair, cs101gradebook, type [ {transcript}, student ] eeStu1
+eeChair, cs101gradebook, type [ {transcript}, student ] eeStu2
+eeChair, cs101gradebook, type [ {transcript}, student ] eeStu4
+eeChair, cs101gradebook, type [ {transcript}, student ] eeStu5
+eeChair, cs101roster, type [ {transcript}, student ] csStu1
+eeChair, cs101roster, type [ {transcript}, student ] csStu2
+eeChair, cs101roster, type [ {transcript}, student ] csStu3
+eeChair, cs101roster, type [ {transcript}, student ] csStu4
+eeChair, cs101roster, type [ {transcript}, student ] csStu5
+eeChair, cs101roster, type [ {transcript}, student ] eeStu1
+eeChair, cs101roster, type [ {transcript}, student ] eeStu2
+eeChair, cs101roster, type [ {transcript}, student ] eeStu4
+eeChair, cs101roster, type [ {transcript}, student ] eeStu5
+eeChair, cs601gradebook, readMyScores
+eeChair, cs601gradebook, type [ {transcript}, student ] csStu1
+eeChair, cs601gradebook, type [ {transcript}, student ] csStu2
+eeChair, cs601gradebook, type [ {transcript}, student ] csStu3
+eeChair, cs601gradebook, type [ {transcript}, student ] csStu4
+eeChair, cs601gradebook, type [ {transcript}, student ] csStu5
+eeChair, cs601gradebook, type [ {transcript}, student ] eeStu1
+eeChair, cs601gradebook, type [ {transcript}, student ] eeStu2
+eeChair, cs601gradebook, type [ {transcript}, student ] eeStu4
+eeChair, cs601gradebook, type [ {transcript}, student ] eeStu5
+eeChair, cs601roster, type [ {transcript}, student ] csStu1
+eeChair, cs601roster, type [ {transcript}, student ] csStu2
+eeChair, cs601roster, type [ {transcript}, student ] csStu3
+eeChair, cs601roster, type [ {transcript}, student ] csStu4
+eeChair, cs601roster, type [ {transcript}, student ] csStu5
+eeChair, cs601roster, type [ {transcript}, student ] eeStu1
+eeChair, cs601roster, type [ {transcript}, student ] eeStu2
+eeChair, cs601roster, type [ {transcript}, student ] eeStu4
+eeChair, cs601roster, type [ {transcript}, student ] eeStu5
+eeChair, cs602gradebook, readMyScores
+eeChair, cs602gradebook, type [ {transcript}, student ] csStu1
+eeChair, cs602gradebook, type [ {transcript}, student ] csStu2
+eeChair, cs602gradebook, type [ {transcript}, student ] csStu3
+eeChair, cs602gradebook, type [ {transcript}, student ] csStu4
+eeChair, cs602gradebook, type [ {transcript}, student ] csStu5
+eeChair, cs602gradebook, type [ {transcript}, student ] eeStu1
+eeChair, cs602gradebook, type [ {transcript}, student ] eeStu2
+eeChair, cs602gradebook, type [ {transcript}, student ] eeStu4
+eeChair, cs602gradebook, type [ {transcript}, student ] eeStu5
+eeChair, cs602roster, type [ {transcript}, student ] csStu1
+eeChair, cs602roster, type [ {transcript}, student ] csStu2
+eeChair, cs602roster, type [ {transcript}, student ] csStu3
+eeChair, cs602roster, type [ {transcript}, student ] csStu4
+eeChair, cs602roster, type [ {transcript}, student ] csStu5
+eeChair, cs602roster, type [ {transcript}, student ] eeStu1
+eeChair, cs602roster, type [ {transcript}, student ] eeStu2
+eeChair, cs602roster, type [ {transcript}, student ] eeStu4
+eeChair, cs602roster, type [ {transcript}, student ] eeStu5
+eeChair, csStu1application, checkStatus
+eeChair, csStu1application, read
+eeChair, csStu1trans, read
+eeChair, csStu1trans, type [ {transcript}, student ] csStu1
+eeChair, csStu1trans, type [ {transcript}, student ] csStu2
+eeChair, csStu1trans, type [ {transcript}, student ] csStu3
+eeChair, csStu1trans, type [ {transcript}, student ] csStu4
+eeChair, csStu1trans, type [ {transcript}, student ] csStu5
+eeChair, csStu1trans, type [ {transcript}, student ] eeStu1
+eeChair, csStu1trans, type [ {transcript}, student ] eeStu2
+eeChair, csStu1trans, type [ {transcript}, student ] eeStu4
+eeChair, csStu1trans, type [ {transcript}, student ] eeStu5
+eeChair, csStu2application, checkStatus
+eeChair, csStu2application, read
+eeChair, csStu2trans, read
+eeChair, csStu2trans, type [ {transcript}, student ] csStu1
+eeChair, csStu2trans, type [ {transcript}, student ] csStu2
+eeChair, csStu2trans, type [ {transcript}, student ] csStu3
+eeChair, csStu2trans, type [ {transcript}, student ] csStu4
+eeChair, csStu2trans, type [ {transcript}, student ] csStu5
+eeChair, csStu2trans, type [ {transcript}, student ] eeStu1
+eeChair, csStu2trans, type [ {transcript}, student ] eeStu2
+eeChair, csStu2trans, type [ {transcript}, student ] eeStu4
+eeChair, csStu2trans, type [ {transcript}, student ] eeStu5
+eeChair, csStu3application, checkStatus
+eeChair, csStu3application, read
+eeChair, csStu3trans, read
+eeChair, csStu3trans, type [ {transcript}, student ] csStu1
+eeChair, csStu3trans, type [ {transcript}, student ] csStu2
+eeChair, csStu3trans, type [ {transcript}, student ] csStu3
+eeChair, csStu3trans, type [ {transcript}, student ] csStu4
+eeChair, csStu3trans, type [ {transcript}, student ] csStu5
+eeChair, csStu3trans, type [ {transcript}, student ] eeStu1
+eeChair, csStu3trans, type [ {transcript}, student ] eeStu2
+eeChair, csStu3trans, type [ {transcript}, student ] eeStu4
+eeChair, csStu3trans, type [ {transcript}, student ] eeStu5
+eeChair, csStu4application, checkStatus
+eeChair, csStu4application, read
+eeChair, csStu4trans, read
+eeChair, csStu4trans, type [ {transcript}, student ] csStu1
+eeChair, csStu4trans, type [ {transcript}, student ] csStu2
+eeChair, csStu4trans, type [ {transcript}, student ] csStu3
+eeChair, csStu4trans, type [ {transcript}, student ] csStu4
+eeChair, csStu4trans, type [ {transcript}, student ] csStu5
+eeChair, csStu4trans, type [ {transcript}, student ] eeStu1
+eeChair, csStu4trans, type [ {transcript}, student ] eeStu2
+eeChair, csStu4trans, type [ {transcript}, student ] eeStu4
+eeChair, csStu4trans, type [ {transcript}, student ] eeStu5
+eeChair, csStu5application, checkStatus
+eeChair, csStu5application, read
+eeChair, csStu5trans, read
+eeChair, csStu5trans, type [ {transcript}, student ] csStu1
+eeChair, csStu5trans, type [ {transcript}, student ] csStu2
+eeChair, csStu5trans, type [ {transcript}, student ] csStu3
+eeChair, csStu5trans, type [ {transcript}, student ] csStu4
+eeChair, csStu5trans, type [ {transcript}, student ] csStu5
+eeChair, csStu5trans, type [ {transcript}, student ] eeStu1
+eeChair, csStu5trans, type [ {transcript}, student ] eeStu2
+eeChair, csStu5trans, type [ {transcript}, student ] eeStu4
+eeChair, csStu5trans, type [ {transcript}, student ] eeStu5
+eeChair, ee101gradebook, readMyScores
+eeChair, ee101gradebook, type [ {transcript}, student ] csStu1
+eeChair, ee101gradebook, type [ {transcript}, student ] csStu2
+eeChair, ee101gradebook, type [ {transcript}, student ] csStu3
+eeChair, ee101gradebook, type [ {transcript}, student ] csStu4
+eeChair, ee101gradebook, type [ {transcript}, student ] csStu5
+eeChair, ee101gradebook, type [ {transcript}, student ] eeStu1
+eeChair, ee101gradebook, type [ {transcript}, student ] eeStu2
+eeChair, ee101gradebook, type [ {transcript}, student ] eeStu4
+eeChair, ee101gradebook, type [ {transcript}, student ] eeStu5
+eeChair, ee101roster, type [ {transcript}, student ] csStu1
+eeChair, ee101roster, type [ {transcript}, student ] csStu2
+eeChair, ee101roster, type [ {transcript}, student ] csStu3
+eeChair, ee101roster, type [ {transcript}, student ] csStu4
+eeChair, ee101roster, type [ {transcript}, student ] csStu5
+eeChair, ee101roster, type [ {transcript}, student ] eeStu1
+eeChair, ee101roster, type [ {transcript}, student ] eeStu2
+eeChair, ee101roster, type [ {transcript}, student ] eeStu4
+eeChair, ee101roster, type [ {transcript}, student ] eeStu5
+eeChair, ee601gradebook, readMyScores
+eeChair, ee601gradebook, type [ {transcript}, student ] csStu1
+eeChair, ee601gradebook, type [ {transcript}, student ] csStu2
+eeChair, ee601gradebook, type [ {transcript}, student ] csStu3
+eeChair, ee601gradebook, type [ {transcript}, student ] csStu4
+eeChair, ee601gradebook, type [ {transcript}, student ] csStu5
+eeChair, ee601gradebook, type [ {transcript}, student ] eeStu1
+eeChair, ee601gradebook, type [ {transcript}, student ] eeStu2
+eeChair, ee601gradebook, type [ {transcript}, student ] eeStu4
+eeChair, ee601gradebook, type [ {transcript}, student ] eeStu5
+eeChair, ee601roster, type [ {transcript}, student ] csStu1
+eeChair, ee601roster, type [ {transcript}, student ] csStu2
+eeChair, ee601roster, type [ {transcript}, student ] csStu3
+eeChair, ee601roster, type [ {transcript}, student ] csStu4
+eeChair, ee601roster, type [ {transcript}, student ] csStu5
+eeChair, ee601roster, type [ {transcript}, student ] eeStu1
+eeChair, ee601roster, type [ {transcript}, student ] eeStu2
+eeChair, ee601roster, type [ {transcript}, student ] eeStu4
+eeChair, ee601roster, type [ {transcript}, student ] eeStu5
+eeChair, ee602gradebook, readMyScores
+eeChair, ee602gradebook, type [ {transcript}, student ] csStu1
+eeChair, ee602gradebook, type [ {transcript}, student ] csStu2
+eeChair, ee602gradebook, type [ {transcript}, student ] csStu3
+eeChair, ee602gradebook, type [ {transcript}, student ] csStu4
+eeChair, ee602gradebook, type [ {transcript}, student ] csStu5
+eeChair, ee602gradebook, type [ {transcript}, student ] eeStu1
+eeChair, ee602gradebook, type [ {transcript}, student ] eeStu2
+eeChair, ee602gradebook, type [ {transcript}, student ] eeStu4
+eeChair, ee602gradebook, type [ {transcript}, student ] eeStu5
+eeChair, ee602roster, type [ {transcript}, student ] csStu1
+eeChair, ee602roster, type [ {transcript}, student ] csStu2
+eeChair, ee602roster, type [ {transcript}, student ] csStu3
+eeChair, ee602roster, type [ {transcript}, student ] csStu4
+eeChair, ee602roster, type [ {transcript}, student ] csStu5
+eeChair, ee602roster, type [ {transcript}, student ] eeStu1
+eeChair, ee602roster, type [ {transcript}, student ] eeStu2
+eeChair, ee602roster, type [ {transcript}, student ] eeStu4
+eeChair, ee602roster, type [ {transcript}, student ] eeStu5
+eeChair, eeStu1application, checkStatus
+eeChair, eeStu1application, read
+eeChair, eeStu1trans, type [ {transcript}, student ] csStu1
+eeChair, eeStu1trans, type [ {transcript}, student ] csStu2
+eeChair, eeStu1trans, type [ {transcript}, student ] csStu3
+eeChair, eeStu1trans, type [ {transcript}, student ] csStu4
+eeChair, eeStu1trans, type [ {transcript}, student ] csStu5
+eeChair, eeStu1trans, type [ {transcript}, student ] eeStu1
+eeChair, eeStu1trans, type [ {transcript}, student ] eeStu2
+eeChair, eeStu1trans, type [ {transcript}, student ] eeStu4
+eeChair, eeStu1trans, type [ {transcript}, student ] eeStu5
+eeChair, eeStu2application, checkStatus
+eeChair, eeStu2application, read
+eeChair, eeStu2trans, type [ {transcript}, student ] csStu1
+eeChair, eeStu2trans, type [ {transcript}, student ] csStu2
+eeChair, eeStu2trans, type [ {transcript}, student ] csStu3
+eeChair, eeStu2trans, type [ {transcript}, student ] csStu4
+eeChair, eeStu2trans, type [ {transcript}, student ] csStu5
+eeChair, eeStu2trans, type [ {transcript}, student ] eeStu1
+eeChair, eeStu2trans, type [ {transcript}, student ] eeStu2
+eeChair, eeStu2trans, type [ {transcript}, student ] eeStu4
+eeChair, eeStu2trans, type [ {transcript}, student ] eeStu5
+eeChair, eeStu3application, checkStatus
+eeChair, eeStu3application, read
+eeChair, eeStu3trans, type [ {transcript}, student ] csStu1
+eeChair, eeStu3trans, type [ {transcript}, student ] csStu2
+eeChair, eeStu3trans, type [ {transcript}, student ] csStu3
+eeChair, eeStu3trans, type [ {transcript}, student ] csStu4
+eeChair, eeStu3trans, type [ {transcript}, student ] csStu5
+eeChair, eeStu3trans, type [ {transcript}, student ] eeStu1
+eeChair, eeStu3trans, type [ {transcript}, student ] eeStu2
+eeChair, eeStu3trans, type [ {transcript}, student ] eeStu4
+eeChair, eeStu3trans, type [ {transcript}, student ] eeStu5
+eeChair, eeStu4application, checkStatus
+eeChair, eeStu4application, read
+eeChair, eeStu4trans, type [ {transcript}, student ] csStu1
+eeChair, eeStu4trans, type [ {transcript}, student ] csStu2
+eeChair, eeStu4trans, type [ {transcript}, student ] csStu3
+eeChair, eeStu4trans, type [ {transcript}, student ] csStu4
+eeChair, eeStu4trans, type [ {transcript}, student ] csStu5
+eeChair, eeStu4trans, type [ {transcript}, student ] eeStu1
+eeChair, eeStu4trans, type [ {transcript}, student ] eeStu2
+eeChair, eeStu4trans, type [ {transcript}, student ] eeStu4
+eeChair, eeStu4trans, type [ {transcript}, student ] eeStu5
+eeChair, eeStu5application, checkStatus
+eeChair, eeStu5application, read
+eeChair, eeStu5trans, type [ {transcript}, student ] csStu1
+eeChair, eeStu5trans, type [ {transcript}, student ] csStu2
+eeChair, eeStu5trans, type [ {transcript}, student ] csStu3
+eeChair, eeStu5trans, type [ {transcript}, student ] csStu4
+eeChair, eeStu5trans, type [ {transcript}, student ] csStu5
+eeChair, eeStu5trans, type [ {transcript}, student ] eeStu1
+eeChair, eeStu5trans, type [ {transcript}, student ] eeStu2
+eeChair, eeStu5trans, type [ {transcript}, student ] eeStu4
+eeChair, eeStu5trans, type [ {transcript}, student ] eeStu5
+eeFac1, application1, checkStatus
+eeFac1, application1, read
+eeFac1, application2, checkStatus
+eeFac1, application2, read
+eeFac1, cs101gradebook, addScore
+eeFac1, cs101gradebook, assignGrade
+eeFac1, cs101gradebook, changeScore
+eeFac1, cs101gradebook, readMyScores
+eeFac1, cs101gradebook, readScore
+eeFac1, cs101roster, read
+eeFac1, cs601gradebook, addScore
+eeFac1, cs601gradebook, assignGrade
+eeFac1, cs601gradebook, changeScore
+eeFac1, cs601gradebook, readMyScores
+eeFac1, cs601gradebook, readScore
+eeFac1, cs601roster, read
+eeFac1, cs602gradebook, addScore
+eeFac1, cs602gradebook, assignGrade
+eeFac1, cs602gradebook, changeScore
+eeFac1, cs602gradebook, readMyScores
+eeFac1, cs602gradebook, readScore
+eeFac1, cs602roster, read
+eeFac1, csStu1application, checkStatus
+eeFac1, csStu1application, read
+eeFac1, csStu1trans, read
+eeFac1, csStu2application, checkStatus
+eeFac1, csStu2application, read
+eeFac1, csStu2trans, read
+eeFac1, csStu3application, checkStatus
+eeFac1, csStu3application, read
+eeFac1, csStu3trans, read
+eeFac1, csStu4application, checkStatus
+eeFac1, csStu4application, read
+eeFac1, csStu4trans, read
+eeFac1, csStu5application, checkStatus
+eeFac1, csStu5application, read
+eeFac1, csStu5trans, read
+eeFac1, ee101gradebook, readMyScores
+eeFac1, ee601gradebook, addScore
+eeFac1, ee601gradebook, assignGrade
+eeFac1, ee601gradebook, changeScore
+eeFac1, ee601gradebook, readMyScores
+eeFac1, ee601gradebook, readScore
+eeFac1, ee601roster, read
+eeFac1, ee602gradebook, addScore
+eeFac1, ee602gradebook, assignGrade
+eeFac1, ee602gradebook, changeScore
+eeFac1, ee602gradebook, readMyScores
+eeFac1, ee602gradebook, readScore
+eeFac1, ee602roster, read
+eeFac1, eeStu1application, checkStatus
+eeFac1, eeStu1application, read
+eeFac1, eeStu1trans, read
+eeFac1, eeStu2application, checkStatus
+eeFac1, eeStu2application, read
+eeFac1, eeStu2trans, read
+eeFac1, eeStu3application, checkStatus
+eeFac1, eeStu3application, read
+eeFac1, eeStu3trans, read
+eeFac1, eeStu4application, checkStatus
+eeFac1, eeStu4application, read
+eeFac1, eeStu4trans, read
+eeFac1, eeStu5application, checkStatus
+eeFac1, eeStu5application, read
+eeFac1, eeStu5trans, read
+eeFac2, application1, checkStatus
+eeFac2, application1, read
+eeFac2, application2, checkStatus
+eeFac2, application2, read
+eeFac2, cs101gradebook, addScore
+eeFac2, cs101gradebook, assignGrade
+eeFac2, cs101gradebook, changeScore
+eeFac2, cs101gradebook, readMyScores
+eeFac2, cs101gradebook, readScore
+eeFac2, cs101roster, read
+eeFac2, cs601gradebook, addScore
+eeFac2, cs601gradebook, assignGrade
+eeFac2, cs601gradebook, changeScore
+eeFac2, cs601gradebook, readMyScores
+eeFac2, cs601gradebook, readScore
+eeFac2, cs601roster, read
+eeFac2, cs602gradebook, addScore
+eeFac2, cs602gradebook, assignGrade
+eeFac2, cs602gradebook, changeScore
+eeFac2, cs602gradebook, readMyScores
+eeFac2, cs602gradebook, readScore
+eeFac2, cs602roster, read
+eeFac2, csStu1application, checkStatus
+eeFac2, csStu1application, read
+eeFac2, csStu1trans, read
+eeFac2, csStu2application, checkStatus
+eeFac2, csStu2application, read
+eeFac2, csStu2trans, read
+eeFac2, csStu3application, checkStatus
+eeFac2, csStu3application, read
+eeFac2, csStu3trans, read
+eeFac2, csStu4application, checkStatus
+eeFac2, csStu4application, read
+eeFac2, csStu4trans, read
+eeFac2, csStu5application, checkStatus
+eeFac2, csStu5application, read
+eeFac2, csStu5trans, read
+eeFac2, ee101gradebook, addScore
+eeFac2, ee101gradebook, assignGrade
+eeFac2, ee101gradebook, changeScore
+eeFac2, ee101gradebook, readMyScores
+eeFac2, ee101gradebook, readScore
+eeFac2, ee101roster, read
+eeFac2, ee601gradebook, readMyScores
+eeFac2, ee602gradebook, addScore
+eeFac2, ee602gradebook, assignGrade
+eeFac2, ee602gradebook, changeScore
+eeFac2, ee602gradebook, readMyScores
+eeFac2, ee602gradebook, readScore
+eeFac2, ee602roster, read
+eeFac2, eeStu1application, checkStatus
+eeFac2, eeStu1application, read
+eeFac2, eeStu1trans, read
+eeFac2, eeStu2application, checkStatus
+eeFac2, eeStu2application, read
+eeFac2, eeStu2trans, read
+eeFac2, eeStu3application, checkStatus
+eeFac2, eeStu3application, read
+eeFac2, eeStu3trans, read
+eeFac2, eeStu4application, checkStatus
+eeFac2, eeStu4application, read
+eeFac2, eeStu4trans, read
+eeFac2, eeStu5application, checkStatus
+eeFac2, eeStu5application, read
+eeFac2, eeStu5trans, read
+eeStu1, application1, checkStatus
+eeStu1, application1, read
+eeStu1, application2, checkStatus
+eeStu1, application2, read
+eeStu1, cs101gradebook, addScore
+eeStu1, cs101gradebook, readMyScores
+eeStu1, cs101gradebook, readScore
+eeStu1, cs601gradebook, addScore
+eeStu1, cs601gradebook, readMyScores
+eeStu1, cs601gradebook, readScore
+eeStu1, cs602gradebook, addScore
+eeStu1, cs602gradebook, readMyScores
+eeStu1, cs602gradebook, readScore
+eeStu1, csStu1application, checkStatus
+eeStu1, csStu1application, read
+eeStu1, csStu1trans, read
+eeStu1, csStu2application, checkStatus
+eeStu1, csStu2application, read
+eeStu1, csStu2trans, read
+eeStu1, csStu3application, checkStatus
+eeStu1, csStu3application, read
+eeStu1, csStu3trans, read
+eeStu1, csStu4application, checkStatus
+eeStu1, csStu4application, read
+eeStu1, csStu4trans, read
+eeStu1, csStu5application, checkStatus
+eeStu1, csStu5application, read
+eeStu1, csStu5trans, read
+eeStu1, ee101gradebook, addScore
+eeStu1, ee101gradebook, readScore
+eeStu1, ee601gradebook, addScore
+eeStu1, ee601gradebook, readMyScores
+eeStu1, ee601gradebook, readScore
+eeStu1, ee602gradebook, addScore
+eeStu1, ee602gradebook, readMyScores
+eeStu1, ee602gradebook, readScore
+eeStu1, eeStu1application, read
+eeStu1, eeStu2application, checkStatus
+eeStu1, eeStu2application, read
+eeStu1, eeStu2trans, read
+eeStu1, eeStu3application, checkStatus
+eeStu1, eeStu3application, read
+eeStu1, eeStu3trans, read
+eeStu1, eeStu4application, checkStatus
+eeStu1, eeStu4application, read
+eeStu1, eeStu4trans, read
+eeStu1, eeStu5application, checkStatus
+eeStu1, eeStu5application, read
+eeStu1, eeStu5trans, read
+eeStu2, application1, checkStatus
+eeStu2, application1, read
+eeStu2, application2, checkStatus
+eeStu2, application2, read
+eeStu2, cs101gradebook, addScore
+eeStu2, cs101gradebook, readMyScores
+eeStu2, cs101gradebook, readScore
+eeStu2, cs601gradebook, addScore
+eeStu2, cs601gradebook, readMyScores
+eeStu2, cs601gradebook, readScore
+eeStu2, cs602gradebook, addScore
+eeStu2, cs602gradebook, readMyScores
+eeStu2, cs602gradebook, readScore
+eeStu2, csStu1application, checkStatus
+eeStu2, csStu1application, read
+eeStu2, csStu1trans, read
+eeStu2, csStu2application, checkStatus
+eeStu2, csStu2application, read
+eeStu2, csStu2trans, read
+eeStu2, csStu3application, checkStatus
+eeStu2, csStu3application, read
+eeStu2, csStu3trans, read
+eeStu2, csStu4application, checkStatus
+eeStu2, csStu4application, read
+eeStu2, csStu4trans, read
+eeStu2, csStu5application, checkStatus
+eeStu2, csStu5application, read
+eeStu2, csStu5trans, read
+eeStu2, ee101gradebook, readMyScores
+eeStu2, ee601gradebook, addScore
+eeStu2, ee601gradebook, readScore
+eeStu2, ee602gradebook, readMyScores
+eeStu2, eeStu1application, checkStatus
+eeStu2, eeStu1application, read
+eeStu2, eeStu1trans, read
+eeStu2, eeStu2application, read
+eeStu2, eeStu3application, checkStatus
+eeStu2, eeStu3application, read
+eeStu2, eeStu3trans, read
+eeStu2, eeStu4application, checkStatus
+eeStu2, eeStu4application, read
+eeStu2, eeStu4trans, read
+eeStu2, eeStu5application, checkStatus
+eeStu2, eeStu5application, read
+eeStu2, eeStu5trans, read
+eeStu3, application1, checkStatus
+eeStu3, application1, read
+eeStu3, application2, checkStatus
+eeStu3, application2, read
+eeStu3, cs101gradebook, addScore
+eeStu3, cs101gradebook, readMyScores
+eeStu3, cs101gradebook, readScore
+eeStu3, cs601gradebook, addScore
+eeStu3, cs601gradebook, readMyScores
+eeStu3, cs601gradebook, readScore
+eeStu3, cs602gradebook, addScore
+eeStu3, cs602gradebook, readMyScores
+eeStu3, cs602gradebook, readScore
+eeStu3, csStu1application, checkStatus
+eeStu3, csStu1application, read
+eeStu3, csStu1trans, read
+eeStu3, csStu2application, checkStatus
+eeStu3, csStu2application, read
+eeStu3, csStu2trans, read
+eeStu3, csStu3application, checkStatus
+eeStu3, csStu3application, read
+eeStu3, csStu3trans, read
+eeStu3, csStu4application, checkStatus
+eeStu3, csStu4application, read
+eeStu3, csStu4trans, read
+eeStu3, csStu5application, checkStatus
+eeStu3, csStu5application, read
+eeStu3, csStu5trans, read
+eeStu3, ee101gradebook, addScore
+eeStu3, ee101gradebook, readMyScores
+eeStu3, ee101gradebook, readScore
+eeStu3, ee601gradebook, readMyScores
+eeStu3, ee602gradebook, addScore
+eeStu3, ee602gradebook, readScore
+eeStu3, eeStu1application, checkStatus
+eeStu3, eeStu1application, read
+eeStu3, eeStu1trans, read
+eeStu3, eeStu2application, checkStatus
+eeStu3, eeStu2application, read
+eeStu3, eeStu2trans, read
+eeStu3, eeStu3application, read
+eeStu3, eeStu4application, checkStatus
+eeStu3, eeStu4application, read
+eeStu3, eeStu4trans, read
+eeStu3, eeStu5application, checkStatus
+eeStu3, eeStu5application, read
+eeStu3, eeStu5trans, read
+eeStu4, application1, checkStatus
+eeStu4, application1, read
+eeStu4, application2, checkStatus
+eeStu4, application2, read
+eeStu4, cs101gradebook, addScore
+eeStu4, cs101gradebook, readMyScores
+eeStu4, cs101gradebook, readScore
+eeStu4, cs601gradebook, addScore
+eeStu4, cs601gradebook, readMyScores
+eeStu4, cs601gradebook, readScore
+eeStu4, cs602gradebook, addScore
+eeStu4, cs602gradebook, readMyScores
+eeStu4, cs602gradebook, readScore
+eeStu4, csStu1application, checkStatus
+eeStu4, csStu1application, read
+eeStu4, csStu1trans, read
+eeStu4, csStu2application, checkStatus
+eeStu4, csStu2application, read
+eeStu4, csStu2trans, read
+eeStu4, csStu3application, checkStatus
+eeStu4, csStu3application, read
+eeStu4, csStu3trans, read
+eeStu4, csStu4application, checkStatus
+eeStu4, csStu4application, read
+eeStu4, csStu4trans, read
+eeStu4, csStu5application, checkStatus
+eeStu4, csStu5application, read
+eeStu4, csStu5trans, read
+eeStu4, ee101gradebook, addScore
+eeStu4, ee101gradebook, readMyScores
+eeStu4, ee101gradebook, readScore
+eeStu4, ee601gradebook, addScore
+eeStu4, ee601gradebook, readScore
+eeStu4, ee602gradebook, addScore
+eeStu4, ee602gradebook, readMyScores
+eeStu4, ee602gradebook, readScore
+eeStu4, eeStu1application, checkStatus
+eeStu4, eeStu1application, read
+eeStu4, eeStu1trans, read
+eeStu4, eeStu2application, checkStatus
+eeStu4, eeStu2application, read
+eeStu4, eeStu2trans, read
+eeStu4, eeStu3application, checkStatus
+eeStu4, eeStu3application, read
+eeStu4, eeStu3trans, read
+eeStu4, eeStu4application, read
+eeStu4, eeStu5application, checkStatus
+eeStu4, eeStu5application, read
+eeStu4, eeStu5trans, read
+eeStu5, application1, checkStatus
+eeStu5, application1, read
+eeStu5, application2, checkStatus
+eeStu5, application2, read
+eeStu5, cs101gradebook, addScore
+eeStu5, cs101gradebook, readMyScores
+eeStu5, cs101gradebook, readScore
+eeStu5, cs601gradebook, addScore
+eeStu5, cs601gradebook, readMyScores
+eeStu5, cs601gradebook, readScore
+eeStu5, cs602gradebook, addScore
+eeStu5, cs602gradebook, readMyScores
+eeStu5, cs602gradebook, readScore
+eeStu5, csStu1application, checkStatus
+eeStu5, csStu1application, read
+eeStu5, csStu1trans, read
+eeStu5, csStu2application, checkStatus
+eeStu5, csStu2application, read
+eeStu5, csStu2trans, read
+eeStu5, csStu3application, checkStatus
+eeStu5, csStu3application, read
+eeStu5, csStu3trans, read
+eeStu5, csStu4application, checkStatus
+eeStu5, csStu4application, read
+eeStu5, csStu4trans, read
+eeStu5, csStu5application, checkStatus
+eeStu5, csStu5application, read
+eeStu5, csStu5trans, read
+eeStu5, ee101gradebook, addScore
+eeStu5, ee101gradebook, readMyScores
+eeStu5, ee101gradebook, readScore
+eeStu5, ee601gradebook, addScore
+eeStu5, ee601gradebook, readScore
+eeStu5, ee602gradebook, addScore
+eeStu5, ee602gradebook, readScore
+eeStu5, eeStu1application, checkStatus
+eeStu5, eeStu1application, read
+eeStu5, eeStu1trans, read
+eeStu5, eeStu2application, checkStatus
+eeStu5, eeStu2application, read
+eeStu5, eeStu2trans, read
+eeStu5, eeStu3application, checkStatus
+eeStu5, eeStu3application, read
+eeStu5, eeStu3trans, read
+eeStu5, eeStu4application, checkStatus
+eeStu5, eeStu4application, read
+eeStu5, eeStu4trans, read
+eeStu5, eeStu5application, read
+registrar1, application1, checkStatus
+registrar1, application1, read
+registrar1, application2, checkStatus
+registrar1, application2, read
+registrar1, cs101gradebook, readMyScores
+registrar1, cs601gradebook, readMyScores
+registrar1, cs602gradebook, readMyScores
+registrar1, csStu1application, checkStatus
+registrar1, csStu1application, read
+registrar1, csStu2application, checkStatus
+registrar1, csStu2application, read
+registrar1, csStu3application, checkStatus
+registrar1, csStu3application, read
+registrar1, csStu4application, checkStatus
+registrar1, csStu4application, read
+registrar1, csStu5application, checkStatus
+registrar1, csStu5application, read
+registrar1, ee101gradebook, readMyScores
+registrar1, ee601gradebook, readMyScores
+registrar1, ee602gradebook, readMyScores
+registrar1, eeStu1application, checkStatus
+registrar1, eeStu1application, read
+registrar1, eeStu2application, checkStatus
+registrar1, eeStu2application, read
+registrar1, eeStu3application, checkStatus
+registrar1, eeStu3application, read
+registrar1, eeStu4application, checkStatus
+registrar1, eeStu4application, read
+registrar1, eeStu5application, checkStatus
+registrar1, eeStu5application, read
+registrar2, application1, checkStatus
+registrar2, application1, read
+registrar2, application2, checkStatus
+registrar2, application2, read
+registrar2, cs101gradebook, readMyScores
+registrar2, cs601gradebook, readMyScores
+registrar2, cs602gradebook, readMyScores
+registrar2, csStu1application, checkStatus
+registrar2, csStu1application, read
+registrar2, csStu2application, checkStatus
+registrar2, csStu2application, read
+registrar2, csStu3application, checkStatus
+registrar2, csStu3application, read
+registrar2, csStu4application, checkStatus
+registrar2, csStu4application, read
+registrar2, csStu5application, checkStatus
+registrar2, csStu5application, read
+registrar2, ee101gradebook, readMyScores
+registrar2, ee601gradebook, readMyScores
+registrar2, ee602gradebook, readMyScores
+registrar2, eeStu1application, checkStatus
+registrar2, eeStu1application, read
+registrar2, eeStu2application, checkStatus
+registrar2, eeStu2application, read
+registrar2, eeStu3application, checkStatus
+registrar2, eeStu3application, read
+registrar2, eeStu4application, checkStatus
+registrar2, eeStu4application, read
+registrar2, eeStu5application, checkStatus
+registrar2, eeStu5application, read
+
+Total different lines: 1456
+
+===============================================================
+ITERATION : 2
+===============================================================
+Commong lines / Lines that are correct: 46
+admissions1, application1, setStatus
+admissions1, application2, setStatus
+admissions1, csStu1application, setStatus
+admissions1, csStu2application, setStatus
+admissions1, csStu3application, setStatus
+admissions1, csStu4application, setStatus
+admissions1, csStu5application, setStatus
+admissions1, eeStu1application, setStatus
+admissions1, eeStu2application, setStatus
+admissions1, eeStu3application, setStatus
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, setStatus
+admissions2, application1, setStatus
+admissions2, application2, setStatus
+admissions2, csStu1application, setStatus
+admissions2, csStu2application, setStatus
+admissions2, csStu3application, setStatus
+admissions2, csStu4application, setStatus
+admissions2, csStu5application, setStatus
+admissions2, eeStu1application, setStatus
+admissions2, eeStu2application, setStatus
+admissions2, eeStu3application, setStatus
+admissions2, eeStu4application, setStatus
+admissions2, eeStu5application, setStatus
+csStu1, cs101gradebook, readMyScores
+csStu1, csStu1trans, read
+csStu2, cs601gradebook, readMyScores
+csStu2, csStu2trans, read
+csStu3, cs602gradebook, readMyScores
+csStu3, csStu3trans, read
+csStu4, cs601gradebook, readMyScores
+csStu4, csStu4trans, read
+csStu5, cs601gradebook, readMyScores
+csStu5, cs602gradebook, readMyScores
+csStu5, csStu5trans, read
+eeStu1, ee101gradebook, readMyScores
+eeStu1, eeStu1trans, read
+eeStu2, ee601gradebook, readMyScores
+eeStu2, eeStu2trans, read
+eeStu3, ee602gradebook, readMyScores
+eeStu3, eeStu3trans, read
+eeStu4, ee601gradebook, readMyScores
+eeStu4, eeStu4trans, read
+eeStu5, ee601gradebook, readMyScores
+eeStu5, ee602gradebook, readMyScores
+eeStu5, eeStu5trans, read
+
+Only in ground truth ACL (under permissions): 122
+admissions1, application1, read
+admissions1, application2, read
+admissions1, csStu1application, read
+admissions1, csStu2application, read
+admissions1, csStu3application, read
+admissions1, csStu4application, read
+admissions1, csStu5application, read
+admissions1, eeStu1application, read
+admissions1, eeStu2application, read
+admissions1, eeStu3application, read
+admissions1, eeStu4application, read
+admissions1, eeStu5application, read
+admissions2, application1, read
+admissions2, application2, read
+admissions2, csStu1application, read
+admissions2, csStu2application, read
+admissions2, csStu3application, read
+admissions2, csStu4application, read
+admissions2, csStu5application, read
+admissions2, eeStu1application, read
+admissions2, eeStu2application, read
+admissions2, eeStu3application, read
+admissions2, eeStu4application, read
+admissions2, eeStu5application, read
+applicant1, application1, checkStatus
+applicant2, application2, checkStatus
+csChair, csStu1trans, read
+csChair, csStu2trans, read
+csChair, csStu3trans, read
+csChair, csStu4trans, read
+csChair, csStu5trans, read
+csFac1, cs101gradebook, addScore
+csFac1, cs101gradebook, assignGrade
+csFac1, cs101gradebook, changeScore
+csFac1, cs101gradebook, readScore
+csFac1, cs101roster, read
+csFac2, cs601gradebook, addScore
+csFac2, cs601gradebook, assignGrade
+csFac2, cs601gradebook, changeScore
+csFac2, cs601gradebook, readScore
+csFac2, cs601roster, read
+csStu1, csStu1application, checkStatus
+csStu2, cs101gradebook, addScore
+csStu2, cs101gradebook, readScore
+csStu2, cs602gradebook, addScore
+csStu2, cs602gradebook, readScore
+csStu2, csStu2application, checkStatus
+csStu3, cs601gradebook, addScore
+csStu3, cs601gradebook, readScore
+csStu3, csStu3application, checkStatus
+csStu4, csStu4application, checkStatus
+csStu5, csStu5application, checkStatus
+eeChair, eeStu1trans, read
+eeChair, eeStu2trans, read
+eeChair, eeStu3trans, read
+eeChair, eeStu4trans, read
+eeChair, eeStu5trans, read
+eeFac1, ee101gradebook, addScore
+eeFac1, ee101gradebook, assignGrade
+eeFac1, ee101gradebook, changeScore
+eeFac1, ee101gradebook, readScore
+eeFac1, ee101roster, read
+eeFac2, ee601gradebook, addScore
+eeFac2, ee601gradebook, assignGrade
+eeFac2, ee601gradebook, changeScore
+eeFac2, ee601gradebook, readScore
+eeFac2, ee601roster, read
+eeStu1, eeStu1application, checkStatus
+eeStu2, ee101gradebook, addScore
+eeStu2, ee101gradebook, readScore
+eeStu2, ee602gradebook, addScore
+eeStu2, ee602gradebook, readScore
+eeStu2, eeStu2application, checkStatus
+eeStu3, ee601gradebook, addScore
+eeStu3, ee601gradebook, readScore
+eeStu3, eeStu3application, checkStatus
+eeStu4, eeStu4application, checkStatus
+eeStu5, eeStu5application, checkStatus
+registrar1, cs101roster, read
+registrar1, cs101roster, write
+registrar1, cs601roster, read
+registrar1, cs601roster, write
+registrar1, cs602roster, read
+registrar1, cs602roster, write
+registrar1, csStu1trans, read
+registrar1, csStu2trans, read
+registrar1, csStu3trans, read
+registrar1, csStu4trans, read
+registrar1, csStu5trans, read
+registrar1, ee101roster, read
+registrar1, ee101roster, write
+registrar1, ee601roster, read
+registrar1, ee601roster, write
+registrar1, ee602roster, read
+registrar1, ee602roster, write
+registrar1, eeStu1trans, read
+registrar1, eeStu2trans, read
+registrar1, eeStu3trans, read
+registrar1, eeStu4trans, read
+registrar1, eeStu5trans, read
+registrar2, cs101roster, read
+registrar2, cs101roster, write
+registrar2, cs601roster, read
+registrar2, cs601roster, write
+registrar2, cs602roster, read
+registrar2, cs602roster, write
+registrar2, csStu1trans, read
+registrar2, csStu2trans, read
+registrar2, csStu3trans, read
+registrar2, csStu4trans, read
+registrar2, csStu5trans, read
+registrar2, ee101roster, read
+registrar2, ee101roster, write
+registrar2, ee601roster, read
+registrar2, ee601roster, write
+registrar2, ee602roster, read
+registrar2, ee602roster, write
+registrar2, eeStu1trans, read
+registrar2, eeStu2trans, read
+registrar2, eeStu3trans, read
+registrar2, eeStu4trans, read
+registrar2, eeStu5trans, read
+
+Only in LLM ACL (over permissions): 222
+admissions1, application1, read,
+admissions1, application2, read,
+admissions1, csStu1application, read,
+admissions1, csStu2application, read,
+admissions1, csStu3application, read,
+admissions1, csStu4application, read,
+admissions1, csStu5application, read,
+admissions1, eeStu1application, read,
+admissions1, eeStu2application, read,
+admissions1, eeStu3application, read,
+admissions1, eeStu4application, read,
+admissions1, eeStu5application, read,
+admissions2, application1, read,
+admissions2, application2, read,
+admissions2, csStu1application, read,
+admissions2, csStu2application, read,
+admissions2, csStu3application, read,
+admissions2, csStu4application, read,
+admissions2, csStu5application, read,
+admissions2, eeStu1application, read,
+admissions2, eeStu2application, read,
+admissions2, eeStu3application, read,
+admissions2, eeStu4application, read,
+admissions2, eeStu5application, read,
+csStu1, cs101gradebook, crsTaken ] crs
+csStu1, cs601gradebook, crsTaken ] crs
+csStu1, cs602gradebook, crsTaken ] crs
+csStu1, csStu2trans, read
+csStu1, csStu3trans, read
+csStu1, csStu4trans, read
+csStu1, csStu5trans, read
+csStu1, ee101gradebook, crsTaken ] crs
+csStu1, ee601gradebook, crsTaken ] crs
+csStu1, ee602gradebook, crsTaken ] crs
+csStu1, eeStu1trans, read
+csStu1, eeStu2trans, read
+csStu1, eeStu3trans, read
+csStu1, eeStu4trans, read
+csStu1, eeStu5trans, read
+csStu2, cs101gradebook, crsTaken ] crs
+csStu2, cs601gradebook, crsTaken ] crs
+csStu2, cs602gradebook, crsTaken ] crs
+csStu2, csStu1trans, read
+csStu2, csStu3trans, read
+csStu2, csStu4trans, read
+csStu2, csStu5trans, read
+csStu2, ee101gradebook, crsTaken ] crs
+csStu2, ee601gradebook, crsTaken ] crs
+csStu2, ee602gradebook, crsTaken ] crs
+csStu2, eeStu1trans, read
+csStu2, eeStu2trans, read
+csStu2, eeStu3trans, read
+csStu2, eeStu4trans, read
+csStu2, eeStu5trans, read
+csStu3, cs101gradebook, crsTaken ] crs
+csStu3, cs601gradebook, crsTaken ] crs
+csStu3, cs602gradebook, crsTaken ] crs
+csStu3, csStu1trans, read
+csStu3, csStu2trans, read
+csStu3, csStu4trans, read
+csStu3, csStu5trans, read
+csStu3, ee101gradebook, crsTaken ] crs
+csStu3, ee601gradebook, crsTaken ] crs
+csStu3, ee602gradebook, crsTaken ] crs
+csStu3, eeStu1trans, read
+csStu3, eeStu2trans, read
+csStu3, eeStu3trans, read
+csStu3, eeStu4trans, read
+csStu3, eeStu5trans, read
+csStu4, cs101gradebook, crsTaken ] crs
+csStu4, cs601gradebook, crsTaken ] crs
+csStu4, cs602gradebook, crsTaken ] crs
+csStu4, csStu1trans, read
+csStu4, csStu2trans, read
+csStu4, csStu3trans, read
+csStu4, csStu5trans, read
+csStu4, ee101gradebook, crsTaken ] crs
+csStu4, ee601gradebook, crsTaken ] crs
+csStu4, ee602gradebook, crsTaken ] crs
+csStu4, eeStu1trans, read
+csStu4, eeStu2trans, read
+csStu4, eeStu3trans, read
+csStu4, eeStu4trans, read
+csStu4, eeStu5trans, read
+csStu5, cs101gradebook, crsTaken ] crs
+csStu5, cs601gradebook, crsTaken ] crs
+csStu5, cs602gradebook, crsTaken ] crs
+csStu5, csStu1trans, read
+csStu5, csStu2trans, read
+csStu5, csStu3trans, read
+csStu5, csStu4trans, read
+csStu5, ee101gradebook, crsTaken ] crs
+csStu5, ee601gradebook, crsTaken ] crs
+csStu5, ee602gradebook, crsTaken ] crs
+csStu5, eeStu1trans, read
+csStu5, eeStu2trans, read
+csStu5, eeStu3trans, read
+csStu5, eeStu4trans, read
+csStu5, eeStu5trans, read
+eeStu1, cs101gradebook, crsTaken ] crs
+eeStu1, cs601gradebook, crsTaken ] crs
+eeStu1, cs602gradebook, crsTaken ] crs
+eeStu1, csStu1trans, read
+eeStu1, csStu2trans, read
+eeStu1, csStu3trans, read
+eeStu1, csStu4trans, read
+eeStu1, csStu5trans, read
+eeStu1, ee101gradebook, crsTaken ] crs
+eeStu1, ee601gradebook, crsTaken ] crs
+eeStu1, ee602gradebook, crsTaken ] crs
+eeStu1, eeStu2trans, read
+eeStu1, eeStu3trans, read
+eeStu1, eeStu4trans, read
+eeStu1, eeStu5trans, read
+eeStu2, cs101gradebook, crsTaken ] crs
+eeStu2, cs601gradebook, crsTaken ] crs
+eeStu2, cs602gradebook, crsTaken ] crs
+eeStu2, csStu1trans, read
+eeStu2, csStu2trans, read
+eeStu2, csStu3trans, read
+eeStu2, csStu4trans, read
+eeStu2, csStu5trans, read
+eeStu2, ee101gradebook, crsTaken ] crs
+eeStu2, ee601gradebook, crsTaken ] crs
+eeStu2, ee602gradebook, crsTaken ] crs
+eeStu2, eeStu1trans, read
+eeStu2, eeStu3trans, read
+eeStu2, eeStu4trans, read
+eeStu2, eeStu5trans, read
+eeStu3, cs101gradebook, crsTaken ] crs
+eeStu3, cs601gradebook, crsTaken ] crs
+eeStu3, cs602gradebook, crsTaken ] crs
+eeStu3, csStu1trans, read
+eeStu3, csStu2trans, read
+eeStu3, csStu3trans, read
+eeStu3, csStu4trans, read
+eeStu3, csStu5trans, read
+eeStu3, ee101gradebook, crsTaken ] crs
+eeStu3, ee601gradebook, crsTaken ] crs
+eeStu3, ee602gradebook, crsTaken ] crs
+eeStu3, eeStu1trans, read
+eeStu3, eeStu2trans, read
+eeStu3, eeStu4trans, read
+eeStu3, eeStu5trans, read
+eeStu4, cs101gradebook, crsTaken ] crs
+eeStu4, cs601gradebook, crsTaken ] crs
+eeStu4, cs602gradebook, crsTaken ] crs
+eeStu4, csStu1trans, read
+eeStu4, csStu2trans, read
+eeStu4, csStu3trans, read
+eeStu4, csStu4trans, read
+eeStu4, csStu5trans, read
+eeStu4, ee101gradebook, crsTaken ] crs
+eeStu4, ee601gradebook, crsTaken ] crs
+eeStu4, ee602gradebook, crsTaken ] crs
+eeStu4, eeStu1trans, read
+eeStu4, eeStu2trans, read
+eeStu4, eeStu3trans, read
+eeStu4, eeStu5trans, read
+eeStu5, cs101gradebook, crsTaken ] crs
+eeStu5, cs601gradebook, crsTaken ] crs
+eeStu5, cs602gradebook, crsTaken ] crs
+eeStu5, csStu1trans, read
+eeStu5, csStu2trans, read
+eeStu5, csStu3trans, read
+eeStu5, csStu4trans, read
+eeStu5, csStu5trans, read
+eeStu5, ee101gradebook, crsTaken ] crs
+eeStu5, ee601gradebook, crsTaken ] crs
+eeStu5, ee602gradebook, crsTaken ] crs
+eeStu5, eeStu1trans, read
+eeStu5, eeStu2trans, read
+eeStu5, eeStu3trans, read
+eeStu5, eeStu4trans, read
+registrar1, application1, read,
+registrar1, application1, setStatus
+registrar1, application2, read,
+registrar1, application2, setStatus
+registrar1, csStu1application, read,
+registrar1, csStu1application, setStatus
+registrar1, csStu2application, read,
+registrar1, csStu2application, setStatus
+registrar1, csStu3application, read,
+registrar1, csStu3application, setStatus
+registrar1, csStu4application, read,
+registrar1, csStu4application, setStatus
+registrar1, csStu5application, read,
+registrar1, csStu5application, setStatus
+registrar1, eeStu1application, read,
+registrar1, eeStu1application, setStatus
+registrar1, eeStu2application, read,
+registrar1, eeStu2application, setStatus
+registrar1, eeStu3application, read,
+registrar1, eeStu3application, setStatus
+registrar1, eeStu4application, read,
+registrar1, eeStu4application, setStatus
+registrar1, eeStu5application, read,
+registrar1, eeStu5application, setStatus
+registrar2, application1, read,
+registrar2, application1, setStatus
+registrar2, application2, read,
+registrar2, application2, setStatus
+registrar2, csStu1application, read,
+registrar2, csStu1application, setStatus
+registrar2, csStu2application, read,
+registrar2, csStu2application, setStatus
+registrar2, csStu3application, read,
+registrar2, csStu3application, setStatus
+registrar2, csStu4application, read,
+registrar2, csStu4application, setStatus
+registrar2, csStu5application, read,
+registrar2, csStu5application, setStatus
+registrar2, eeStu1application, read,
+registrar2, eeStu1application, setStatus
+registrar2, eeStu2application, read,
+registrar2, eeStu2application, setStatus
+registrar2, eeStu3application, read,
+registrar2, eeStu3application, setStatus
+registrar2, eeStu4application, read,
+registrar2, eeStu4application, setStatus
+registrar2, eeStu5application, read,
+registrar2, eeStu5application, setStatus
+
+Total different lines: 344
+
+===============================================================
+ITERATION : 1
+===============================================================
+Commong lines / Lines that are correct: 0
+
+Only in ground truth ACL (under permissions): 168
+admissions1, application1, read
+admissions1, application1, setStatus
+admissions1, application2, read
+admissions1, application2, setStatus
+admissions1, csStu1application, read
+admissions1, csStu1application, setStatus
+admissions1, csStu2application, read
+admissions1, csStu2application, setStatus
+admissions1, csStu3application, read
+admissions1, csStu3application, setStatus
+admissions1, csStu4application, read
+admissions1, csStu4application, setStatus
+admissions1, csStu5application, read
+admissions1, csStu5application, setStatus
+admissions1, eeStu1application, read
+admissions1, eeStu1application, setStatus
+admissions1, eeStu2application, read
+admissions1, eeStu2application, setStatus
+admissions1, eeStu3application, read
+admissions1, eeStu3application, setStatus
+admissions1, eeStu4application, read
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, read
+admissions1, eeStu5application, setStatus
+admissions2, application1, read
+admissions2, application1, setStatus
+admissions2, application2, read
+admissions2, application2, setStatus
+admissions2, csStu1application, read
+admissions2, csStu1application, setStatus
+admissions2, csStu2application, read
+admissions2, csStu2application, setStatus
+admissions2, csStu3application, read
+admissions2, csStu3application, setStatus
+admissions2, csStu4application, read
+admissions2, csStu4application, setStatus
+admissions2, csStu5application, read
+admissions2, csStu5application, setStatus
+admissions2, eeStu1application, read
+admissions2, eeStu1application, setStatus
+admissions2, eeStu2application, read
+admissions2, eeStu2application, setStatus
+admissions2, eeStu3application, read
+admissions2, eeStu3application, setStatus
+admissions2, eeStu4application, read
+admissions2, eeStu4application, setStatus
+admissions2, eeStu5application, read
+admissions2, eeStu5application, setStatus
+applicant1, application1, checkStatus
+applicant2, application2, checkStatus
+csChair, csStu1trans, read
+csChair, csStu2trans, read
+csChair, csStu3trans, read
+csChair, csStu4trans, read
+csChair, csStu5trans, read
+csFac1, cs101gradebook, addScore
+csFac1, cs101gradebook, assignGrade
+csFac1, cs101gradebook, changeScore
+csFac1, cs101gradebook, readScore
+csFac1, cs101roster, read
+csFac2, cs601gradebook, addScore
+csFac2, cs601gradebook, assignGrade
+csFac2, cs601gradebook, changeScore
+csFac2, cs601gradebook, readScore
+csFac2, cs601roster, read
+csStu1, cs101gradebook, readMyScores
+csStu1, csStu1application, checkStatus
+csStu1, csStu1trans, read
+csStu2, cs101gradebook, addScore
+csStu2, cs101gradebook, readScore
+csStu2, cs601gradebook, readMyScores
+csStu2, cs602gradebook, addScore
+csStu2, cs602gradebook, readScore
+csStu2, csStu2application, checkStatus
+csStu2, csStu2trans, read
+csStu3, cs601gradebook, addScore
+csStu3, cs601gradebook, readScore
+csStu3, cs602gradebook, readMyScores
+csStu3, csStu3application, checkStatus
+csStu3, csStu3trans, read
+csStu4, cs601gradebook, readMyScores
+csStu4, csStu4application, checkStatus
+csStu4, csStu4trans, read
+csStu5, cs601gradebook, readMyScores
+csStu5, cs602gradebook, readMyScores
+csStu5, csStu5application, checkStatus
+csStu5, csStu5trans, read
+eeChair, eeStu1trans, read
+eeChair, eeStu2trans, read
+eeChair, eeStu3trans, read
+eeChair, eeStu4trans, read
+eeChair, eeStu5trans, read
+eeFac1, ee101gradebook, addScore
+eeFac1, ee101gradebook, assignGrade
+eeFac1, ee101gradebook, changeScore
+eeFac1, ee101gradebook, readScore
+eeFac1, ee101roster, read
+eeFac2, ee601gradebook, addScore
+eeFac2, ee601gradebook, assignGrade
+eeFac2, ee601gradebook, changeScore
+eeFac2, ee601gradebook, readScore
+eeFac2, ee601roster, read
+eeStu1, ee101gradebook, readMyScores
+eeStu1, eeStu1application, checkStatus
+eeStu1, eeStu1trans, read
+eeStu2, ee101gradebook, addScore
+eeStu2, ee101gradebook, readScore
+eeStu2, ee601gradebook, readMyScores
+eeStu2, ee602gradebook, addScore
+eeStu2, ee602gradebook, readScore
+eeStu2, eeStu2application, checkStatus
+eeStu2, eeStu2trans, read
+eeStu3, ee601gradebook, addScore
+eeStu3, ee601gradebook, readScore
+eeStu3, ee602gradebook, readMyScores
+eeStu3, eeStu3application, checkStatus
+eeStu3, eeStu3trans, read
+eeStu4, ee601gradebook, readMyScores
+eeStu4, eeStu4application, checkStatus
+eeStu4, eeStu4trans, read
+eeStu5, ee601gradebook, readMyScores
+eeStu5, ee602gradebook, readMyScores
+eeStu5, eeStu5application, checkStatus
+eeStu5, eeStu5trans, read
+registrar1, cs101roster, read
+registrar1, cs101roster, write
+registrar1, cs601roster, read
+registrar1, cs601roster, write
+registrar1, cs602roster, read
+registrar1, cs602roster, write
+registrar1, csStu1trans, read
+registrar1, csStu2trans, read
+registrar1, csStu3trans, read
+registrar1, csStu4trans, read
+registrar1, csStu5trans, read
+registrar1, ee101roster, read
+registrar1, ee101roster, write
+registrar1, ee601roster, read
+registrar1, ee601roster, write
+registrar1, ee602roster, read
+registrar1, ee602roster, write
+registrar1, eeStu1trans, read
+registrar1, eeStu2trans, read
+registrar1, eeStu3trans, read
+registrar1, eeStu4trans, read
+registrar1, eeStu5trans, read
+registrar2, cs101roster, read
+registrar2, cs101roster, write
+registrar2, cs601roster, read
+registrar2, cs601roster, write
+registrar2, cs602roster, read
+registrar2, cs602roster, write
+registrar2, csStu1trans, read
+registrar2, csStu2trans, read
+registrar2, csStu3trans, read
+registrar2, csStu4trans, read
+registrar2, csStu5trans, read
+registrar2, ee101roster, read
+registrar2, ee101roster, write
+registrar2, ee601roster, read
+registrar2, ee601roster, write
+registrar2, ee602roster, read
+registrar2, ee602roster, write
+registrar2, eeStu1trans, read
+registrar2, eeStu2trans, read
+registrar2, eeStu3trans, read
+registrar2, eeStu4trans, read
+registrar2, eeStu5trans, read
+
+Only in LLM ACL (over permissions): 12
+applicant1, application1, acts={checkStatus}
+applicant2, application2, acts={checkStatus}
+csStu1, csStu1application, acts={checkStatus}
+csStu2, csStu2application, acts={checkStatus}
+csStu3, csStu3application, acts={checkStatus}
+csStu4, csStu4application, acts={checkStatus}
+csStu5, csStu5application, acts={checkStatus}
+eeStu1, eeStu1application, acts={checkStatus}
+eeStu2, eeStu2application, acts={checkStatus}
+eeStu3, eeStu3application, acts={checkStatus}
+eeStu4, eeStu4application, acts={checkStatus}
+eeStu5, eeStu5application, acts={checkStatus}
+
+Total different lines: 180
+
+===============================================================
+ITERATION : 0
+===============================================================
+Commong lines / Lines that are correct: 0
+
+Only in ground truth ACL (under permissions): 168
+admissions1, application1, read
+admissions1, application1, setStatus
+admissions1, application2, read
+admissions1, application2, setStatus
+admissions1, csStu1application, read
+admissions1, csStu1application, setStatus
+admissions1, csStu2application, read
+admissions1, csStu2application, setStatus
+admissions1, csStu3application, read
+admissions1, csStu3application, setStatus
+admissions1, csStu4application, read
+admissions1, csStu4application, setStatus
+admissions1, csStu5application, read
+admissions1, csStu5application, setStatus
+admissions1, eeStu1application, read
+admissions1, eeStu1application, setStatus
+admissions1, eeStu2application, read
+admissions1, eeStu2application, setStatus
+admissions1, eeStu3application, read
+admissions1, eeStu3application, setStatus
+admissions1, eeStu4application, read
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, read
+admissions1, eeStu5application, setStatus
+admissions2, application1, read
+admissions2, application1, setStatus
+admissions2, application2, read
+admissions2, application2, setStatus
+admissions2, csStu1application, read
+admissions2, csStu1application, setStatus
+admissions2, csStu2application, read
+admissions2, csStu2application, setStatus
+admissions2, csStu3application, read
+admissions2, csStu3application, setStatus
+admissions2, csStu4application, read
+admissions2, csStu4application, setStatus
+admissions2, csStu5application, read
+admissions2, csStu5application, setStatus
+admissions2, eeStu1application, read
+admissions2, eeStu1application, setStatus
+admissions2, eeStu2application, read
+admissions2, eeStu2application, setStatus
+admissions2, eeStu3application, read
+admissions2, eeStu3application, setStatus
+admissions2, eeStu4application, read
+admissions2, eeStu4application, setStatus
+admissions2, eeStu5application, read
+admissions2, eeStu5application, setStatus
+applicant1, application1, checkStatus
+applicant2, application2, checkStatus
+csChair, csStu1trans, read
+csChair, csStu2trans, read
+csChair, csStu3trans, read
+csChair, csStu4trans, read
+csChair, csStu5trans, read
+csFac1, cs101gradebook, addScore
+csFac1, cs101gradebook, assignGrade
+csFac1, cs101gradebook, changeScore
+csFac1, cs101gradebook, readScore
+csFac1, cs101roster, read
+csFac2, cs601gradebook, addScore
+csFac2, cs601gradebook, assignGrade
+csFac2, cs601gradebook, changeScore
+csFac2, cs601gradebook, readScore
+csFac2, cs601roster, read
+csStu1, cs101gradebook, readMyScores
+csStu1, csStu1application, checkStatus
+csStu1, csStu1trans, read
+csStu2, cs101gradebook, addScore
+csStu2, cs101gradebook, readScore
+csStu2, cs601gradebook, readMyScores
+csStu2, cs602gradebook, addScore
+csStu2, cs602gradebook, readScore
+csStu2, csStu2application, checkStatus
+csStu2, csStu2trans, read
+csStu3, cs601gradebook, addScore
+csStu3, cs601gradebook, readScore
+csStu3, cs602gradebook, readMyScores
+csStu3, csStu3application, checkStatus
+csStu3, csStu3trans, read
+csStu4, cs601gradebook, readMyScores
+csStu4, csStu4application, checkStatus
+csStu4, csStu4trans, read
+csStu5, cs601gradebook, readMyScores
+csStu5, cs602gradebook, readMyScores
+csStu5, csStu5application, checkStatus
+csStu5, csStu5trans, read
+eeChair, eeStu1trans, read
+eeChair, eeStu2trans, read
+eeChair, eeStu3trans, read
+eeChair, eeStu4trans, read
+eeChair, eeStu5trans, read
+eeFac1, ee101gradebook, addScore
+eeFac1, ee101gradebook, assignGrade
+eeFac1, ee101gradebook, changeScore
+eeFac1, ee101gradebook, readScore
+eeFac1, ee101roster, read
+eeFac2, ee601gradebook, addScore
+eeFac2, ee601gradebook, assignGrade
+eeFac2, ee601gradebook, changeScore
+eeFac2, ee601gradebook, readScore
+eeFac2, ee601roster, read
+eeStu1, ee101gradebook, readMyScores
+eeStu1, eeStu1application, checkStatus
+eeStu1, eeStu1trans, read
+eeStu2, ee101gradebook, addScore
+eeStu2, ee101gradebook, readScore
+eeStu2, ee601gradebook, readMyScores
+eeStu2, ee602gradebook, addScore
+eeStu2, ee602gradebook, readScore
+eeStu2, eeStu2application, checkStatus
+eeStu2, eeStu2trans, read
+eeStu3, ee601gradebook, addScore
+eeStu3, ee601gradebook, readScore
+eeStu3, ee602gradebook, readMyScores
+eeStu3, eeStu3application, checkStatus
+eeStu3, eeStu3trans, read
+eeStu4, ee601gradebook, readMyScores
+eeStu4, eeStu4application, checkStatus
+eeStu4, eeStu4trans, read
+eeStu5, ee601gradebook, readMyScores
+eeStu5, ee602gradebook, readMyScores
+eeStu5, eeStu5application, checkStatus
+eeStu5, eeStu5trans, read
+registrar1, cs101roster, read
+registrar1, cs101roster, write
+registrar1, cs601roster, read
+registrar1, cs601roster, write
+registrar1, cs602roster, read
+registrar1, cs602roster, write
+registrar1, csStu1trans, read
+registrar1, csStu2trans, read
+registrar1, csStu3trans, read
+registrar1, csStu4trans, read
+registrar1, csStu5trans, read
+registrar1, ee101roster, read
+registrar1, ee101roster, write
+registrar1, ee601roster, read
+registrar1, ee601roster, write
+registrar1, ee602roster, read
+registrar1, ee602roster, write
+registrar1, eeStu1trans, read
+registrar1, eeStu2trans, read
+registrar1, eeStu3trans, read
+registrar1, eeStu4trans, read
+registrar1, eeStu5trans, read
+registrar2, cs101roster, read
+registrar2, cs101roster, write
+registrar2, cs601roster, read
+registrar2, cs601roster, write
+registrar2, cs602roster, read
+registrar2, cs602roster, write
+registrar2, csStu1trans, read
+registrar2, csStu2trans, read
+registrar2, csStu3trans, read
+registrar2, csStu4trans, read
+registrar2, csStu5trans, read
+registrar2, ee101roster, read
+registrar2, ee101roster, write
+registrar2, ee601roster, read
+registrar2, ee601roster, write
+registrar2, ee602roster, read
+registrar2, ee602roster, write
+registrar2, eeStu1trans, read
+registrar2, eeStu2trans, read
+registrar2, eeStu3trans, read
+registrar2, eeStu4trans, read
+registrar2, eeStu5trans, read
+
+Only in LLM ACL (over permissions): 0
+
+Total different lines: 168

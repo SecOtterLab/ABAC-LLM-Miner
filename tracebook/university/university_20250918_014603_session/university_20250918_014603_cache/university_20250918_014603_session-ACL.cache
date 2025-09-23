@@ -1,0 +1,504 @@
+
+===============================================================
+ITERATION : 4
+===============================================================
+csStu2, eeStu1application, acts = {checkStatus}
+csStu5, application2, acts = {checkStatus}
+csStu1, csStu3application, acts = {checkStatus}
+csStu4, csStu1application, acts = {checkStatus}
+applicant1, application2, acts = {checkStatus}
+csStu1, eeStu3application, acts = {checkStatus}
+eeStu2, eeStu4application, acts = {checkStatus}
+applicant2, csStu2application, acts = {checkStatus}
+eeStu3, csStu4application, acts = {checkStatus}
+csStu4, eeStu3application, acts = {checkStatus}
+csStu2, csStu4application, acts = {checkStatus}
+csStu2, eeStu3application, acts = {checkStatus}
+csStu3, csStu3application, acts = {checkStatus}
+applicant2, application2, acts = {checkStatus}
+eeStu1, application1, acts = {checkStatus}
+eeStu2, application1, acts = {checkStatus}
+eeStu2, csStu4application, acts = {checkStatus}
+eeStu2, eeStu5application, acts = {checkStatus}
+csStu4, eeStu5application, acts = {checkStatus}
+csStu5, csStu3application, acts = {checkStatus}
+eeStu3, csStu3application, acts = {checkStatus}
+csStu2, application1, acts = {checkStatus}
+csStu3, csStu2application, acts = {checkStatus}
+eeStu3, application1, acts = {checkStatus}
+csStu4, csStu2application, acts = {checkStatus}
+csStu4, eeStu2application, acts = {checkStatus}
+eeStu5, application1, acts = {checkStatus}
+eeStu5, application2, acts = {checkStatus}
+csStu4, application2, acts = {checkStatus}
+eeStu1, eeStu5application, acts = {checkStatus}
+applicant2, eeStu1application, acts = {checkStatus}
+applicant2, eeStu3application, acts = {checkStatus}
+applicant1, eeStu5application, acts = {checkStatus}
+eeStu5, csStu5application, acts = {checkStatus}
+csStu3, eeStu2application, acts = {checkStatus}
+csStu2, eeStu5application, acts = {checkStatus}
+csStu3, eeStu5application, acts = {checkStatus}
+csStu1, csStu4application, acts = {checkStatus}
+eeStu5, csStu3application, acts = {checkStatus}
+eeStu5, eeStu5application, acts = {checkStatus}
+csStu1, csStu5application, acts = {checkStatus}
+eeStu4, eeStu1application, acts = {checkStatus}
+applicant2, eeStu2application, acts = {checkStatus}
+eeStu1, csStu5application, acts = {checkStatus}
+eeStu3, eeStu2application, acts = {checkStatus}
+eeStu3, csStu5application, acts = {checkStatus}
+eeStu2, csStu2application, acts = {checkStatus}
+eeStu2, application2, acts = {checkStatus}
+eeStu4, application1, acts = {checkStatus}
+eeStu4, eeStu4application, acts = {checkStatus}
+csStu4, csStu4application, acts = {checkStatus}
+eeStu3, csStu1application, acts = {checkStatus}
+csStu4, csStu5application, acts = {checkStatus}
+csStu3, csStu5application, acts = {checkStatus}
+applicant2, csStu5application, acts = {checkStatus}
+eeStu2, eeStu3application, acts = {checkStatus}
+eeStu4, csStu3application, acts = {checkStatus}
+eeStu2, csStu3application, acts = {checkStatus}
+eeStu4, eeStu3application, acts = {checkStatus}
+applicant2, csStu4application, acts = {checkStatus}
+applicant1, csStu3application, acts = {checkStatus}
+eeStu4, eeStu2application, acts = {checkStatus}
+eeStu4, eeStu5application, acts = {checkStatus}
+applicant2, application1, acts = {checkStatus}
+csStu2, csStu2application, acts = {checkStatus}
+csStu5, eeStu3application, acts = {checkStatus}
+csStu5, csStu1application, acts = {checkStatus}
+csStu2, csStu1application, acts = {checkStatus}
+csStu2, eeStu2application, acts = {checkStatus}
+csStu5, csStu4application, acts = {checkStatus}
+eeStu5, csStu4application, acts = {checkStatus}
+eeStu4, csStu4application, acts = {checkStatus}
+eeStu3, eeStu1application, acts = {checkStatus}
+csStu4, application1, acts = {checkStatus}
+csStu1, application1, acts = {checkStatus}
+applicant2, csStu3application, acts = {checkStatus}
+csStu5, eeStu5application, acts = {checkStatus}
+csStu4, eeStu4application, acts = {checkStatus}
+applicant1, eeStu2application, acts = {checkStatus}
+applicant1, eeStu4application, acts = {checkStatus}
+applicant2, eeStu5application, acts = {checkStatus}
+csStu4, eeStu1application, acts = {checkStatus}
+csStu5, eeStu4application, acts = {checkStatus}
+eeStu2, eeStu2application, acts = {checkStatus}
+csStu1, csStu2application, acts = {checkStatus}
+eeStu3, application2, acts = {checkStatus}
+eeStu4, csStu1application, acts = {checkStatus}
+csStu2, application2, acts = {checkStatus}
+eeStu1, eeStu2application, acts = {checkStatus}
+eeStu1, csStu3application, acts = {checkStatus}
+eeStu3, eeStu5application, acts = {checkStatus}
+eeStu5, csStu1application, acts = {checkStatus}
+csStu3, csStu1application, acts = {checkStatus}
+csStu3, eeStu3application, acts = {checkStatus}
+csStu5, eeStu1application, acts = {checkStatus}
+applicant1, csStu1application, acts = {checkStatus}
+eeStu3, eeStu4application, acts = {checkStatus}
+csStu1, application2, acts = {checkStatus}
+eeStu2, csStu5application, acts = {checkStatus}
+eeStu5, csStu2application, acts = {checkStatus}
+eeStu3, csStu2application, acts = {checkStatus}
+eeStu4, csStu2application, acts = {checkStatus}
+csStu1, eeStu4application, acts = {checkStatus}
+applicant1, csStu5application, acts = {checkStatus}
+csStu3, eeStu1application, acts = {checkStatus}
+eeStu5, eeStu1application, acts = {checkStatus}
+csStu2, csStu3application, acts = {checkStatus}
+applicant1, csStu2application, acts = {checkStatus}
+applicant1, csStu4application, acts = {checkStatus}
+eeStu1, csStu1application, acts = {checkStatus}
+csStu1, csStu1application, acts = {checkStatus}
+applicant1, eeStu1application, acts = {checkStatus}
+csStu1, eeStu5application, acts = {checkStatus}
+csStu5, csStu5application, acts = {checkStatus}
+csStu3, application2, acts = {checkStatus}
+csStu3, csStu4application, acts = {checkStatus}
+csStu5, eeStu2application, acts = {checkStatus}
+eeStu1, eeStu3application, acts = {checkStatus}
+csStu2, eeStu4application, acts = {checkStatus}
+csStu2, csStu5application, acts = {checkStatus}
+csStu3, application1, acts = {checkStatus}
+csStu5, application1, acts = {checkStatus}
+eeStu1, eeStu4application, acts = {checkStatus}
+csStu3, eeStu4application, acts = {checkStatus}
+applicant2, csStu1application, acts = {checkStatus}
+csStu4, csStu3application, acts = {checkStatus}
+eeStu1, csStu2application, acts = {checkStatus}
+csStu5, csStu2application, acts = {checkStatus}
+eeStu5, eeStu4application, acts = {checkStatus}
+eeStu2, csStu1application, acts = {checkStatus}
+csStu1, eeStu2application, acts = {checkStatus}
+eeStu5, eeStu3application, acts = {checkStatus}
+eeStu1, application2, acts = {checkStatus}
+eeStu2, eeStu1application, acts = {checkStatus}
+eeStu1, eeStu1application, acts = {checkStatus}
+eeStu1, csStu4application, acts = {checkStatus}
+csStu1, eeStu1application, acts = {checkStatus}
+eeStu5, eeStu2application, acts = {checkStatus}
+applicant1, eeStu3application, acts = {checkStatus}
+applicant2, eeStu4application, acts = {checkStatus}
+applicant1, application1, acts = {checkStatus}
+eeStu4, csStu5application, acts = {checkStatus}
+eeStu4, application2, acts = {checkStatus}
+eeStu3, eeStu3application, acts = {checkStatus}
+
+===============================================================
+ITERATION : 3
+===============================================================
+eeStu1, csStu3application, checkStatus
+csStu2, csStu3application, checkStatus
+eeStu1, eeStu5application, checkStatus
+eeStu1, eeStu4trans, read
+eeStu1, eeStu2trans, read
+eeStu2, eeStu3trans, read
+eeStu4, csStu5application, checkStatus
+admissions1, application2, setStatus
+eeStu1, csStu5trans, read
+eeStu4, csStu2application, checkStatus
+csStu2, csStu3trans, read
+csStu4, csStu4trans, read
+eeStu4, eeStu3application, checkStatus
+csStu3, csStu3application, checkStatus
+eeStu2, eeStu5trans, read
+admissions1, eeStu2application, read,
+eeStu5, eeStu4application, checkStatus
+admissions2, csStu2application, read,
+csStu2, eeStu1application, checkStatus
+csStu1, eeStu3trans, read
+eeStu3, csStu5application, checkStatus
+registrar1, cs101roster, read
+eeStu5, csStu2application, checkStatus
+registrar1, ee101roster, write,
+registrar1, ee101roster, read
+csStu5, application2, checkStatus
+admissions2, application1, setStatus
+eeStu3, csStu4application, checkStatus
+eeStu4, eeStu2trans, read
+eeStu1, eeStu2application, checkStatus
+admissions2, eeStu3application, setStatus
+csStu5, eeStu1trans, read
+eeStu5, eeStu5trans, read
+eeStu2, eeStu5application, checkStatus
+eeStu4, application2, checkStatus
+registrar1, cs101roster, write,
+eeStu2, eeStu3application, checkStatus
+csStu1, csStu3trans, read
+admissions1, csStu3application, setStatus
+csStu2, eeStu2trans, read
+csStu1, csStu2application, checkStatus
+admissions1, csStu1application, setStatus
+admissions2, csStu1application, read,
+eeStu3, eeStu3application, checkStatus
+csStu4, csStu3trans, read
+eeStu4, eeStu5trans, read
+eeStu3, eeStu5trans, read
+csStu1, eeStu5application, checkStatus
+eeStu2, csStu1application, checkStatus
+registrar1, ee601roster, write,
+csStu2, csStu2trans, read
+csStu3, eeStu1trans, read
+csStu4, csStu5trans, read
+eeStu5, csStu3trans, read
+admissions2, eeStu4application, read,
+eeStu1, application1, checkStatus
+eeStu2, csStu1trans, read
+eeStu1, eeStu5trans, read
+registrar1, cs602roster, read
+eeStu2, csStu2trans, read
+csStu4, eeStu5trans, read
+csStu1, csStu4application, checkStatus
+registrar2, cs602roster, write,
+eeStu3, csStu1application, checkStatus
+eeStu1, csStu3trans, read
+eeStu3, eeStu3trans, read
+eeStu4, csStu3trans, read
+eeStu5, eeStu2application, checkStatus
+eeStu5, eeStu3application, checkStatus
+registrar2, ee101roster, read
+admissions2, csStu4application, setStatus
+admissions2, csStu4application, read,
+eeStu3, csStu4trans, read
+csStu5, eeStu2application, checkStatus
+eeStu3, csStu3trans, read
+csStu3, eeStu1application, checkStatus
+eeStu1, csStu1application, checkStatus
+csStu4, csStu1trans, read
+csStu4, eeStu1application, checkStatus
+admissions2, application2, setStatus
+eeStu5, eeStu3trans, read
+csStu2, eeStu2application, checkStatus
+admissions1, eeStu1application, read,
+csStu3, eeStu2trans, read
+eeStu3, csStu5trans, read
+eeStu2, eeStu4application, checkStatus
+eeStu5, csStu4application, checkStatus
+csStu3, application2, checkStatus
+admissions1, csStu3application, read,
+admissions1, eeStu4application, read,
+csStu1, csStu1application, checkStatus
+csStu5, eeStu2trans, read
+csStu1, eeStu2application, checkStatus
+eeStu2, eeStu4trans, read
+registrar2, ee602roster, write,
+csStu3, eeStu4trans, read
+admissions2, eeStu1application, setStatus
+csStu4, eeStu4trans, read
+eeStu3, eeStu2trans, read
+eeStu1, csStu1trans, read
+eeStu3, eeStu1trans, read
+admissions1, csStu4application, read,
+csStu5, eeStu4application, checkStatus
+eeStu2, eeStu2trans, read
+eeStu1, csStu5application, checkStatus
+eeStu4, csStu4trans, read
+csStu1, eeStu1application, checkStatus
+eeStu2, csStu3application, checkStatus
+eeStu5, csStu5application, checkStatus
+admissions1, eeStu2application, setStatus
+admissions1, eeStu4application, setStatus
+admissions1, eeStu5application, read,
+registrar1, ee602roster, read
+eeStu1, application2, checkStatus
+csStu3, csStu3trans, read
+csStu5, csStu4application, checkStatus
+eeStu1, eeStu1application, checkStatus
+eeStu3, eeStu1application, checkStatus
+registrar2, ee101roster, write,
+csStu1, eeStu1trans, read
+csStu3, csStu4trans, read
+admissions2, csStu3application, read,
+csStu5, application1, checkStatus
+admissions1, eeStu3application, setStatus
+eeStu3, csStu3application, checkStatus
+admissions2, csStu2application, setStatus
+admissions2, eeStu2application, read,
+csStu2, eeStu3application, checkStatus
+registrar1, cs602roster, write,
+csStu5, eeStu5trans, read
+eeStu3, csStu1trans, read
+eeStu4, eeStu1trans, read
+eeStu5, csStu5trans, read
+csStu5, csStu3application, checkStatus
+eeStu2, csStu4application, checkStatus
+eeStu4, application1, checkStatus
+csStu1, csStu2trans, read
+eeStu3, eeStu4application, checkStatus
+admissions2, csStu3application, setStatus
+registrar2, ee601roster, read
+admissions1, eeStu1application, setStatus
+csStu1, application2, checkStatus
+eeStu4, csStu2trans, read
+eeStu2, eeStu1trans, read
+eeStu2, csStu3trans, read
+admissions2, eeStu1application, read,
+eeStu5, csStu4trans, read
+admissions1, csStu5application, setStatus
+csStu3, eeStu2application, checkStatus
+eeStu4, csStu3application, checkStatus
+csStu1, eeStu4application, checkStatus
+csStu4, eeStu3application, checkStatus
+csStu5, csStu4trans, read
+admissions1, application1, setStatus
+csStu2, application1, checkStatus
+csStu2, csStu2application, checkStatus
+csStu2, csStu5trans, read
+csStu4, eeStu1trans, read
+eeStu2, csStu5trans, read
+csStu4, eeStu2trans, read
+csStu5, eeStu5application, checkStatus
+eeStu1, eeStu1trans, read
+eeStu3, csStu2trans, read
+eeStu3, application1, checkStatus
+eeStu3, eeStu2application, checkStatus
+eeStu4, eeStu2application, checkStatus
+eeStu4, csStu1trans, read
+csStu4, eeStu5application, checkStatus
+admissions1, csStu2application, read,
+admissions1, application1, read,
+eeStu5, eeStu4trans, read
+csStu4, application1, checkStatus
+admissions1, csStu4application, setStatus
+eeStu5, csStu3application, checkStatus
+csStu3, csStu4application, checkStatus
+csStu2, csStu4trans, read
+csStu3, application1, checkStatus
+eeStu1, eeStu4application, checkStatus
+admissions2, eeStu5application, read,
+csStu1, eeStu5trans, read
+eeStu2, eeStu2application, checkStatus
+admissions2, eeStu3application, read,
+eeStu1, eeStu3trans, read
+csStu5, csStu2application, checkStatus
+csStu2, eeStu4application, checkStatus
+registrar1, cs601roster, read
+csStu4, eeStu2application, checkStatus
+registrar2, ee601roster, write,
+csStu2, eeStu5application, checkStatus
+registrar2, cs101roster, read
+eeStu2, csStu4trans, read
+eeStu5, eeStu2trans, read
+csStu3, csStu5application, checkStatus
+eeStu1, csStu4application, checkStatus
+csStu1, csStu1trans, read
+csStu5, eeStu3application, checkStatus
+csStu1, eeStu4trans, read
+csStu1, csStu5trans, read
+csStu2, csStu1application, checkStatus
+csStu2, csStu5application, checkStatus
+csStu1, eeStu3application, checkStatus
+admissions1, application2, read,
+eeStu1, csStu2application, checkStatus
+eeStu2, csStu2application, checkStatus
+admissions1, csStu1application, read,
+eeStu5, application2, checkStatus
+csStu4, csStu3application, checkStatus
+admissions1, eeStu3application, read,
+eeStu3, eeStu4trans, read
+csStu3, eeStu4application, checkStatus
+csStu3, csStu2trans, read
+csStu4, eeStu4application, checkStatus
+eeStu3, application2, checkStatus
+eeStu5, csStu2trans, read
+admissions2, csStu5application, setStatus
+csStu3, csStu1trans, read
+admissions2, eeStu2application, setStatus
+csStu5, eeStu1application, checkStatus
+csStu5, eeStu3trans, read
+eeStu5, eeStu1application, checkStatus
+admissions2, csStu5application, read,
+csStu5, csStu5trans, read
+eeStu4, csStu1application, checkStatus
+csStu4, csStu2trans, read
+eeStu5, csStu1trans, read
+csStu2, application2, checkStatus
+csStu5, csStu1application, checkStatus
+eeStu2, application2, checkStatus
+registrar2, ee602roster, read
+csStu1, application1, checkStatus
+admissions2, application2, read,
+eeStu4, eeStu3trans, read
+registrar1, ee601roster, read
+eeStu5, eeStu5application, checkStatus
+eeStu4, csStu5trans, read
+eeStu4, eeStu4application, checkStatus
+csStu3, eeStu3application, checkStatus
+eeStu2, csStu5application, checkStatus
+csStu3, eeStu5trans, read
+eeStu4, eeStu1application, checkStatus
+csStu3, eeStu5application, checkStatus
+csStu2, eeStu3trans, read
+eeStu3, eeStu5application, checkStatus
+eeStu4, eeStu4trans, read
+eeStu4, eeStu5application, checkStatus
+admissions2, eeStu5application, setStatus
+csStu2, eeStu5trans, read
+admissions2, csStu1application, setStatus
+registrar2, cs601roster, read
+csStu3, eeStu3trans, read
+csStu1, csStu3application, checkStatus
+eeStu5, eeStu1trans, read
+csStu4, application2, checkStatus
+csStu1, csStu4trans, read
+csStu5, csStu5application, checkStatus
+eeStu4, csStu4application, checkStatus
+csStu2, eeStu4trans, read
+csStu2, csStu1trans, read
+eeStu3, csStu2application, checkStatus
+eeStu5, application1, checkStatus
+registrar2, cs602roster, read
+admissions2, application1, read,
+csStu2, eeStu1trans, read
+csStu4, csStu2application, checkStatus
+csStu5, csStu1trans, read
+csStu5, eeStu4trans, read
+admissions1, eeStu5application, setStatus
+registrar2, cs101roster, write,
+csStu5, csStu2trans, read
+csStu4, csStu4application, checkStatus
+csStu3, csStu5trans, read
+eeStu1, eeStu3application, checkStatus
+eeStu1, csStu2trans, read
+eeStu5, csStu1application, checkStatus
+registrar2, cs601roster, write,
+csStu3, csStu2application, checkStatus
+csStu4, eeStu3trans, read
+csStu4, csStu5application, checkStatus
+eeStu2, eeStu1application, checkStatus
+admissions1, csStu5application, read,
+csStu1, eeStu2trans, read
+admissions2, eeStu4application, setStatus
+csStu2, csStu4application, checkStatus
+registrar1, ee602roster, write,
+csStu3, csStu1application, checkStatus
+eeStu2, application1, checkStatus
+csStu5, csStu3trans, read
+csStu1, csStu5application, checkStatus
+csStu4, csStu1application, checkStatus
+admissions1, csStu2application, setStatus
+eeStu1, csStu4trans, read
+registrar1, cs601roster, write,
+
+===============================================================
+ITERATION : 2
+===============================================================
+csStu5, csStu5trans, read
+csStu2, csStu2application, checkStatus
+csStu4, csStu4trans, read
+csStu1, csStu1application, checkStatus
+csStu3, csStu3application, checkStatus
+eeStu4, eeStu4application, checkStatus
+eeStu5, eeStu5application, checkStatus
+eeStu1, eeStu1trans, read
+eeStu4, eeStu4trans, read
+eeStu5, eeStu5trans, read
+csStu5, csStu5application, checkStatus
+eeStu2, eeStu2trans, read
+eeStu3, eeStu3application, checkStatus
+eeStu2, eeStu2application, checkStatus
+csStu2, csStu2trans, read
+csStu3, csStu3trans, read
+csStu4, csStu4application, checkStatus
+eeStu1, eeStu1application, checkStatus
+csStu1, csStu1trans, read
+applicant2, application2, checkStatus
+eeStu3, eeStu3trans, read
+applicant1, application1, checkStatus
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+csFac2, cs601roster, acts={read}
+csStu5, csStu5trans, acts={read}
+eeStu5, ee601gradebook, acts={readScore, readMyScores}
+eeStu5, eeStu5trans, acts={read}
+eeStu3, eeStu3trans, acts={read}
+csStu4, csStu4trans, acts={read}
+csStu3, csStu3trans, acts={read}
+eeFac1, ee101roster, acts={read}
+eeStu1, eeStu1trans, acts={read}
+eeFac2, ee601roster, acts={read}
+csStu5, cs602gradebook, acts={readScore, readMyScores}
+csStu4, cs601gradebook, acts={readScore, readMyScores}
+csStu5, cs601gradebook, acts={readScore, readMyScores}
+eeStu5, ee602gradebook, acts={readScore, readMyScores}
+eeStu3, ee602gradebook, acts={readScore, readMyScores}
+csStu1, csStu1trans, acts={read}
+eeStu4, ee601gradebook, acts={readScore, readMyScores}
+csStu1, cs101gradebook, acts={readScore, readMyScores}
+csFac1, cs101roster, acts={read}
+eeStu2, eeStu2trans, acts={read}
+eeStu2, ee601gradebook, acts={readScore, readMyScores}
+eeStu1, ee101gradebook, acts={readScore, readMyScores}
+csStu2, cs601gradebook, acts={readScore, readMyScores}
+csStu3, cs602gradebook, acts={readScore, readMyScores}
+csStu2, csStu2trans, acts={read}
+eeStu4, eeStu4trans, acts={read}

@@ -1,0 +1,272 @@
+csStu4, eeStu5application, checkStatus
+eeStu1, eeStu3application, checkStatus
+eeStu5, eeStu2application, checkStatus
+eeStu5, eeStu4application, checkStatus
+admissions2, csStu3application, setStatus
+admissions2, eeStu1application, read,
+eeStu1, ee101gradebook, addScore,
+registrar2, cs601roster, type [ {roster}
+eeStu1, csStu5application, checkStatus
+admissions1, csStu5application, setStatus
+registrar2, ee101gradebook, type [ {roster}
+csStu3, eeStu5application, checkStatus
+eeStu2, csStu1application, checkStatus
+csStu2, eeStu1application, checkStatus
+admissions1, csStu3application, read,
+admissions1, eeStu5application, setStatus
+csStu5, cs601gradebook, readScore,
+admissions1, application1, setStatus
+csStu3, application2, checkStatus
+csStu1, csStu4application, checkStatus
+eeStu3, csStu4application, checkStatus
+applicant2, eeStu3application, checkStatus
+registrar1, cs602roster, type [ {roster}
+admissions1, csStu1application, setStatus
+csStu4, csStu2application, checkStatus
+eeStu3, eeStu4application, checkStatus
+csStu1, cs101gradebook, readScore,
+admissions2, csStu4application, setStatus
+registrar1, csStu1trans, type [ {roster}
+eeStu2, csStu2application, checkStatus
+eeStu4, csStu5application, checkStatus
+admissions2, application2, setStatus
+eeStu5, eeStu1application, checkStatus
+eeStu1, eeStu4application, checkStatus
+csStu2, cs601gradebook, readMyScores
+eeStu2, eeStu2application, checkStatus
+eeStu4, application2, checkStatus
+applicant2, application1, checkStatus
+eeStu5, ee602gradebook, readMyScores
+registrar2, cs601gradebook, type [ {roster}
+admissions1, csStu4application, read,
+admissions2, eeStu4application, setStatus
+csStu2, eeStu3application, checkStatus
+registrar1, cs101gradebook, type [ {roster}
+registrar2, eeStu2trans, type [ {roster}
+csStu1, csStu2application, checkStatus
+csStu5, eeStu4application, checkStatus
+csStu4, cs601gradebook, addScore,
+eeStu4, ee601gradebook, readMyScores
+registrar2, ee601gradebook, type [ {roster}
+csStu3, eeStu4application, checkStatus
+admissions2, csStu4application, read,
+registrar1, eeStu3trans, type [ {roster}
+eeStu2, csStu3application, checkStatus
+eeStu5, csStu4application, checkStatus
+registrar2, cs101gradebook, type [ {roster}
+csStu1, csStu3application, checkStatus
+csStu1, application1, checkStatus
+eeStu2, eeStu1application, checkStatus
+eeStu1, application1, checkStatus
+eeStu5, application2, checkStatus
+applicant1, csStu2application, checkStatus
+admissions2, eeStu2application, read,
+applicant1, eeStu5application, checkStatus
+applicant1, application2, checkStatus
+admissions1, csStu4application, setStatus
+admissions2, application2, read,
+csStu4, application2, checkStatus
+csStu4, cs601gradebook, readMyScores
+csStu5, eeStu1application, checkStatus
+csStu1, eeStu3application, checkStatus
+registrar2, cs602roster, type [ {roster}
+csStu5, application2, checkStatus
+eeStu3, csStu5application, checkStatus
+applicant1, eeStu2application, checkStatus
+eeStu4, csStu2application, checkStatus
+eeStu1, eeStu2application, checkStatus
+registrar2, ee101roster, type [ {roster}
+eeStu5, ee602gradebook, readScore,
+admissions2, eeStu1application, setStatus
+csStu4, csStu4application, checkStatus
+admissions2, eeStu5application, setStatus
+admissions1, csStu3application, setStatus
+csStu2, application1, checkStatus
+eeStu4, eeStu1application, checkStatus
+csStu4, eeStu3application, checkStatus
+csStu5, csStu1application, checkStatus
+registrar1, eeStu5trans, type [ {roster}
+csStu5, csStu3application, checkStatus
+eeStu1, eeStu1application, checkStatus
+eeStu2, eeStu3application, checkStatus
+registrar1, csStu5trans, type [ {roster}
+admissions2, csStu1application, setStatus
+csStu4, eeStu1application, checkStatus
+admissions2, eeStu4application, read,
+admissions1, eeStu5application, read,
+eeStu4, csStu3application, checkStatus
+csStu3, csStu1application, checkStatus
+eeStu1, application2, checkStatus
+admissions2, eeStu5application, read,
+eeStu3, eeStu2application, checkStatus
+admissions2, csStu5application, read,
+registrar1, eeStu1trans, type [ {roster}
+csStu1, eeStu2application, checkStatus
+csStu5, eeStu3application, checkStatus
+csStu4, cs601gradebook, readScore,
+eeStu2, csStu5application, checkStatus
+admissions1, application1, read,
+eeStu3, ee602gradebook, addScore,
+eeStu4, csStu4application, checkStatus
+applicant1, csStu3application, checkStatus
+registrar2, eeStu4trans, type [ {roster}
+csStu2, csStu2application, checkStatus
+csStu1, eeStu1application, checkStatus
+eeStu1, eeStu5application, checkStatus
+eeStu3, ee602gradebook, readScore,
+applicant2, eeStu1application, checkStatus
+admissions1, csStu5application, read,
+csStu5, csStu4application, checkStatus
+eeStu5, csStu5application, checkStatus
+applicant2, eeStu2application, checkStatus
+admissions1, eeStu3application, setStatus
+admissions2, csStu3application, read,
+csStu5, cs601gradebook, addScore,
+eeStu3, application1, checkStatus
+admissions2, csStu2application, read,
+registrar2, ee602gradebook, type [ {roster}
+registrar2, csStu2trans, type [ {roster}
+csStu4, eeStu2application, checkStatus
+eeStu5, eeStu3application, checkStatus
+registrar2, eeStu5trans, type [ {roster}
+eeStu1, ee101gradebook, readMyScores
+eeStu2, eeStu5application, checkStatus
+admissions1, application2, read,
+csStu4, csStu5application, checkStatus
+csStu3, eeStu3application, checkStatus
+eeStu2, application2, checkStatus
+applicant2, csStu3application, checkStatus
+eeStu3, eeStu3application, checkStatus
+eeStu1, csStu2application, checkStatus
+csStu5, cs602gradebook, addScore,
+eeStu5, csStu1application, checkStatus
+admissions2, application1, read,
+applicant2, csStu2application, checkStatus
+csStu2, application2, checkStatus
+csStu2, cs601gradebook, readScore,
+admissions1, eeStu4application, read,
+csStu2, eeStu2application, checkStatus
+registrar1, ee101roster, type [ {roster}
+csStu5, csStu5application, checkStatus
+eeStu5, csStu2application, checkStatus
+csStu1, csStu1application, checkStatus
+registrar2, eeStu3trans, type [ {roster}
+eeStu2, ee601gradebook, readMyScores
+csStu2, csStu4application, checkStatus
+eeStu3, csStu3application, checkStatus
+admissions2, csStu2application, setStatus
+registrar2, csStu4trans, type [ {roster}
+eeStu3, csStu1application, checkStatus
+registrar1, ee602gradebook, type [ {roster}
+eeStu2, ee601gradebook, addScore,
+eeStu5, ee601gradebook, readMyScores
+registrar1, cs601gradebook, type [ {roster}
+eeStu4, eeStu2application, checkStatus
+admissions1, eeStu1application, read,
+csStu3, eeStu1application, checkStatus
+csStu2, eeStu5application, checkStatus
+csStu4, csStu3application, checkStatus
+csStu1, application2, checkStatus
+registrar1, cs101roster, type [ {roster}
+eeStu4, eeStu3application, checkStatus
+csStu3, application1, checkStatus
+eeStu5, eeStu5application, checkStatus
+registrar2, cs602gradebook, type [ {roster}
+registrar2, csStu5trans, type [ {roster}
+eeStu5, ee602gradebook, addScore,
+admissions2, eeStu3application, read,
+csStu2, csStu5application, checkStatus
+eeStu5, ee601gradebook, addScore,
+registrar1, ee601roster, type [ {roster}
+csStu5, cs601gradebook, readMyScores
+registrar1, csStu3trans, type [ {roster}
+csStu3, csStu5application, checkStatus
+eeStu3, csStu2application, checkStatus
+applicant1, eeStu1application, checkStatus
+eeStu2, eeStu4application, checkStatus
+csStu2, csStu1application, checkStatus
+admissions1, csStu2application, setStatus
+csStu5, application1, checkStatus
+eeStu4, application1, checkStatus
+csStu3, cs602gradebook, readScore,
+eeStu4, eeStu4application, checkStatus
+registrar2, csStu1trans, type [ {roster}
+csStu3, csStu4application, checkStatus
+eeStu2, ee601gradebook, readScore,
+csStu3, eeStu2application, checkStatus
+eeStu4, csStu1application, checkStatus
+admissions1, application2, setStatus
+eeStu4, ee601gradebook, readScore,
+admissions1, eeStu2application, setStatus
+registrar1, cs602gradebook, type [ {roster}
+csStu3, csStu2application, checkStatus
+applicant2, csStu4application, checkStatus
+csStu5, eeStu2application, checkStatus
+csStu2, eeStu4application, checkStatus
+admissions2, application1, setStatus
+eeStu1, csStu3application, checkStatus
+applicant1, csStu1application, checkStatus
+applicant2, application2, checkStatus
+registrar2, eeStu1trans, type [ {roster}
+admissions2, csStu1application, read,
+csStu4, eeStu4application, checkStatus
+registrar2, csStu3trans, type [ {roster}
+csStu5, cs602gradebook, readMyScores
+applicant1, eeStu4application, checkStatus
+applicant2, eeStu5application, checkStatus
+registrar1, ee601gradebook, type [ {roster}
+csStu1, csStu5application, checkStatus
+csStu1, cs101gradebook, addScore,
+csStu3, cs602gradebook, readMyScores
+eeStu1, csStu1application, checkStatus
+applicant1, eeStu3application, checkStatus
+applicant2, eeStu4application, checkStatus
+csStu2, cs601gradebook, addScore,
+eeStu2, application1, checkStatus
+csStu1, eeStu5application, checkStatus
+csStu3, cs602gradebook, addScore,
+csStu3, csStu3application, checkStatus
+csStu2, csStu3application, checkStatus
+admissions2, eeStu2application, setStatus
+applicant1, csStu4application, checkStatus
+csStu1, cs101gradebook, readMyScores
+csStu1, eeStu4application, checkStatus
+csStu4, application1, checkStatus
+eeStu5, application1, checkStatus
+applicant2, csStu1application, checkStatus
+registrar1, csStu4trans, type [ {roster}
+registrar1, csStu2trans, type [ {roster}
+eeStu3, eeStu1application, checkStatus
+applicant1, application1, checkStatus
+eeStu1, ee101gradebook, readScore,
+admissions2, eeStu3application, setStatus
+admissions1, eeStu1application, setStatus
+csStu5, cs602gradebook, readScore,
+csStu4, csStu1application, checkStatus
+eeStu3, eeStu5application, checkStatus
+eeStu5, ee601gradebook, readScore,
+applicant1, csStu5application, checkStatus
+admissions1, csStu1application, read,
+eeStu3, ee602gradebook, readMyScores
+eeStu3, application2, checkStatus
+eeStu2, csStu4application, checkStatus
+admissions1, eeStu4application, setStatus
+registrar1, eeStu2trans, type [ {roster}
+admissions1, csStu2application, read,
+applicant2, csStu5application, checkStatus
+admissions2, csStu5application, setStatus
+registrar1, eeStu4trans, type [ {roster}
+admissions1, eeStu2application, read,
+eeStu4, ee601gradebook, addScore,
+registrar2, ee602roster, type [ {roster}
+eeStu5, csStu3application, checkStatus
+registrar1, ee101gradebook, type [ {roster}
+registrar1, cs601roster, type [ {roster}
+csStu5, eeStu5application, checkStatus
+csStu5, csStu2application, checkStatus
+registrar2, cs101roster, type [ {roster}
+eeStu1, csStu4application, checkStatus
+eeStu4, eeStu5application, checkStatus
+admissions1, eeStu3application, read,
+registrar2, ee601roster, type [ {roster}
+registrar1, ee602roster, type [ {roster}

@@ -1,0 +1,21 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {registrar}; student = student, type [ {transcript}; {read})
+rule(department [ {cs}; crs ] {cs602}, position [ {student}; {readScore}, crsTaken ] crs)
+rule(isChair [ {True}, position [ {faculty}; student = student, type [ {transcript}; {read})
+rule(position [ {student}; student = student, type [ {transcript}; {read})
+rule(position [ {staff}, department [ {registrar}; crs = crs, type [ {roster}; {write})
+rule(position [ {faculty}, department [ {cs}; crs = crs, type [ {roster}; {read})
+rule(position [ {student}; student = student, type [ {application}; {checkStatus})
+rule(position [ {staff}, department [ {admissions}; student = student, type [ {application}; {setStatus})
+rule(position [ {staff}, department [ {admissions}; student = student, type [ {application}; {read})
+rule(position [ {faculty}, department [ {ee}; crs = crs, type [ {gradebook}; {readScore})
+rule(department [ {cs}, position [ {student}; crs = crs, type [ {gradebook}; {readMyScores}, crsTaken ] crs)
+rule(department [ {ee}, position [ {student}; crs = crs, type [ {gradebook}; {readMyScores}, crsTaken ] crs)
+rule(position [ {faculty}, department [ {cs}; crs = crs, type [ {gradebook}; {addScore, changeScore, assignGrade})
+rule(position [ {faculty}, department [ {ee}; crs = crs, type [ {gradebook}; {addScore, changeScore, assignGrade})
+rule(position [ {applicant}; student = student, type [ {application}; {checkStatus})
+rule(department [ {cs}, position [ {student}; crs = crs, type [ {gradebook}; {readScore}, crsTaught ] crs)
+rule(department [ {ee}, position [ {student}; crs = crs, type [ {gradebook}; {readScore}, crsTaught ] crs)

@@ -146,9 +146,10 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
 
     #TODO: delcare output stats files and write to them
     
-
     is_match = False
     counter = 0
+    print(f"running iteration {counter} ...")
+
     session_abac_file ="llm-research/session/session-abac.txt"
     session_acl_file="llm-research/session/session-ACL.txt"
     session_comparison_file="llm-research/session/session-comparison.txt"
@@ -169,6 +170,8 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
         with open(session_llm_response_file, "w", encoding="utf-8") as of:
             of.write(payload_text)
     
+    stats_text = f"it : {counter} |"
+    append_to_file( "llm-research/session/output/statistics.txt", stats_text )
     is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
     write_to_logs(counter)
 
@@ -176,7 +179,7 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
 
     while(is_match is False and counter < max_num_it):
 
-        print("api loop running")
+        print(f"running iteration {counter} ...")
 
         prompt_file = ("prompts/subsequent-starting-prompt.txt")
         prompt_generator(gt_acl_file, attribute_data_file, attribute_data_description_file,prompt_file, complete_request_file , session_comparison_file )
@@ -195,8 +198,12 @@ def iterate_api_requests(gt_acl_file, attribute_data_file, attribute_data_descri
             with open(session_llm_response_file, "w", encoding="utf-8") as of:
                 of.write(payload_text)
 
+        stats_text = f"it : {counter} | "
+        append_to_file( "llm-research/session/output/statistics.txt", stats_text )
         is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
         write_to_logs(counter)
+        
+        
 
         counter +=1
 
@@ -219,10 +226,10 @@ def create_session_data(session_abac_file, attribute_data_file, session_response
         generate_acl(user2, res2, rule2, llm_acl_file)
 
         #store the comparison in a text object
-        temp_text, is_match = compare_acl(gt_acl_file,llm_acl_file)
-
+        stats_text, debug_text, is_match = compare_acl(gt_acl_file,llm_acl_file)
+        append_to_file( "llm-research/session/output/statistics.txt", stats_text)
         #write the comparison to a text file
-        write_to_file(session_comparison_file, temp_text)
+        write_to_file(session_comparison_file, debug_text)
 
         return is_match
 

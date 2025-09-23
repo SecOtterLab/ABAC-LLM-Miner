@@ -37,6 +37,7 @@ def main():
     #clear cache and session files
     clear_text_files("llm-research/session/cache")
     clear_text_files("llm-research/session")
+    clear_text_files("llm-research/session/output")
 
    
     with open(config_file, "r", encoding="utf-8") as f:

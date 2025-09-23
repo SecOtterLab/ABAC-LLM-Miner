@@ -7,8 +7,6 @@ def load_rules_from_file(path: str):
                 rules.append(line)
     return rules
 
-
-
 def unwrap_rule(str) -> str:
     str = str.strip()
     str = str.replace("rule", "",1)
@@ -70,103 +68,140 @@ def rule_to_data_set(arr, arr_name):
         arr[i] = unwrap_rule(arr[i])
         section_arr = split_rule(arr[i])
         id = f"{arr_name} {i}"
-        temp_arr.append({"id": id, "subCond": section_arr[0] , "resCond": section_arr[1], "acts":section_arr[2] , "cons":section_arr[3], "rule": unaltered_rule})
+        temp_arr.append({"id": id, "subCond": section_arr[0] , "resCond": section_arr[1], "acts":str(section_arr[2]) , "cons":section_arr[3], "rule": unaltered_rule})
 
     return temp_arr
 
 def atomic_section(str):
+
+    # print(str)
     atomic_arr = [s.strip() for s in str.split(",")]
     #remove sets of brackets for easier parsing
     # for i in range (len(atomic_arr)):
     #     atomic_arr[i] = atomic_arr[i].replace("{", "").replace("}", "")
 
+    atomic_arr.sort()
+    # printArr(atomic_arr)
+    # print(f"=================================\n")
     return atomic_arr
 
 def sub_atomic_section(str):
     atomic_arr = [s.strip() for s in str.split(" ")]
     return atomic_arr
 
+def str_set_to_arr(str):
+    #take a string of set {r w x} and return an arr [r, w, x]
+    atomic_arr = [s.strip().replace("{", "").replace("}","") for s in str.split(" ")]
+    return atomic_arr
+
 def tokenize(str):
     return str.replace("{", " ").replace("}", " ").split()
     
-def jaccard_calc_totals(gt_arr, llm_arr):
+def jaccard(str1, str2):
+    #arguements are string
 
-    gt_tokens = []
-    llm_tokens = []
-    for gt in gt_arr:
-        temp = tokenize(gt)
-        for str in temp:
-            gt_tokens.append(str)
+    set1 = set(str_set_to_arr(str1))
+    set2 = set(str_set_to_arr(str2))
 
+    intersection = len(set1 & set2)
+    union = len(set1 | set2)
 
-    for llm in llm_arr:
-        temp = tokenize(llm)
-        for str in temp:
-            llm_tokens.append(str)
+    # jacc_value = float(intersection / union)
 
-  
-    gt_set = set(gt_tokens)
-    llm_set = set(llm_tokens)
-
-    intersection = gt_set.intersection(llm_set)
-    union = gt_set.union(llm_set)
-    # print(f"{len(intersection)},  {len(union)}")
-    return (len(intersection), len(union))
+    return float(intersection / union)
 
 
-def rule_set_compare(gt_set, llm_set, rule_map):
-    gt_arr = rule_to_data_set(gt_set, "GT")
-    llm_arr = rule_to_data_set(llm_set, "LLM")
+def rule_set_compare(rules1, rules2, rule_map):
+    arr1 = rule_to_data_set(rules1, "GT")
+    arr2 = rule_to_data_set(rules2, "LLM")
 
-    for gt_rule in gt_arr:
+    for rule1 in arr1:
 
         # print(gt_rule)
-        gt_subCond = atomic_section (gt_rule["subCond"])
-        gt_resCond = atomic_section(gt_rule["resCond"])
-        gt_acts = atomic_section(gt_rule["acts"])
-        gt_cons = atomic_section(gt_rule["cons"])
+      
 
-        rule_map[gt_rule['rule']] =("EMPTY_BY_DEFAULT", -1 )
+        rule_map[rule1['rule']] =("EMPTY_BY_DEFAULT", -1 )
 
-        for llm_rule in llm_arr:
+        for rule2 in arr2:
             # print(llm_rule)
-            intersection_count = 0
-            union_count= 0
-            llm_subCond = atomic_section (llm_rule["subCond"])
-            llm_resCond = atomic_section(llm_rule["resCond"])
-            llm_acts = atomic_section(llm_rule["acts"])
-            llm_cons = atomic_section(llm_rule["cons"])
+            sum_value = 0
             
-
-            # print(f"{gt_subCond} <=> {llm_subCond}\n")
-            inter, union = jaccard_calc_totals(gt_subCond, llm_subCond )
-            intersection_count += inter
-            union_count += union
-
-
-            # print(f"{gt_resCond} <=> {llm_resCond}\n")
-            inter, union = jaccard_calc_totals(gt_resCond, llm_resCond )
-            intersection_count += inter
-            union_count += union
-            
-            # print(f"{gt_acts} <=> {llm_acts}\n")
-            inter, union = jaccard_calc_totals(gt_acts, llm_acts )
-            intersection_count += inter
-            union_count += union
-
-            # print(f"{gt_cons} <=> {llm_cons}\n")
-            inter, union = jaccard_calc_totals(gt_cons, llm_subCond )
-            intersection_count += inter
-            union_count += union
-
-            jacc_val= intersection_count/union_count
-            # print(f"inter: {intersection_count} union: {union_count} jacc: {jacc_val}")
-            # print("===============================")
-            
-            if jacc_val > rule_map[gt_rule['rule']][1]:
-                rule_map[gt_rule['rule']] = (llm_rule["rule"], jacc_val)
+            sum_value += analyze_atomic(rule1["subCond"], rule2["subCond"])
+            sum_value += analyze_atomic(rule1["resCond"], rule2["resCond"])
+            sum_value += jaccard(rule1["acts"], rule2["acts"])
+            sum_value += analyze_atomic(rule1["cons"], rule2["cons"])
 
 
+            avg_value = (sum_value/4)
+
+            if avg_value > rule_map[rule1['rule']][1]:
+                rule_map[rule1['rule']] = (rule2["rule"], avg_value)
+
+
+
+
+    return rule_map
+
+
+def populate_empty_tag(arr, amount):
+    for _ in range(amount):
+        arr.append("<empty>") 
+    return
+
+def analyze_atomic(section1, section2):
+
+    #break down the sections str into an arr of atomic conditions
+    atomic_arr_1 = atomic_section(section1)
+    atomic_arr_2 = atomic_section(section2)
+
+    max_value = -1
+
+
+    for atomic_condition_1 in atomic_arr_1:
+        for atomic_condition_2 in atomic_arr_2:
+            subatomic_values_1 = sub_atomic_section(atomic_condition_1)
+            len_1 = len(subatomic_values_1)
+            subatomic_values_2 = sub_atomic_section(atomic_condition_2)
+            len_2 = len(subatomic_values_2)
+           
+            total_count = 0
+            total_matching = 0
+
+            if len_1 != len_2:
+                diff = (len_2-len_1)
+                if diff > 0:
+                    subatomic_values_1.extend(["<empty>"] * diff )
+                elif diff < 0:
+                    subatomic_values_2.extend(["<empty>"] * (-diff ))
+
+            for i in range(len(subatomic_values_1)):
+
+                
+                if(subatomic_values_1[i] == subatomic_values_2[i]):
+                    total_matching += 1
+                total_count += 1
+
+                value = total_matching / total_count
+
+            if value > max_value:
+                max_value = value
+                
+
+
+    
+
+            # print(f"{subatomic_values_1} <=> {subatomic_values_2} || matching {total_matching} total {total_count}")
+    return max_value
+
+
+    
+
+
+           
+
+
+
+#TODO compare sets 
 
 
     return
