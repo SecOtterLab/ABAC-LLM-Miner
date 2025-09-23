@@ -226,7 +226,7 @@ def create_session_data(session_abac_file, attribute_data_file, session_response
         generate_acl(user2, res2, rule2, llm_acl_file)
 
         #store the comparison in a text object
-        stats_text, debug_text, is_match = compare_acl(gt_acl_file,llm_acl_file)
+        stats_text, debug_text, is_match, pass_by = compare_acl(gt_acl_file,llm_acl_file)
         append_to_file( "llm-research/session/output/statistics.txt", stats_text)
         #write the comparison to a text file
         write_to_file(session_comparison_file, debug_text)

@@ -1,3 +1,8 @@
+from rule import *
+from myabac import parse_abac_file
+from user import *
+
+
 #function to traverse a file (ACL files) and store lines in a set to compare
 def file_to_set(file_name):
     
@@ -7,6 +12,16 @@ def file_to_set(file_name):
         for line in f:
             lines.add(line.strip())
     return lines
+
+
+def load_rules_from_file(path: str):
+    rules = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("rule"):
+                rules.append(line)
+    return rules
 
 def compare_acl (acl1, acl2):
 
@@ -32,14 +47,14 @@ def compare_acl (acl1, acl2):
     jacc_val = jaccard(acl1 , acl2)
 
     stats_text = (f"jaccVal : {jacc_val} | gt_acl : {len(acl1)} | llm_acl : {len(acl2)} | intersection : {len(common)} underPermissions : {len(only_in_acl1)} | overPermissions : {len(only_in_acl2)}\n")
-    # print(stats_text)
+    print(stats_text)
 
     #if there is a 100% match then lists that have unique ACL line will return true
     complete_match = False
     if(jacc_val > .98):
         complete_match = True
 
-    return stats_text, lines, complete_match
+    return stats_text, lines, complete_match, jacc_val
 
 
 #Snipets of code taken from core.myabac generate_heatmap_data
@@ -97,6 +112,44 @@ def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
     return
 
 
+def acl_generate_single_rule(file_1, file_2):
+
+
+    arr_1 = load_rules_from_file(file_1)
+    arr_2 = load_rules_from_file(file_2)
+
+    #pass in the file where we want to store the abac file that is about to be generated
+    abac_file = "llm-research/session/session-abac.abac"
+
+    #generate the abac data structures
+    user, res, _  = parse_abac_file(abac_file)
+
+    best_match ={}
+
+
+    for rule1 in arr_1:
+        rule_manager = RuleManager()
+        rule_manager.parse_rule(rule1)
+        generate_acl(user, res, rule_manager, "rule-test-1.txt")
+
+        best_match[rule1] =("EMPTY_BY_DEFAULT", -1 )
+
+        for rule2 in arr_2:
+            rule_manager_2 = RuleManager()
+            rule_manager_2.parse_rule(rule2)
+            generate_acl(user, res, rule_manager_2, "rule-test-2.txt")
+
+            _, _, _, jaccVal = compare_acl("rule-test-1.txt", "rule-test-2.txt")
+  
+            if jaccVal > best_match[rule1][1]:
+                best_match[rule1] = (rule2, jaccVal)
+
+    print("test1")
+    for key, value in best_match.items():
+        print(f"{key} => {value}\n")
+    
+    return
+
 
 def jaccard(set1, set2):
 
@@ -104,6 +157,9 @@ def jaccard(set1, set2):
 
     intersection = len(s1 & s2)
     union = len(s1 | s2)
+
+    if union <= 0:
+        return 0
 
     jacc_value = float(intersection / union)
     return jacc_value
@@ -123,6 +179,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
