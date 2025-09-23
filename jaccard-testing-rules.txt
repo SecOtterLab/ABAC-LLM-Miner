@@ -10,13 +10,59 @@
 #rule(position [ {staff}, department [ {registrar}; type [ {roster}; {read write}; )
 #rule(position [ {student}; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
 #
+#rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+#rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs;)
+#rule(position [ {faculty}; type [ {gradebook}; {changeScore assignGrade}; crsTaught ] crs)
+#rule(department [ {registrar}; type [ {roster}; {read write}; )
+#rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
+#rule(; type [ {transcript}; {read}; uid=student)
+#rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+#rule(department [ {registrar}; type [ {transcript}; {read}; )
+#rule(; type [ {application}; {checkStatus}; uid=student)
+#rule(department [ {admissions}; type [ {application}; {read setStatus}; )
+##
+#
+#ground truth rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+#perfect match
 rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
-rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs;)
-rule(position [ {faculty}; type [ {gradebook}; {changeScore assignGrade}; crsTaught ] crs)
-rule(department [ {registrar}; type [ {roster}; {read write}; )
-rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
-rule(; type [ {transcript}; {read}; uid=student)
-rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
-rule(department [ {registrar}; type [ {transcript}; {read}; )
-rule(; type [ {application}; {checkStatus}; uid=student)
-rule(department [ {admissions}; type [ {application}; {read setStatus}; )
+
+#condition present when it should not be
+rule(fake [ {wrong}; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+
+
+#too many automic conditions 1:2
+rule(; type [ {gradebook}, fake [ {wrong}; {readMyScores}; crsTaken ] crs)
+
+#condition missing
+rule(; ; {readMyScores}; crsTaken ] crs)
+
+#set in constraints has too many values
+rule(; type [ {gradebook, fake}; {readMyScores}; crsTaken ] crs)
+
+#set in constraints wrong
+rule(; type [ {fake, wrong}; {readMyScores}; crsTaken ] crs)
+
+#over permissions in the acts
+rule(; type [ {gradebook}; {readMyScores, fake, wrong}; crsTaken ] crs)
+
+#copletely wrong
+rule(; wrong ] {fake}; {wrong}; fake = wrong)
+
+#duplicate in set
+rule(; type [ {gradebook, gradebook}; {readMyScores}; crsTaken ] crs)
+
+
+#empty set
+rule(; type [ {}; {readMyScores}; crsTaken ] crs)
+
+#acts empty
+rule(; type [ {gradebook}; {}; crsTaken ] crs)
+
+#blank
+rule(; ; ; )
+
+
+
+
+
+
