@@ -6,6 +6,10 @@ from acl_tools import compare_acl, generate_acl, rule_semantic_analyzer
 from myabac import parse_abac_file
 from rule_syntax_analyzer import rule_set_syntax_analyzer
 
+def write_map_to_file(path: str, data_map: dict):
+    with open(path, "w", encoding="utf-8") as f:
+        for key, value in data_map.items():
+            f.write(f"{key} : {value}\n")
 
 def write_to_file(filename, lines):
 
@@ -172,13 +176,21 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
     
     #generate syntax comparison
     syntax_jacc_avg, syntax_map = rule_set_syntax_analyzer(gt_abac_rules_file, session_llm_response_file)
+    write_map_to_file("llm-research/session/session-gt-to-llm-syntax.txt", syntax_map)
 
     #generate semantic comparison
     semantic_jacc_avg , semantic_map = rule_semantic_analyzer(gt_abac_rules_file, session_llm_response_file, attribute_data_file)
+    write_map_to_file("llm-research/session/session-gt-to-llm-semantic.txt", semantic_map )
 
-    stats_text = f"it : {counter} |"
+    stats_text = f"it : {counter} ,"
     append_to_file( "llm-research/session/output/statistics.txt", stats_text )
     is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
+    stats_text = f" syntaxJaccAvg : {syntax_jacc_avg}, "
+    stats_text += f" semanticJacc : {semantic_jacc_avg}, "
+    append_to_file( "llm-research/session/output/statistics.txt", stats_text )
+
+
+
     write_to_logs(counter)
 
     counter +=1
@@ -210,13 +222,26 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
         #generate semantic comparison
         semantic_jacc_avg , semantic_map = rule_semantic_analyzer(gt_abac_rules_file, session_llm_response_file, attribute_data_file)
 
-        #TODO write these values into files
-        stats_text = f"it : {counter} | "
+        stats_text = f"\nit : {counter} ,"
         append_to_file( "llm-research/session/output/statistics.txt", stats_text )
         is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
+        stats_text = f" syntaxJaccAvg : {syntax_jacc_avg}, "
+        stats_text += f" semanticJacc : {semantic_jacc_avg}, "
+        append_to_file( "llm-research/session/output/statistics.txt", stats_text )
+        write_map_to_file("llm-research/session/session-gt-to-llm-syntax.txt", syntax_map)
+        write_map_to_file("llm-research/session/session-gt-to-llm-semantic.txt", semantic_map)
         write_to_logs(counter)
         
-        
+    
+
+
+
+
+
+
+
+
+
 
         counter +=1
 
@@ -267,6 +292,13 @@ def write_to_logs(num_it):
     #write to output file too
     prepend_file("llm-research/session/output/generated-rules.txt", "llm-research/session/session-llm-response.txt")
     prepend_text_to_file("llm-research/session/output/generated-rules.txt", divider_text)
+
+    prepend_file("llm-research/session/cache/session-gt-to-llm-semantic.cache", "llm-research/session/session-gt-to-llm-semantic.txt")
+    prepend_text_to_file("llm-research/session/cache/session-gt-to-llm-semantic.cache", divider_text)
+
+    prepend_file("llm-research/session/cache/session-gt-to-llm-syntax.cache", "llm-research/session/session-gt-to-llm-syntax.txt")
+    prepend_text_to_file("llm-research/session/cache/session-gt-to-llm-syntax.cache", divider_text)
+
 
 
     return

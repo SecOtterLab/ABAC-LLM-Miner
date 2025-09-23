@@ -46,8 +46,8 @@ def compare_acl (acl1, acl2):
 
     jacc_val = jaccard(acl1 , acl2)
 
-    stats_text = (f"jaccVal : {jacc_val} , gt_acl : {len(acl1)} , llm_acl : {len(acl2)} , intersection : {len(common)} underPermissions : {len(only_in_acl1)} , overPermissions : {len(only_in_acl2)}\n")
-    print(stats_text)
+    stats_text = (f" jaccVal : {jacc_val} , gt_acl : {len(acl1)} , llm_acl : {len(acl2)} , intersection : {len(common)}, underPermissions : {len(only_in_acl1)} , overPermissions : {len(only_in_acl2)},")
+    # print(stats_text)
 
     #if there is a 100% match then lists that have unique ACL line will return true
     complete_match = False
@@ -143,12 +143,12 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
                 best_match[rule1] = (rule2, jaccVal)
         #TODO: make session folders for the files above
     for key, value in best_match.items():
-        print(f"{key} => {value}\n")
+        # print(f"{key} => {value}\n")
         jacc_total += value[1]
 
     jacc_avg = jacc_total / len(best_match)
 
-    print(f"TOTAL JACC  AVG: {jacc_avg}")
+    # print(f"TOTAL JACC  AVG: {jacc_avg}")
     return jacc_avg, best_match
 
 

@@ -137,12 +137,12 @@ def rule_set_syntax_analyzer(rules1, rules2):
             sum_value += jaccard(rule1["acts"], rule2["acts"])
             sum_value += analyze_atomic(rule1["cons"], rule2["cons"])
 
-            print(f"==============Analysis===========================================================================================\n")
-            print(f"subCond: {rule1["subCond"]} || {rule2["subCond"]}  == {analyze_atomic(rule1["subCond"], rule2["subCond"])}\n")
-            print(f"resCond: {rule1["resCond"]} || {rule2["resCond"]}  ==     {analyze_atomic(rule1["resCond"], rule2["resCond"])}\n")
-            print(f"acts: {rule1["acts"]} || {rule2["acts"]}  == {jaccard(rule1["acts"], rule2["acts"])}\n")
-            print(f"cons: {rule1["cons"]} || {rule2["cons"]}  == { analyze_atomic(rule1["cons"], rule2["cons"])}\n")
-            print(f"{rule1["rule"]} || {rule2["rule"]} || Score: {sum_value/4}")
+            # print(f"==============Analysis===========================================================================================\n")
+            # print(f"subCond: {rule1["subCond"]} || {rule2["subCond"]}  == {analyze_atomic(rule1["subCond"], rule2["subCond"])}\n")
+            # print(f"resCond: {rule1["resCond"]} || {rule2["resCond"]}  ==     {analyze_atomic(rule1["resCond"], rule2["resCond"])}\n")
+            # print(f"acts: {rule1["acts"]} || {rule2["acts"]}  == {jaccard(rule1["acts"], rule2["acts"])}\n")
+            # print(f"cons: {rule1["cons"]} || {rule2["cons"]}  == { analyze_atomic(rule1["cons"], rule2["cons"])}\n")
+            # print(f"{rule1["rule"]} || {rule2["rule"]} || Score: {sum_value/4}")
 
 
             avg_value = (sum_value/4)
@@ -152,7 +152,7 @@ def rule_set_syntax_analyzer(rules1, rules2):
 
 
     for key, value in best_match.items():
-        print(f"{key} => {value}\n")
+        # print(f"{key} => {value}\n")
         jacc_total += value[1]
 
     jacc_avg = jacc_total/len(best_match)

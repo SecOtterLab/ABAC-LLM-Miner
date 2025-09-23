@@ -1,7 +1,3 @@
-
-===============================================================
-ITERATION : 1
-===============================================================
 rule(position [ {registrar}; student = student, departments ] departments, type [ {transcript}; {read}; ])
 rule(position [ {csChair}; departments ] departments, student = student, type [ {transcript}; {read}; ])
 rule(position [ {student}; uid = student, type [ {transcript}; {read}; ])
@@ -25,21 +21,3 @@ rule(position [ {staff}; student = student, type [ {transcript}; department=cs];
 rule(position [ {staff}; student = student, type [ {transcript}; department=ee]; {read}; ])
 rule(position [ {staff}; type [ {application}; student=applicant1]; {setStatus read}; ])
 rule(position [ {staff}; type [ {application}; student=applicant2]; {setStatus read}; ])
-
-===============================================================
-ITERATION : 0
-===============================================================
-rule(position [ {registrar}; student = student, departments ] departments, type [ {transcript}; {read}; ])
-rule(position [ {csChair}; student = student, departments ] departments, type [ {transcript}; {read}; ])
-rule(position [ {student}, department [ {cs}; departments ] departments, type [ {gradebook}; {readScore}; ])
-rule(position [ {student}, department [ {ee}; departments ] departments, type [ {gradebook}; {readScore}; ])
-rule(position [ {staff}, department [ {registrar}; crs = crs, departments ] departments, type [ {roster}; {write}; ])
-rule(position [ {staff}, department [ {registrar}; crs = crs, departments ] departments, type [ {roster}; {read}; ])
-rule(position [ {faculty}, department [ {ee}; crs = crs; type [ {gradebook}; {readScore, assignGrade, addScore, changeScore}; ])
-rule(position [ {applicant}; student = student, type [ {application}; {checkStatus}; ])
-rule(position [ {faculty}, department [ {cs}; crs = crs; type [ {gradebook}; {readScore, assignGrade, addScore, changeScore}; ])
-rule(position [ {student}; student = student, type [ {transcript}; {read}; ])
-rule(position [ {applicant, staff}, department [ {admissions}; student = student, type [ {application}; {read, setStatus}; ])
-rule(position [ {student}, department [ {cs}; crsTaught ] crs; crs = crs, departments ] departments, type [ {gradebook, roster}; {readScore, addScore, readMyScores, read}; ])
-rule(position [ {student}, department [ {ee}; crsTaught ] crs; crs = crs, departments ] departments, type [ {gradebook, roster}; {readScore, addScore, readMyScores, read}; ])
-rule(position [ {student}; student = student, type [ {application}; {checkStatus}; ])

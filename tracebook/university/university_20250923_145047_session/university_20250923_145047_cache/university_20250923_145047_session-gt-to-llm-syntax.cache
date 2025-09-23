@@ -1,0 +1,28 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs) : ('rule(position [ {student}; crsTaken ] crs, departments ] departments, type [ {gradebook}; {readMyScores}; ])', 0.3333333333333333)
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs;) : ('rule(position [ {csFac1}; crs = crs, departments ] departments, type [ {gradebook}; {readScore addScore assignGrade changeScore}; ])', 0.20833333333333331)
+rule(position [ {faculty}; type [ {gradebook}; {changeScore assignGrade}; crsTaught ] crs) : ('rule(position [ {csFac1}; crs = crs, departments ] departments, type [ {gradebook}; {readScore addScore assignGrade changeScore}; ])', 0.375)
+rule(department [ {registrar}; type [ {roster}; {read write}; ) : ('rule(position [ {registrar}; crs = crs, departments ] departments, type [ {roster}; {write}; ])', 0.375)
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs) : ('rule(position [ {student}; uid = student, type [ {transcript}; {read}; ])', 0.5)
+rule(; type [ {transcript}; {read}; uid=student) : ('rule(position [ {student}; uid = student, type [ {transcript}; {read}; ])', 0.375)
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments) : ('rule(position [ {student}; uid = student, type [ {transcript}; {read}; ])', 0.4583333333333333)
+rule(department [ {registrar}; type [ {transcript}; {read}; ) : ('rule(position [ {registrar}; student = student, departments ] departments, type [ {transcript}; {read}; ])', 0.5)
+rule(; type [ {application}; {checkStatus}; uid=student) : ('rule(position [ {applicant}; uid = student, type [ {application}; {checkStatus}; ])', 0.375)
+rule(department [ {admissions}; type [ {application}; {read setStatus}; ) : ('rule(position [ {staff}; type [ {application}; department = admissions; {setStatus read}; ])', 0.3333333333333333)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs) : ('rule(position [ {student}, department [ {cs}; departments ] departments, type [ {gradebook}; {readScore}; ])', 0.125)
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs;) : ('rule(position [ {student}, department [ {cs}; departments ] departments, type [ {gradebook}; {readScore}; ])', 0.25)
+rule(position [ {faculty}; type [ {gradebook}; {changeScore assignGrade}; crsTaught ] crs) : ('rule(position [ {student}, department [ {cs}; departments ] departments, type [ {gradebook}; {readScore}; ])', 0.25)
+rule(department [ {registrar}; type [ {roster}; {read write}; ) : ('rule(position [ {staff}, department [ {registrar}; crs = crs, departments ] departments, type [ {roster}; {write}; ])', 0.375)
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs) : ('rule(position [ {student}; student = student, type [ {transcript}; {read}; ])', 0.5)
+rule(; type [ {transcript}; {read}; uid=student) : ('rule(position [ {student}; student = student, type [ {transcript}; {read}; ])', 0.375)
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments) : ('rule(position [ {student}; student = student, type [ {transcript}; {read}; ])', 0.4583333333333333)
+rule(department [ {registrar}; type [ {transcript}; {read}; ) : ('rule(position [ {registrar}; student = student, departments ] departments, type [ {transcript}; {read}; ])', 0.5)
+rule(; type [ {application}; {checkStatus}; uid=student) : ('rule(position [ {applicant}; student = student, type [ {application}; {checkStatus}; ])', 0.375)
+rule(department [ {admissions}; type [ {application}; {read setStatus}; ) : ('rule(position [ {applicant, staff}, department [ {admissions}; student = student, type [ {application}; {read, setStatus}; ])', 0.5416666666666666)

@@ -1,3 +1,0 @@
-jaccVal : 0.0 | gt_acl : 168 | llm_acl : 0 | intersection : 0 underPermissions : 168 | overPermissions : 0
-jaccVal : 0.09158878504672897 | gt_acl : 168 | llm_acl : 1000 | intersection : 98 underPermissions : 70 | overPermissions : 902
-jaccVal : 0.0 | gt_acl : 168 | llm_acl : 0 | intersection : 0 underPermissions : 168 | overPermissions : 0
