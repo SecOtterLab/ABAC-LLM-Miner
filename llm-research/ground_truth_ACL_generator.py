@@ -5,7 +5,7 @@ from acl_tools import generate_acl
 
 def gt_acl_generator(attribute_data_file, gt_rules_file, output_file):
     
-    print("running gt acl_gen")
+    print("running gt acl_gen...")
    
     #pass in the file where we want to store the abac file that is about to be generated
     abac_file = "llm-research/session/session-abac.abac"
@@ -28,11 +28,46 @@ def gt_acl_generator(attribute_data_file, gt_rules_file, output_file):
 
 
 def main():  
+    #   Permission counts: per Dr.Buis previous work on https://dl.acm.org/doi/abs/10.1145/3734436.3734441
+    #   edocument           :   32961
+    #   healthcare          :   43
+    #   project-management  :   101
+    #   university          :   168
+    #   workforce           :   15858    
 
-    attribute_data_file ="DATASETS-for-LLM/university/university-attribute-data.txt"
-    gt_rules_file="llm-research/ground-truth-ABAC-rules/university-abac-rules.txt"
-    output_file="llm-research/ground-truth-ACL/university-gt-ACL.txt"
-    gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # edocument
+    # attribute_data_file = "DATASETS-for-LLM/edocument/edocument-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/edocument-abac-rules.txt"
+    # output_file = "ground-truth-ACL/edocument-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+
+    # # healthcare
+    # attribute_data_file = "DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/healthcare-abac-rules.txt"
+    # output_file = "ground-truth-ACL/healthcare-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # project-management
+    # attribute_data_file = "DATASETS-for-LLM/project-management/project-management-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/project-management-abac-rules.txt"
+    # output_file = "ground-truth-ACL/project-management-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # university
+    # attribute_data_file = "DATASETS-for-LLM/university/university-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/university-abac-rules.txt"
+    # output_file = "ground-truth-ACL/university-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # workforce
+    # attribute_data_file = "DATASETS-for-LLM/workforce/workforce-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/workforce-abac-rules.txt"
+    # output_file = "ground-truth-ACL/workforce-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+
 
 
     return  

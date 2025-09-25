@@ -1,0 +1,7 @@
+rule(adminRoles [ {planner}]; type [ {schedule}; {read}; projects ] project) : ('rule( ; type [ {schedule}; {read}; projects ] project)', 0.48)
+rule(adminRoles [ {auditor}]; type [ {schedule}; {read}; projects ] project) : ('rule( ; type [ {schedule}; {read}; projects ] project)', 0.48)
+rule(; type [ {schedule}; {read}; projectsLed ] project) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.25)
+rule(; type [ {schedule}; {write}; projectsLed ] project) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.25)
+rule(; type [ {budget}; {read, write}; projectsLed ] project) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.2)
+rule(; type [ {task}; {read, request}; tasks ] rid, projects ] project) : ('rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise)', 0.14285714285714285)
+rule(; type [ {task}; {setStatus}; tasks ] rid, projects ] project) : ('rule( ; type [ {task}; {setStatus}; tasks ] rid)', 1.0)

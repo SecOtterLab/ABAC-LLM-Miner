@@ -1,0 +1,490 @@
+
+rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)
+ldr2, proj22sched, write
+ldr2, proj22sched, read
+ldr2, proj21budget, read
+ldr11, proj11sched, write
+ldr2, proj21sched, read
+ldr12, proj12budget, write
+ldr11, proj11budget, read
+ldr12, proj12budget, read
+ldr2, proj22budget, read
+ldr11, proj11budget, write
+ldr12, proj12sched, write
+ldr2, proj21budget, write
+ldr2, proj22budget, write
+ldr2, proj21sched, write
+ldr12, proj12sched, read
+ldr11, proj11sched, read
+===============================================
+
+rule( ; type [ {schedule}; {read}; projects ] project)
+ldr2, proj22sched, read
+des22, proj22sched, read
+plan1, proj11sched, read
+plan2, proj22sched, read
+code12, proj12sched, read
+des11, proj11sched, read
+des21, proj21sched, read
+code22, proj22sched, read
+des12, proj12sched, read
+aud1, proj12sched, read
+plan1, proj12sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+aud1, proj11sched, read
+ldr11, proj11sched, read
+acc2, proj22sched, read
+code21, proj21sched, read
+code11, proj11sched, read
+acc1, proj11sched, read
+ldr2, proj21sched, read
+acc1, proj12sched, read
+ldr11, proj12sched, read
+plan2, proj21sched, read
+ldr12, proj12sched, read
+===============================================
+
+rule( ; type [ {task}; {setStatus}; tasks ] rid)
+des12, proj12task1propa, setStatus
+des22, proj22task1propa, setStatus
+code21, proj21task2a, setStatus
+des21, proj21task1propa, setStatus
+code12, proj12task2a, setStatus
+code22, proj22task2propa, setStatus
+des21, proj21task1a, setStatus
+code11, proj11task2a, setStatus
+des22, proj22task1a, setStatus
+code11, proj11task2propa, setStatus
+code21, proj21task2propa, setStatus
+code12, proj12task2propa, setStatus
+code22, proj22task2a, setStatus
+des12, proj12task1a, setStatus
+des11, proj11task1a, setStatus
+des11, proj11task1propa, setStatus
+===============================================
+
+rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise)
+code22, proj22task2, read
+des22, proj22task1a, read
+code11, proj11task2a, read
+code22, proj22task2a, request
+des12, proj12task1, read
+code12, proj12task2, request
+des11, proj11task1, request
+des12, proj12task1a, request
+des22, proj22task1a, request
+des21, proj21task1, read
+code21, proj21task2, read
+des22, proj22task1, request
+des21, proj21task1a, read
+des11, proj11task1a, request
+code11, proj11task2, request
+des21, proj21task1, request
+des11, proj11task1, read
+code21, proj21task2a, request
+des12, proj12task1, request
+code21, proj21task2, request
+code21, proj21task2a, read
+code22, proj22task2, request
+code11, proj11task2a, request
+code11, proj11task2, read
+code22, proj22task2a, read
+des12, proj12task1a, read
+des21, proj21task1a, request
+des22, proj22task1, read
+code12, proj12task2a, read
+des11, proj11task1a, read
+code12, proj12task2, read
+code12, proj12task2a, request
+===============================================
+
+rule(isEmployee [ {True} ; type [ {task}; {request read}; projects ] project, expertise > expertise)
+des21, proj21task1propa, request
+des21, proj21task1prop, read
+code11, proj11task2a, read
+code21, proj21task2prop, read
+des11, proj11task1propa, request
+des21, proj21task1prop, request
+des11, proj11task1propa, read
+des11, proj11task1prop, read
+des11, proj11task1, request
+code21, proj21task2prop, request
+code11, proj11task2propa, request
+des11, proj11task1prop, request
+des21, proj21task1, read
+code21, proj21task2, read
+code11, proj11task2prop, read
+des21, proj21task1a, read
+des11, proj11task1a, request
+code11, proj11task2, request
+des21, proj21task1, request
+des11, proj11task1, read
+code21, proj21task2a, request
+code21, proj21task2, request
+code21, proj21task2a, read
+code21, proj21task2propa, read
+des21, proj21task1propa, read
+code11, proj11task2a, request
+code11, proj11task2, read
+des21, proj21task1a, request
+code11, proj11task2prop, request
+code21, proj21task2propa, request
+code11, proj11task2propa, read
+des11, proj11task1a, read
+===============================================
+
+rule(adminRoles [ {planner}]; type [ {schedule}; {read}; projects ] project)
+acc2, proj22sched, read
+aud1, proj12sched, read
+acc1, proj12sched, read
+plan1, proj12sched, read
+acc1, proj11sched, read
+plan1, proj11sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+plan2, proj22sched, read
+plan2, proj21sched, read
+aud1, proj11sched, read
+===============================================
+
+rule(adminRoles [ {auditor}]; type [ {schedule}; {read}; projects ] project)
+acc2, proj22sched, read
+aud1, proj12sched, read
+acc1, proj12sched, read
+plan1, proj12sched, read
+acc1, proj11sched, read
+plan1, proj11sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+plan2, proj22sched, read
+plan2, proj21sched, read
+aud1, proj11sched, read
+===============================================
+
+rule(; type [ {schedule}; {read}; projectsLed ] project)
+ldr12, proj12sched, read
+ldr11, proj11sched, read
+ldr2, proj22sched, read
+ldr2, proj21sched, read
+===============================================
+
+rule(; type [ {schedule}; {write}; projectsLed ] project)
+ldr11, proj11sched, write
+ldr12, proj12sched, write
+ldr2, proj22sched, write
+ldr2, proj21sched, write
+===============================================
+
+rule(; type [ {budget}; {read, write}; projectsLed ] project)
+ldr11, proj11budget, read,
+ldr12, proj12budget, write
+ldr12, proj12budget, read,
+ldr11, proj11budget, write
+ldr2, proj22budget, write
+ldr2, proj21budget, read,
+ldr2, proj22budget, read,
+ldr2, proj21budget, write
+===============================================
+
+rule(; type [ {task}; {read, request}; tasks ] rid, projects ] project)
+code11, proj11task2propa, read,
+code12, proj12task2propa, request
+des21, proj21task1propa, request
+des21, proj21task1propa, read,
+des22, proj22task1a, read,
+des21, proj21task1a, read,
+des11, proj11task1a, read,
+des11, proj11task1propa, request
+code22, proj22task2propa, request
+code22, proj22task2a, request
+des12, proj12task1a, request
+des22, proj22task1propa, request
+code11, proj11task2propa, request
+des22, proj22task1a, request
+code12, proj12task2propa, read,
+des12, proj12task1propa, request
+code21, proj21task2a, read,
+des11, proj11task1a, request
+code21, proj21task2a, request
+des11, proj11task1propa, read,
+code11, proj11task2a, request
+code21, proj21task2propa, read,
+des21, proj21task1a, request
+code22, proj22task2a, read,
+code21, proj21task2propa, request
+des12, proj12task1propa, read,
+des12, proj12task1a, read,
+code12, proj12task2a, read,
+code22, proj22task2propa, read,
+des22, proj22task1propa, read,
+code12, proj12task2a, request
+code11, proj11task2a, read,
+===============================================
+
+rule(; type [ {task}; {setStatus}; tasks ] rid, projects ] project)
+des12, proj12task1propa, setStatus
+des22, proj22task1propa, setStatus
+code21, proj21task2a, setStatus
+des21, proj21task1propa, setStatus
+code12, proj12task2a, setStatus
+code22, proj22task2propa, setStatus
+des21, proj21task1a, setStatus
+code11, proj11task2a, setStatus
+des22, proj22task1a, setStatus
+code11, proj11task2propa, setStatus
+code21, proj21task2propa, setStatus
+code12, proj12task2propa, setStatus
+code22, proj22task2a, setStatus
+des12, proj12task1a, setStatus
+des11, proj11task1a, setStatus
+des11, proj11task1propa, setStatus
+===============================================
+
+rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)
+ldr2, proj22sched, write
+ldr2, proj22sched, read
+ldr2, proj21budget, read
+ldr11, proj11sched, write
+ldr2, proj21sched, read
+ldr12, proj12budget, write
+ldr11, proj11budget, read
+ldr12, proj12budget, read
+ldr2, proj22budget, read
+ldr11, proj11budget, write
+ldr12, proj12sched, write
+ldr2, proj21budget, write
+ldr2, proj22budget, write
+ldr2, proj21sched, write
+ldr12, proj12sched, read
+ldr11, proj11sched, read
+===============================================
+
+rule( ; type [ {schedule}; {read}; projects ] project)
+ldr2, proj22sched, read
+des22, proj22sched, read
+plan1, proj11sched, read
+plan2, proj22sched, read
+code12, proj12sched, read
+des11, proj11sched, read
+des21, proj21sched, read
+code22, proj22sched, read
+des12, proj12sched, read
+aud1, proj12sched, read
+plan1, proj12sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+aud1, proj11sched, read
+ldr11, proj11sched, read
+acc2, proj22sched, read
+code21, proj21sched, read
+code11, proj11sched, read
+acc1, proj11sched, read
+ldr2, proj21sched, read
+acc1, proj12sched, read
+ldr11, proj12sched, read
+plan2, proj21sched, read
+ldr12, proj12sched, read
+===============================================
+
+rule( ; type [ {task}; {setStatus}; tasks ] rid)
+des12, proj12task1propa, setStatus
+des22, proj22task1propa, setStatus
+code21, proj21task2a, setStatus
+des21, proj21task1propa, setStatus
+code12, proj12task2a, setStatus
+code22, proj22task2propa, setStatus
+des21, proj21task1a, setStatus
+code11, proj11task2a, setStatus
+des22, proj22task1a, setStatus
+code11, proj11task2propa, setStatus
+code21, proj21task2propa, setStatus
+code12, proj12task2propa, setStatus
+code22, proj22task2a, setStatus
+des12, proj12task1a, setStatus
+des11, proj11task1a, setStatus
+des11, proj11task1propa, setStatus
+===============================================
+
+rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise)
+code22, proj22task2, read
+des22, proj22task1a, read
+code11, proj11task2a, read
+code22, proj22task2a, request
+des12, proj12task1, read
+code12, proj12task2, request
+des11, proj11task1, request
+des12, proj12task1a, request
+des22, proj22task1a, request
+des21, proj21task1, read
+code21, proj21task2, read
+des22, proj22task1, request
+des21, proj21task1a, read
+des11, proj11task1a, request
+code11, proj11task2, request
+des21, proj21task1, request
+des11, proj11task1, read
+code21, proj21task2a, request
+des12, proj12task1, request
+code21, proj21task2, request
+code21, proj21task2a, read
+code22, proj22task2, request
+code11, proj11task2a, request
+code11, proj11task2, read
+code22, proj22task2a, read
+des12, proj12task1a, read
+des21, proj21task1a, request
+des22, proj22task1, read
+code12, proj12task2a, read
+des11, proj11task1a, read
+code12, proj12task2, read
+code12, proj12task2a, request
+===============================================
+
+rule(isEmployee [ {True} ; type [ {task}; {request read}; projects ] project, expertise > expertise)
+des21, proj21task1propa, request
+des21, proj21task1prop, read
+code11, proj11task2a, read
+code21, proj21task2prop, read
+des11, proj11task1propa, request
+des21, proj21task1prop, request
+des11, proj11task1propa, read
+des11, proj11task1prop, read
+des11, proj11task1, request
+code21, proj21task2prop, request
+code11, proj11task2propa, request
+des11, proj11task1prop, request
+des21, proj21task1, read
+code21, proj21task2, read
+code11, proj11task2prop, read
+des21, proj21task1a, read
+des11, proj11task1a, request
+code11, proj11task2, request
+des21, proj21task1, request
+des11, proj11task1, read
+code21, proj21task2a, request
+code21, proj21task2, request
+code21, proj21task2a, read
+code21, proj21task2propa, read
+des21, proj21task1propa, read
+code11, proj11task2a, request
+code11, proj11task2, read
+des21, proj21task1a, request
+code11, proj11task2prop, request
+code21, proj21task2propa, request
+code11, proj11task2propa, read
+des11, proj11task1a, read
+===============================================
+
+rule(adminRoles [ {planner}]; type [ {schedule}; {read}; projects ] project)
+acc2, proj22sched, read
+aud1, proj12sched, read
+acc1, proj12sched, read
+plan1, proj12sched, read
+acc1, proj11sched, read
+plan1, proj11sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+plan2, proj22sched, read
+plan2, proj21sched, read
+aud1, proj11sched, read
+===============================================
+
+rule(adminRoles [ {auditor}]; type [ {schedule}; {read}; projects ] project)
+acc2, proj22sched, read
+aud1, proj12sched, read
+acc1, proj12sched, read
+plan1, proj12sched, read
+acc1, proj11sched, read
+plan1, proj11sched, read
+acc2, proj21sched, read
+aud2, proj21sched, read
+aud2, proj22sched, read
+plan2, proj22sched, read
+plan2, proj21sched, read
+aud1, proj11sched, read
+===============================================
+
+rule(; type [ {schedule}; {read}; projectsLed ] project)
+ldr12, proj12sched, read
+ldr11, proj11sched, read
+ldr2, proj22sched, read
+ldr2, proj21sched, read
+===============================================
+
+rule(; type [ {schedule}; {write}; projectsLed ] project)
+ldr11, proj11sched, write
+ldr12, proj12sched, write
+ldr2, proj22sched, write
+ldr2, proj21sched, write
+===============================================
+
+rule(; type [ {budget}; {read, write}; projectsLed ] project)
+ldr11, proj11budget, read,
+ldr12, proj12budget, write
+ldr12, proj12budget, read,
+ldr11, proj11budget, write
+ldr2, proj22budget, write
+ldr2, proj21budget, read,
+ldr2, proj22budget, read,
+ldr2, proj21budget, write
+===============================================
+
+rule(; type [ {task}; {read, request}; tasks ] rid, projects ] project)
+code11, proj11task2propa, read,
+code12, proj12task2propa, request
+des21, proj21task1propa, request
+des21, proj21task1propa, read,
+des22, proj22task1a, read,
+des21, proj21task1a, read,
+des11, proj11task1a, read,
+des11, proj11task1propa, request
+code22, proj22task2propa, request
+code22, proj22task2a, request
+des12, proj12task1a, request
+des22, proj22task1propa, request
+code11, proj11task2propa, request
+des22, proj22task1a, request
+code12, proj12task2propa, read,
+des12, proj12task1propa, request
+code21, proj21task2a, read,
+des11, proj11task1a, request
+code21, proj21task2a, request
+des11, proj11task1propa, read,
+code11, proj11task2a, request
+code21, proj21task2propa, read,
+des21, proj21task1a, request
+code22, proj22task2a, read,
+code21, proj21task2propa, request
+des12, proj12task1propa, read,
+des12, proj12task1a, read,
+code12, proj12task2a, read,
+code22, proj22task2propa, read,
+des22, proj22task1propa, read,
+code12, proj12task2a, request
+code11, proj11task2a, read,
+===============================================
+
+rule(; type [ {task}; {setStatus}; tasks ] rid, projects ] project)
+des12, proj12task1propa, setStatus
+des22, proj22task1propa, setStatus
+code21, proj21task2a, setStatus
+des21, proj21task1propa, setStatus
+code12, proj12task2a, setStatus
+code22, proj22task2propa, setStatus
+des21, proj21task1a, setStatus
+code11, proj11task2a, setStatus
+des22, proj22task1a, setStatus
+code11, proj11task2propa, setStatus
+code21, proj21task2propa, setStatus
+code12, proj12task2propa, setStatus
+code22, proj22task2a, setStatus
+des12, proj12task1a, setStatus
+des11, proj11task1a, setStatus
+des11, proj11task1propa, setStatus
+===============================================

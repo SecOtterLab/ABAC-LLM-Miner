@@ -23,6 +23,23 @@ def load_rules_from_file(path: str):
                 rules.append(line)
     return rules
 
+
+def file_to_text(filename):
+    temp_string = ""
+
+    with open (filename, "r", encoding="utf-8") as f:
+        temp_string += f.read().strip()
+    
+    return temp_string
+
+
+def append_to_file(filename, text):
+    with open(filename, "a", encoding="utf-8") as f:
+        f.write(str(text))
+
+    return
+
+
 def compare_acl (acl1, acl2):
 
     acl1 = file_to_set(acl1)
@@ -36,17 +53,22 @@ def compare_acl (acl1, acl2):
     lines.append(f"Commong lines / Lines that are correct: {len(common)}")
     lines.extend(sorted(common))
     lines.append("")
-    lines.append(f"Only in ground truth ACL (under permissions): {len(only_in_acl1)}")
+    lines.append(f"Only in ACL 1 (under permissions): {len(only_in_acl1)}")
     lines.extend(sorted(only_in_acl1))
     lines.append("")
-    lines.append(f"Only in LLM ACL (over permissions): {len(only_in_acl2)}")
+    lines.append(f"Only in ACL 2 (over permissions): {len(only_in_acl2)}")
     lines.extend(sorted(only_in_acl2))
     lines.append("")
     lines.append(f"Total different lines: {len(only_in_acl1 ^ only_in_acl2)}")
 
     jacc_val = jaccard(acl1 , acl2)
 
-    stats_text = (f" jaccVal : {jacc_val} , gt_acl : {len(acl1)} , llm_acl : {len(acl2)} , intersection : {len(common)}, underPermissions : {len(only_in_acl1)} , overPermissions : {len(only_in_acl2)},")
+    stats_text = (f"\n  acl_jacc_val : {jacc_val},"
+                  f"\n  gt_acl : {len(acl1)},"
+                  f"\n  llm_acl : {len(acl2)},"
+                  f"\n  intersection : {len(common)},"
+                  f"\n  under_perm : {len(only_in_acl1)},"
+                  f"\n  over_perm : {len(only_in_acl2)},")
     # print(stats_text)
 
     #if there is a 100% match then lists that have unique ACL line will return true
@@ -125,20 +147,28 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
     jacc_total = 0
 
     best_match ={}
+
     for rule1 in arr_1:
         rule_manager = RuleManager()
         rule_manager.parse_rule(rule1)
-        generate_acl(user, res, rule_manager, "llm-research/session/session-ACL-single-rule-file-1.txt")
+        generate_acl(user, res, rule_manager, "llm-research/session/session/session-ACL-single-rule-file-1.txt")
+        
+        temp_string = (f"\n{rule1}"
+                        f"\n{file_to_text("llm-research/session/session/session-ACL-single-rule-file-1.txt")}"
+                        f"\n===============================================\n"
+                    )
+        append_to_file("llm-research/session/cache/per_rule_acl.cache", temp_string)
 
         best_match[rule1] =("EMPTY_BY_DEFAULT", -1 )
 
         for rule2 in arr_2:
             rule_manager_2 = RuleManager()
             rule_manager_2.parse_rule(rule2)
-            generate_acl(user, res, rule_manager_2, "llm-research/session/session-ACL-single-rule-file-2.txt")
+            generate_acl(user, res, rule_manager_2, "llm-research/session/session/session-ACL-single-rule-file-2.txt")
 
-            _, _, _, jaccVal = compare_acl("llm-research/session/session-ACL-single-rule-file-1.txt", "llm-research/session/session-ACL-single-rule-file-2.txt")
-  
+            _, _, _, jaccVal = compare_acl("llm-research/session/session/session-ACL-single-rule-file-1.txt", "llm-research/session/session/session-ACL-single-rule-file-2.txt")
+
+        
             if jaccVal > best_match[rule1][1]:
                 best_match[rule1] = (rule2, jaccVal)
         #TODO: make session folders for the files above
@@ -176,7 +206,7 @@ def main():
     
     # print(repr(val))
 
-    rule_semantic_analyzer("ground-truth-ABAC-rules/healthcare-abac-rules.txt", "ground-truth-ABAC-rules/healthcare-abac-rules.txt")
+    # rule_semantic_analyzer("ground-truth-ABAC-rules/healthcare-abac-rules.txt", "ground-truth-ABAC-rules/healthcare-abac-rules.txt")
 
     return
 

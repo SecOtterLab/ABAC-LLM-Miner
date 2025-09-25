@@ -1,2 +1,0 @@
-it : 0 , jaccVal : 0.05976095617529881 , gt_acl : 168 , llm_acl : 364 , intersection : 30, underPermissions : 138 , overPermissions : 334, syntaxJaccAvg : 0.6361111111111112,  semanticJacc : 0.038863387978142074, 
-it : 1 , jaccVal : 0.09787234042553192 , gt_acl : 168 , llm_acl : 348 , intersection : 46, underPermissions : 122 , overPermissions : 302, syntaxJaccAvg : 0.4958333333333333,  semanticJacc : 0.0696969696969697, 

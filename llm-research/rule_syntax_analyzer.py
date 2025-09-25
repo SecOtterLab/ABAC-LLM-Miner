@@ -156,7 +156,7 @@ def rule_set_syntax_analyzer(rules1, rules2):
         jacc_total += value[1]
 
     jacc_avg = jacc_total/len(best_match)
-    print(f"TOTAL JACC  AVG: {jacc_avg}")
+    # print(f"TOTAL JACC  AVG: {jacc_avg}")
 
     return jacc_avg, best_match
 
