@@ -35,7 +35,7 @@ The following text is a request to fix ABAC rules. The text is separated into se
         ANY PERMISSION THAT IS MISSED, BY YOUR GENERATED ABAC RULES, OR THAT IS OVER PEMRITTED BY YOUR ABAC RULE SET WILL BE CONSIDERED A FAILURE.
             This is mission critical so accuracy is critical.
     You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
-
+    If you detect that you made a mistake in your reasoning at any point, correct yourself.
 
 ## ATTRIBUTE_DESCRIPTION ##
 

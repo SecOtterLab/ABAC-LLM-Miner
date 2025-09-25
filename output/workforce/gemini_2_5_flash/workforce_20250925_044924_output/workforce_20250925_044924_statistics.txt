@@ -1,0 +1,12 @@
+# org : workforce, LLM : gemini_2_5_flash
+
+iteration : 0,
+  seconds_elapsed : 8.91163,
+  acl_jacc_val : 0.0,
+  gt_acl : 15858,
+  llm_acl : 73740,
+  intersection : 0,
+  under_perm : 15858,
+  over_perm : 73740,
+  syntax_jacc_avg : 0.4618055555555555,
+  semantic_jacc_avg : 0.0,

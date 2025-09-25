@@ -2,6 +2,7 @@
 import requests
 import re
 from helper_functions import iterate_api_requests
+import sys
 
 #READ ME:
     # To run one must be hosting the right LLM on ollama 
@@ -32,9 +33,10 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 
 
 def local_api_call(request_text):
+
+    # model = "phi4-reasoning:14b"
+    model = "gpt-oss:120b"
     
-    model = "phi4-reasoning:14b"
-    # prompt = "what is 5 to the 3rd power"
     URL = "http://100.89.62.79:11434/api/generate"
 
     payload = {
@@ -44,7 +46,7 @@ def local_api_call(request_text):
         # "format" : "json" ollam does not respond with consistent json, too unpredicatble auto response is more predicatble with <think></think> tags
     }
 
-    r = requests.post(URL, json=payload, timeout=(10, 6000)) #10 = TCP connection 420 is timeout 
+    r = requests.post(URL, json=payload, timeout=(10, 100000)) #10 = TCP connection 420 is timeout 
     r.raise_for_status()
 
     response_message = r.json()["response"].strip()
@@ -54,9 +56,10 @@ def local_api_call(request_text):
 
 
 
-# def main():
-#     local_api_call()
+def main():
+    request_text = "what is 5 to the 3rd power"
+    local_api_call(request_text)
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 

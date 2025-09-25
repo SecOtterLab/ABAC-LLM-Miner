@@ -1,0 +1,8 @@
+# org : workforce20250925_045648
+# iterations : 2
+# api_called : gemini2.5-flash:5b
+# gt_file : ground-truth-ACL/workforce-gt-ACL.txt
+# gt_abac_rule_file : ground-truth-ABAC-rules/workforce-abac-rules.txt
+# attribute_data_description_file : DATASETS-for-LLM/workforce/workforce-attribute-data-description.txt
+# attribute_data_file : DATASETS-for-LLM/workforce/workforce-attribute-data.txt
+

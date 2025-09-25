@@ -1,0 +1,46 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {helpdeskOperator}, department [ {helpdesk}; type [ {workOrder}; modify]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(position [ {technician}; type [ {task}; view]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {workforceManager}; type [ {task}; view]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {helpdeskOperator}; type [ {contract}; {createRecurrentWorkOrder createOneTimeWorkOrder}]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )', 0.75)
+rule(position [ {technician}; type [ {task}; complete]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {workforceManager}; type [ {task}; complete]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {helpdeskOperator}; type [ {workOrder}; delete]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(provider [ {externalHelpdeskSupplier}; type [ {workOrder}; modify]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(position [ {salesManager}; type [ {workOrder}; view]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.625)
+rule(position [ {maintenanceManager}; type [ {contract}; createRecurrentWorkOrder]) : ('rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )', 0.625)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; markComplete]) : ('rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )', 0.6666666666666666)
+rule(position [ {applicationAdmin}; type [ {contract}; createAppointment]) : ('rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )', 0.6666666666666666)
+rule(department [ {sales}; type [ {stockRefillRequest}; receive]) : ('rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )', 0.5833333333333333)
+rule(department [ {warehouse}; type [ {resourceRequest}; complete]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.41666666666666663)
+rule(department [ {workforce}; type [ {workOrder}; view]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.41666666666666663)
+rule(department [ {workforce}; type [ {task}; view]; associatedWorkOrder = associatedWorkOrder) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.41666666666666663)
+rule(position [ {technician}, department [ {workforce}; type [ {workOrder}; view]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.5)
+rule(position [ {workforceManager}, department [ {workforce}; type [ {workOrder}; view]; createdBy = createdBy) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskManager}; type [ {workOrder}; {view}; managedStaff ] createdBy)', 0.4583333333333333)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {helpdeskOperator}, department [ {helpdesk}; type [ {workOrder}; modify]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(position [ {technician}; type [ {task}; view]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {workforceManager}; type [ {task}; view]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {helpdeskOperator}; type [ {contract}; createRecurrentWorkOrder]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )', 0.6666666666666666)
+rule(position [ {technician}; type [ {task}; complete]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {workforceManager}; type [ {task}; complete]) : ('rule(provider [ {eWorkforce}, department [ {workforce}; type [ {task}; {view}; )', 0.5833333333333333)
+rule(position [ {helpdeskOperator}; type [ {workOrder}; delete]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(provider [ {externalHelpdeskSupplier}; type [ {workOrder}; modify]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.6666666666666666)
+rule(position [ {salesManager}; type [ {workOrder}; view]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {workOrder}; {modify}; )', 0.625)
+rule(position [ {maintenanceManager}; type [ {contract}; createRecurrentWorkOrder]) : ('rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )', 0.625)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; markComplete]) : ('rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )', 0.6666666666666666)
+rule(position [ {helpdeskOperator}; type [ {contract}; createOneTimeWorkOrder]) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; )', 0.6666666666666666)
+rule(position [ {applicationAdmin}; type [ {contract}; createAppointment]) : ('rule(provider [ {eWorkforce}, position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )', 0.6666666666666666)
+rule(department [ {sales}; type [ {stockRefillRequest}; receive]) : ('rule(provider [ {eWorkforce}, position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )', 0.5833333333333333)
+rule(department [ {warehouse}; type [ {resourceRequest}; complete]; assignedTenant = tenant) : ('rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)', 0.4444444444444444)
+rule(department [ {workforce}; type [ {workOrder}; view]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.41666666666666663)
+rule(department [ {workforce}; type [ {task}; view]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.5)
+rule(department [ {workforce}; type [ {resourceRequest}; complete]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.41666666666666663)
+rule(position [ {technician}, department [ {workforce}; type [ {workOrder}; view]; assignedTechnician = assignedTechnician) : ('rule(provider [ {eWorkforce}, position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)', 0.5)
+rule(position [ {workforceManager}, department [ {workforce}; type [ {workOrder}; view]; createdBy = createdBy) : ('rule(provider [ {externalHelpdeskSupplier}, position [ {helpdeskManager}; type [ {workOrder}; {view}; managedStaff ] createdBy)', 0.4583333333333333)

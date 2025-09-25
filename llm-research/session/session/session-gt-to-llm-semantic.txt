@@ -1,0 +1,7 @@
+rule(adminRoles [ {planner}]; type [ {schedule}; {read}; projects ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(adminRoles [ {auditor}]; type [ {schedule}; {read}; projects ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(; type [ {schedule}; {read}; projectsLed ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(; type [ {schedule}; {write}; projectsLed ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(; type [ {budget}; {read, write}; projectsLed ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(; type [ {task}; {read, request}; tasks ] rid, projects ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)
+rule(; type [ {task}; {setStatus}; tasks ] rid, projects ] project) : ('rule(role [ {customer}, registered [ {False}; ; {view}; uid [ recipients)', 0.0)

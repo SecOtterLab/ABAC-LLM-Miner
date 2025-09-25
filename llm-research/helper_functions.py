@@ -166,14 +166,14 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
     # The api_call function will return text of the response.
     payload_text = api_call(complete_request)
     timestamp_end = datetime.datetime.now()
-
-    elapsed_seconds = (timestamp_end - timestamp_start).total_seconds()
+    elapsed_seconds = (timestamp_end - timestamp_start)
 
     #output the abac rules to a file for testing
     if(payload_text is None):
         print(f"skipping iteration: payload not received\n")
         sys.exit()
     else:
+        print("payload recieved...")
         with open(session_llm_response_file, "w", encoding="utf-8") as of:
             of.write(payload_text)
         
@@ -225,7 +225,7 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
         # The api_call function will return text of the response.
         payload_text = api_call(complete_request)
         timestamp_end = datetime.datetime.now()
-        elapsed_seconds = (timestamp_end - timestamp_start).total_seconds()
+        elapsed_seconds = (timestamp_end - timestamp_start)
 
         
         #output the abac rules to a file for testing
@@ -234,6 +234,7 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
             counter +=1
             continue
         else:
+            print("payload recieved...")
             with open(session_llm_response_file, "w", encoding="utf-8") as of:
                 of.write(payload_text)
 
