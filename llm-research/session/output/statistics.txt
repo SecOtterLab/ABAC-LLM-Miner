@@ -9,4 +9,4 @@ iteration : 0,
   under_perm : 32961,
   over_perm : 0,
   syntax_jacc_avg : 0.19047619047619047,
-  semantic_jacc_avg : 0.0,
+  semantic_jacc_avg : 0.0, | error run 0: OSError(5, 'Input/output error')
