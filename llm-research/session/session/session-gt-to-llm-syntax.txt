@@ -1,7 +1,0 @@
-rule(adminRoles [ {planner}]; type [ {schedule}; {read}; projects ] project) : ('rule(role [ {employee}, tenant [ {largeBank}; ; {view}; projects ] rid)', 0.25)
-rule(adminRoles [ {auditor}]; type [ {schedule}; {read}; projects ] project) : ('rule(role [ {employee}, tenant [ {largeBank}; ; {view}; projects ] rid)', 0.25)
-rule(; type [ {schedule}; {read}; projectsLed ] project) : ('rule(role [ {employee}, department [ {largeBankSales}; type [ {invoice}; {send view search}; )', 0.16666666666666666)
-rule(; type [ {schedule}; {write}; projectsLed ] project) : ('rule(role [ {employee}, department [ {largeBankSales}; type [ {invoice}; {send view search}; )', 0.16666666666666666)
-rule(; type [ {budget}; {read, write}; projectsLed ] project) : ('rule(role [ {employee}, department [ {largeBankSales}; type [ {invoice}; {send view search}; )', 0.16666666666666666)
-rule(; type [ {task}; {read, request}; tasks ] rid, projects ] project) : ('rule(role [ {employee}, tenant [ {largeBank}; ; {view}; projects ] rid)', 0.16666666666666666)
-rule(; type [ {task}; {setStatus}; tasks ] rid, projects ] project) : ('rule(role [ {employee}, tenant [ {largeBank}; ; {view}; projects ] rid)', 0.16666666666666666)

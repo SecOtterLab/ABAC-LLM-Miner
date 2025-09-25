@@ -17,15 +17,15 @@ def strip_backslashes_from_file(filepath: str) -> None:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(cleaned)
 
-def read_in_chunks(filepath, chunk_size=3800):
-    with open(filepath, "r", encoding="utf-8") as f:
-        text = f.read()
-        for i in range(0, len(text), chunk_size):
-            print(text[i:i+chunk_size])
-            if i + chunk_size < len(text):
-                print("=======================================================================================")
-                print(f"Read this prompt keep it in memory and i will tell you when to execute the entire prompts I have given you.\n this is only part of the prompt just broken down to meet your input size\n")
-                input("\nPress Enter to continue...\n")
+# def read_in_chunks(filepath, chunk_size=3800):
+#     with open(filepath, "r", encoding="utf-8") as f:
+#         text = f.read()
+#         for i in range(0, len(text), chunk_size):
+#             print(text[i:i+chunk_size])
+#             if i + chunk_size < len(text):
+#                 print("=======================================================================================")
+#                 print(f"Read this prompt keep it in memory and i will tell you when to execute the entire prompts I have given you.\n this is only part of the prompt just broken down to meet your input size\n")
+#                 input("\nPress Enter to continue...\n")
 
 def manual_api_call(request_text):
     
@@ -36,7 +36,7 @@ def manual_api_call(request_text):
     #     print(f"ERROR: input rules and try again\n")
     #     return
 
-    read_in_chunks("prompts/complete-prompt.txt")
+    # read_in_chunks("prompts/complete-prompt.txt")
     
 
 
