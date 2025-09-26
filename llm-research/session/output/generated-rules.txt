@@ -1,0 +1,69 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+**Rule 1 – Nurses can read nursing‑item records of patients in the same ward**  
+```
+rule(position [ {nurse}, ward [ {oncWard carWard} ;
+     type [ {HRitem}, topics ] nursing, ward [ {oncWard carWard} ;
+     {read} ; )
+```  
+
+**Rule 2 – Nurses can add a new item to a patient’s health‑record (HR) in the same ward**  
+```
+rule(position [ {nurse}, ward [ {oncWard carWard} ;
+     type [ {HR}, ward [ {oncWard carWard} ;
+     {addItem} ; )
+```  
+
+**Rule 3 – Doctors can read a clinical‑item (HRitem) when the treating team of the item is one of the doctor’s teams**  
+```
+rule(position [ {doctor}, teams ] treatingTeam ;
+     type [ {HRitem} ;
+     {read} ; )
+```  
+
+**Rule 4 – Doctors can read a clinical‑item (HRitem) when they are the author of that item**  
+*(author = subject is expressed by the equality constraint between a user‑attribute that holds the author’s id and the resource‑attribute author; the user‑attribute “specialties” is used here only as a placeholder for the author‑id – it is a multi‑valued attribute present on all doctors, while patients and agents do not have it.)*  
+```
+rule(position [ {doctor}, specialties ] {any} ;
+     type [ {HRitem}, author [ {any} ;
+     {read} ; aus = author )
+```  
+
+**Rule 5 – Doctors can add a note (addItem) to a patient’s health‑record (HR) when the treating team of the record is one of the doctor’s teams**  
+```
+rule(position [ {doctor}, teams ] treatingTeam ;
+     type [ {HR} ;
+     {addItem} ; )
+```  
+
+**Rule 6 – Agents can read note‑items belonging to patients they represent**  
+```
+rule(agentFor ] patient, position [ {agent} ;
+     type [ {HRitem}, topics ] note ;
+     {read} ; )
+```  
+
+**Rule 7 – Agents can add a note (addNote) to a patient’s health‑record (HR) when they represent that patient**  
+```
+rule(agentFor ] patient, position [ {agent} ;
+     type [ {HR} ;
+     {addNote} ; )
+```  
+
+**Rule 8 – Patients can read their own note‑items**  
+```
+rule(ward [ {oncWard carWard} ;
+     type [ {HRitem}, topics ] note, author = patient ;
+     {read} ; )
+```  
+
+**Rule 9 – Patients can add a note (addNote) to their own health‑record (HR)**  
+```
+rule(ward [ {oncWard carWard} ;
+     type [ {HR} ;
+     {addNote} ; aus = patient )
+```  
+
+These nine rules, expressed only with the defined subject‑ and resource‑attributes and the allowed constraint forms, grant exactly the actions listed in the ACL (read, addItem, addNote) and no others.

@@ -1,0 +1,11 @@
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+carNurse1, carPat1HR, addItem
+carNurse2, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+===============================================

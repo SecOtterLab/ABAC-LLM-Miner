@@ -1,6 +1,6 @@
 **READ THE ENTIRE REQUEST BEFORE GENERATING ANYTHING**
 
-The following text is a request to GENERATE ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
+The following text is a request to fix ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
 
 	PROMPT section:  This will be the main request we need accomplished through the query.
 
@@ -19,7 +19,12 @@ The following text is a request to GENERATE ABAC rules. The text is separated in
 
 	ADDITIONAL_INSTRUCTIONS section: contains additional instructions you need to follow. instructions that have to do with output results,
      the process, and other rules to help you (the LLM model) generate the exact results needed.
+    
+    ACL_COMPARISON section: has a comparison between the ground truth ACL and the ACL for the rules that need fixing. It lists sections such as lines that give over permission,
+     lines that give under permissions, and the ones that are correct as well. Use this information to fix the rules that are given to you in the CURRENT_RULES section.
 
+
+    CURRENT_RULES section: contains the rules we currently have. use everyhting in this request to fix the rules. 
 
 ## PROMPT ##
     Our organization needs you (the LLM) to use the 
@@ -31,7 +36,6 @@ The following text is a request to GENERATE ABAC rules. The text is separated in
             This is mission critical so accuracy is critical.
     You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
     If you detect that you made a mistake in your reasoning at any point, correct yourself.
-
 
 ## ATTRIBUTE_DESCRIPTION ##
 # Policy Description: Healthcare 
@@ -243,6 +247,12 @@ oncNurse2, oncPat1nursingItem, read
 oncDoc1, oncPat1HR, addItem
 oncAgent1, oncPat2HR, addNote
 carAgent1, carPat2noteItem, read
+
+## ACL_COMPARISON ##
+
+## CURRENT_RULES ##
+
+
 
 ## ADDITIONAL_INSTRUCTIONS
 
