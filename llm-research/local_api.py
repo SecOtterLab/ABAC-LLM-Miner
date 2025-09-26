@@ -42,7 +42,8 @@ def local_api_call(request_text):
         # model = "phi4-reasoning:14b"
         model = "gpt-oss:120b"
         
-        URL = "http://100.89.62.79:11434/api/generate"
+        # URL = "http://100.89.62.79:11434/api/generate"
+        URL = "http://localhost:11434"
 
         payload = {
             "model": model,
