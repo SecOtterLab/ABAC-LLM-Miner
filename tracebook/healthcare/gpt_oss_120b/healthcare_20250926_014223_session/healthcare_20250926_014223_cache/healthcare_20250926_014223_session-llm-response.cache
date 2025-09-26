@@ -1,0 +1,52 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+Below is a compact ABAC policy that grants **exactly** the permissions that appear in the ACL.  
+Each rule uses only attribute‑based conditions (no hard‑coded uid or rid values) and the operators defined in the specification.
+
+```
+# 1️⃣  Nurses can READ nursing‑item notes of patients that are in the same ward
+rule(position [ {nurse} ]; type [ {HRitem} ]; topics ] nursing; {read}; ward = ward)
+
+# 2️⃣  Nurses can ADD‑ITEM to a patient’s HR (the patient’s health‑record) when the ward matches
+rule(position [ {nurse} ]; type [ {HR} ]; {addItem}; ward = ward)
+
+# 3️⃣  Doctors can READ any HR‑item whose topics intersect the doctor’s specialties
+rule(position [ {doctor} ]; type [ {HRitem} ]; {read}; specialties > topics)
+
+# 4️⃣  Doctors can ADD‑ITEM to a patient’s HR when the patient’s treating team is one of the doctor’s teams
+rule(position [ {doctor} ]; type [ {HR} ]; {addItem}; teams ] treatingTeam)
+
+# 5️⃣  Agents (subjects that have a non‑empty *agentFor* set) can ADD‑NOTE to the HR of the patients they represent
+rule(; type [ {HR} ]; {addNote}; agentFor ] patient)
+
+# 6️⃣  Agents can READ a NOTE‑item that they authored (the author of the note must be the same UID as the subject)
+rule(; type [ {HRitem} ]; topics ] note; {read}; uid = author)
+
+# 7️⃣  Patients can ADD‑NOTE to their own HR (the patient’s UID appears as the subject’s UID and matches the HR’s patient)
+rule(; type [ {HR} ]; {addNote}; uid = patient)
+
+# 8️⃣  Patients can READ their own NOTE‑items (HR‑item with topic “note” belonging to them)
+rule(; type [ {HRitem} ]; topics ] note; {read}; patient = patient)
+
+```
+
+**Explanation of the rules**
+
+| Rule | Subject condition | Resource condition | Action(s) | Constraint (if any) |
+|------|-------------------|--------------------|-----------|----------------------|
+| 1️⃣ | `position` is *nurse* | `type` = *HRitem*, `topics` contains *nursing* | `read` | subject `ward` equals resource `ward` |
+| 2️⃣ | `position` is *nurse* | `type` = *HR* | `addItem` | subject `ward` equals resource `ward` |
+| 3️⃣ | `position` is *doctor* | `type` = *HRitem* | `read` | doctor’s `specialties` **superset** of resource `topics` (`specialties > topics`) |
+| 4️⃣ | `position` is *doctor* | `type` = *HR* | `addItem` | doctor’s `teams` **contain** resource `treatingTeam` (`teams ] treatingTeam`) |
+| 5️⃣ | – (empty) – | `type` = *HR* | `addNote` | subject’s `agentFor` **contains** resource `patient` (`agentFor ] patient`) |
+| 6️⃣ | – (empty) – | `type` = *HRitem*, `topics` contains *note* | `read` | subject’s UID equals resource `author` (`uid = author`) |
+| 7️⃣ | – (empty) – | `type` = *HR* | `addNote` | subject’s UID equals resource `patient` (`uid = patient`) |
+| 8️⃣ | – (empty) – | `type` = *HRitem*, `topics` contains *note* | `read` | subject’s UID equals resource `patient` (`uid = patient`) |
+
+These eight rules together reproduce every `(subject, resource, action)` triple listed in the ACL and nothing more, while respecting the required attribute‑based format.

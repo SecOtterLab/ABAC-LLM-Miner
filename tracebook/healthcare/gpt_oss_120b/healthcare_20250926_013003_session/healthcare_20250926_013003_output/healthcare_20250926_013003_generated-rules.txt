@@ -1,0 +1,27 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {doctor}]; ; read; author = uid)
+rule(position [ {doctor}]; ; read; teams ] treatingTeam)
+rule(position [ {doctor}]; ; addItem; teams ] treatingTeam)
+rule(position [ {doctor}]; type [ {HR} ]; addNote; teams ] treatingTeam)
+rule(position [ {nurse}]; ; read; ward = ward)
+rule(position [ {nurse}]; ; addItem; ward = ward)
+rule(agentFor ] patient; ; read; type = HRitem)
+rule(agentFor ] patient; ; read; type = HRitem; topics ] note)
+rule(agentFor ] patient; ; addNote; type = HR)
+rule(; type [ {HRitem}; topics ] note; read; patient = uid)
+rule(; type [ {HR} ]; addNote; patient = uid)
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; ; read; ward = ward)
+rule(position [ {nurse}; ; addItem; ward = ward)
+rule(position [ {doctor}; ; read; teams ] treatingTeam)
+rule(position [ {doctor}; ; read; author = uid)  // doctors read items they authored
+rule(position [ {doctor}; ; addItem; teams ] treatingTeam)
+rule(agentFor ] patient; ; read; type = HRitem; topics ] note)
+rule(agentFor ] patient; ; addNote; type = HR)
+rule(; type [ {HRitem}; topics ] note; read; patient = uid)   // patients read their own notes
+rule(; type [ {HR}; ; addNote; patient = uid)   // patients add notes to their own records

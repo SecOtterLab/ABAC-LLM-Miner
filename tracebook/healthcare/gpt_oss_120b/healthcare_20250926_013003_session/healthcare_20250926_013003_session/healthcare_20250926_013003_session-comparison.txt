@@ -1,0 +1,302 @@
+Commong lines / Lines that are correct: 0
+
+Only in ACL 1 (under permissions): 43
+anesDoc1, carPat1HR, addItem
+anesDoc1, oncPat1HR, addItem
+carAgent1, carPat2HR, addNote
+carAgent1, carPat2noteItem, read
+carAgent2, carPat2HR, addNote
+carDoc1, carPat1HR, addItem
+carDoc1, carPat1carItem, read
+carDoc2, carPat1carItem, read
+carDoc2, carPat2HR, addItem
+carDoc2, carPat2carItem, read
+carNurse1, carPat1HR, addItem
+carNurse1, carPat1nursingItem, read
+carNurse1, carPat2HR, addItem
+carNurse2, carPat1HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse2, carPat2nursingItem, read
+carPat1, carPat1HR, addNote
+carPat1, carPat1noteItem, read
+carPat2, carPat2HR, addNote
+doc1, oncPat2oncItem, read
+doc2, carPat2carItem, read
+oncAgent1, oncPat2HR, addNote
+oncAgent1, oncPat2noteItem, read
+oncAgent2, oncPat2HR, addNote
+oncDoc1, oncPat1HR, addItem
+oncDoc1, oncPat1oncItem, read
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+oncDoc2, oncPat1HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc4, oncPat2oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncNurse1, oncPat2HR, addItem
+oncNurse1, oncPat2nursingItem, read
+oncNurse2, oncPat1HR, addItem
+oncNurse2, oncPat1nursingItem, read
+oncNurse2, oncPat2HR, addItem
+oncPat1, oncPat1HR, addNote
+oncPat1, oncPat1noteItem, read
+oncPat2, oncPat2HR, addNote
+
+Only in ACL 2 (over permissions): 252
+anesDoc1, carPat1carItem, topics ] note
+anesDoc1, carPat1noteItem, topics ] note
+anesDoc1, carPat1nursingItem, topics ] note
+anesDoc1, carPat2carItem, topics ] note
+anesDoc1, carPat2noteItem, topics ] note
+anesDoc1, carPat2nursingItem, topics ] note
+anesDoc1, oncPat1noteItem, topics ] note
+anesDoc1, oncPat1nursingItem, topics ] note
+anesDoc1, oncPat1oncItem, topics ] note
+anesDoc1, oncPat2noteItem, topics ] note
+anesDoc1, oncPat2nursingItem, topics ] note
+anesDoc1, oncPat2oncItem, topics ] note
+carAgent1, carPat1carItem, topics ] note
+carAgent1, carPat1noteItem, topics ] note
+carAgent1, carPat1nursingItem, topics ] note
+carAgent1, carPat2carItem, topics ] note
+carAgent1, carPat2noteItem, topics ] note
+carAgent1, carPat2nursingItem, topics ] note
+carAgent1, oncPat1noteItem, topics ] note
+carAgent1, oncPat1nursingItem, topics ] note
+carAgent1, oncPat1oncItem, topics ] note
+carAgent1, oncPat2noteItem, topics ] note
+carAgent1, oncPat2nursingItem, topics ] note
+carAgent1, oncPat2oncItem, topics ] note
+carAgent2, carPat1carItem, topics ] note
+carAgent2, carPat1noteItem, topics ] note
+carAgent2, carPat1nursingItem, topics ] note
+carAgent2, carPat2carItem, topics ] note
+carAgent2, carPat2noteItem, topics ] note
+carAgent2, carPat2nursingItem, topics ] note
+carAgent2, oncPat1noteItem, topics ] note
+carAgent2, oncPat1nursingItem, topics ] note
+carAgent2, oncPat1oncItem, topics ] note
+carAgent2, oncPat2noteItem, topics ] note
+carAgent2, oncPat2nursingItem, topics ] note
+carAgent2, oncPat2oncItem, topics ] note
+carDoc1, carPat1carItem, topics ] note
+carDoc1, carPat1noteItem, topics ] note
+carDoc1, carPat1nursingItem, topics ] note
+carDoc1, carPat2carItem, topics ] note
+carDoc1, carPat2noteItem, topics ] note
+carDoc1, carPat2nursingItem, topics ] note
+carDoc1, oncPat1noteItem, topics ] note
+carDoc1, oncPat1nursingItem, topics ] note
+carDoc1, oncPat1oncItem, topics ] note
+carDoc1, oncPat2noteItem, topics ] note
+carDoc1, oncPat2nursingItem, topics ] note
+carDoc1, oncPat2oncItem, topics ] note
+carDoc2, carPat1carItem, topics ] note
+carDoc2, carPat1noteItem, topics ] note
+carDoc2, carPat1nursingItem, topics ] note
+carDoc2, carPat2carItem, topics ] note
+carDoc2, carPat2noteItem, topics ] note
+carDoc2, carPat2nursingItem, topics ] note
+carDoc2, oncPat1noteItem, topics ] note
+carDoc2, oncPat1nursingItem, topics ] note
+carDoc2, oncPat1oncItem, topics ] note
+carDoc2, oncPat2noteItem, topics ] note
+carDoc2, oncPat2nursingItem, topics ] note
+carDoc2, oncPat2oncItem, topics ] note
+carNurse1, carPat1carItem, topics ] note
+carNurse1, carPat1noteItem, topics ] note
+carNurse1, carPat1nursingItem, topics ] note
+carNurse1, carPat2carItem, topics ] note
+carNurse1, carPat2noteItem, topics ] note
+carNurse1, carPat2nursingItem, topics ] note
+carNurse1, oncPat1noteItem, topics ] note
+carNurse1, oncPat1nursingItem, topics ] note
+carNurse1, oncPat1oncItem, topics ] note
+carNurse1, oncPat2noteItem, topics ] note
+carNurse1, oncPat2nursingItem, topics ] note
+carNurse1, oncPat2oncItem, topics ] note
+carNurse2, carPat1carItem, topics ] note
+carNurse2, carPat1noteItem, topics ] note
+carNurse2, carPat1nursingItem, topics ] note
+carNurse2, carPat2carItem, topics ] note
+carNurse2, carPat2noteItem, topics ] note
+carNurse2, carPat2nursingItem, topics ] note
+carNurse2, oncPat1noteItem, topics ] note
+carNurse2, oncPat1nursingItem, topics ] note
+carNurse2, oncPat1oncItem, topics ] note
+carNurse2, oncPat2noteItem, topics ] note
+carNurse2, oncPat2nursingItem, topics ] note
+carNurse2, oncPat2oncItem, topics ] note
+carPat1, carPat1carItem, topics ] note
+carPat1, carPat1noteItem, topics ] note
+carPat1, carPat1nursingItem, topics ] note
+carPat1, carPat2carItem, topics ] note
+carPat1, carPat2noteItem, topics ] note
+carPat1, carPat2nursingItem, topics ] note
+carPat1, oncPat1noteItem, topics ] note
+carPat1, oncPat1nursingItem, topics ] note
+carPat1, oncPat1oncItem, topics ] note
+carPat1, oncPat2noteItem, topics ] note
+carPat1, oncPat2nursingItem, topics ] note
+carPat1, oncPat2oncItem, topics ] note
+carPat2, carPat1carItem, topics ] note
+carPat2, carPat1noteItem, topics ] note
+carPat2, carPat1nursingItem, topics ] note
+carPat2, carPat2carItem, topics ] note
+carPat2, carPat2noteItem, topics ] note
+carPat2, carPat2nursingItem, topics ] note
+carPat2, oncPat1noteItem, topics ] note
+carPat2, oncPat1nursingItem, topics ] note
+carPat2, oncPat1oncItem, topics ] note
+carPat2, oncPat2noteItem, topics ] note
+carPat2, oncPat2nursingItem, topics ] note
+carPat2, oncPat2oncItem, topics ] note
+doc1, carPat1carItem, topics ] note
+doc1, carPat1noteItem, topics ] note
+doc1, carPat1nursingItem, topics ] note
+doc1, carPat2carItem, topics ] note
+doc1, carPat2noteItem, topics ] note
+doc1, carPat2nursingItem, topics ] note
+doc1, oncPat1noteItem, topics ] note
+doc1, oncPat1nursingItem, topics ] note
+doc1, oncPat1oncItem, topics ] note
+doc1, oncPat2noteItem, topics ] note
+doc1, oncPat2nursingItem, topics ] note
+doc1, oncPat2oncItem, topics ] note
+doc2, carPat1carItem, topics ] note
+doc2, carPat1noteItem, topics ] note
+doc2, carPat1nursingItem, topics ] note
+doc2, carPat2carItem, topics ] note
+doc2, carPat2noteItem, topics ] note
+doc2, carPat2nursingItem, topics ] note
+doc2, oncPat1noteItem, topics ] note
+doc2, oncPat1nursingItem, topics ] note
+doc2, oncPat1oncItem, topics ] note
+doc2, oncPat2noteItem, topics ] note
+doc2, oncPat2nursingItem, topics ] note
+doc2, oncPat2oncItem, topics ] note
+oncAgent1, carPat1carItem, topics ] note
+oncAgent1, carPat1noteItem, topics ] note
+oncAgent1, carPat1nursingItem, topics ] note
+oncAgent1, carPat2carItem, topics ] note
+oncAgent1, carPat2noteItem, topics ] note
+oncAgent1, carPat2nursingItem, topics ] note
+oncAgent1, oncPat1noteItem, topics ] note
+oncAgent1, oncPat1nursingItem, topics ] note
+oncAgent1, oncPat1oncItem, topics ] note
+oncAgent1, oncPat2noteItem, topics ] note
+oncAgent1, oncPat2nursingItem, topics ] note
+oncAgent1, oncPat2oncItem, topics ] note
+oncAgent2, carPat1carItem, topics ] note
+oncAgent2, carPat1noteItem, topics ] note
+oncAgent2, carPat1nursingItem, topics ] note
+oncAgent2, carPat2carItem, topics ] note
+oncAgent2, carPat2noteItem, topics ] note
+oncAgent2, carPat2nursingItem, topics ] note
+oncAgent2, oncPat1noteItem, topics ] note
+oncAgent2, oncPat1nursingItem, topics ] note
+oncAgent2, oncPat1oncItem, topics ] note
+oncAgent2, oncPat2noteItem, topics ] note
+oncAgent2, oncPat2nursingItem, topics ] note
+oncAgent2, oncPat2oncItem, topics ] note
+oncDoc1, carPat1carItem, topics ] note
+oncDoc1, carPat1noteItem, topics ] note
+oncDoc1, carPat1nursingItem, topics ] note
+oncDoc1, carPat2carItem, topics ] note
+oncDoc1, carPat2noteItem, topics ] note
+oncDoc1, carPat2nursingItem, topics ] note
+oncDoc1, oncPat1noteItem, topics ] note
+oncDoc1, oncPat1nursingItem, topics ] note
+oncDoc1, oncPat1oncItem, topics ] note
+oncDoc1, oncPat2noteItem, topics ] note
+oncDoc1, oncPat2nursingItem, topics ] note
+oncDoc1, oncPat2oncItem, topics ] note
+oncDoc2, carPat1carItem, topics ] note
+oncDoc2, carPat1noteItem, topics ] note
+oncDoc2, carPat1nursingItem, topics ] note
+oncDoc2, carPat2carItem, topics ] note
+oncDoc2, carPat2noteItem, topics ] note
+oncDoc2, carPat2nursingItem, topics ] note
+oncDoc2, oncPat1noteItem, topics ] note
+oncDoc2, oncPat1nursingItem, topics ] note
+oncDoc2, oncPat1oncItem, topics ] note
+oncDoc2, oncPat2noteItem, topics ] note
+oncDoc2, oncPat2nursingItem, topics ] note
+oncDoc2, oncPat2oncItem, topics ] note
+oncDoc3, carPat1carItem, topics ] note
+oncDoc3, carPat1noteItem, topics ] note
+oncDoc3, carPat1nursingItem, topics ] note
+oncDoc3, carPat2carItem, topics ] note
+oncDoc3, carPat2noteItem, topics ] note
+oncDoc3, carPat2nursingItem, topics ] note
+oncDoc3, oncPat1noteItem, topics ] note
+oncDoc3, oncPat1nursingItem, topics ] note
+oncDoc3, oncPat1oncItem, topics ] note
+oncDoc3, oncPat2noteItem, topics ] note
+oncDoc3, oncPat2nursingItem, topics ] note
+oncDoc3, oncPat2oncItem, topics ] note
+oncDoc4, carPat1carItem, topics ] note
+oncDoc4, carPat1noteItem, topics ] note
+oncDoc4, carPat1nursingItem, topics ] note
+oncDoc4, carPat2carItem, topics ] note
+oncDoc4, carPat2noteItem, topics ] note
+oncDoc4, carPat2nursingItem, topics ] note
+oncDoc4, oncPat1noteItem, topics ] note
+oncDoc4, oncPat1nursingItem, topics ] note
+oncDoc4, oncPat1oncItem, topics ] note
+oncDoc4, oncPat2noteItem, topics ] note
+oncDoc4, oncPat2nursingItem, topics ] note
+oncDoc4, oncPat2oncItem, topics ] note
+oncNurse1, carPat1carItem, topics ] note
+oncNurse1, carPat1noteItem, topics ] note
+oncNurse1, carPat1nursingItem, topics ] note
+oncNurse1, carPat2carItem, topics ] note
+oncNurse1, carPat2noteItem, topics ] note
+oncNurse1, carPat2nursingItem, topics ] note
+oncNurse1, oncPat1noteItem, topics ] note
+oncNurse1, oncPat1nursingItem, topics ] note
+oncNurse1, oncPat1oncItem, topics ] note
+oncNurse1, oncPat2noteItem, topics ] note
+oncNurse1, oncPat2nursingItem, topics ] note
+oncNurse1, oncPat2oncItem, topics ] note
+oncNurse2, carPat1carItem, topics ] note
+oncNurse2, carPat1noteItem, topics ] note
+oncNurse2, carPat1nursingItem, topics ] note
+oncNurse2, carPat2carItem, topics ] note
+oncNurse2, carPat2noteItem, topics ] note
+oncNurse2, carPat2nursingItem, topics ] note
+oncNurse2, oncPat1noteItem, topics ] note
+oncNurse2, oncPat1nursingItem, topics ] note
+oncNurse2, oncPat1oncItem, topics ] note
+oncNurse2, oncPat2noteItem, topics ] note
+oncNurse2, oncPat2nursingItem, topics ] note
+oncNurse2, oncPat2oncItem, topics ] note
+oncPat1, carPat1carItem, topics ] note
+oncPat1, carPat1noteItem, topics ] note
+oncPat1, carPat1nursingItem, topics ] note
+oncPat1, carPat2carItem, topics ] note
+oncPat1, carPat2noteItem, topics ] note
+oncPat1, carPat2nursingItem, topics ] note
+oncPat1, oncPat1noteItem, topics ] note
+oncPat1, oncPat1nursingItem, topics ] note
+oncPat1, oncPat1oncItem, topics ] note
+oncPat1, oncPat2noteItem, topics ] note
+oncPat1, oncPat2nursingItem, topics ] note
+oncPat1, oncPat2oncItem, topics ] note
+oncPat2, carPat1carItem, topics ] note
+oncPat2, carPat1noteItem, topics ] note
+oncPat2, carPat1nursingItem, topics ] note
+oncPat2, carPat2carItem, topics ] note
+oncPat2, carPat2noteItem, topics ] note
+oncPat2, carPat2nursingItem, topics ] note
+oncPat2, oncPat1noteItem, topics ] note
+oncPat2, oncPat1nursingItem, topics ] note
+oncPat2, oncPat1oncItem, topics ] note
+oncPat2, oncPat2noteItem, topics ] note
+oncPat2, oncPat2nursingItem, topics ] note
+oncPat2, oncPat2oncItem, topics ] note
+
+Total different lines: 295

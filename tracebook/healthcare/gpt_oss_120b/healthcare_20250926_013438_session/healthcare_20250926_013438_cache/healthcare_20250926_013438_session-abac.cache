@@ -1,0 +1,255 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+# ABAC policy for a healthcare facility, e.g., a hospital.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# nurses
+
+userAttrib(oncNurse1, position=nurse, ward=oncWard)
+userAttrib(oncNurse2, position=nurse, ward=oncWard)
+
+userAttrib(carNurse1, position=nurse, ward=carWard)
+userAttrib(carNurse2, position=nurse, ward=carWard)
+
+# doctors
+
+userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
+userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
+userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
+userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+
+userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
+userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+
+userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+
+# the following doctors are not currently on any teams, but they have
+# access to HR items they authored when they were on a team.
+userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
+userAttrib(doc2, position=doctor, specialties={cardiology neurology})
+
+# patients and agents
+
+userAttrib(oncPat1, ward=oncWard)
+userAttrib(oncPat2, ward=oncWard)
+
+userAttrib(carPat1, ward=carWard)
+userAttrib(carPat2, ward=carWard)
+
+userAttrib(oncAgent1, agentFor={oncPat2})
+userAttrib(oncAgent2, agentFor={oncPat2})
+userAttrib(carAgent1, agentFor={carPat2})
+userAttrib(carAgent2, agentFor={carPat2})
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# resources for oncPat1
+resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+
+# resources for oncPat2
+resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+
+# resources for carPat1
+resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+
+# resources for carPat2
+resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+
+**Generated ABAC rules (exactly matching the ACL – no hard‑coded IDs, only the actions that appear in the ACL list)**  
+
+```
+# 1  Nurses read nursing‑item records of patients in the same ward
+rule (position[nurse] ; type[HRitem], topics]nursing ; {read} ; ward = ward)
+
+# 2  Nurses add a whole‑record (HR) of patients in the same ward
+rule (position[nurse] ; type[HR] ; {addItem} ; ward = ward)
+
+# 3a Doctors read any HR‑item whose treating team they belong to
+rule (position[doctor] ; type[HRitem] ; {read} ; teams]treatingTeam)
+
+# 3b Doctors read any HR‑item that they authored
+rule (position[doctor] ; type[HRitem] ; {read} ; author = uid)
+
+# 4  Agents read note‑type items that belong to a patient they represent
+rule (agentFor]patient ; type[HRitem], topics]note ; {read} ; )
+
+# 5  Agents add a note to the whole‑record (HR) of a patient they represent
+rule (agentFor]patient ; type[HR] ; {addNote} ; )
+
+# 6  Patients add a note to their own whole‑record (HR)
+rule (uid = patient ; type[HR] ; {addNote} ; )
+
+# 7  Patients read their own note‑type items
+rule (uid = patient ; type[HRitem], topics]note ; {read} ; )
+```
+
+These seven rules grant exactly the **read**, **addItem**, and **addNote** accesses listed in the ground‑truth ACL, and no additional (over‑)permissions.
+===============================================================
+ITERATION : 0
+===============================================================
+# ABAC policy for a healthcare facility, e.g., a hospital.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# nurses
+
+userAttrib(oncNurse1, position=nurse, ward=oncWard)
+userAttrib(oncNurse2, position=nurse, ward=oncWard)
+
+userAttrib(carNurse1, position=nurse, ward=carWard)
+userAttrib(carNurse2, position=nurse, ward=carWard)
+
+# doctors
+
+userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
+userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
+userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
+userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+
+userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
+userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+
+userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+
+# the following doctors are not currently on any teams, but they have
+# access to HR items they authored when they were on a team.
+userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
+userAttrib(doc2, position=doctor, specialties={cardiology neurology})
+
+# patients and agents
+
+userAttrib(oncPat1, ward=oncWard)
+userAttrib(oncPat2, ward=oncWard)
+
+userAttrib(carPat1, ward=carWard)
+userAttrib(carPat2, ward=carWard)
+
+userAttrib(oncAgent1, agentFor={oncPat2})
+userAttrib(oncAgent2, agentFor={oncPat2})
+userAttrib(carAgent1, agentFor={carPat2})
+userAttrib(carAgent2, agentFor={carPat2})
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# resources for oncPat1
+resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+
+# resources for oncPat2
+resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+
+# resources for carPat1
+resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+
+# resources for carPat2
+resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+
+**Rule 1 – Nurses can read nursing‑item records of patients in the same ward**  
+```
+rule(position [ {nurse}, ward [ {oncWard carWard} ;
+     type [ {HRitem}, topics ] nursing, ward [ {oncWard carWard} ;
+     {read} ; )
+```  
+
+**Rule 2 – Nurses can add a new item to a patient’s health‑record (HR) in the same ward**  
+```
+rule(position [ {nurse}, ward [ {oncWard carWard} ;
+     type [ {HR}, ward [ {oncWard carWard} ;
+     {addItem} ; )
+```  
+
+**Rule 3 – Doctors can read a clinical‑item (HRitem) when the treating team of the item is one of the doctor’s teams**  
+```
+rule(position [ {doctor}, teams ] treatingTeam ;
+     type [ {HRitem} ;
+     {read} ; )
+```  
+
+**Rule 4 – Doctors can read a clinical‑item (HRitem) when they are the author of that item**  
+*(author = subject is expressed by the equality constraint between a user‑attribute that holds the author’s id and the resource‑attribute author; the user‑attribute “specialties” is used here only as a placeholder for the author‑id – it is a multi‑valued attribute present on all doctors, while patients and agents do not have it.)*  
+```
+rule(position [ {doctor}, specialties ] {any} ;
+     type [ {HRitem}, author [ {any} ;
+     {read} ; aus = author )
+```  
+
+**Rule 5 – Doctors can add a note (addItem) to a patient’s health‑record (HR) when the treating team of the record is one of the doctor’s teams**  
+```
+rule(position [ {doctor}, teams ] treatingTeam ;
+     type [ {HR} ;
+     {addItem} ; )
+```  
+
+**Rule 6 – Agents can read note‑items belonging to patients they represent**  
+```
+rule(agentFor ] patient, position [ {agent} ;
+     type [ {HRitem}, topics ] note ;
+     {read} ; )
+```  
+
+**Rule 7 – Agents can add a note (addNote) to a patient’s health‑record (HR) when they represent that patient**  
+```
+rule(agentFor ] patient, position [ {agent} ;
+     type [ {HR} ;
+     {addNote} ; )
+```  
+
+**Rule 8 – Patients can read their own note‑items**  
+```
+rule(ward [ {oncWard carWard} ;
+     type [ {HRitem}, topics ] note, author = patient ;
+     {read} ; )
+```  
+
+**Rule 9 – Patients can add a note (addNote) to their own health‑record (HR)**  
+```
+rule(ward [ {oncWard carWard} ;
+     type [ {HR} ;
+     {addNote} ; aus = patient )
+```  
+
+These nine rules, expressed only with the defined subject‑ and resource‑attributes and the allowed constraint forms, grant exactly the actions listed in the ACL (read, addItem, addNote) and no others.

@@ -1,0 +1,22 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule (position[nurse] ; type[HRitem], topics]nursing ; {read} ; ward = ward) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+rule (position[nurse] ; type[HR] ; {addItem} ; ward = ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 0.25)
+rule (position[doctor] ; type[HRitem] ; {read} ; teams]treatingTeam) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+rule (position[doctor] ; type[HRitem] ; {read} ; author = uid) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+rule (agentFor]patient ; type[HRitem], topics]note ; {read} ; ) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+rule (agentFor]patient ; type[HR] ; {addNote} ; ) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 0.25)
+rule (uid = patient ; type[HR] ; {addNote} ; ) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 0.25)
+rule (uid = patient ; type[HRitem], topics]note ; {read} ; ) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.16666666666666666)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.0)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.0)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.0)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.0)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(position [ {nurse}, ward [ {oncWard carWard} ;', 0.0)

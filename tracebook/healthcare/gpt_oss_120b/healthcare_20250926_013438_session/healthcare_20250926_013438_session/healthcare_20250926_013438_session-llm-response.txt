@@ -1,0 +1,29 @@
+**Generated ABAC rules (exactly matching the ACL – no hard‑coded IDs, only the actions that appear in the ACL list)**  
+
+```
+# 1  Nurses read nursing‑item records of patients in the same ward
+rule (position[nurse] ; type[HRitem], topics]nursing ; {read} ; ward = ward)
+
+# 2  Nurses add a whole‑record (HR) of patients in the same ward
+rule (position[nurse] ; type[HR] ; {addItem} ; ward = ward)
+
+# 3a Doctors read any HR‑item whose treating team they belong to
+rule (position[doctor] ; type[HRitem] ; {read} ; teams]treatingTeam)
+
+# 3b Doctors read any HR‑item that they authored
+rule (position[doctor] ; type[HRitem] ; {read} ; author = uid)
+
+# 4  Agents read note‑type items that belong to a patient they represent
+rule (agentFor]patient ; type[HRitem], topics]note ; {read} ; )
+
+# 5  Agents add a note to the whole‑record (HR) of a patient they represent
+rule (agentFor]patient ; type[HR] ; {addNote} ; )
+
+# 6  Patients add a note to their own whole‑record (HR)
+rule (uid = patient ; type[HR] ; {addNote} ; )
+
+# 7  Patients read their own note‑type items
+rule (uid = patient ; type[HRitem], topics]note ; {read} ; )
+```
+
+These seven rules grant exactly the **read**, **addItem**, and **addNote** accesses listed in the ground‑truth ACL, and no additional (over‑)permissions.

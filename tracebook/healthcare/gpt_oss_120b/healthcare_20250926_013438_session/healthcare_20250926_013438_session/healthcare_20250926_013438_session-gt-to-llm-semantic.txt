@@ -1,0 +1,8 @@
+rule (position[nurse] ; type[HRitem], topics]nursing ; {read} ; ward = ward) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.25)
+rule (position[nurse] ; type[HR] ; {addItem} ; ward = ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 0.25)
+rule (position[doctor] ; type[HRitem] ; {read} ; teams]treatingTeam) : ('rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)', 0.19444444444444445)
+rule (position[doctor] ; type[HRitem] ; {read} ; author = uid) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 0.0)
+rule (agentFor]patient ; type[HRitem], topics]note ; {read} ; ) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 0.0)
+rule (agentFor]patient ; type[HR] ; {addNote} ; ) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 0.0)
+rule (uid = patient ; type[HR] ; {addNote} ; ) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 0.011904761904761904)
+rule (uid = patient ; type[HRitem], topics]note ; {read} ; ) : ('rule(; type [ {HRitem}; {read}; uid=author)', 0.043478260869565216)

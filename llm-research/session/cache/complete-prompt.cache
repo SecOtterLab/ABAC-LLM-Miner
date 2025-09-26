@@ -38,41 +38,43 @@ The following text is a request to GENERATE ABAC rules. The text is separated in
 
 
 ## ATTRIBUTE_DESCRIPTION ##
-# Policy Description: Healthcare 
+# Policy Description: Project Management 
 *Vesion: v20250308*
 
 
-This is a sample policy developed by Xu et al. (2015). The policy manages access to electronic health records (HRs) and individual HR items (entries within health records). It defines access rules for nurses, doctors, patients, and authorized agents (such as a patient’s spouse).
+This is a sample policy developed by Xu et al. (2015). The policy manages access by department managers, project leaders, employees, contractors, auditors, accountants, and planners to budgets,
+schedules, and tasks associated with projects.
 
 **Reference**: Zhongyuan Xu and Scott D. Stoller. *Mining attribute-based access control policies.* IEEE Transactions on Dependable and Secure Computing, 12(5):533–545, September–October 2015.
 
 ## Attributes
 
 ### Subject/User Attributes
-The subjects of this policy include doctros, nurses, patients, and agents within the healthcare facility. The following attributes are used to describe the subjects.
+The subjects of this policy include accountants, auditors, planners, managers, project leaders, and technical workers (designers and coders). The following attributes are used to describe the subjects.
 
 | Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
 |--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
-| uid          | Single, String   | User’s unique identifier.                                  | carNurse1, oncDoc2, oncPat2, etc.                         |
-| position          | Single, String   | The user's position.        | doctor, nurse, patient, agent             |
-| specialties        | Multi, Set\<String>   | The user’s areas of medical expertise (for doctors).                     | {cardiology, oncology}, etc.                      |
-| teams         | Multi, Set\<String>   | Medical teams of which the user is a member (for doctors).             | {oncTeam1, carTeam2}, etc. |
-| ward    | Single, String   | The ward in which the user works (for nurses). | oncWard, carWard, etc.                          |
-| agentFor    | Multi, Set\<String>   | The set of patients for which this user is an agent (for agents).                     | {oncPat2, carPat3}, etc.    |
+| uid          | Single, String   | User’s unique identifier.                                  | acc1, aud2, etc.                         |
+| adminRoles          | Multi, Set\<String>   | The user's administrative roles.        | {auditor, accountant}, etc.             |
+| projects        | Multi, Set\<String>  | Projects the user is working on.                     | {proj11, proj12}, etc.                      |
+| projectsLed         | Multi, Set\<String>   | projects led by the user. This is specified explicitly, instead of being implied by a user working on a project and having projectLeader among his administrative roles, because the user might work on some projects in non-leader roles.             | {proj21, proj22}, etc. |
+| expertise    | Multi, Set\<String>   | The user's areas of technical expertise. | {design, coding}, etc.                          |
+| tasks    | Multi, Set\<String>   | Tasks assigned to the user.                     | {proj11task1a, proj11task1propa}, etc.  |
+| department    | Single, String   | The department that the user is in.                     | dept1, dept2, etc.  |
+| isEmployee    | Single, Boolean    | Specifying if the user is an employee (True) or a contractor (False).                     | True, False  |
 
 
 ### Resource Attributes
-The resources of this policy include electronic health records (HRs) and individual HR items (entries within health records). The following attributes are used to describe the resources.
+The resources of this policy include budgets, schedules, and tasks for different projects. The following attributes are used to describe the resources.
 
 | Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
 |--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
-| rid      | Single, String   | Resource’s unique identifier                             | oncPat1nursingItem, oncPat1HR, etc.               |
-| type             | Single, String   | Type of resource being accessed.                        | HR, HRitem                       |
-| patient       | Single, String   | The patient associated with the HR or HR item.                 | oncPat1, carPat2, etc.                            |
-| treatingTeam          | Single, String   | The team treating the associated patient.                      | oncTeam1, carTeam2, etc.                           |
-| ward      | Single, String   | The ward in which the associated patient is being treated.            | oncWard, carWard, etc.                             |
-| topics      | Multi, Set\<String>   | Medical areas to which the item is relevant (for HR-item resources).            | {cardiology, oncology}, etc.                              |
-| author      | Single, String   | ID of the user who created the HR item (for HR-items).            | oncDoc1, carNurse2, etc.                             |
+| rid      | Single, String   | Resource’s unique identifier                             | proj11budget, proj11task1a, etc.               |
+| type             | Single, String   | Type of resource being accessed.                        | task, budget, schedule                      |
+| project       | Single, String   | The project that the task, schedule, or budget is for.                 | proj11, proj21, etc.                            |
+| department          | Single, String   | The department that the associated project is in.                      | dept1, dept2, etc.                           |
+| expertise      | Multi, Set\<String>   | The areas of technical expertise required to work on the task.            | {design, coding}, etc.                             |
+| proprietary    | Single, Boolean    | Specifiying if the task involves proprietary information, which is accessible only to employees (not contractors).                     | True, False  |
 
 
 ## ATTRIBUTE_DATA_FORMAT_DESCRIPTION ##
@@ -94,82 +96,114 @@ The resources of this policy include electronic health records (HRs) and individ
     - A set has the form `{element1 element2 ...}`. **Note that elements of a set are separated by spaces, not commas.**
 
 ## ATTRIBUTE_DATA ##
-# ABAC policy for a healthcare facility, e.g., a hospital.
+# ABAC policy for a project management system.
 
 # Note that the two words "user" and "subject" are used interchangeably in this document.
 
 # Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
 
-
 #------------------------------------------------------------
 # user attribute data
 #------------------------------------------------------------
 
-# nurses
+# naming convention: proj<i><j> is the j'th project in department i
 
-userAttrib(oncNurse1, position=nurse, ward=oncWard)
-userAttrib(oncNurse2, position=nurse, ward=oncWard)
+# accountants
+userAttrib(acc1, adminRoles={accountant}, projects={proj11 proj12})
+userAttrib(acc2, adminRoles={accountant}, projects={proj21 proj22})
 
-userAttrib(carNurse1, position=nurse, ward=carWard)
-userAttrib(carNurse2, position=nurse, ward=carWard)
+# auditors
+userAttrib(aud1, adminRoles={auditor}, projects={proj11 proj12})
+userAttrib(aud2, adminRoles={auditor}, projects={proj21 proj22})
 
-# doctors
+# planners
+userAttrib(plan1, adminRoles={planner}, projects={proj11 proj12})
+userAttrib(plan2, adminRoles={planner}, projects={proj21 proj22})
 
-userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
-userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
-userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
-userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+# managers
+userAttrib(mgr1, adminRoles={manager}, department=dept1)
+userAttrib(mgr2, adminRoles={manager}, department=dept2)
 
-userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
-userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+# project leaders
+userAttrib(ldr11, projects={proj11 proj12}, projectsLed={proj11}, department=dept1)
+userAttrib(ldr12, projects={proj12}, projectsLed={proj12}, department=dept1)
+userAttrib(ldr2, projects={proj21 proj22}, projectsLed={proj21 proj22}, department=dept2)
 
-userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+# technical workers - designers
+userAttrib(des11, expertise={design}, projects={proj11}, isEmployee=True, tasks={proj11task1a proj11task1propa})
+userAttrib(des12, expertise={design}, projects={proj12}, isEmployee=False, tasks={proj12task1a proj12task1propa})
+userAttrib(des21, expertise={design}, projects={proj21}, isEmployee=True, tasks={proj21task1a proj21task1propa})
+userAttrib(des22, expertise={design}, projects={proj22}, isEmployee=False, tasks={proj22task1a proj22task1propa})
 
-# the following doctors are not currently on any teams, but they have
-# access to HR items they authored when they were on a team.
-userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
-userAttrib(doc2, position=doctor, specialties={cardiology neurology})
-
-# patients and agents
-
-userAttrib(oncPat1, ward=oncWard)
-userAttrib(oncPat2, ward=oncWard)
-
-userAttrib(carPat1, ward=carWard)
-userAttrib(carPat2, ward=carWard)
-
-userAttrib(oncAgent1, agentFor={oncPat2})
-userAttrib(oncAgent2, agentFor={oncPat2})
-userAttrib(carAgent1, agentFor={carPat2})
-userAttrib(carAgent2, agentFor={carPat2})
+# technical workers - coders
+userAttrib(code11, expertise={coding}, projects={proj11}, isEmployee=True, tasks={proj11task2a proj11task2propa})
+userAttrib(code12, expertise={coding}, projects={proj12}, isEmployee=False, tasks={proj12task2a proj12task2propa})
+userAttrib(code21, expertise={coding}, projects={proj21}, isEmployee=True, tasks={proj21task2a proj21task2propa})
+userAttrib(code22, expertise={coding}, projects={proj22}, isEmployee=False, tasks={proj22task2a proj22task2propa})
 
 #------------------------------------------------------------
 # resource attribute data
 #------------------------------------------------------------
 
-# resources for oncPat1
-resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
-resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
-resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
-resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+# for each project, for each area of expertise, for proprietary in
+# {True,False}, there is an assigned task (whose rid ends with "a") and an
+# unassigned task.
 
-# resources for oncPat2
-resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
-resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
-resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
-resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+# proj11
+resourceAttrib(proj11budget,type=budget, project=proj11, department=dept1)
+resourceAttrib(proj11sched, type=schedule, project=proj11, department=dept1)
+# un-proprietary tasks
+resourceAttrib(proj11task1a, type=task, project=proj11, department=dept1, expertise={design}, proprietary=False)
+resourceAttrib(proj11task2a, type=task, project=proj11, department=dept1, expertise={coding}, proprietary=False)
+resourceAttrib(proj11task1, type=task, project=proj11, department=dept1, expertise={design}, proprietary=False)
+resourceAttrib(proj11task2, type=task, project=proj11, department=dept1, expertise={coding}, proprietary=False)
+# proprietary tasks
+resourceAttrib(proj11task1propa, type=task, project=proj11, department=dept1, expertise={design}, proprietary=True)
+resourceAttrib(proj11task2propa, type=task, project=proj11, department=dept1, expertise={coding}, proprietary=True)
+resourceAttrib(proj11task1prop, type=task, project=proj11, department=dept1, expertise={design}, proprietary=True)
+resourceAttrib(proj11task2prop, type=task, project=proj11, department=dept1, expertise={coding}, proprietary=True)
 
-# resources for carPat1
-resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
-resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
-resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
-resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+# proj12
+resourceAttrib(proj12budget,type=budget, project=proj12, department=dept1)
+resourceAttrib(proj12sched, type=schedule, project=proj12, department=dept1)
+# un-proprietary tasks
+resourceAttrib(proj12task1a, type=task, project=proj12, department=dept1, expertise={design}, proprietary=False)
+resourceAttrib(proj12task2a, type=task, project=proj12, department=dept1, expertise={coding}, proprietary=False)
+resourceAttrib(proj12task1, type=task, project=proj12, department=dept1, expertise={design}, proprietary=False)
+resourceAttrib(proj12task2, type=task, project=proj12, department=dept1, expertise={coding}, proprietary=False)
+# proprietary tasks
+resourceAttrib(proj12task1propa, type=task, project=proj12, department=dept1, expertise={design}, proprietary=True)
+resourceAttrib(proj12task2propa, type=task, project=proj12, department=dept1, expertise={coding}, proprietary=True)
+resourceAttrib(proj12task1prop, type=task, project=proj12, department=dept1, expertise={design}, proprietary=True)
+resourceAttrib(proj12task2prop, type=task, project=proj12, department=dept1, expertise={coding}, proprietary=True)
 
-# resources for carPat2
-resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
-resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
-resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
-resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+# proj21
+resourceAttrib(proj21budget,type=budget, project=proj21, department=dept2)
+resourceAttrib(proj21sched, type=schedule, project=proj21, department=dept2)
+# un-proprietary tasks
+resourceAttrib(proj21task1a, type=task, project=proj21, department=dept2, expertise={design}, proprietary=False)
+resourceAttrib(proj21task2a, type=task, project=proj21, department=dept2, expertise={coding}, proprietary=False)
+resourceAttrib(proj21task1, type=task, project=proj21, department=dept2, expertise={design}, proprietary=False)
+resourceAttrib(proj21task2, type=task, project=proj21, department=dept2, expertise={coding}, proprietary=False)
+# proprietary tasks
+resourceAttrib(proj21task1propa, type=task, project=proj21, department=dept2, expertise={design}, proprietary=True)
+resourceAttrib(proj21task2propa, type=task, project=proj21, department=dept2, expertise={coding}, proprietary=True)
+resourceAttrib(proj21task1prop, type=task, project=proj21, department=dept2, expertise={design}, proprietary=True)
+resourceAttrib(proj21task2prop, type=task, project=proj21, department=dept2, expertise={coding}, proprietary=True)
+
+# proj22
+resourceAttrib(proj22budget,type=budget, project=proj22, department=dept2)
+resourceAttrib(proj22sched, type=schedule, project=proj22, department=dept2)
+# un-proprietary tasks
+resourceAttrib(proj22task1a, type=task, project=proj22, department=dept2, expertise={design}, proprietary=False)
+resourceAttrib(proj22task2a, type=task, project=proj22, department=dept2, expertise={coding}, proprietary=False)
+resourceAttrib(proj22task1, type=task, project=proj22, department=dept2, expertise={design}, proprietary=False)
+resourceAttrib(proj22task2, type=task, project=proj22, department=dept2, expertise={coding}, proprietary=False)
+# proprietary tasks
+resourceAttrib(proj22task1propa, type=task, project=proj22, department=dept2, expertise={design}, proprietary=True)
+resourceAttrib(proj22task2propa, type=task, project=proj22, department=dept2, expertise={coding}, proprietary=True)
+resourceAttrib(proj22task1prop, type=task, project=proj22, department=dept2, expertise={design}, proprietary=True)
+resourceAttrib(proj22task2prop, type=task, project=proj22, department=dept2, expertise={coding}, proprietary=True)
 
 
 ## RULES_FORMAT_DESCRIPTION ##
@@ -204,49 +238,107 @@ resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=
 
 
 ## GROUND_TRUTH_ACL ##
-carNurse2, carPat2nursingItem, read
-doc2, carPat2carItem, read
-carNurse1, carPat1nursingItem, read
-oncNurse1, oncPat2HR, addItem
-oncNurse2, oncPat2HR, addItem
-carDoc1, carPat1HR, addItem
-doc1, oncPat2oncItem, read
-oncDoc4, oncPat2oncItem, read
-anesDoc1, oncPat1HR, addItem
-oncAgent2, oncPat2HR, addNote
-oncPat2, oncPat2HR, addNote
-oncNurse1, oncPat2nursingItem, read
-oncDoc1, oncPat1oncItem, read
-oncDoc2, oncPat1HR, addItem
-carNurse2, carPat2HR, addItem
-oncAgent1, oncPat2noteItem, read
-carAgent1, carPat2HR, addNote
-carDoc2, carPat1carItem, read
-oncDoc4, oncPat2HR, addItem
-oncDoc2, oncPat1oncItem, read
-oncNurse1, oncPat1HR, addItem
-oncPat1, oncPat1noteItem, read
-carNurse1, carPat1HR, addItem
-oncPat1, oncPat1HR, addNote
-carDoc1, carPat1carItem, read
-carPat1, carPat1HR, addNote
-carDoc2, carPat2carItem, read
-carPat1, carPat1noteItem, read
-carDoc2, carPat2HR, addItem
-oncDoc3, oncPat2HR, addItem
-oncNurse2, oncPat1HR, addItem
-oncDoc1, oncPat2HR, addItem
-oncDoc1, oncPat2oncItem, read
-carAgent2, carPat2HR, addNote
-carNurse2, carPat1HR, addItem
-carNurse1, carPat2HR, addItem
-anesDoc1, carPat1HR, addItem
-carPat2, carPat2HR, addNote
-oncDoc3, oncPat2oncItem, read
-oncNurse2, oncPat1nursingItem, read
-oncDoc1, oncPat1HR, addItem
-oncAgent1, oncPat2HR, addNote
-carAgent1, carPat2noteItem, read
+plan1, proj12sched, read
+code21, proj21task2prop, read
+ldr11, proj11budget, write
+code21, proj21task2propa, setStatus
+code21, proj21task2a, request
+plan2, proj22sched, read
+des22, proj22task1a, read
+des22, proj22task1propa, setStatus
+ldr12, proj12sched, read
+des12, proj12task1, read
+code21, proj21task2propa, read
+ldr11, proj11sched, write
+des11, proj11task1a, read
+ldr12, proj12budget, write
+des22, proj22sched, read
+acc2, proj22sched, read
+code11, proj11task2propa, setStatus
+code22, proj22sched, read
+code22, proj22task2, read
+plan2, proj21sched, read
+code11, proj11sched, read
+des22, proj22task1, read
+des11, proj11task1prop, request
+code21, proj21task2, read
+code12, proj12task2, read
+acc1, proj11sched, read
+code22, proj22task2a, read
+code22, proj22task2, request
+code21, proj21task2propa, request
+code11, proj11task2prop, read
+code11, proj11task2prop, request
+des11, proj11sched, read
+ldr2, proj22sched, read
+code22, proj22task2a, setStatus
+acc2, proj21sched, read
+des12, proj12task1a, setStatus
+des12, proj12task1propa, setStatus
+code11, proj11task2, read
+des21, proj21task1prop, read
+code12, proj12sched, read
+des21, proj21task1propa, read
+des21, proj21task1propa, setStatus
+des11, proj11task1propa, setStatus
+des22, proj22task1a, request
+code11, proj11task2a, request
+des11, proj11task1propa, request
+des11, proj11task1prop, read
+code11, proj11task2propa, read
+code22, proj22task2a, request
+des21, proj21task1, read
+des11, proj11task1a, setStatus
+des22, proj22task1a, setStatus
+ldr2, proj21budget, read
+aud2, proj22sched, read
+des21, proj21task1propa, request
+des21, proj21sched, read
+des12, proj12task1a, request
+des21, proj21task1a, read
+ldr11, proj12sched, read
+aud1, proj11sched, read
+ldr12, proj12sched, write
+aud1, proj12sched, read
+code21, proj21task2prop, request
+code21, proj21task2a, read
+des11, proj11task1, read
+ldr11, proj11sched, read
+code21, proj21task2a, setStatus
+code11, proj11task2a, setStatus
+des22, proj22task1, request
+code12, proj12task2, request
+code12, proj12task2a, request
+ldr2, proj22sched, write
+ldr2, proj22budget, read
+des21, proj21task1, request
+des12, proj12sched, read
+ldr12, proj12budget, read
+code12, proj12task2propa, setStatus
+code11, proj11task2a, read
+des12, proj12task1a, read
+des21, proj21task1a, setStatus
+des11, proj11task1propa, read
+des11, proj11task1, request
+des11, proj11task1a, request
+des21, proj21task1prop, request
+code21, proj21task2, request
+code12, proj12task2a, setStatus
+ldr11, proj11budget, read
+aud2, proj21sched, read
+des21, proj21task1a, request
+acc1, proj12sched, read
+ldr2, proj22budget, write
+ldr2, proj21sched, write
+code22, proj22task2propa, setStatus
+ldr2, proj21budget, write
+plan1, proj11sched, read
+code11, proj11task2, request
+code12, proj12task2a, read
+code11, proj11task2propa, request
+code21, proj21sched, read
+ldr2, proj21sched, read
+des12, proj12task1, request
 
 ## ADDITIONAL_INSTRUCTIONS
 

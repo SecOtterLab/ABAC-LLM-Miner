@@ -1,0 +1,37 @@
+
+===============================================================
+ITERATION : 1
+===============================================================
+# org : healthcare, LLM : gpt_oss_120b
+
+iteration : 0,
+  seconds_elapsed : 0:01:43.147905,
+  syntax_jacc_avg : 0.027777777777777776,
+  semantic_jacc_avg : 0.0,
+  x_syntax_jacc_avg   : 0.04722222222222222,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:01:48.786584,
+  acl_jacc_val : 0.06212424849699399,
+  gt_acl : 43,
+  llm_acl : 487,
+  intersection : 31,
+  under_perm : 12,
+  over_perm : 456,
+  syntax_jacc_avg : 0.25,
+  semantic_jacc_avg : 0.11970899470899471
+  x_syntax_jacc_avg   : 0.25,
+  x_semantic_jacc_avg : 0.10671871405567057
+===============================================================
+ITERATION : 0
+===============================================================
+# org : healthcare, LLM : gpt_oss_120b
+
+iteration : 0,
+  seconds_elapsed : 0:01:43.147905,
+  syntax_jacc_avg : 0.027777777777777776,
+  semantic_jacc_avg : 0.0,
+  x_syntax_jacc_avg   : 0.04722222222222222,
+  x_semantic_jacc_avg : 0.0Error in helper_functions.iterate_api_requests.create_session_data: list index out of range
+Error in acl_tools.rule_semantic_analyzer: list index out of rangeError in acl_tools.rule_semantic_analyzer: list index out of range

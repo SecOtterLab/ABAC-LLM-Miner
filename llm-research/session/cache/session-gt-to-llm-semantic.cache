@@ -2,3 +2,12 @@
 ===============================================================
 ITERATION : 0
 ===============================================================
+rule(adminRoles ] planner, projects ] project ; type = schedule ; {read} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(adminRoles ] accountant, projects ] project ; type = schedule ; {read} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(adminRoles ] auditor, projects ] project ; type = schedule ; {read} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(projectsLed ] project ; type = schedule ; {read, write} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(projectsLed ] project ; type = budget ; {read, write} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(isEmployee = true, projects ] project ;   ; {read, write} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(isEmployee = false, projects ] project ;   ; {request} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(isEmployee = true, projects ] project ;   ; {read} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
+rule(isEmployee = true, projects ] project ;   ; {request} ; ) : ('rule( ; type [ {schedule budget}; {read write}; projectsLed ] project)', 0.0)
