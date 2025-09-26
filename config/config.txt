@@ -9,6 +9,7 @@
 #API To run
 #API 
 gemini2.5-flash:5b
+#openai-gpt5
 
 #Local ollama API
 #deepseek-1:70b
