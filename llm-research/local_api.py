@@ -1,7 +1,7 @@
 # import ollama
 import requests
 import re
-from helper_functions import iterate_api_requests
+from helper_functions import iterate_api_requests, prepend_text_to_file
 import sys
 
 #READ ME:
@@ -10,7 +10,7 @@ import sys
     # LLMs with a context window large enough and available to us are the following:
         # deepseek-r1:70b       d37b54d01a76    42 GB     
         # gpt-oss:120b          f7f8e2f8f4e0    65 GB      
-        # llama3.1:70b          711a9e8463af    42 GB     
+        # llama3.1:70b          711a9e8463af    42 GB     USE 3.3!
         # llama3.3:70b          a6eb4748fd29    42 GB
         # qwen:72b              e1c64582de5c    41 GB 
         # reflection:70b        5084e77c1e10    39 GB   
@@ -26,38 +26,47 @@ import sys
     
 
 def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
+    try:
+        iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, local_api_call)
+        return
+    except Exception as e:
+            prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in local_api.local_api: {e}\n")
 
-    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, local_api_call)
-    return
+            return
+        
 
 
 
 def local_api_call(request_text):
+    try:
+        # model = "phi4-reasoning:14b"
+        model = "gpt-oss:120b"
+        
+        URL = "http://100.89.62.79:11434/api/generate"
 
-    # model = "phi4-reasoning:14b"
-    model = "gpt-oss:120b"
+        payload = {
+            "model": model,
+            "prompt": request_text,
+            "stream": False  # still streams, but we capture
+            # "format" : "json" ollam does not respond with consistent json, too unpredicatble auto response is more predicatble with <think></think> tags
+        }
+
+        r = requests.post(URL, json=payload, timeout=(10, 2000)) #10 = TCP connection 420 is timeout 
+        r.raise_for_status()
+
+        response_message = r.json()["response"].strip()
+        final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL)
+        final_output = final_output.replace("\\", "")
+        print(final_output)
+        return final_output
     
-    URL = "http://100.89.62.79:11434/api/generate"
-
-    payload = {
-        "model": model,
-        "prompt": request_text,
-        "stream": False  # still streams, but we capture
-        # "format" : "json" ollam does not respond with consistent json, too unpredicatble auto response is more predicatble with <think></think> tags
-    }
-
-    r = requests.post(URL, json=payload, timeout=(10, 100000)) #10 = TCP connection 420 is timeout 
-    r.raise_for_status()
-
-    response_message = r.json()["response"].strip()
-    final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL)
-    print(final_output)
-    return final_output
-
+    except Exception as e:
+            prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in local_api.local_api_call: {e}\n")
+            return
 
 
 def main():
-    request_text = "what is 5 to the 3rd power"
+    request_text = "what is 5 to the 3rd power, answer only"
     local_api_call(request_text)
 
 if __name__ == "__main__":

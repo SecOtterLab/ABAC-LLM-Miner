@@ -1,7 +1,7 @@
 ##API CALL ON GEMINI-2.0-flash
 import json
 import requests
-from helper_functions import read_entire_file, iterate_api_requests
+from helper_functions import read_entire_file, iterate_api_requests, prepend_text_to_file
 
 def gemini_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
 
@@ -18,10 +18,10 @@ def gemini_api_call(request_text):
         gemini_key = read_entire_file(key_file)
 
     except FileNotFoundError as e:
-        print(f"Error reading file: {e}")
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error reading file: {e}\n")
         return
     except Exception as e:
-        print(f"Unexpected read error: {e}")
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Unexpected read error: {e}\n")
         return
     
 
@@ -42,16 +42,19 @@ def gemini_api_call(request_text):
         resp = requests.post(url, headers=headers, json=data)
         resp.raise_for_status()
     except requests.exceptions.Timeout:
-        print("HTTP error: request timed out")
+        prepend_text_to_file("llm-research/session/cache/statistics.cache", f"HTTP error: request timed out\n")
         return
     except requests.exceptions.RequestException as e:
-        print(f"HTTP error: {e}")
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",f"HTTP error: {e}\n")
+
         return
 
     try:
         payload = resp.json()
     except json.JSONDecodeError:
-        print("Response was not valid JSON.")
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Response was not valid JSON.\n")
+
+        
         return
 
 

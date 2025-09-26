@@ -1,5 +1,0 @@
-rule( ; type [ {schedule budget}; {read write}; projectsLed ] project) : ('rule(; type [ {budget}; {read write}; projectsLed ] project)', 0.9583333333333334)
-rule( ; type [ {schedule}; {read}; projects ] project) : ('rule(; type [ {schedule}; {read}; projects ] project)', 1.0)
-rule( ; type [ {task}; {setStatus}; tasks ] rid) : ('rule(; type [ {task}; {setStatus}; tasks ] rid)', 1.0)
-rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise) : ('rule(; type [ {schedule}; {read}; projects ] project)', 0.7916666666666666)
-rule(isEmployee [ {True} ; type [ {task}; {request read}; projects ] project, expertise > expertise) : ('rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project, expertise > expertise)', 0.7916666666666666)
