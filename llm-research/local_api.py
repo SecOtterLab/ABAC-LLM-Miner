@@ -80,7 +80,7 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 def local_api_call(request_text, model, num_ctx):
     print(f"model : {model}, num_ctx : {num_ctx}")
     try:
-        local_machine = False
+        local_machine = True 
         if not local_machine:
             print("loacl api call..")
             URL = "http://100.89.62.79:11434/api/generate"
@@ -105,7 +105,7 @@ def local_api_call(request_text, model, num_ctx):
             # resp is a dict in current client
             response_message = resp["message"]["content"].strip()
 
-        
+        # print("here")
         # print((response_message))
         form_str = f"\n=====================*****************RAW***********************====================================\n"
         append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))

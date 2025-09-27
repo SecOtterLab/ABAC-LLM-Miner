@@ -4,8 +4,8 @@ from helper_functions import clear_text_files, write_text_to_file, append_to_fil
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
-from openai_gpt5_api import openai_gpt5_api 
-#stable! time 12:16 AM
+# from openai_gpt5_api import openai_gpt5_api 
+#stable! time 6:09 AM
 
 
 def config_parser(file : str):
@@ -61,7 +61,7 @@ def main():
   
             execution_count, max_num_it, api_arr, org_arr = config_parser(config_file)
             # print(f"APIs: {api_arr}\n")
-            print(f"Organizations: {org_arr}\n")
+            # print(f"Organizations: {org_arr}\n")
 
             for api in api_arr:
                 for org in org_arr:
