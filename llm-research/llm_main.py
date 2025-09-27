@@ -4,7 +4,7 @@ from helper_functions import clear_text_files, write_text_to_file, append_to_fil
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
-from openai_gpt5_api import openai_gpt5_api 
+# from openai_gpt5_api import openai_gpt5_api 
 
 class ContinueOuter(Exception):
     """Signal to skip to the next outer-loop iteration."""
@@ -48,7 +48,7 @@ def main():
                 }
                 local_api_map = {
                     "gemini2.5-flash:5b" : "gemini_2_5_flash",
-                    "deepseek-1:70b": "deepseek_r1_70b",
+                    "deepseek-r1:70b": "deepseek_r1_70b",
                     "gpt-oss:120b": "gpt_oss_120b",
                     "llama3.1:70b": "llama3_1_70b",
                     "llama3.3:70b": "llama3_3_70b",
@@ -92,7 +92,8 @@ def main():
                     if api_to_run == "gemini_2_5_flash":
                         gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
                     elif api_to_run == "openai_gpt5":
-                        openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
+                        pass
+                        # openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
                     elif api_to_run in local_api_map.values():
                         local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
                     elif api_to_run in manual_api_map.values():

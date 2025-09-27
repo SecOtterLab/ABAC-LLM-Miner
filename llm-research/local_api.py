@@ -5,6 +5,8 @@ from helper_functions import iterate_api_requests, prepend_text_to_file
 import sys
 from ollama import chat
 from ollama import ChatResponse
+from ollama import Client
+
 #READ ME:
     # To run one must be hosting the right LLM on ollama 
     # our url is not avialble to users with an ip not in our white list
@@ -41,36 +43,15 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 def local_api_call(request_text):
     try:
         # model = "phi4-reasoning:14b"
-        # model = "gpt-oss:120b"
+        model = "gpt-oss:120b"
         # model = "qwen3:0.6b"
-        
-        # # URL = "http://100.89.62.79:11434/api/generate"
-        # URL = "http://localhost:11434"
+        # model ="llama3.3:70b"
+        # model = "deepseek-r1:70b"        
+        client = Client(host='http://localhost:11434', timeout=32000)  # seconds
+        resp = client.chat(model=model, messages=[{'role':'user','content':request_text}])
+        # print(resp)
 
-        # payload = {
-        #     "model": model,
-        #     "prompt": request_text,
-        #     "stream": False  # still streams, but we capture
-        #     # "format" : "json" ollam does not respond with consistent json, too unpredicatble auto response is more predicatble with <think></think> tags
-        # }
-
-        # r = requests.post(URL, json=payload, timeout=(10, 2000)) #10 = TCP connection 420 is timeout 
-        # r.raise_for_status()
-
-      
-
-        response: ChatResponse = chat(model='gemma3', messages=[
-        {
-            'role': 'user',
-            'content': 'Why is the sky blue?',
-        },
-        ])
-
-        # print(response['message']['content'])
-        # or access fields directly from the response object
-        print(response.message.content)
-
-        response_message = response['message']['content'].strip()
+        response_message = resp['message']['content'].strip()
         final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL)
         final_output = final_output.replace("\\", "")
         print(final_output)
@@ -83,7 +64,7 @@ def local_api_call(request_text):
 
 def main():
     request_text = "what is 5 to the 3rd power, answer only"
-    print(local_api_call(request_text))
+    (local_api_call(request_text))
 
 if __name__ == "__main__":
     main()
