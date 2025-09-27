@@ -5,7 +5,7 @@ from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
 from openai_gpt5_api import openai_gpt5_api 
-
+#stable! time 12:16 AM
 class ContinueOuter(Exception):
     """Signal to skip to the next outer-loop iteration."""
     pass
