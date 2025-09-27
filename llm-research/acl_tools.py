@@ -153,6 +153,10 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
         arr_1 = load_rules_from_file(file_1)
         arr_2 = load_rules_from_file(file_2)
 
+        if not arr_1 or arr_2:
+            return 0, {}
+        
+        
         #pass in the file where we want to store the abac file that is about to be generated
 
         #generate the abac data structures
@@ -172,7 +176,7 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
                         )
             append_to_file("llm-research/session/cache/per_rule_acl.cache", temp_string)
 
-            best_match[rule1] =("EMPTY_BY_DEFAULT", -1 )
+            best_match[rule1] =("EMPTY_BY_DEFAULT", 0 )
 
             for rule2 in arr_2:
                 rule_manager_2 = RuleManager()

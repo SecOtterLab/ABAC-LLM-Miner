@@ -64,6 +64,10 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
         
 
 
+        #                        subprocess.run(['g++', '-std=c++20', '-o', os.path.join(folder_name, 'executable'), os.path.join(folder_name, program_file)])
+
+
+
 
 def local_api_call(request_text):
     try:
