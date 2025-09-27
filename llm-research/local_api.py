@@ -6,6 +6,7 @@ import sys
 from ollama import chat
 from ollama import ChatResponse
 from ollama import Client
+import subprocess
 
 #READ ME:
     # To run one must be hosting the right LLM on ollama 

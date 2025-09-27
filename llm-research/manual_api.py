@@ -2,6 +2,7 @@
 from helper_functions import iterate_api_requests
 from helper_functions import file_to_text
 import re
+import subprocess
 
 
 #NOTE: We clear all data from GPT or manual models before running them.
@@ -17,6 +18,7 @@ def strip_backslashes_from_file(filepath: str) -> None:
     cleaned = content.replace("\\", "")
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(cleaned)
+
 
 
 
@@ -44,6 +46,8 @@ def manual_api_call(request_text):
     if input_confirm !='d': 
         print(f"ERROR: input rules and try again\n")
         return    
+    
+    subprocess.run(['open', '-a','Spotify'])
 
     strip_backslashes_from_file("ignore/manual-input.txt")
     final_string = file_to_text("ignore/manual-input.txt")
