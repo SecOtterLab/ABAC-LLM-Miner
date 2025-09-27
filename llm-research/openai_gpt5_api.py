@@ -5,9 +5,9 @@ from helper_functions import prepend_text_to_file, iterate_api_requests
 
 
 
-def openai_gpt5_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
+def openai_gpt5_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
     try:
-        iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, openai_gpt5_api_call)
+        iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, openai_gpt5_api_call, model, num_ctx)
         return
     except Exception as e:
         prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in openai_gpt5_api.openai_gpt5_api_call: {e}\n")

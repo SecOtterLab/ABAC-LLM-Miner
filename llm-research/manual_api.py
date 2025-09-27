@@ -7,9 +7,9 @@ import subprocess
 
 #NOTE: We clear all data from GPT or manual models before running them.
 #   this is to simulate a API call that would not retain previous chats in memory 
-def manual_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
+def manual_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
 
-    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, manual_api_call)
+    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, manual_api_call, model, num_ctx)
     return
 
 def strip_backslashes_from_file(filepath: str) -> None:

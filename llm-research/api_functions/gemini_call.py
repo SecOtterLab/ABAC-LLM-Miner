@@ -3,9 +3,9 @@ import json
 import requests
 from helper_functions import read_entire_file, iterate_api_requests, prepend_text_to_file
 
-def gemini_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
+def gemini_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
 
-    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, gemini_api_call)
+    iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, gemini_api_call, model, num_ctx)
     return
    
 def gemini_api_call(request_text):

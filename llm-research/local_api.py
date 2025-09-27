@@ -2,11 +2,11 @@
 import requests
 import re
 from helper_functions import iterate_api_requests, prepend_text_to_file
-import sys
-from ollama import chat
-from ollama import ChatResponse
+# import sys
+# from ollama import chat
+# from ollama import ChatResponse
 from ollama import Client
-import subprocess
+# import subprocess
 
 #READ ME:
     # To run one must be hosting the right LLM on ollama 
@@ -38,8 +38,15 @@ import subprocess
 
 def ignore_verbose_response(resp : str) -> str:
     try:
-        pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
-        
+        resp = re.sub(r"\brule\b", "rule", resp, flags=re.IGNORECASE)
+        resp = re.sub(r"\brule \b", "rule", resp, flags=re.IGNORECASE)
+        resp = re.sub(r"(?i)\brule\s*\(", "rule(", resp)
+
+
+
+        # pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
+        pattern = r"rule\s*\([^)]*\)"
+
         str_arr = re.findall(pattern, resp)
         str_builder = ""
 
@@ -54,9 +61,9 @@ def ignore_verbose_response(resp : str) -> str:
 
 
 
-def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
+def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
     try:
-        iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, local_api_call)
+        iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, local_api_call, model, num_ctx)
         return
     except Exception as e:
             prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in local_api.local_api: {e}\n")
@@ -70,50 +77,51 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 
 
 
-def local_api_call(request_text):
+def local_api_call(request_text, model, num_ctx):
     try:
-        #switch when running on mac studio
-        local_machine  = False
-        model = "phi4-reasoning:14b"   
-
+        local_machine = False
         if not local_machine:
+            print("Api Call")
             URL = "http://100.89.62.79:11434/api/generate"
-
             payload = {
-                "model": model,
-                "prompt": request_text,
-                "stream": False  # still streams, but we capture
-                # "format" : "json" ollam does not respond with consistent json, too unpredicatble auto response is more predicatble with <think></think> tags
-            }
-
-            r = requests.post(URL, json=payload, timeout=(10, 2000)) #10 = TCP connection 420 is timeout 
-            r.raise_for_status()
-
-            response_message = r.json()["response"].strip()
-            final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL)
-            final_output = final_output.replace("\\", "")
-            print(final_output)
-            return final_output
+                        "model": model,
+                        "prompt": request_text,
+                        "stream": False, 
+                        "keep_alive" :"0s",
+                        "options" :{"num_ctx":num_ctx},
         
-        else: 
-            client = Client(host='http://localhost:11434', timeout=32000)  # seconds
-            resp = client.chat(model=model, messages=[{'role':'user','content':request_text}])
-            # print(resp)
+                        
+                        }
+            r = requests.post(URL, json=payload, timeout=(10, 2000))
+            r.raise_for_status()
+            data = r.json()
+            if "response" not in data:
+                raise RuntimeError(f"ollama /api/generate missing 'response': {data}")
+            response_message = data["response"].strip()
+        else:
+            client = Client(host="http://localhost:11434", timeout=32000)
+            resp = client.chat(model=model, messages=[{"role":"user","content":request_text}])
+            # resp is a dict in current client
+            response_message = resp["message"]["content"].strip()
 
-            response_message = resp['message']['content'].strip()
-            final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL)
-            final_output = final_output.replace("\\", "")
-            print(final_output)
-            return final_output
-    
+        
+        print((response_message))
+        print("=====================****************************************======================")
+
+        final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL).replace("\\", "")
+        print(ignore_verbose_response(final_output))
+
+        return final_output
     except Exception as e:
-            prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in local_api.local_api_call: {e}\n")
-            return
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",
+                             f"Error in local_api.local_api_call: {e}\n")
+        return ""
 
 
 def main():
-    request_text = "what is 5 to the 3rd power, answer only"
-    local_api_call(request_text)
+
+    request_text = "duplicate this for me 5 times every time change all the numbers from different numbers from 0-25 :rule( section one ; section 2 ; section 3; section 4) but change the numbers all to 0,  then tell me  a quick riddle"
+    local_api_call(request_text, "qwen3:0.6b", 1000)
 
 if __name__ == "__main__":
     main()

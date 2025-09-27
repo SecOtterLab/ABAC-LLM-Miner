@@ -4,43 +4,43 @@
 1
 
 # Max Api iteration
-1
+2
 
 #API To run
 #API 
-#gemini2.5-flash:5b
-#openai-gpt5
+gemini2.5-flash:5b
+# api > openai-gpt5
 
 #Local ollama API
-#deepseek-r1:70b
-#gemma3:27b
-#gpt-oss:120b
-#gpt-oss:20b
-#gpt-oss:latest
-#llama3.1:70b
-#llama3.3:70b
-#llama3-gradient:70b
-#magistral:24b
-#phi4-reasoning:14b
-#qwen:72b
-#qwen3:0.6b
-#qwen3:32b
-#reflection:70b
+# api > deepseek-r1:70b
+# api > gemma3:27b
+# api > gpt-oss:120b
+# api > gpt-oss:20b
+# api > gpt-oss:latest
+# api > llama3.1:70b
+# api > llama3.3:70b
+# api > llama3-gradient:70b
+# api > magistral:24b
+# api > phi4-reasoning:14b
+# api > qwen:72b
+# api > qwen3:0.6b
+# api > qwen3:32b
+# api > reflection:70b
 
 #Manual Api
-gpt-5
+# api > gpt-5
 
 #organization(gt_acl_file; gt_abac_rules_file; attribute_data_description_file; attribute_data_file)
 
 
 healthcare(ground-truth-ACL/healthcare-gt-ACL.txt; ground-truth-ABAC-rules/healthcare-abac-rules.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt)
 
-#project-management(ground-truth-ACL/project-management-gt-ACL.txt; ground-truth-ABAC-rules/project-management-abac-rules.txt; DATASETS-for-LLM/project-management/project-management-attribute-data-description.txt; DATASETS-for-LLM/project-management/project-management-attribute-data.txt)
+# org > project-management(ground-truth-ACL/project-management-gt-ACL.txt; ground-truth-ABAC-rules/project-management-abac-rules.txt; DATASETS-for-LLM/project-management/project-management-attribute-data-description.txt; DATASETS-for-LLM/project-management/project-management-attribute-data.txt)
 
-#university(ground-truth-ACL/university-gt-ACL.txt; ground-truth-ABAC-rules/university-abac-rules.txt; DATASETS-for-LLM/university/university-attribute-data-description.txt; DATASETS-for-LLM/university/university-attribute-data.txt)
+# org > university(ground-truth-ACL/university-gt-ACL.txt; ground-truth-ABAC-rules/university-abac-rules.txt; DATASETS-for-LLM/university/university-attribute-data-description.txt; DATASETS-for-LLM/university/university-attribute-data.txt)
 
-#workforce(ground-truth-ACL/workforce-gt-ACL.txt; ground-truth-ABAC-rules/workforce-abac-rules.txt; DATASETS-for-LLM/workforce/workforce-attribute-data-description.txt; DATASETS-for-LLM/workforce/workforce-attribute-data.txt)
+# org > workforce(ground-truth-ACL/workforce-gt-ACL.txt; ground-truth-ABAC-rules/workforce-abac-rules.txt; DATASETS-for-LLM/workforce/workforce-attribute-data-description.txt; DATASETS-for-LLM/workforce/workforce-attribute-data.txt)
 
-#edocument(ground-truth-ACL/edocument-gt-ACL.txt; ground-truth-ABAC-rules/edocument-abac-rules.txt; DATASETS-for-LLM/edocument/edocument-attribute-data-description.txt; DATASETS-for-LLM/edocument/edocument-attribute-data.txt)
+# org > edocument(ground-truth-ACL/edocument-gt-ACL.txt; ground-truth-ABAC-rules/edocument-abac-rules.txt; DATASETS-for-LLM/edocument/edocument-attribute-data-description.txt; DATASETS-for-LLM/edocument/edocument-attribute-data.txt)
 
 

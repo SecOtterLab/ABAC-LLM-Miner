@@ -47,21 +47,27 @@ def main():
                     "openai-gpt5" : "openai_gpt5"
                 }
                 local_api_map = {
-                    "deepseek-r1:70b": "deepseek_r1_70b",
-                    "gemma3:27b": "gemma3_27b",
-                    "gpt-oss:120b": "gpt_oss_120b",
-                    "gpt-oss:20b": "gpt_oss_20b",
-                    "gpt-oss:latest": "gpt_oss_latest",
-                    "llama3.1:70b": "llama3_1_70b",
-                    "llama3.3:70b": "llama3_3_70b",
-                    "llama3-gradient:70b" : "llama3_gradient_70b",
-                    "magistral:24b": "magistral_24b",
-                    "phi4-reasoning:14b": "phi4_reasoning_14b",
-                    "qwen:72b": "qwen_72b",
-                    "qwen3:0.6b": "qwen3_0_6b",
-                    "qwen3:32b": "qwen3_32b",
-                    "reflection:70b": "reflection_70b"
+                    "deepseek-r1:70b":      {"model": "deepseek-r1:70b",      "name": "deepseek_r1_70b",      "ctx": 131072},
+                    "gemma3:27b":           {"model": "gemma3:27b",           "name": "gemma3_27b",           "ctx": 131072},
+                    "gpt-oss:120b":         {"model": "gpt-oss:120b",         "name": "gpt_oss_120b",         "ctx": 131072},
+                    "gpt-oss:20b":          {"model": "gpt-oss:20b",          "name": "gpt_oss_20b",          "ctx": 131072},
+                    "gpt-oss:latest":       {"model": "gpt-oss:latest",       "name": "gpt_oss_latest",       "ctx": 131072},
+                    "llama3.1:70b":         {"model": "llama3.1:70b",         "name": "llama3_1_70b",         "ctx": 131072},
+                    "llama3.3:70b":         {"model": "llama3.3:70b",         "name": "llama3_3_70b",         "ctx": 131072},
+                    "llama3-gradient:70b":  {"model": "llama3-gradient:70b",  "name": "llama3_gradient_70b",  "ctx": 1048576},
+                    "magistral:24b":        {"model": "magistral:24b",        "name": "magistral_24b",        "ctx": 40000},
+                    "phi4-reasoning:14b":   {"model": "phi4-reasoning:14b",   "name": "phi4_reasoning_14b",   "ctx": 40000},
+                    "qwen:72b":             {"model": "qwen:72b",             "name": "qwen_72b",             "ctx": 32768},
+                    "qwen3:0.6b":           {"model": "qwen3:0.6b",           "name": "qwen3_0_6b",           "ctx": 40960},
+                    "qwen3:32b":            {"model": "qwen3:32b",            "name": "qwen3_32b",            "ctx": 40960},
+                    "reflection:70b":       {"model": "reflection:70b",       "name": "reflection_70b",       "ctx": 131072},
                 }
+
+
+                model =""
+                num_ctx = 0
+                
+
 
                 manual_api_map={
                     "gpt-5" :"gpt_5"
@@ -71,7 +77,9 @@ def main():
                     api_to_run = api_map[api_name]
 
                 elif api_name in local_api_map:
-                    api_to_run = local_api_map[api_name]
+                    api_to_run = local_api_map[api_name]["name"]
+                    model = local_api_map[api_name]["model"]
+                    num_ctx = local_api_map[api_name]["ctx"]
 
                 elif api_name in manual_api_map:
                     api_to_run = manual_api_map[api_name]
@@ -92,18 +100,18 @@ def main():
                         f"# attribute_data_description_file : {attribute_data_description_file}\n"
                         f"# attribute_data_file : {attribute_data_file}\n"
                     )
-                    stats_text = (f"# org : {organization}, LLM : {api_to_run}")
+                    stats_text = (f"# org : {organization}, LLM : {api_to_run}, num_ctx : {num_ctx}")
                     append_to_file( "llm-research/session/output/statistics.txt", stats_text )
 
 
                     if api_to_run == "gemini_2_5_flash":
-                        gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
+                        gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                     elif api_to_run == "openai_gpt5":
-                        openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
+                        openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                     elif api_to_run in local_api_map.values():
-                        local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it) #add name of api for this call!!!!
+                        local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!
                     elif api_to_run in manual_api_map.values():
-                        manual_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
+                        manual_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                     else:
                         raise SystemExit(f"API is not assigned a function: {api_name}") 
 

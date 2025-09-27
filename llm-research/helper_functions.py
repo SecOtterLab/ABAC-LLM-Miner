@@ -140,7 +140,7 @@ def prompt_generator(gt_acl_file, attribute_data_file, attribute_data_descriptio
 
 
 
-def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, attribute_data_description_file, max_num_it, api_call):
+def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, attribute_data_description_file, max_num_it, api_call, model, num_ctx):
     try:
         # generated file #: declare the location on the complete request being made
         # this file should contain everyhting we are feeding the LLM to make the rules.
@@ -168,7 +168,11 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
 
         timestamp_start = datetime.datetime.now()
         # The api_call function will return text of the response.
-        payload_text = api_call(complete_request)
+        if model is None and num_ctx is None:
+            payload_text = api_call(complete_request)
+        else:
+            payload_text = api_call(complete_request, model, num_ctx)
+
         timestamp_end = datetime.datetime.now()
         elapsed_seconds = (timestamp_end - timestamp_start)
 
@@ -234,7 +238,11 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
 
                 timestamp_start = datetime.datetime.now()
                 # The api_call function will return text of the response.
-                payload_text = api_call(complete_request)
+                if model is None and num_ctx is None:
+                    payload_text = api_call(complete_request)
+                else:
+                    payload_text = api_call(complete_request, model, num_ctx)
+                
                 timestamp_end = datetime.datetime.now()
                 elapsed_seconds = (timestamp_end - timestamp_start)
 
