@@ -1,6 +1,6 @@
 from api_functions.gemini_call import gemini_api
 from local_api import local_api
-from helper_functions import clear_text_files, write_text_to_file, append_to_file, prepend_text_to_file
+from helper_functions import clear_text_files, write_text_to_file, append_to_file, prepend_text_to_file, clear_file
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
@@ -110,6 +110,8 @@ def main():
                     clear_text_files("llm-research/session/cache")
                     clear_text_files("llm-research/session/session")
                     clear_text_files("llm-research/session/output")
+                    clear_file("prompts/complete-prompt.txt")
+
 
                     #clear cache and session files
 
@@ -119,6 +121,7 @@ def main():
         clear_text_files("llm-research/session/cache")
         clear_text_files("llm-research/session/session")
         clear_text_files("llm-research/session/output")
+        clear_file("prompts/complete-prompt.txt")
 
 
         return
