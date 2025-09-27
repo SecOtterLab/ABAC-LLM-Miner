@@ -294,6 +294,7 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
             except Exception as e:
                 prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in helper_functions.iterate_api_requests.iteration_step: {e}\n")
                 write_to_logs(counter)
+          
                 continue
 
     except Exception as e:
@@ -301,7 +302,6 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
         write_to_logs(counter)
         pass
 
-    return
 
 
 def create_session_data(session_abac_file, attribute_data_file, session_response, llm_acl_file, gt_acl_file, session_comparison_file):

@@ -119,6 +119,8 @@ def main():
         clear_text_files("llm-research/session/cache")
         clear_text_files("llm-research/session/session")
         clear_text_files("llm-research/session/output")
+
+
         return
     
 

@@ -26,8 +26,8 @@ def manual_api_call(request_text):
         print(f"ERROR: input rules and try again\n")
         return    
 
-    strip_backslashes_from_file("manual-input.txt")
-    final_string = file_to_text("manual-input.txt")
+    strip_backslashes_from_file("ignore/manual-input.txt")
+    final_string = file_to_text("ignore/manual-input.txt")
  
     return str(final_string)
 

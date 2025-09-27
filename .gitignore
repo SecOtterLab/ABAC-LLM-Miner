@@ -1,5 +1,7 @@
 keys/
 output/
-tracebooks/
+tracebook/
 ignore/
 llm-research/api_functions/__pycache__
+*.pyc
+*.pyc
