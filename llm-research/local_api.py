@@ -1,7 +1,7 @@
 # import ollama
 import requests
 import re
-from helper_functions import iterate_api_requests, prepend_text_to_file
+from helper_functions import iterate_api_requests, prepend_text_to_file, append_to_file
 # import sys
 # from ollama import chat
 # from ollama import ChatResponse
@@ -78,10 +78,11 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 
 
 def local_api_call(request_text, model, num_ctx):
+    print(f"model : {model}, num_ctx : {num_ctx}")
     try:
         local_machine = False
         if not local_machine:
-            print("Api Call")
+            print("loacl api call..")
             URL = "http://100.89.62.79:11434/api/generate"
             payload = {
                         "model": model,
@@ -105,11 +106,20 @@ def local_api_call(request_text, model, num_ctx):
             response_message = resp["message"]["content"].strip()
 
         
-        print((response_message))
-        print("=====================****************************************======================")
+        # print((response_message))
+        form_str = f"\n=====================*****************RAW***********************====================================\n"
+        append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+        append_to_file("llm-research/session/cache/raw-response.cache", str(response_message))
+        form_str = (f"\n=====================*****************MINOR FORMATTING***********************======================\n")
+        append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
 
         final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL).replace("\\", "")
-        print(ignore_verbose_response(final_output))
+        final_output = (ignore_verbose_response(final_output))
+        append_to_file("llm-research/session/cache/raw-response.cache", str(final_output))
+        form_str = (f"\n=====================*****************END***********************==================================\n")
+        append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+
+
 
         return final_output
     except Exception as e:
