@@ -47,12 +47,19 @@ def main():
                     "openai-gpt5" : "openai_gpt5"
                 }
                 local_api_map = {
-                    "gemini2.5-flash:5b" : "gemini_2_5_flash",
-                    "deepseek-1:70b": "deepseek_r1_70b",
+                    "deepseek-r1:70b": "deepseek_r1_70b",
+                    "gemma3:27b": "gemma3_27b",
                     "gpt-oss:120b": "gpt_oss_120b",
+                    "gpt-oss:20b": "gpt_oss_20b",
+                    "gpt-oss:latest": "gpt_oss_latest",
                     "llama3.1:70b": "llama3_1_70b",
                     "llama3.3:70b": "llama3_3_70b",
+                    "llama3-gradient:70b" : "llama3_gradient_70b",
+                    "magistral:24b": "magistral_24b",
+                    "phi4-reasoning:14b": "phi4_reasoning_14b",
                     "qwen:72b": "qwen_72b",
+                    "qwen3:0.6b": "qwen3_0_6b",
+                    "qwen3:32b": "qwen3_32b",
                     "reflection:70b": "reflection_70b"
                 }
 
@@ -94,7 +101,7 @@ def main():
                     elif api_to_run == "openai_gpt5":
                         openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
                     elif api_to_run in local_api_map.values():
-                        local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
+                        local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it) #add name of api for this call!!!!
                     elif api_to_run in manual_api_map.values():
                         manual_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it)
                     else:

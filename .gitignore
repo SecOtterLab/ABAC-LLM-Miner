@@ -5,3 +5,5 @@ ignore/
 llm-research/api_functions/__pycache__
 *.pyc
 *.pyc
+/llm-research/__pycache__
+*.pyc

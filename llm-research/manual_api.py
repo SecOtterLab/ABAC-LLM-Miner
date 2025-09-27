@@ -1,6 +1,7 @@
 # import ollama
 from helper_functions import iterate_api_requests
 from helper_functions import file_to_text
+import re
 
 
 #NOTE: We clear all data from GPT or manual models before running them.
@@ -17,6 +18,24 @@ def strip_backslashes_from_file(filepath: str) -> None:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(cleaned)
 
+
+
+def ignore_verbose_response(resp : str) -> str:
+    try:
+        pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
+        
+        str_arr = re.findall(pattern, resp)
+        str_builder = ""
+
+        for rule in str_arr:
+            str_builder +=f"{rule.strip()}\n"
+
+        return str_builder
+    except:
+        print("error in verbose")
+        return "error"
+
+
 def manual_api_call(request_text):
     
     print(f"Copy text from: prompts/complete-prompt.txt\n Every iteration WILL have a unique prompt\n")
@@ -28,14 +47,23 @@ def manual_api_call(request_text):
 
     strip_backslashes_from_file("ignore/manual-input.txt")
     final_string = file_to_text("ignore/manual-input.txt")
- 
+    
+    print(final_string)
+
+    final_string = ignore_verbose_response(final_string)
+    print("------------------------------------------------")
+    print(final_string)
+
+    
+
+
     return str(final_string)
 
 
 
-# def main():
-#     local_api_call()
+def main():
+    manual_api_call("nothign")
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 

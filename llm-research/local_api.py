@@ -31,8 +31,27 @@ from ollama import Client
         # qwen3:32b             030ee887880f    20 GB     3 weeks ago     context length      40,960 
         # gpt-oss:20b           aa4295ac10c3    13 GB     3 weeks ago     context length      131,072
         # qwen3:0.6b            7df6b6e09427    522 MB    3 weeks ago     context length      40,960
-        # llama3-gradient:8b downloading max context length  1,000,000 
-    
+        # llama3-gradient:70b   b5d6e9d0ae61    39 GB     36 seconds ago  context length      1,048,576   
+ 
+
+
+def ignore_verbose_response(resp : str) -> str:
+    try:
+        pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
+        
+        str_arr = re.findall(pattern, resp)
+        str_builder = ""
+
+        for rule in str_arr:
+            str_builder +=f"{rule.strip()}\n"
+
+        return str_builder
+    except:
+        print("error in verbose")
+        return "error"
+        
+
+
 
 def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it):
     try:
@@ -50,7 +69,7 @@ def local_api_call(request_text):
     try:
         #switch when running on mac studio
         local_machine  = False
-        # model = "phi4-reasoning:14b"   
+        model = "phi4-reasoning:14b"   
 
         if not local_machine:
             URL = "http://100.89.62.79:11434/api/generate"
