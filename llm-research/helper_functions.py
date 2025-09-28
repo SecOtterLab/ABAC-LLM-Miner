@@ -101,6 +101,21 @@ def clear_text_files(folder_path):
 
     return
 
+def ensure_rule_file(path: str):
+    
+    # Check for existing rules
+    has_rule = False
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip().startswith("rule"):
+                has_rule = True
+                break
+
+    # if no rule, append a placeholder
+    if not has_rule:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write("rule (<NOT>; <LLM>; <GENERATED>; <RULE>)\n")
+
 def prompt_generator(gt_acl_file, attribute_data_file, attribute_data_description_file, prompt_file, complete_request_file , comparison_file ):
     try: 
         clear_file(complete_request_file)
@@ -177,7 +192,7 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
         elapsed_seconds = (timestamp_end - timestamp_start)
 
         #output the abac rules to a file for testing
-        if(payload_text is None):
+        if not payload_text or not payload_text.strip():
             print(f"skipping iteration: payload not received\n")
             prepend_text_to_file("llm-research/session/cache/statistics.cache", f"skipping iteration: payload not received\n")
             # exit
@@ -185,7 +200,16 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
             print("payload recieved...")
             with open(session_llm_response_file, "w", encoding="utf-8") as of:
                 of.write(payload_text)
-            
+
+            # ensure_rule_file(session_llm_response_file)
+
+        stats_text = (f"\n\niteration : {counter},"
+                    f"\n  seconds_elapsed : {elapsed_seconds},"
+        )    
+        append_to_file( "llm-research/session/output/statistics.txt", stats_text )
+
+        is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
+
         #maps one rule from the llm to all rules in the gt
         syntax_jacc_avg, syntax_map = rule_set_syntax_analyzer(gt_abac_rules_file, session_llm_response_file)
         write_map_to_file("llm-research/session/session/session-llm-to-gt-syntax.txt", syntax_map)
@@ -196,18 +220,14 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
 
         #maps one rule from the gt to all rules in the llm
         syntax_jacc_avg_2, syntax_map_2 = rule_set_syntax_analyzer(session_llm_response_file, gt_abac_rules_file)
-        write_map_to_file("llm-research/session/session/session-gt-to-llm-syntax.txt", syntax_map)
+        write_map_to_file("llm-research/session/session/session-gt-to-llm-syntax.txt", syntax_map_2)
         #generate semantic comparison
         #maps one rule from the gt to all rules in the llm
         semantic_jacc_avg_2 , semantic_map_2 = rule_semantic_analyzer(session_llm_response_file, gt_abac_rules_file, attribute_data_file)
         write_map_to_file("llm-research/session/session/session-gt-to-llm-semantic.txt", semantic_map_2 )
 
-        stats_text = (f"\n\niteration : {counter},"
-                    f"\n  seconds_elapsed : {elapsed_seconds},"
-        )    
-        append_to_file( "llm-research/session/output/statistics.txt", stats_text )
+        
 
-        is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
         
         stats_text = (f"\n  syntax_jacc_avg : {syntax_jacc_avg},"
                         f"\n  semantic_jacc_avg : {semantic_jacc_avg},"
@@ -256,6 +276,16 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
                     with open(session_llm_response_file, "w", encoding="utf-8") as of:
                         of.write(payload_text)
 
+                    # ensure_rule_file(session_llm_response_file)
+
+                stats_text = (f"\n\niteration : {counter},"
+                            f"\n  seconds_elapsed : {elapsed_seconds},"
+                )
+                
+                append_to_file( "llm-research/session/output/statistics.txt", stats_text )
+                
+                is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
+
                 #maps one rule from the llm to all rules in the gt
                 syntax_jacc_avg, syntax_map = rule_set_syntax_analyzer(gt_abac_rules_file, session_llm_response_file)
                 write_map_to_file("llm-research/session/session/session-llm-to-gt-syntax.txt", syntax_map)
@@ -273,13 +303,8 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
                 semantic_jacc_avg_2 , semantic_map_2 = rule_semantic_analyzer(session_llm_response_file, gt_abac_rules_file, attribute_data_file)
                 write_map_to_file("llm-research/session/session/session-gt-to-llm-semantic.txt", semantic_map_2 )
 
-                stats_text = (f"\n\niteration : {counter},"
-                            f"\n  seconds_elapsed : {elapsed_seconds},"
-                )
                 
-                append_to_file( "llm-research/session/output/statistics.txt", stats_text )
 
-                is_match = create_session_data(session_abac_file, attribute_data_file, session_llm_response_file, session_acl_file, gt_acl_file, session_comparison_file)
 
                 stats_text = (f"\n  syntax_jacc_avg : {syntax_jacc_avg},"
                             f"\n  semantic_jacc_avg : {semantic_jacc_avg}"
@@ -318,31 +343,61 @@ def create_session_data(session_abac_file, attribute_data_file, session_response
         #clear the file for the iteration
         clear_file(session_abac_file)
         # write the abac policy (llm version that has no rules) into the session abac file
-        append_from_file(session_abac_file, attribute_data_file)
+        try:
+            append_from_file(session_abac_file, attribute_data_file)
 
-        # write the rules (generated by the LLM) into the session abac file
-        append_from_file(session_abac_file, session_response)
+        except:
+            print("error 1")
+       
+        # user attribute data
+        try:
+            append_to_file(session_abac_file, "\n\n#------------------------------------------------------------\n\n")
+            append_to_file(session_abac_file, "#ABAC Rules")
+            append_to_file(session_abac_file, "\n\n#------------------------------------------------------------\n\n")
+        except:
+            print("error 2")
 
-        # create abac data structures from the session abac file (the one generated with LLM abac rules)
-        user2, res2, rule2 = parse_abac_file(session_abac_file)
 
-        # make a new ACL using the rules given by the LLM
-        generate_acl(user2, res2, rule2, llm_acl_file)
+        
+        rules_text = read_entire_file(session_response)
+        if not rules_text.strip():
+            raise ValueError(f"LLM rules file is empty: {session_response}")
+        append_to_file(session_abac_file, rules_text + "\n")
 
-        #store the comparison in a text object
-        stats_text, debug_text, is_match, _ = compare_acl(gt_acl_file,llm_acl_file)
-        append_to_file( "llm-research/session/output/statistics.txt", stats_text)
-        #write the comparison to a text file
-        write_to_file(session_comparison_file, debug_text)
+        # print(file_to_text(session_abac_file))
+        try:
+            user2, res2, rule2 = parse_abac_file(session_abac_file)
+        except:
+            print("error 3")
 
-        return is_match
-    
+        try:
+
+            if user2 is None or res2 is None:
+                raise ValueError("parse_abac_file returned invalid user/resource structures")
+            if not rule2:
+                raise ValueError("No rules parsed from session_abac_file")
+
+            generate_acl(user2, res2, rule2, llm_acl_file)
+
+        except:
+            print("error 4")
+
+        try:
+            stats_text, debug_text, is_match, _ = compare_acl(gt_acl_file, llm_acl_file)
+            append_to_file("llm-research/session/output/statistics.txt", stats_text)
+            write_to_file(session_comparison_file, debug_text)
+            return is_match
+        except:
+            print("error 5")
+
     except Exception as e:
-            print("error") 
-            prepend_text_to_file("llm-research/session/cache/statistics.cache",f"Error in helper_functions.iterate_api_requests.create_session_data: {e}\n")
 
-
-            return False
+        stats_text, debug_text, is_match, _ = compare_acl(gt_acl_file, llm_acl_file)
+        append_to_file("llm-research/session/output/statistics.txt", stats_text)
+        write_to_file(session_comparison_file, debug_text)
+        prepend_text_to_file("llm-research/session/cache/statistics.cache",
+                             f"Error in helper_functions.iterate_api_requests.create_session_data: {e}\n")
+        return False
         
 def write_to_logs(num_it):
     try:

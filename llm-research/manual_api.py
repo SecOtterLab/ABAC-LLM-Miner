@@ -47,16 +47,15 @@ def manual_api_call(request_text):
         print(f"ERROR: input rules and try again\n")
         return    
     
-    subprocess.run(['open', '-a','Spotify'])
 
     strip_backslashes_from_file("ignore/manual-input.txt")
     final_string = file_to_text("ignore/manual-input.txt")
     
-    print(final_string)
+    # print(final_string)
 
     final_string = ignore_verbose_response(final_string)
     print("------------------------------------------------")
-    print(final_string)
+    # print(final_string)
 
     
 

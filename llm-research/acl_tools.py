@@ -44,6 +44,17 @@ def append_to_file(filename, text):
 
     return
 
+
+
+def count_lines(path: str) -> int:
+    count = 0
+    with open(path, "r", encoding="utf-8") as f:
+        for _ in f:
+            count += 1
+    return count
+
+
+
 def compare_acl (acl1, acl2):
 
     try: 
@@ -84,8 +95,18 @@ def compare_acl (acl1, acl2):
         return stats_text, lines, complete_match, jacc_val
     
     except Exception as e:
+        
+        gt_acl_count =  count_lines(acl1)
+         
+        stats_text = (f"\n  acl_jacc_val : {0},"
+                    f"\n  gt_acl : {gt_acl_count},"
+                    f"\n  llm_acl : {0},"
+                    f"\n  intersection : {0},"
+                    f"\n  under_perm : {gt_acl_count},"
+                    f"\n  over_perm : {0},")
+         
         prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in acl_tools.compare_acl{e}")
-        return "", ["empty"], False, 0.0
+        return stats_text, ["empty"], False, 0.0
     
 
 #Snipets of code taken from core.myabac generate_heatmap_data
@@ -152,8 +173,13 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
     try: 
         arr_1 = load_rules_from_file(file_1)
         arr_2 = load_rules_from_file(file_2)
+        
+        if file_to_text("llm-research/session/session/session-ACL.txt").strip() =="":
+            return 0, {}
 
-        if not arr_1 or arr_2:
+
+
+        if not arr_1 or not arr_2:
             return 0, {}
         
         
@@ -167,11 +193,18 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
 
         for rule1 in arr_1:
             rule_manager = RuleManager()
-            rule_manager.parse_rule(rule1)
+            try:
+                rule_manager.parse_rule(rule1)
+                
+            except:
+                rule_manager.parse_rule("rule(<malForm> ; <malForm> ; <malForm> ; <malForm> )")
+
             generate_acl(user, res, rule_manager, "llm-research/session/session/session-ACL-single-rule-file-1.txt")
             
             temp_string = (f"\n{rule1}"
-                            f"\n{file_to_text("llm-research/session/session/session-ACL-single-rule-file-1.txt")}"
+                            # f"\n{file_to_text("llm-research/session/session/session-ACL-single-rule-file-1.txt")}"
+                            f"\n{file_to_text('llm-research/session/session/session-ACL-single-rule-file-1.txt')}"
+
                             f"\n===============================================\n"
                         )
             append_to_file("llm-research/session/cache/per_rule_acl.cache", temp_string)
@@ -180,7 +213,11 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
 
             for rule2 in arr_2:
                 rule_manager_2 = RuleManager()
-                rule_manager_2.parse_rule(rule2)
+                try:
+                    rule_manager_2.parse_rule(rule2)
+                except:
+                    rule_manager_2.parse_rule("rule(<malForm> ; <malForm> ; <malForm> ; <malForm> )")
+
                 generate_acl(user, res, rule_manager_2, "llm-research/session/session/session-ACL-single-rule-file-2.txt")
 
                 _, _, _, jaccVal = compare_acl("llm-research/session/session/session-ACL-single-rule-file-1.txt", "llm-research/session/session/session-ACL-single-rule-file-2.txt")
