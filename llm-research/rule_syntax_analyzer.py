@@ -185,7 +185,7 @@ def rule_set_syntax_analyzer(rules1, rules2):
 
         for rule1 in arr1:
             # print(gt_rule)
-            best_match[rule1['rule']] =("EMPTY_BY_DEFAULT", -1 )
+            best_match[rule1['rule']] =("EMPTY_BY_DEFAULT", 0)
 
             for rule2 in arr2:
                 # print(llm_rule)
@@ -214,7 +214,12 @@ def rule_set_syntax_analyzer(rules1, rules2):
             # print(f"{key} => {value}\n")
             jacc_total += value[1]
 
+
+        if len(best_match) == 0:
+            return 0, {}
+        
         jacc_avg = jacc_total/len(best_match)
+        
         # print(f"TOTAL JACC  AVG: {jacc_avg}")
 
         return jacc_avg, best_match
@@ -239,7 +244,12 @@ def analyze_atomic(section1, section2):
         atomic_arr_1 = atomic_section(section1)
         atomic_arr_2 = atomic_section(section2)
 
+    
+        if atomic_arr_1 == atomic_arr_2:
+            return 1.0
+        
         for atomic_condition_1 in atomic_arr_1:
+           
             total_count = 0
             total_matching = 0
 
@@ -255,7 +265,6 @@ def analyze_atomic(section1, section2):
                         subatomic_values_1.extend(["<empty>"] * diff )
                     elif diff < 0:
                         subatomic_values_2.extend(["<empty>"] * (-diff ))
-
                 # print(f"comparing {subatomic_values_1} to {subatomic_values_2}\n")
 
                 for i in range(len(subatomic_values_1)):
@@ -275,7 +284,7 @@ def analyze_atomic(section1, section2):
                 #     value = total_matching / total_count
                 # total_value += value
                         
-        # print(f"total matching: {total_matching}      total count {total_count}  avg: {total_matching/total_count}")
+        # print(f"\n\ntotal matching: {total_matching}      total count {total_count}  avg: {total_matching/total_count}")
         # print(f"{subatomic_values_1} <=> {subatomic_values_2} || matching {total_matching} total {total_count}")
         return total_matching/total_count
     
