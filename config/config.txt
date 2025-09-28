@@ -17,7 +17,7 @@ api > deepseek-r1:70b
 api > gemma3:27b
 api > gpt-oss:120b
 api > gpt-oss:20b
-api > gpt-oss:latest
+#api > gpt-oss:latest
 api > llama3.1:70b
 api > llama3.3:70b
 api > llama3-gradient:70b

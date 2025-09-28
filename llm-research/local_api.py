@@ -88,7 +88,7 @@ def local_api_call(request_text, model, num_ctx):
                         "model": model,
                         "prompt": request_text,
                         "stream": False, 
-                        "keep_alive" :"0s",
+                        "keep_alive" : 3000,
                         "options" :{"num_ctx":num_ctx},
         
                         
@@ -100,8 +100,9 @@ def local_api_call(request_text, model, num_ctx):
                 raise RuntimeError(f"ollama /api/generate missing 'response': {data}")
             response_message = data["response"].strip()
         else:
-            client = Client(host="http://localhost:11434", timeout=32000)
-            resp = client.chat(model=model, messages=[{"role":"user","content":request_text}])
+            client = Client(host="http://localhost:11434", timeout=2000)
+            resp = client.chat(model=model, messages=[{"role":"user","content":request_text, "keep_alive" : 3000,
+                        "options" :{"num_ctx":num_ctx}}], )
             # resp is a dict in current client
             response_message = resp["message"]["content"].strip()
 
@@ -120,7 +121,7 @@ def local_api_call(request_text, model, num_ctx):
         append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
 
 
-
+        print(f"{model} ran to compeltion")
         return final_output
     except Exception as e:
         prepend_text_to_file("llm-research/session/cache/statistics.cache",
