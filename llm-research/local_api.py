@@ -68,16 +68,20 @@ def local_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_da
 
 
 
-def local_api_call(request_text, model, num_ctx, local = True):
+def local_api_call(request_text, model, num_ctx):
+
+    local = True
+
     print(f"model : {model}, num_ctx : {num_ctx}")
     try:
         host = "http://localhost:11434" if local else "http://100.89.62.79:11434"
+        print(f"host : {host}")
         client = Client(host=host, timeout=2000)
 
         resp = client.chat(
             model=model,
             messages=[{"role": "user", "content": request_text}],
-            keep_alive=1,
+            keep_alive=1200,
             options={"num_ctx": num_ctx},
         )
 
@@ -108,7 +112,7 @@ def local_api_call(request_text, model, num_ctx, local = True):
 def main():
 
     request_text = "duplicate this for me 5 times every time change all the numbers from different numbers from 0-25 :rule( section one ; section 2 ; section 3; section 4) but change the numbers all to 0,  then tell me  a quick riddle"
-    (local_api_call(request_text, "llama3.3:70b", 1567, False))
+    (local_api_call(request_text, "llama3.3:70b", 1567 ))
 
 if __name__ == "__main__":
     main()

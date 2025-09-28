@@ -87,7 +87,7 @@ def main():
                         "gpt-oss:latest":       {"model": "gpt-oss:latest",       "name": "gpt_oss_latest",       "ctx": 131072},
                         "llama3.1:70b":         {"model": "llama3.1:70b",         "name": "llama3_1_70b",         "ctx": 131072},
                         "llama3.3:70b":         {"model": "llama3.3:70b",         "name": "llama3_3_70b",         "ctx": 131072},
-                        "llama3-gradient:70b":  {"model": "llama3-gradient:70b",  "name": "llama3_gradient_70b",  "ctx": 131072},#change back!! after testing!
+                        "llama3-gradient:70b":  {"model": "llama3-gradient:70b",  "name": "llama3_gradient_70b",  "ctx": 60000},#change back!! after testing!
                         "magistral:24b":        {"model": "magistral:24b",        "name": "magistral_24b",        "ctx": 40000},
                         "phi4-reasoning:14b":   {"model": "phi4-reasoning:14b",   "name": "phi4_reasoning_14b",   "ctx": 40000},
                         "qwen:72b":             {"model": "qwen:72b",             "name": "qwen_72b",             "ctx": 32768},
@@ -143,7 +143,8 @@ def main():
                         if api_to_run == "gemini_2_5_flash":
                             gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "openai_gpt5":
-                            openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                            # openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                            pass
                         elif api in local_api_map:
                             local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!
                         elif api_to_run in manual_api_map.values():
