@@ -1,1 +1,0 @@
-# org : project-management, LLM : qwen3_0_6b, num_ctx : 1000
