@@ -1,7 +1,7 @@
 #EXPECTED TEXT FILE
 
 # amount of times for program to runn execution_count
-execution > 5
+execution > 1
 
 # Max Api iteration
 iteration > 3
@@ -10,32 +10,36 @@ iteration > 3
 
 #API 
 #api > gemini2.5-flash:5b
-#api > openai-gpt5
+api > openai-gpt5
+#api > claude-opus-4-1
+#api > claude-sonnet-4
 
 
 #Local ollama API
 
+#Local Api priority
+#api > gpt-oss:120b
+#api > gpt-oss:20b
+#api > deepseek-r1:70b
+#api > llama3.3:70b
 
-api > gpt-oss:120b
-api > deepseek-r1:70b
-api > gpt-oss:20b
 
-api > llama3.3:70b
+#all APIs below are not a priority
+
+#2nd tier priority 
 #api > llama3-gradient:70b
-
 #api > reflection:70b
 
-
+#3rd Tier
 #api > gemma3:27b
-
 #api > phi4-reasoning:14b
 #api > qwen:72b
 #api > qwen3:32b
 
 #Manual Api
-api > gpt-5
+#api > gpt-5
 
-# org > organization(gt_acl_file; gt_abac_rules_file; attribute_data_description_file; attribute_data_file)
+#org > organization(gt_acl_file; gt_abac_rules_file; attribute_data_description_file; attribute_data_file)
 
 org > healthcare(ground-truth-ACL/healthcare-gt-ACL.txt; ground-truth-ABAC-rules/healthcare-abac-rules.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt)
 

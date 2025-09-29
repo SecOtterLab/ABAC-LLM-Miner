@@ -1,7 +1,33 @@
 ##API CALL ON GEMINI-2.0-flash
 import json
 import requests
-from helper_functions import read_entire_file, iterate_api_requests, prepend_text_to_file
+import re
+from helper_functions import read_entire_file, iterate_api_requests, prepend_text_to_file, append_to_file
+
+
+def ignore_verbose_response(resp : str) -> str:
+    try:
+        resp = re.sub(r"\brule\b", "rule", resp, flags=re.IGNORECASE)
+        resp = re.sub(r"\brule \b", "rule", resp, flags=re.IGNORECASE)
+        resp = re.sub(r"(?i)\brule\s*\(", "rule(", resp)
+
+
+
+        # pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
+        pattern = r"rule\s*\([^)]*\)"
+
+        str_arr = re.findall(pattern, resp)
+        str_builder = ""
+
+        for rule in str_arr:
+            str_builder +=f"{rule.strip()}\n"
+
+        return str_builder
+    except:
+        print("error in verbose")
+        return "error"
+    
+
 
 def gemini_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
 
@@ -58,15 +84,28 @@ def gemini_api_call(request_text):
         return
 
 
-    payload_text = (
+    response_message = (
         payload.get("candidates", [{}])[0]
             .get("content", {})
             .get("parts", [{}])[0]
             .get("text", "")
     )
 
-    cleaned_payload_text = payload_text.replace('`', "")
-    return cleaned_payload_text
+    final_output = response_message.replace('`', "")
+    form_str = f"\n=====================*****************RAW***********************====================================\n"
+    append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+    append_to_file("llm-research/session/cache/raw-response.cache", str(response_message))
+    form_str = (f"\n=====================*****************MINOR FORMATTING***********************======================\n")
+    append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+
+    final_output = re.sub(r"<think>.*?</think>\n?", "", response_message, flags=re.DOTALL).replace("\\", "")
+    final_output = (ignore_verbose_response(final_output))
+    append_to_file("llm-research/session/cache/raw-response.cache", str(final_output))
+    form_str = (f"\n=====================*****************END***********************==================================\n")
+    append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+
+
+    return final_output
 
 if __name__ == "__main__":
     # gemini_api_call()

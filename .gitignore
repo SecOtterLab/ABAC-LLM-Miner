@@ -7,3 +7,4 @@ llm-research/api_functions/__pycache__
 *.pyc
 /llm-research/__pycache__
 *.pyc
+.venv/

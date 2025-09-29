@@ -247,7 +247,7 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
 
         counter +=1
         
-        while(is_match is False and counter < max_num_it):
+        while( counter < max_num_it):
             try:
                 print(f"running iteration {counter} ...")
 

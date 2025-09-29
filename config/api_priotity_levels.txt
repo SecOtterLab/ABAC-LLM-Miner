@@ -13,7 +13,7 @@ priority 1:
 api > openai-gpt5
 api > anseble api
 # gpt-oss:120b          f7f8e2f8f4e0    65 GB     2 weeks ago     context length      131,072 #best local option
-        # deepseek-r1:70b       d37b54d01a76    42 GB     2 weeks ago     context length      131,072  # should run to compare deepseeks capabilties, not good for this task
+# deepseek-r1:70b       d37b54d01a76    42 GB     2 weeks ago     context length      131,072  # should run to compare deepseeks capabilties, not good for this task
 
 
 
