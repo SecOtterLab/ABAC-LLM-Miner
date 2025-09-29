@@ -1,6 +1,9 @@
 import requests, json
 from helper_functions import iterate_api_requests, prepend_text_to_file, append_to_file
 import re
+from anthropic import Anthropic
+import time
+
 #claud price per token : https://docs.claude.com/en/docs/about-claude/pricing
 # context window 200K https://www.anthropic.com/claude/opus
 def ignore_verbose_response(resp : str) -> str:
@@ -39,35 +42,50 @@ def anthropic_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribut
 
 
 def anthropic_api_call(request_text ):
-        
-
+     
         try:
-            model="claude-sonnet-4-20250514"
-            # model="claude-opus-4-1-20250805"
+            # model="claude-sonnet-4-20250514"
+            # # model="claude-opus-4-1-20250805"
              
-            api_key = "NOPE"
-            url = "https://api.anthropic.com/v1/messages"
+            # api_key = "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"
+            # url = "https://api.anthropic.com/v1/messages"
 
-            headers = {
-                "x-api-key": api_key,
-                "anthropic-version": "2023-06-01",
-                "content-type": "application/json",
-            }
+            # headers = {
+            #     "x-api-key": api_key,
+            #     "anthropic-version": "2023-06-01",
+            #     "content-type": "application/json",
+            # }
 
-            data = {
-                "model": model,
-                "max_tokens": 32000, #max token output that anthropic will let you call for opus 4-1
-                "messages": [{"role": "user", "content": request_text}],
-            }
+            # data = {
+            #     "model": model,
+            #     "max_tokens": 32000, #max token output that anthropic will let you call for opus 4-1
+            #     "messages": [{"role": "user", "content": request_text}],
+            #     # "betas" : ["context-1m-2025-08-07"],
+            # }
 
-            resp = requests.post(url, headers=headers, data=json.dumps(data))
+            # resp = requests.post(url, headers=headers, data=json.dumps(data))
 
-            j = resp.json()
+            # j = resp.json()
 
-            print(j["content"][0]["text"])
-            response_message= j["content"][0]["text"]
+            # print(j["content"][0]["text"])
+            # response_message= j["content"][0]["text"]
 
-        
+
+            client = Anthropic()
+            client = Anthropic(api_key = "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")
+
+            response = client.beta.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=1024,
+                messages=[
+                    {"role": "user", "content":request_text}
+                ],
+                betas=["context-1m-2025-08-07"]
+            )
+
+            
+            response_message= response.content[0].text
+            # print(response_message)
             # print((response_message))
             form_str = f"\n=====================*****************RAW***********************====================================\n"
             append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
@@ -80,9 +98,9 @@ def anthropic_api_call(request_text ):
             append_to_file("llm-research/session/cache/raw-response.cache", str(final_output))
             form_str = (f"\n=====================*****************END***********************==================================\n")
             append_to_file("llm-research/session/cache/raw-response.cache", str(form_str))
+            return(response_message)
 
-
-            return final_output
+            # return final_output
         except Exception as e:
             prepend_text_to_file("llm-research/session/cache/statistics.cache",
                                 f"Error in anthropic_api.anthropic_api_call: {e}\n")
@@ -92,8 +110,8 @@ def anthropic_api_call(request_text ):
 
 def main():
 
-    request_text = "what model are you and what is your xontext window, and max input tokens over your api?"
-    (anthropic_api_call(request_text))
+    request_text = "return this same next line to me replace the numbers and make 3 of them and return all 3: this is the line  rule(1 ; 2; 3; 4)"
+    print(anthropic_api_call(request_text))
 
 if __name__ == "__main__":
     main()

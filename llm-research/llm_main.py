@@ -4,8 +4,8 @@ from helper_functions import clear_text_files, write_text_to_file, append_to_fil
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
-from openai_gpt5_api import openai_gpt5_api 
-# from anthropic_api import anthropic_api
+# from openai_gpt5_api import openai_gpt5_api 
+from anthropic_api import anthropic_api
 
 def config_parser(file : str):
 # to run anthropic you need to be in a vm, no clue why but i could only install the packages with tha
@@ -141,10 +141,10 @@ def main():
                             gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "openai_gpt5":
                             print("-> Hit openai")
-                            openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                            # openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "claude_opus_4_1" or api_to_run == "claude_sonnet_4":
                             print("->Hit anthropic")
-                            # anthropic_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                            anthropic_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api in local_api_map:
                             pass
                             # local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!

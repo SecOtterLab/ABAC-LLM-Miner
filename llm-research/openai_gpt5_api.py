@@ -1,7 +1,6 @@
 import re
 from openai import OpenAI
 from helper_functions import prepend_text_to_file, iterate_api_requests, append_to_file
-import time
 
 def ignore_verbose_response(resp : str) -> str:
     try:
@@ -38,11 +37,10 @@ def openai_gpt5_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attrib
 def openai_gpt5_api_call(request_text):
     try:
         print(f"calling openai API...")
-        time.sleep(90)  #to avoid getting rate limmeted on bigger calls
 
         client = OpenAI(
             # This is the default and can be omitted
-            api_key="NOPE",
+            api_key="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",
 
             # 20 seconds (default is 10 minutes)
             timeout=800
