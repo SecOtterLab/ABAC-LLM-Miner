@@ -1,4 +1,0 @@
-LLM,acl_jacc_val,file,gt_acl,intersection,iteration,llm_acl,num_ctx,org,over_perm,seconds_elapsed,semantic_jacc_avg,syntax_jacc_avg,under_perm,x_semantic_jacc_avg,x_syntax_jacc_avg
-openai_gpt5,1.0,healthcare_20250928_170000_statistics.txt,43,43,0,43,0,healthcare,0,0:08:17.142323,1.0,0.7916666666666666,0,1.0,0.7986111111111112
-openai_gpt5,1.0,healthcare_20250928_170000_statistics.txt,43,43,1,43,0,healthcare,0,0:02:13.842961,,0.7916666666666666,0,1.0,0.7986111111111112
-openai_gpt5,1.0,healthcare_20250928_170000_statistics.txt,43,43,2,43,0,healthcare,0,0:02:13.058641,,0.7916666666666666,0,1.0,0.7986111111111112
