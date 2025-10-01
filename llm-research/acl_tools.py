@@ -108,7 +108,6 @@ def compare_acl (acl1, acl2):
         prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in acl_tools.compare_acl{e}")
         return stats_text, ["empty"], False, 0.0
     
-
 #Snipets of code taken from core.myabac generate_heatmap_data
 
 def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
@@ -166,8 +165,6 @@ def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
 
         return
     
-
-
 def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
 
     try: 
@@ -176,8 +173,6 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
         
         if file_to_text("llm-research/session/session/session-ACL.txt").strip() =="":
             return 0, {}
-
-
 
         if not arr_1 or not arr_2:
             return 0, {}
@@ -240,9 +235,6 @@ def rule_semantic_analyzer(file_1, file_2, attribute_data_file):
         prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in acl_tools.rule_semantic_analyzer: {e}")
         return 0.0, {}
     
-    
-
-
 def jaccard(set1, set2):
 
     s1, s2 = set(set1), set(set2)
@@ -255,21 +247,3 @@ def jaccard(set1, set2):
 
     jacc_value = float(intersection / union)
     return jacc_value
-
-
-
-def main():
-
-    # gt_set = file_to_set("ground-truth-ACL/healthcare-gt-ACL.txt")
-    # llm_set = file_to_set("jaccard-testing-ACL.txt")
-    # val = ((jaccard(gt_set,llm_set)))
-    # compare_acl("ground-truth-ACL/healthcare-gt-ACL.txt", "jaccard-testing-ACL.txt")
-    
-    # print(repr(val))
-
-    # rule_semantic_analyzer("ground-truth-ABAC-rules/healthcare-abac-rules.txt", "ground-truth-ABAC-rules/healthcare-abac-rules.txt")
-
-    return
-
-if __name__ == "__main__":
-    main()

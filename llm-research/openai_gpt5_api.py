@@ -8,8 +8,6 @@ def ignore_verbose_response(resp : str) -> str:
         resp = re.sub(r"\brule \b", "rule", resp, flags=re.IGNORECASE)
         resp = re.sub(r"(?i)\brule\s*\(", "rule(", resp)
 
-
-
         # pattern = r"rule\(.*?\)" # . = all characters , * repeats for all until it hits ), ? stops at the first ')'
         pattern = r"rule\s*\([^)]*\)"
 
@@ -24,8 +22,6 @@ def ignore_verbose_response(resp : str) -> str:
         print("error in verbose")
         return "error"
         
-
-
 def openai_gpt5_api(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx):
     try:
         iterate_api_requests(gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, openai_gpt5_api_call, model, num_ctx)
@@ -80,14 +76,3 @@ def openai_gpt5_api_call(request_text):
             print(e)
             return ""
     
-
-
-def main():
-
-    # request_text = "hi"
-    request_text = "hellp"
-    print(openai_gpt5_api_call(request_text))
-
-if __name__ == "__main__":
-    main()
-

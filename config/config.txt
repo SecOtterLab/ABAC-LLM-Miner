@@ -1,18 +1,18 @@
 #EXPECTED TEXT FILE
 
 # amount of times for program to runn execution_count
-execution > 2
+execution > 1
 
 # Max Api iteration
-iteration > 3
+iteration > 1
 
-#API To run
+#API's Available
 
 #API 
-#api > gemini2.5-flash:5b
+api > gemini2.5-flash:5b
 #api > openai-gpt5
 #api > claude-opus-4-1
-api > claude-sonnet-4
+#api > claude-sonnet-4
 
 
 #Local ollama API
@@ -46,10 +46,10 @@ api > claude-sonnet-4
 
 #org > university(ground-truth-ACL/university-gt-ACL.txt; ground-truth-ABAC-rules/university-abac-rules.txt; DATASETS-for-LLM/university/university-attribute-data-description.txt; DATASETS-for-LLM/university/university-attribute-data.txt)
 
-#org > healthcare(ground-truth-ACL/healthcare-gt-ACL.txt; ground-truth-ABAC-rules/healthcare-abac-rules.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt)
+org > healthcare(ground-truth-ACL/healthcare-gt-ACL.txt; ground-truth-ABAC-rules/healthcare-abac-rules.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt; DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt)
 
 #org > workforce(ground-truth-ACL/workforce-gt-ACL.txt; ground-truth-ABAC-rules/workforce-abac-rules.txt; DATASETS-for-LLM/workforce/workforce-attribute-data-description.txt; DATASETS-for-LLM/workforce/workforce-attribute-data.txt)
 
-org > edocument(ground-truth-ACL/edocument-gt-ACL.txt; ground-truth-ABAC-rules/edocument-abac-rules.txt; DATASETS-for-LLM/edocument/edocument-attribute-data-description.txt; DATASETS-for-LLM/edocument/edocument-attribute-data.txt)
+#org > edocument(ground-truth-ACL/edocument-gt-ACL.txt; ground-truth-ABAC-rules/edocument-abac-rules.txt; DATASETS-for-LLM/edocument/edocument-attribute-data-description.txt; DATASETS-for-LLM/edocument/edocument-attribute-data.txt)
 
 

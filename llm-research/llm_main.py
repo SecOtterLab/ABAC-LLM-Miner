@@ -1,10 +1,10 @@
 from api_functions.gemini_call import gemini_api
-# from local_api import local_api
+from local_api import local_api
 from helper_functions import clear_text_files, write_text_to_file, append_to_file, prepend_text_to_file, clear_file
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
-# from openai_gpt5_api import openai_gpt5_api 
+from openai_gpt5_api import openai_gpt5_api 
 from anthropic_api import anthropic_api
 
 def config_parser(file : str):
@@ -65,10 +65,7 @@ def main():
             for api in api_arr:
                 for org in org_arr:
                         
-
-
                     organization, gt_acl_file, gt_abac_rules_file, attribute_data_description_file, attribute_data_file =org_parser(str(org))
-
 
                     print(f"\n\n\nRunning {organization}...\n\n\n")
 
@@ -133,21 +130,20 @@ def main():
                             f"# attribute_data_description_file : {attribute_data_description_file}\n"
                             f"# attribute_data_file : {attribute_data_file}\n"
                         )
+
                         stats_text = (f"# org : {organization}, LLM : {api_to_run}, num_ctx : {num_ctx}")
                         append_to_file( "llm-research/session/output/statistics.txt", stats_text )
-
 
                         if api_to_run == "gemini_2_5_flash":
                             gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "openai_gpt5":
                             print("-> Hit openai")
-                            # openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                            openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "claude_opus_4_1" or api_to_run == "claude_sonnet_4":
                             print("->Hit anthropic")
                             anthropic_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api in local_api_map:
-                            pass
-                            # local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!
+                            local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!
                         elif api_to_run in manual_api_map.values():
                             manual_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         else:

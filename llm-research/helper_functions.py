@@ -154,7 +154,6 @@ def prompt_generator(gt_acl_file, attribute_data_file, attribute_data_descriptio
             return
 
 
-
 def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, attribute_data_description_file, max_num_it, api_call, model, num_ctx):
     try:
         # generated file #: declare the location on the complete request being made
@@ -335,8 +334,6 @@ def iterate_api_requests(gt_acl_file,gt_abac_rules_file,  attribute_data_file, a
         write_to_logs(counter)
         pass
 
-
-
 def create_session_data(session_abac_file, attribute_data_file, session_response, llm_acl_file, gt_acl_file, session_comparison_file):
             
     try:
@@ -358,7 +355,7 @@ def create_session_data(session_abac_file, attribute_data_file, session_response
             print("error 2")
 
 
-        
+
         rules_text = read_entire_file(session_response)
         if not rules_text.strip():
             raise ValueError(f"LLM rules file is empty: {session_response}")
