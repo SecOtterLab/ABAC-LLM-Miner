@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="assets/git_banner.png" alt="ABAC-LLM-Miner Banner" width="100%">
+</p>
+
 # ABAC-LLM-Mdsiner
 
 This repository contains datasets, code, and results for our work on **mining Attribute-Based Access Control (ABAC) policies with large language models (LLMs)**.  
