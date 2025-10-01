@@ -1,9 +1,0 @@
-
-===============================================================
-ITERATION : 0
-===============================================================
-rule( ; type [ {schedule budget}; {read write}; projectsLed ] project) : ('rule(adminRoles [ {planner} ]; type [ {schedule} ], project = projects; {read}; department = department)', 0.2142857142857143)
-rule( ; type [ {schedule}; {read}; projects ] project) : ('rule(adminRoles [ {planner} ]; type [ {schedule} ], project = projects; {read}; department = department)', 0.35714285714285715)
-rule( ; type [ {task}; {setStatus}; tasks ] rid) : ('rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {setStatus, request}; isEmployee = True)', 0.1826923076923077)
-rule( ; type [ {task}, proprietary [ {False}; {request read}; projects ] project, expertise > expertise) : ('rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, setStatus, request}; isEmployee = True)', 0.22435897435897434)
-rule(isEmployee [ {True} ; type [ {task}; {request read}; projects ] project, expertise > expertise) : ('rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, setStatus, request}; isEmployee = True)', 0.28685897435897434)

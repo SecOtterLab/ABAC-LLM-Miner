@@ -1,13 +1,4 @@
-def prepend_text_to_file(filename, text):
-    with open(filename, "r", encoding="utf-8") as f:
-        original_content = f.read()
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(text)
-        f.write(original_content)
-
-    return
-
-
+from helper_functions import *
 def load_rules_from_file(path: str):
     rules = []
     with open(path, "r", encoding="utf-8") as f:
@@ -59,9 +50,7 @@ def split_rule(str):
 
         return []
 
-def printArr(arr):
-    for x in arr:
-        print(x)
+
 
 import re
 

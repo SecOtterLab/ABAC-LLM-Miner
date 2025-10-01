@@ -1,7 +1,0 @@
-
-=====================*****************RAW***********************====================================
-rule(; subj] {role:.*}; {read,write,modifyNote,createNote,deleteNote,markNote,reclassNote,readNote}; class=class)
-=====================*****************MINOR FORMATTING***********************======================
-rule(; subj] {role:.*}; {read,write,modifyNote,createNote,deleteNote,markNote,reclassNote,readNote}; class=class)
-
-=====================*****************END***********************==================================

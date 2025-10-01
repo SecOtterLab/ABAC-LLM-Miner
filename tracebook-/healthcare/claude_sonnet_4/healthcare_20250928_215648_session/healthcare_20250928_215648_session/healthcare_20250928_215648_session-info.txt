@@ -1,8 +1,0 @@
-# org : healthcare20250928_215648
-# iterations : 3
-# api_called : claude-sonnet-4
-# gt_file : ground-truth-ACL/healthcare-gt-ACL.txt
-# gt_abac_rule_file : ground-truth-ABAC-rules/healthcare-abac-rules.txt
-# attribute_data_description_file : DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt
-# attribute_data_file : DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt
-

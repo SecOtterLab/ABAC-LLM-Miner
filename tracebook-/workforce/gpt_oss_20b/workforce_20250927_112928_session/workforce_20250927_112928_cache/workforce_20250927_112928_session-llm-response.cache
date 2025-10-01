@@ -1,5 +1,0 @@
-
-===============================================================
-ITERATION : 0
-===============================================================
-rule(; subj] {role:.*}; {read,write,modifyNote,createNote,deleteNote,markNote,reclassNote,readNote}; class=class)

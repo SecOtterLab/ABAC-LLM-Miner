@@ -1,59 +1,9 @@
 from rule import *
 from myabac import parse_abac_file
 from user import *
+from helper_functions import *
 #function to traverse a file (ACL files) and store lines in a set to compare
-def file_to_set(file_name):
-    
-    lines =  set()
-    with open (file_name, "r", encoding="utf-8") as f:
-        for line in f:
-            lines.add(line.strip())
-    return lines
-
-
-def prepend_text_to_file(filename, text):
-    with open(filename, "r", encoding="utf-8") as f:
-        original_content = f.read()
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(text)
-        f.write(original_content)
-
-    return
-
-
-def load_rules_from_file(path: str):
-    rules = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("rule"):
-                rules.append(line)
-    return rules
-
-def file_to_text(filename):
-    temp_string = ""
-
-    with open (filename, "r", encoding="utf-8") as f:
-        temp_string += f.read().strip()
-    
-    return temp_string
-
-def append_to_file(filename, text):
-    with open(filename, "a", encoding="utf-8") as f:
-        f.write(str(text))
-
-    return
-
-
-
-def count_lines(path: str) -> int:
-    count = 0
-    with open(path, "r", encoding="utf-8") as f:
-        for _ in f:
-            count += 1
-    return count
-
-
+#Snipets of code taken from core.myabac generate_heatmap_data
 
 def compare_acl (acl1, acl2):
 
@@ -108,8 +58,6 @@ def compare_acl (acl1, acl2):
         prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in acl_tools.compare_acl{e}")
         return stats_text, ["empty"], False, 0.0
     
-#Snipets of code taken from core.myabac generate_heatmap_data
-
 def generate_acl(user_mgr, res_mgr, rule_mgr, output_file):
 
     #Arguements should be the return data structures of core.myabac parse_abac_file
@@ -247,3 +195,76 @@ def jaccard(set1, set2):
 
     jacc_value = float(intersection / union)
     return jacc_value
+
+def gt_acl_generator(attribute_data_file, gt_rules_file, output_file):
+    try:
+        print("running gt acl_gen...")
+    
+        #pass in the file where we want to store the abac file that is about to be generated
+        abac_file = "llm-research/session/session-abac.abac"
+
+        clear_file(abac_file)
+
+        #combine the attribute data file with the gt rules to make an abac file
+        append_from_file(abac_file, attribute_data_file)
+        append_from_file(abac_file, gt_rules_file)
+
+        #generate the abac data structures
+        user, res, rule = parse_abac_file(abac_file)
+
+        #generate the acl
+        generate_acl(user, res, rule, output_file)
+
+        return
+    except Exception as e:
+        prepend_text_to_file("llm-research/session/cache/statistics.cache", f"Error in ground_truth_ACL_generator.gt_acl_generator: {e}")
+
+        return
+
+def main():  
+    #   Permission counts: per Dr.Buis previous work on https://dl.acm.org/doi/abs/10.1145/3734436.3734441
+    #   edocument           :   32961
+    #   healthcare          :   43
+    #   project-management  :   101
+    #   university          :   168
+    #   workforce           :   15858    
+
+
+    # # edocument
+    # attribute_data_file = "DATASETS-for-LLM/edocument/edocument-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/edocument-abac-rules.txt"
+    # output_file = "ground-truth-ACL/edocument-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+
+    # # healthcare
+    # attribute_data_file = "DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/healthcare-abac-rules.txt"
+    # output_file = "ground-truth-ACL/healthcare-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # project-management
+    # attribute_data_file = "DATASETS-for-LLM/project-management/project-management-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/project-management-abac-rules.txt"
+    # output_file = "ground-truth-ACL/project-management-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # university
+    # attribute_data_file = "DATASETS-for-LLM/university/university-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/university-abac-rules.txt"
+    # output_file = "ground-truth-ACL/university-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+    # # workforce
+    # attribute_data_file = "DATASETS-for-LLM/workforce/workforce-attribute-data.txt"
+    # gt_rules_file = "ground-truth-ABAC-rules/workforce-abac-rules.txt"
+    # output_file = "ground-truth-ACL/workforce-gt-ACL.txt"
+    # gt_acl_generator(attribute_data_file, gt_rules_file, output_file)
+
+
+
+
+    return  
+
+if __name__ == "__main__":
+    main()

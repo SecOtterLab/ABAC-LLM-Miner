@@ -3,24 +3,10 @@
   <img src="assets/git_banner.png" alt="ABAC-LLM-Miner Banner" width="100%">
 </p>
 
-# ABAC-LLM-Mdsiner
-
-This repository contains datasets, code, and results for our work on **mining Attribute-Based Access Control (ABAC) policies with large language models (LLMs)**.  
-It supports reproducibility of the experiments presented in:  
-
-> Thang Bui and Esteban Martinez Mota. *Mining Attribute-Based Access Control Policies with Large Language Models*. Proceedings of the 30th ACM Symposium on Access Control Models and Technologies (SACMAT 2025).
-
----
+# ABAC-LLM-Miner
 
 ## Overview
 
-ABAC provides flexible, expressive authorization policies but authoring them from scratch is difficult and error-prone.  
-This project investigates whether **LLMs can act as zero-shot ABAC policy miners**, producing valid ABAC rules directly from attribute data and observed permissions, without task-specific training.  
-
-Our contributions:
-- First systematic, zero-shot evaluation of LLMs for ABAC policy mining.  
-- A prompting framework that guides models to generate concise, well-structured rules.  
-- Evaluation against benchmark ABAC datasets using syntactic and semantic similarity.  
 
 ---
 ---

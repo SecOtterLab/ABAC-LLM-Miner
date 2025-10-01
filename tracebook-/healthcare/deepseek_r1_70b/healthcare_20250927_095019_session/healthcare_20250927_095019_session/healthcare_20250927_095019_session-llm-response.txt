@@ -1,6 +1,0 @@
-rule(position=nurse; type=HRitem, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard; read)
-rule(position=nurse; type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard; addItem)
-rule(position=doctor; type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard; read)
-rule(position=nurse; type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard; addItem)
-rule(position=doctor; type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard; read)
-rule(position=nurse; type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard; read)

@@ -1,8 +1,0 @@
-
-===============================================================
-ITERATION : 0
-===============================================================
-rule(; type [ {schedule}; {read}; projects ] project)
-rule(; type [ {budget}; {read, write}; projectsLed ] project)
-rule(; type [ {task}; {read, request}; projects ] project, expertise ] expertise)
-rule(; type [ {task}; {setStatus}; tasks ] rid)
