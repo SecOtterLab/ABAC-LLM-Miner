@@ -36,11 +36,7 @@ def openai_gpt5_api_call(request_text):
 
         client = OpenAI(
             # This is the default and can be omitted
-<<<<<<< HEAD
             api_key="API_KEY",
-=======
-            api_key="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",
->>>>>>> cef652b8d82178aca5750fe1da64ccbfe6dfe54e
 
             # 20 seconds (default is 10 minutes)
             timeout=800
