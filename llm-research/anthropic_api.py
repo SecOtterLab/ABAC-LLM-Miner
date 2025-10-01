@@ -72,7 +72,11 @@ def anthropic_api_call(request_text ):
 
 
             client = Anthropic()
+<<<<<<< HEAD
             client = Anthropic(api_key = "")
+=======
+            client = Anthropic(api_key = "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")
+>>>>>>> cef652b8d82178aca5750fe1da64ccbfe6dfe54e
 
             response = client.beta.messages.create(
                 model="claude-sonnet-4-20250514",
