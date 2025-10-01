@@ -4,12 +4,11 @@ from helper_functions import clear_text_files, write_text_to_file, append_to_fil
 from file_manip import move_and_rename_all
 import datetime
 from manual_api import manual_api
-# from openai_gpt5_api import openai_gpt5_api 
-#stable! time 6:09 AM
-
+from openai_gpt5_api import openai_gpt5_api 
+from anthropic_api import anthropic_api
 
 def config_parser(file : str):
-
+# to run anthropic you need to be in a vm, no clue why but i could only install the packages with tha
     execution_count = None
     max_num_it = None
     api_arr = []
@@ -66,17 +65,17 @@ def main():
             for api in api_arr:
                 for org in org_arr:
                         
-
-
                     organization, gt_acl_file, gt_abac_rules_file, attribute_data_description_file, attribute_data_file =org_parser(str(org))
-
 
                     print(f"\n\n\nRunning {organization}...\n\n\n")
 
 
                     api_map = {
                         "gemini2.5-flash:5b" : "gemini_2_5_flash",
-                        "openai-gpt5" : "openai_gpt5"
+                        "openai-gpt5" : "openai_gpt5",
+                        "claude-opus-4-1" : "claude_opus_4_1",
+                        "claude-sonnet-4" : "claude_sonnet_4"
+                        
                     }
                 
                     local_api_map = {
@@ -95,11 +94,6 @@ def main():
                         "qwen3:32b":            {"model": "qwen3:32b",            "name": "qwen3_32b",            "ctx": 40960},
                         "reflection:70b":       {"model": "reflection:70b",       "name": "reflection_70b",       "ctx": 131072},
                     }
-
-
-                   
-                    
-
 
                     manual_api_map={
                         "gpt-5" :"gpt_5"
@@ -136,15 +130,18 @@ def main():
                             f"# attribute_data_description_file : {attribute_data_description_file}\n"
                             f"# attribute_data_file : {attribute_data_file}\n"
                         )
+
                         stats_text = (f"# org : {organization}, LLM : {api_to_run}, num_ctx : {num_ctx}")
                         append_to_file( "llm-research/session/output/statistics.txt", stats_text )
-
 
                         if api_to_run == "gemini_2_5_flash":
                             gemini_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api_to_run == "openai_gpt5":
-                            # openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
-                            pass
+                            print("-> Hit openai")
+                            openai_gpt5_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
+                        elif api_to_run == "claude_opus_4_1" or api_to_run == "claude_sonnet_4":
+                            print("->Hit anthropic")
+                            anthropic_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, None, None)
                         elif api in local_api_map:
                             local_api( gt_acl_file, gt_abac_rules_file, attribute_data_file, attribute_data_description_file, max_num_it, model, num_ctx) #add name of api for this call!!!!
                         elif api_to_run in manual_api_map.values():

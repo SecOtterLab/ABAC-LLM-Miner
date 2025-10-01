@@ -1,12 +1,6 @@
-# import ollama
-import requests
 import re
 from helper_functions import iterate_api_requests, prepend_text_to_file, append_to_file
-# import sys
-# from ollama import chat
-# from ollama import ChatResponse
 from ollama import Client
-# import subprocess
 
 #READ ME:
 
