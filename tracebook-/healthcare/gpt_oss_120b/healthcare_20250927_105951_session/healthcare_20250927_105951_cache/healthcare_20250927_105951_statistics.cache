@@ -1,0 +1,18 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+# org : healthcare, LLM : gpt_oss_120b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:02:55.214885,
+  acl_jacc_val : 0.5957446808510638,
+  gt_acl : 43,
+  llm_acl : 32,
+  intersection : 28,
+  under_perm : 15,
+  over_perm : 4,
+  syntax_jacc_avg : 0.7222222222222222,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.689236111111111,
+  x_semantic_jacc_avg : 0.0

@@ -1,0 +1,39 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; read; projects ] project)
+rule(; type [ {budget schedule}; {read write}; projectsLed ] project)
+rule(; type [ {schedule}; read; projects ] project)
+rule(; type [ {task}; {read setStatus}; tasks ] rid)
+rule(; type [ {task}, proprietary [ {False}; {read request}; projects ] project, expertise > expertise)
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project, expertise > expertise)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {True}; setStatus; tasks ] rid)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; read; projects ] project)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(; type [ {schedule}; read; projects ] project)
+rule(; type [ {task}; {read setStatus}; tasks ] rid)
+rule(; type [ {task}, proprietary [ {False}; {read request}; projects ] project, expertise > expertise)
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project, expertise > expertise)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {True}; setStatus; tasks ] rid)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; read; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; read; projects ] project)
+rule(projectsLed ] project; type [ {budget}; {read write}; )
+rule(projectsLed ] project; type [ {schedule}; {read write}; )
+rule(; type [ {schedule}; read; projects ] project)
+rule(; type [ {task}; {read setStatus}; tasks ] rid)
+rule(; type [ {task}, proprietary [ {False}; {read request}; projects ] project, expertise > expertise)
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project, expertise > expertise)

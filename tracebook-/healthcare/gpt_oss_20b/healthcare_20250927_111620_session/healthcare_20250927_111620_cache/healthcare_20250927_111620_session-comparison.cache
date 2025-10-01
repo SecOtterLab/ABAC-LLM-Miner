@@ -1,0 +1,58 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+Commong lines / Lines that are correct: 8
+carAgent1, carPat2noteItem, read
+carNurse1, carPat1nursingItem, read
+carNurse2, carPat2nursingItem, read
+carPat1, carPat1noteItem, read
+oncAgent1, oncPat2noteItem, read
+oncNurse1, oncPat2nursingItem, read
+oncNurse2, oncPat1nursingItem, read
+oncPat1, oncPat1noteItem, read
+
+Only in ACL 1 (under permissions): 35
+anesDoc1, carPat1HR, addItem
+anesDoc1, oncPat1HR, addItem
+carAgent1, carPat2HR, addNote
+carAgent2, carPat2HR, addNote
+carDoc1, carPat1HR, addItem
+carDoc1, carPat1carItem, read
+carDoc2, carPat1carItem, read
+carDoc2, carPat2HR, addItem
+carDoc2, carPat2carItem, read
+carNurse1, carPat1HR, addItem
+carNurse1, carPat2HR, addItem
+carNurse2, carPat1HR, addItem
+carNurse2, carPat2HR, addItem
+carPat1, carPat1HR, addNote
+carPat2, carPat2HR, addNote
+doc1, oncPat2oncItem, read
+doc2, carPat2carItem, read
+oncAgent1, oncPat2HR, addNote
+oncAgent2, oncPat2HR, addNote
+oncDoc1, oncPat1HR, addItem
+oncDoc1, oncPat1oncItem, read
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+oncDoc2, oncPat1HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc4, oncPat2oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncNurse1, oncPat2HR, addItem
+oncNurse2, oncPat1HR, addItem
+oncNurse2, oncPat2HR, addItem
+oncPat1, oncPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+
+Only in ACL 2 (over permissions): 4
+carNurse1, carPat2nursingItem, read
+carNurse2, carPat1nursingItem, read
+oncNurse1, oncPat1nursingItem, read
+oncNurse2, oncPat2nursingItem, read
+
+Total different lines: 39

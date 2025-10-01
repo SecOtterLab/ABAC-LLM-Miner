@@ -1,0 +1,40 @@
+# org : healthcare, LLM : llama3_3_70b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:02:01.460679,
+  acl_jacc_val : 0.0,
+  gt_acl : 43,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 43,
+  over_perm : 0,
+  syntax_jacc_avg : 0.46296296296296297,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.46064814814814814,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:02:38.095225,
+  acl_jacc_val : 0.0,
+  gt_acl : 43,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 43,
+  over_perm : 0,
+  syntax_jacc_avg : 0.46296296296296297,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.46325231481481477,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 2,
+  seconds_elapsed : 0:01:51.285080,
+  acl_jacc_val : 0.0,
+  gt_acl : 43,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 43,
+  over_perm : 0,
+  syntax_jacc_avg : 0.46296296296296297,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.454520697167756,
+  x_semantic_jacc_avg : 0.0

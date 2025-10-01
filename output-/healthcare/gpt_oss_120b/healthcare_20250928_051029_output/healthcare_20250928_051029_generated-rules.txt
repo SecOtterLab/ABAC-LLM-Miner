@@ -1,0 +1,39 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; uid = author)
+rule(position [ {nurse}; type [ {HR}]; {addItem}; ward = ward)
+rule(position [ {doctor}; type [ {HRitem}]; {read}; uid = author)
+rule(position [ {doctor}, specialties ] topics, teams ] treatingTeam; type [ {HRitem}]; {read}; )
+rule(position [ {doctor}; type [ {HR}]; {addItem}; teams ] treatingTeam)
+rule(agentFor ] patient; type [ {HRitem}, topics ] note; {read}; uid = author)
+rule(agentFor ] patient; type [ {HR}]; {addNote}; )
+rule(; type [ {HRitem}, topics ] note; {read}; uid = author, ward = ward)
+rule(; type [ {HR}]; {addNote}; uid = patient)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; uid = author)
+rule(position [ {nurse}; type [ {HR}]; {addItem}; ward = ward)
+rule(position [ {doctor}; type [ {HRitem}]; {read}; uid = author)
+rule(position [ {doctor}; type [ {HRitem}]; {read}; specialties ] topics)
+rule(position [ {doctor}; type [ {HR}]; {addItem}; teams ] treatingTeam)
+rule(agentFor ] patient; type [ {HRitem}, topics ] note; {read}; uid = author)
+rule(agentFor ] patient; type [ {HR}]; {addNote}; )
+rule(; type [ {HRitem}, topics ] note; {read}; uid = author, ward = ward)
+rule(; type [ {HR}]; {addNote}; uid = patient)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}]; {addItem}; ward = ward)
+rule(position [ {doctor}; type [ {HRitem}]; {read}; uid = author)
+rule(position [ {doctor}; type [ {HRitem}]; {read}; teams ] treatingTeam)
+rule(position [ {doctor}; type [ {HR}]; {addItem}; teams ] treatingTeam)
+rule(agentFor ] patient; type [ {HRitem}, topics ] note; {read}; uid = author)
+rule(agentFor ] patient; type [ {HR}]; {addNote}; )
+rule(; type [ {HRitem}, topics ] note; {read}; uid = author, ward = ward)
+rule(; type [ {HR}]; {addNote}; uid = patient)

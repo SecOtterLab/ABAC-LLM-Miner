@@ -1,0 +1,42 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}, project ] projects; {read}; )
+rule(adminRoles ] auditor; type [ {schedule}, project ] projects; {read}; )
+rule(adminRoles ] planner; type [ {schedule}, project ] projects; {read}; )
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(projects ] project; type [ {schedule}; {read}; )
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(expertise > expertise, projects ] project, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; )
+rule(expertise > expertise, projects ] project; type [ {task}, proprietary [ {False}; {read request}; )
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(adminRoles ] accountant, projects ] project; type [ {schedule}; {read}; )
+rule(adminRoles ] auditor, projects ] project; type [ {schedule}; {read}; )
+rule(adminRoles ] planner, projects ] project; type [ {schedule}; {read}; )
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(projects ] project; type [ {schedule}; {read}; )
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(expertise ] design, projects ] project, isEmployee [ {True}; type [ {task}, proprietary [ {True}, expertise ] design; {read request}; )
+rule(expertise ] design, projects ] project; type [ {task}, proprietary [ {False}, expertise ] design; {read request}; )
+rule(expertise ] coding, projects ] project, isEmployee [ {True}; type [ {task}, proprietary [ {True}, expertise ] coding; {read request}; )
+rule(expertise ] coding, projects ] project; type [ {task}, proprietary [ {False}, expertise ] coding; {read request}; )
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}, project ] projects; {read}; )
+rule(adminRoles ] auditor; type [ {schedule}, project ] projects; {read}; )
+rule(adminRoles ] planner; type [ {schedule}, project ] projects; {read}; )
+rule(projectsLed ] project; type [ {budget}; {read write}; )
+rule(projectsLed ] project; type [ {schedule}; {read write}; )
+rule(expertise ] design, projects ] project; type [ {schedule}; {read}; )
+rule(expertise ] coding, projects ] project; type [ {schedule}; {read}; )
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(expertise ] design, projects ] project, isEmployee [ {True}; type [ {task}, proprietary [ {True}, expertise ] design; {read request}; )
+rule(expertise ] design, projects ] project; type [ {task}, proprietary [ {False}, expertise ] design; {read request}; )
+rule(expertise ] coding, projects ] project, isEmployee [ {True}; type [ {task}, proprietary [ {True}, expertise ] coding; {read request}; )
+rule(expertise ] coding, projects ] project; type [ {task}, proprietary [ {False}, expertise ] coding; {read request}; )

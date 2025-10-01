@@ -1,0 +1,40 @@
+# org : project-management, LLM : deepseek_r1_70b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:04:27.302623,
+  acl_jacc_val : 0.0,
+  gt_acl : 101,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 101,
+  over_perm : 0,
+  syntax_jacc_avg : 0.3228021978021978,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.3882529507529508,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:06:05.504265,
+  acl_jacc_val : 0.0,
+  gt_acl : 101,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 101,
+  over_perm : 0,
+  syntax_jacc_avg : 0.3263736263736264,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.393956043956044,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 2,
+  seconds_elapsed : 0:04:53.011033,
+  acl_jacc_val : 0.0,
+  gt_acl : 101,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 101,
+  over_perm : 0,
+  syntax_jacc_avg : 0.312012987012987,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.35131899350649354,
+  x_semantic_jacc_avg : 0.0

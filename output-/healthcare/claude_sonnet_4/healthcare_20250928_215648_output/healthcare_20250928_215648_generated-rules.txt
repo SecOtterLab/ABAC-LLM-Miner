@@ -1,0 +1,45 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {doctor}, teams ] treatingTeam; type [ {HR}; {addItem}; )
+rule(position [ {nurse}, ward = ward; type [ {HR}; {addItem}; )
+rule(position [ {doctor}, specialties ] topics; type [ {HRitem}; {read}; )
+rule(position [ {nurse}, ward = ward; type [ {HRitem}, topics [ {nursing}; {read}; )
+rule(; type [ {HRitem}; {read}; author = uid)
+rule(agentFor ] patient; type [ {HR}; {addNote}; )
+rule(agentFor ] patient; type [ {HRitem}, topics [ {note}; {read}; )
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+===============================================================
+ITERATION : 1
+===============================================================
+Looking at the ACL comparison, I need to fix the current rules to eliminate over-permissions while ensuring all required permissions are granted. The main issues are:
+
+1. Rules are too broad, granting access across wards/teams inappropriately
+2. Missing specific constraints for team membership and ward assignments
+3. Need to add constraints to limit cross-ward access
+
+Here are the corrected ABAC rules:
+
+rule(position [ {doctor}, teams ] treatingTeam; type [ {HR}; {addItem}; )
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(position [ {doctor}, specialties ] topics; type [ {HRitem}; {read}; )
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {doctor}; type [ {HRitem}; {read}; author = uid)
+rule(agentFor ] patient; type [ {HR}; {addNote}; )
+rule(agentFor ] patient; type [ {HRitem}, topics [ {note}; {read}; )
+rule(uid = patient; type [ {HR}; {addNote}; )
+rule(uid = patient; type [ {HRitem}, topics [ {note}; {read}; )
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {doctor}, teams ] treatingTeam; type [ {HR}; {addItem}; )
+rule(position [ {nurse}, ward = ward; type [ {HR}; {addItem}; )
+rule(position [ {doctor}, specialties ] topics; type [ {HRitem}; {read}; )
+rule(position [ {nurse}, ward = ward; type [ {HRitem}, topics [ {nursing}; {read}; )
+rule(position [ {doctor}, author = uid; type [ {HRitem}; {read}; )
+rule(agentFor ] patient; type [ {HR}; {addNote}; )
+rule(agentFor ] patient; type [ {HRitem}, topics [ {note}; {read}; )
+rule(uid = patient; type [ {HR}; {addNote}; )
+rule(uid = patient; type [ {HRitem}, topics [ {note}; {read}; )

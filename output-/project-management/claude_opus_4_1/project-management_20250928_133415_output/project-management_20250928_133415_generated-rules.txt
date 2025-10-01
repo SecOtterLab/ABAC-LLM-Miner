@@ -1,0 +1,45 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] planner; type [ {schedule}; {read}; project [ projects)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(expertise ] design; type [ {schedule}; {read}; project [ projects)
+rule(expertise ] coding; type [ {schedule}; {read}; project [ projects)
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(expertise ] design, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; project [ projects, expertise ] design)
+rule(expertise ] coding, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; project [ projects, expertise ] coding)
+rule(expertise ] design; type [ {task}, proprietary [ {False}; {read request}; project [ projects, expertise ] design)
+rule(expertise ] coding; type [ {task}, proprietary [ {False}; {read request}; project [ projects, expertise ] coding)
+rule(tasks ] rid, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {request}; )
+rule(tasks ] rid, isEmployee [ {False}; type [ {task}, proprietary [ {False}; {request}; )
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] planner; type [ {schedule}; {read}; project [ projects)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(expertise ] design; type [ {schedule}; {read}; project [ projects)
+rule(expertise ] coding; type [ {schedule}; {read}; project [ projects)
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(expertise ] design; type [ {task}; {read request}; project [ projects, expertise ] design)
+rule(expertise ] coding; type [ {task}; {read request}; project [ projects, expertise ] coding)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {True}; {setStatus}; tasks ] rid)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; project [ projects)
+rule(adminRoles ] planner; type [ {schedule}; {read}; project [ projects)
+rule(projectsLed ] project; type [ {budget}; {read write}; )
+rule(projectsLed ] project; type [ {schedule}; {read write}; )
+rule(; type [ {schedule}; {read}; project [ projects)
+rule(tasks ] rid; type [ {task}; {read setStatus}; )
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; project [ projects, expertise > expertise)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {False}; {read request}; project [ projects, expertise > expertise)
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {False}; {read request}; project [ projects, expertise > expertise)

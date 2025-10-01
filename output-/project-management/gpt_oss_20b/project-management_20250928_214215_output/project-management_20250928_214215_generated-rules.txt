@@ -1,0 +1,40 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(adminRoles]manager, projectsLed]project; type=[schedule,budget]; {read,write}; department=department)
+rule(adminRoles]planner; type=[schedule]; {read}; projects]project)
+rule(adminRoles]auditor; type=[schedule]; {read}; projects]project)
+rule(adminRoles]accountant; type=[schedule]; {read}; projects]project)
+rule(adminRoles]accountant; type=[budget]; {read}; projects]proj11)
+rule(expertise]design; type=[schedule]; {read}; projects]project)
+rule(expertise]coding; type=[schedule]; {read}; projects]project)
+rule(expertise]design; type=[task]; {read,request}; projects]project, expertise > expertise)
+rule(expertise]coding; type=[task]; {read,request}; projects]project, expertise > expertise)
+rule(expertise]design; type=[task]; {setStatus}; projects]project, expertise > expertise, tasks]rid)
+rule(expertise]coding; type=[task]; {setStatus}; projects]project, expertise > expertise, tasks]rid)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule( ; type=[schedule]; {read}; projects ] project)
+rule(projectsLed ] project; type=[schedule]; {write}; )
+rule(projectsLed ] project; type=[budget]; {read,write}; )
+rule(projectsLed > projectsLed; type=[schedule]; {read}; department=department)
+rule( ; type=[task]; {read,request}; projects ] project, expertise > expertise)
+rule( ; type=[task], proprietary=[True]; {setStatus}; projects ] project, expertise > expertise)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule( ; type=[schedule]; {read}; projects ] project)
+rule(projectsLed ] project; type=[schedule]; {write}; )
+rule(projectsLed ] project; type=[budget]; {read}; )
+rule(projectsLed ] project; type=[budget]; {write}; )
+rule( ; type=[task]; {request}; projects ] project, expertise > expertise)
+rule(isEmployee = True; type=[task]; {setStatus}; tasks ] rid)
+rule(isEmployee = True; type=[task], proprietary = True; {setStatus}; projects ] project)
+rule(isEmployee = False; type=[task]; {setStatus}; tasks ] rid)
+rule(isEmployee = True; type=[task]; {read}; tasks ] rid)
+rule(isEmployee = True; type=[task], proprietary = True; {read}; projects ] project)
+rule(isEmployee = False; type=[task], proprietary = False; {read}; projects ] project)

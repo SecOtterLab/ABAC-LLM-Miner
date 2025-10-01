@@ -1,0 +1,52 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+Looking at the ACL comparison, I need to fix the current rules to eliminate over-permissions and add the missing under-permissions. The main issues are:
+
+1. Current rules grant too broad access to tasks (allowing cross-expertise access)
+2. Missing specific permissions for technical workers to access schedules
+3. Missing setStatus permissions for assigned tasks
+4. Missing leader access to budgets and schedules
+
+Here are the corrected ABAC rules:
+
+rule(adminRoles ] accountant; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(projects ] project, projectsLed ] project; type [ {schedule}; {read}; )
+rule(expertise ] design; type [ {task}, expertise ] design; {read request}; projects ] project)
+rule(expertise ] coding; type [ {task}, expertise ] coding; {read request}; projects ] project)
+rule(expertise ] design, isEmployee [ {True}; type [ {task}, expertise ] design, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise ] coding, isEmployee [ {True}; type [ {task}, expertise ] coding, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise ] design; type [ {schedule}; {read}; projects ] project)
+rule(expertise ] coding; type [ {schedule}; {read}; projects ] project)
+rule(isEmployee [ {True}; type [ {task}, proprietary [ {True}; {setStatus}; tasks ] rid)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {True}; {setStatus}; tasks ] rid)
+rule(; type [ {task}, proprietary [ {False}; {setStatus}; tasks ] rid)
+===============================================================
+ITERATION : 1
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(projects ] project, projectsLed ] project; type [ {schedule}; {read}; )
+rule(expertise > expertise, tasks ] rid; type [ {task}; {read setStatus request}; )
+rule(expertise > expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise > expertise; type [ {task}, proprietary [ {False}; {read request}; projects ] project)
+rule(isEmployee [ {False}; type [ {task}, proprietary [ {True}; {setStatus}; tasks ] rid)
+===============================================================
+ITERATION : 0
+===============================================================
+rule(adminRoles ] accountant; type [ {budget schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {budget schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] manager; type [ {budget schedule}; {read write}; adminRoles ] manager, department = department)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(projects ] project; type [ {schedule}; {read}; )
+rule(expertise > expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read setStatus request}; tasks ] rid)
+rule(expertise > expertise; type [ {task}, proprietary [ {False}; {read setStatus request}; tasks ] rid)
+rule(expertise > expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise > expertise; type [ {task}, proprietary [ {False}; {read request}; projects ] project)

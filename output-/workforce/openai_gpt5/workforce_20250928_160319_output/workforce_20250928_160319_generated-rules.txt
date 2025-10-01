@@ -1,0 +1,25 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {technician}; type [ {task}; {view complete}; uid = assignedTechnician)
+rule(position [ {technician}; type [ {task}; {view}; certifications > requiredCertifications)
+rule(position [ {workforceManager}; type [ {task}; {view}; )
+rule(position [ {workforceManager}; type [ {task}; {complete}; managedStaff ] assignedTechnician)
+rule(position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+rule(position [ {helpdeskOperator}; type [ {workOrder}; {modify delete}; assignedTenant = tenant)
+rule(position [ {helpdeskManager}; type [ {workOrder}; {view}; assignedTenant = tenant)
+rule(position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )
+rule(position [ {applicationAdmin}; type [ {workOrder}; {modify delete}; )
+rule(position [ {salesManager}; type [ {stockRefillRequest}; {receive}; assignedTenant = tenant)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; assignedTenant = tenant)
+rule(position [ {warehouseOperator warehouseManager}; type [ {resourceRequest}; {view complete}; uid = assignedEmployee)
+rule(position [ {salesManager}; type [ {workOrder}; {view}; assignedTenant = tenant)

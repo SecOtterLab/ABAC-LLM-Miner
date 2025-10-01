@@ -1,0 +1,8 @@
+# org : healthcare20250927_123802
+# iterations : 1
+# api_called : llama3.3:70b
+# gt_file : ground-truth-ACL/healthcare-gt-ACL.txt
+# gt_abac_rule_file : ground-truth-ABAC-rules/healthcare-abac-rules.txt
+# attribute_data_description_file : DATASETS-for-LLM/healthcare/healthcare-attribute-data-description.txt
+# attribute_data_file : DATASETS-for-LLM/healthcare/healthcare-attribute-data.txt
+

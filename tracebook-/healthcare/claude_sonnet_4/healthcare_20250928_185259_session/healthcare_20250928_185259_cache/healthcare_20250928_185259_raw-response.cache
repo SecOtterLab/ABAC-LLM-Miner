@@ -1,0 +1,88 @@
+
+=====================*****************RAW***********************====================================
+Looking at the GROUND_TRUTH_ACL, I need to analyze the access patterns to create minimal ABAC rules that grant exactly the same permissions.
+
+Let me identify the key patterns:
+1. Doctors can read HRitems in their specialties and add items to HRs for patients on their teams
+2. Nurses can read nursing items and add items to HRs for patients in their ward
+3. Patients can read their own note items and add notes to their own HRs
+4. Agents can read note items and add notes to HRs for patients they represent
+5. Authors can read HRitems they created
+
+Here are the ABAC rules:
+
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+=====================*****************MINOR FORMATTING***********************======================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+
+=====================*****************END***********************==================================
+
+=====================*****************RAW***********************====================================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+=====================*****************MINOR FORMATTING***********************======================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+
+=====================*****************END***********************==================================
+
+=====================*****************RAW***********************====================================
+Looking at the ACL comparison, I can see that the current rules are granting too many permissions (46 over-permissions). The main issues are:
+
+1. The doctor rule is too broad - it allows all doctors to read all HRitems in their specialties, but should be restricted to their treating teams
+2. The nurse rule allows reading all nursing items in their ward, but should be more restrictive
+3. Patient and agent rules are too broad - they're reading all items when they should only read specific types
+
+Let me fix these rules:
+
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)
+rule(position [ {doctor}; type [ {HRitem}; {read}; uid = author)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+=====================*****************MINOR FORMATTING***********************======================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)
+rule(position [ {doctor}; type [ {HRitem}; {read}; uid = author)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HRitem}, topics [ {note}; {read}; agentFor ] patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+
+=====================*****************END***********************==================================

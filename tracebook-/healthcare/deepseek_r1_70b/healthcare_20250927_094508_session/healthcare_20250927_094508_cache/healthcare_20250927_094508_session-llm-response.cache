@@ -1,0 +1,8 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; ward [ {oncWard carWard} ]; type [ {HRitem HR} ]; treatingTeam [ {oncTeam1 oncTeam2 carTeam1 carTeam2} ]; actions={read addItem addNote}; author ] patient)
+rule(position [ {doctor}; specialties [ {oncology cardiology anesthesiology} ]; teams [ {oncTeam1 oncTeam2 carTeam1 carTeam2} ]; type [ {HRitem HR} ]; treatingTeam [ {oncTeam1 oncTeam2 carTeam1 carTeam2} ]; actions={read addItem addNote}; author ] patient)
+rule(position [ {patient agent}; ward [ {oncWard carWard} ]; type [ {HR HRitem} ]; patient = uid; actions={addNote read}; )
+rule(agentFor [ {oncPat2 carPat2} ]; type [ {HR HRitem} ]; treatingTeam [ {oncTeam2 carTeam2} ]; actions={read addNote}; )

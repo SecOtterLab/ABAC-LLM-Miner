@@ -1,0 +1,8 @@
+# org : edocument20250928_063751
+# iterations : 3
+# api_called : gemini2.5-flash:5b
+# gt_file : ground-truth-ACL/edocument-gt-ACL.txt
+# gt_abac_rule_file : ground-truth-ABAC-rules/edocument-abac-rules.txt
+# attribute_data_description_file : DATASETS-for-LLM/edocument/edocument-attribute-data-description.txt
+# attribute_data_file : DATASETS-for-LLM/edocument/edocument-attribute-data.txt
+

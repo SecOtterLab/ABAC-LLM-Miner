@@ -1,0 +1,40 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(projects ] project; type = schedule; {read};)
+rule(projectsLed ] project; type = schedule; {write};)
+rule(projectsLed ] project; type = budget; {read,write};)
+rule(isEmployee = True, projects ] project; type = task; {read,request,setStatus}; expertise > expertise)
+rule(isEmployee = False, projects ] project; type = task; {read,request}; expertise > expertise, proprietary = False)
+rule(isEmployee = False, expertise = design, projects ] project; type = task; {setStatus}; expertise > expertise)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(adminRoles ] auditor; type [ {schedule}]; {read};)
+rule(adminRoles ] accountant; type [ {schedule}]; {read};)
+rule(adminRoles ] planner; type [ {schedule}]; {read};)
+rule(expertise ] design, projects ] project; type [ {schedule}]; {read};)
+rule(expertise ] coding; type [ {schedule}]; {read};)
+rule(expertise ] coding; type [ {task}]; {read}; expertise > expertise;)
+rule(expertise ] coding; type [ {task}]; {request}; expertise > expertise;)
+rule(expertise ] coding; type [ {task}]; {setStatus}; expertise > expertise;)
+rule(expertise ] design; type [ {task}]; {read}; tasks ] rid; expertise > expertise;)
+rule(expertise ] design; type [ {task}]; {request}; tasks ] rid;)
+rule(expertise ] design; type [ {task}]; {setStatus}; tasks ] rid;)
+rule(; type [ {budget}]; {read,write}; projectsLed ] project;)
+rule(; type [ {schedule}]; {read}; projects ] project;)
+rule(; type [ {schedule}]; {write}; projectsLed ] project;)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(; type [ {task}]; {read}; tasks] rid)
+rule(; type [ {task}]; {request}; projects] project, expertise > expertise)
+rule(; type [ {task}]; {setStatus}; tasks] rid, expertise > expertise, proprietary=True)
+rule(; type [ {schedule}]; {read}; projects] project)
+rule(adminRoles] auditor; type [ {schedule}]; {read}; department = department)
+rule(adminRoles] planner; type [ {schedule}]; {read}; department = department)
+rule(; type [ {budget schedule}]; {read,write}; projectsLed] project)
+rule(projectsLed] proj11; type [ {schedule}]; {read}; project = proj12)

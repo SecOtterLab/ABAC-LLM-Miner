@@ -1,0 +1,25 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule( subj wfrole] {class=wfrole}; {modify, request, update, delete, read, createAppointment, createNote, createOneTimeWorkOrder}; res task] {class=task}; )
+rule( subj wfrole] {class=wfrole}; {modify, request, update}; res stockrefill] {class=stockrefill}; )
+rule( subj wfrole] {class=wfrole}; {modify, request, update}; res resourcereq] {class=resourcereq}; )
+rule( subj wfmgr] {class=wfmgr}; {modify, request, update}; res task] {class=task}; )
+rule( subj tech] {class=tech}; {modify, request, update}; res task] {class=task}; )
+rule( subj whop] {class=whop}; {modify, request, update}; res resourcereq] {class=resourcereq}; )
+rule( subj whop] {class=whop}; {modify, request, update}; res stockrefill] {class=stockrefill}; )
+rule( subj whmgr] {class=whmgr}; {modify, request, update}; res resourcereq] {class=resourcereq}; )
+rule( subj whmgr] {class=whmgr}; {modify, request, update}; res stockrefill] {class=stockrefill}; )
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule( subj wfrole] {class=wfrole}; {modify, request, update, delete, read, createAppointment, createNote, createOneTimeWorkOrder}; res task] {class=task}; )
+rule( subj wfrole] {class=wfrole}; {modify, request, update}; res stockrefill] {class=stockrefill}; )
+rule( subj wfrole] {class=wfrole}; {modify, request, update}; res resourcereq] {class=resourcereq}; )
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule( ; {view, modify, createAppointment, createNote, createOneTimeWorkOrder, delete, read, request, update}; ; )

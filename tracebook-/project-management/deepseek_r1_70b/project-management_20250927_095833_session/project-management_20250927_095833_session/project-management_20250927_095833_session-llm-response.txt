@@ -1,0 +1,8 @@
+rule(adminRoles [ {planner} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(adminRoles [ {planner} ]; type [ {budget} ], project = projects; {write}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, request, setStatus}; isEmployee = True)
+rule(adminRoles [ {projectLeader} ]; type [ {budget} ], project = projectsLed; {write}; department = department)
+rule(adminRoles [ {auditor}, {accountant} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {read, request, setStatus}; isEmployee = True)

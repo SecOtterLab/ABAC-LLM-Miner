@@ -1,0 +1,48 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HRitem} ; topics [ {nursing} ; read)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam1} ; type [ {HRitem} ; patient ] oncPat1, read)
+rule(position [ {agent} ; agentFor [ {oncPat2} ; type [ {HR} ; patient ] oncPat2, addNote)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HRitem} ; topics [ {nursing} ; author ] carNurse1, read)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam1} ; type [ {HRitem} ; patient ] carPat1, read)
+rule(position [ {agent} ; agentFor [ {carPat2} ; type [ {HR} ; patient ] carPat2, addNote)
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat2, addItem)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam1} ; type [ {HR} ; patient ] oncPat1, addItem)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat1, addItem)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam1} ; type [ {HR} ; patient ] carPat1, addItem)
+rule(position [ {patient} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat1, addNote)
+rule(position [ {patient} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat1, addNote)
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HRitem} ; topics [ {nursing} ; read)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam2} ; type [ {HRitem} ; patient ] oncPat2, read)
+rule(position [ {agent} ; agentFor [ {oncPat1} ; type [ {HR} ; patient ] oncPat1, addNote)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HRitem} ; topics [ {nursing} ; author ] carNurse2, read)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam2} ; type [ {HRitem} ; patient ] carPat2, read)
+rule(position [ {agent} ; agentFor [ {carPat1} ; type [ {HR} ; patient ] carPat1, addNote)
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat1, addItem)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam2} ; type [ {HR} ; patient ] oncPat2, addItem)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat2, addItem)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam2} ; type [ {HR} ; patient ] carPat2, addItem)
+rule(position [ {patient} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat2, addNote)
+rule(position [ {patient} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat2, addNote)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HRitem} ; topics [ {nursing} ; author ] oncNurse1, read)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam1} ; type [ {HRitem} ; patient ] oncPat1, read)
+rule(position [ {agent} ; agentFor [ {oncPat2} ; type [ {HR} ; patient ] oncPat2, addNote)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HRitem} ; topics [ {nursing} ; author ] carNurse1, read)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam1} ; type [ {HRitem} ; patient ] carPat1, read)
+rule(position [ {agent} ; agentFor [ {carPat2} ; type [ {HR} ; patient ] carPat2, addNote)
+rule(position [ {nurse} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat2, addItem)
+rule(position [ {doctor} ; specialties [ {oncology} ; teams [ {oncTeam1} ; type [ {HR} ; patient ] oncPat1, addItem)
+rule(position [ {nurse} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat1, addItem)
+rule(position [ {doctor} ; specialties [ {cardiology} ; teams [ {carTeam1} ; type [ {HR} ; patient ] carPat1, addItem)
+rule(position [ {patient} ; ward [ {oncWard} ; type [ {HR} ; patient ] oncPat1, addNote)
+rule(position [ {patient} ; ward [ {carWard} ; type [ {HR} ; patient ] carPat1, addNote)
+
+===============================================================
+ITERATION : 0
+===============================================================

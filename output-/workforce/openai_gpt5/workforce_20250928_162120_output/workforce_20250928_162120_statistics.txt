@@ -1,0 +1,40 @@
+# org : workforce, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:03:31.294395,
+  acl_jacc_val : 0.2235164835164835,
+  gt_acl : 15858,
+  llm_acl : 6410,
+  intersection : 4068,
+  under_perm : 11790,
+  over_perm : 2342,
+  syntax_jacc_avg : 0.611607142857143,
+  semantic_jacc_avg : 0.19139733768816478,
+  x_syntax_jacc_avg   : 0.668998015873016,
+  x_semantic_jacc_avg : 0.2170410713537687
+
+iteration : 1,
+  seconds_elapsed : 0:00:04.438913,
+  acl_jacc_val : 0.2235164835164835,
+  gt_acl : 15858,
+  llm_acl : 6410,
+  intersection : 4068,
+  under_perm : 11790,
+  over_perm : 2342,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 2,
+  seconds_elapsed : 0:00:08.640100,
+  acl_jacc_val : 0.2235164835164835,
+  gt_acl : 15858,
+  llm_acl : 6410,
+  intersection : 4068,
+  under_perm : 11790,
+  over_perm : 2342,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0

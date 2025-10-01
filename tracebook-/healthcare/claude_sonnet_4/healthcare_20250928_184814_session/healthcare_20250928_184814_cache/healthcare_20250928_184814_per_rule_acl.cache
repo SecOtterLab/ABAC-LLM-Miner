@@ -1,0 +1,372 @@
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid=patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================
+
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+oncAgent2, oncPat2HR, addNote
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2HR, addNote
+carAgent2, carPat2HR, addNote
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid=author)
+doc1, oncPat2oncItem, read
+carAgent1, carPat2noteItem, read
+oncPat1, oncPat1noteItem, read
+doc2, carPat2carItem, read
+carNurse2, carPat2nursingItem, read
+oncNurse1, oncPat2nursingItem, read
+carNurse1, carPat1nursingItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat1carItem, read
+oncAgent1, oncPat2noteItem, read
+carPat1, carPat1noteItem, read
+oncNurse2, oncPat1nursingItem, read
+===============================================
+
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2oncItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat2carItem, read
+oncDoc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+carDoc1, carPat1carItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HRitem}, topics ] {nursing}; {read}; ward = ward)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {oncology}; type [ {HRitem}, topics ] {oncology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {cardiology}; type [ {HRitem}, topics ] {cardiology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}; type [ {HRitem}; {read}; uid = author)
+doc1, oncPat2oncItem, read
+carDoc2, carPat1carItem, read
+oncDoc1, oncPat1oncItem, read
+doc2, carPat2carItem, read
+===============================================
+
+rule(agentFor ] {patient}; type [ {HRitem}, topics ] {note}; {read}; patient [ agentFor)
+
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid = patient, uid = author)
+carPat1, carPat1noteItem, read
+oncPat1, oncPat1noteItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(agentFor ] {patient}; type [ {HR}; {addNote}; patient [ agentFor)
+
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid = patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid=patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================
+
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+oncAgent2, oncPat2HR, addNote
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2HR, addNote
+carAgent2, carPat2HR, addNote
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid=author)
+doc1, oncPat2oncItem, read
+carAgent1, carPat2noteItem, read
+oncPat1, oncPat1noteItem, read
+doc2, carPat2carItem, read
+carNurse2, carPat2nursingItem, read
+oncNurse1, oncPat2nursingItem, read
+carNurse1, carPat1nursingItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat1carItem, read
+oncAgent1, oncPat2noteItem, read
+carPat1, carPat1noteItem, read
+oncNurse2, oncPat1nursingItem, read
+===============================================
+
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2oncItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat2carItem, read
+oncDoc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+carDoc1, carPat1carItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HRitem}, topics ] {nursing}; {read}; ward = ward)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {oncology}; type [ {HRitem}, topics ] {oncology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {cardiology}; type [ {HRitem}, topics ] {cardiology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}; type [ {HRitem}; {read}; uid = author)
+doc1, oncPat2oncItem, read
+carDoc2, carPat1carItem, read
+oncDoc1, oncPat1oncItem, read
+doc2, carPat2carItem, read
+===============================================
+
+rule(agentFor ] patient; type [ {HRitem}, topics ] {note}; {read}; )
+
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid = patient, uid = author)
+carPat1, carPat1noteItem, read
+oncPat1, oncPat1noteItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(agentFor ] patient; type [ {HR}; {addNote}; )
+
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid = patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid=patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================
+
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+oncAgent2, oncPat2HR, addNote
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2HR, addNote
+carAgent2, carPat2HR, addNote
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid=author)
+doc1, oncPat2oncItem, read
+carAgent1, carPat2noteItem, read
+oncPat1, oncPat1noteItem, read
+doc2, carPat2carItem, read
+carNurse2, carPat2nursingItem, read
+oncNurse1, oncPat2nursingItem, read
+carNurse1, carPat1nursingItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat1carItem, read
+oncAgent1, oncPat2noteItem, read
+carPat1, carPat1noteItem, read
+oncNurse2, oncPat1nursingItem, read
+===============================================
+
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2oncItem, read
+oncDoc1, oncPat1oncItem, read
+carDoc2, carPat2carItem, read
+oncDoc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+carDoc1, carPat1carItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HRitem}, topics ] {nursing}; {read}; ward = ward)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {oncology}; type [ {HRitem}, topics ] {oncology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}, specialties ] {cardiology}; type [ {HRitem}, topics ] {cardiology}; {read}; teams ] treatingTeam)
+
+===============================================
+
+rule(position [ {doctor}; type [ {HRitem}; {read}; uid = author)
+doc1, oncPat2oncItem, read
+carDoc2, carPat1carItem, read
+oncDoc1, oncPat1oncItem, read
+doc2, carPat2carItem, read
+===============================================
+
+rule(agentFor ] patient; type [ {HRitem}, topics ] {note}; {read}; )
+
+===============================================
+
+rule(; type [ {HRitem}; {read}; uid = patient, uid = author)
+carPat1, carPat1noteItem, read
+oncPat1, oncPat1noteItem, read
+===============================================
+
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+oncNurse1, oncPat2HR, addItem
+carNurse2, carPat1HR, addItem
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1HR, addItem
+===============================================
+
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+anesDoc1, oncPat1HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat1HR, addItem
+oncDoc2, oncPat1HR, addItem
+oncDoc4, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+anesDoc1, carPat1HR, addItem
+carDoc2, carPat2HR, addItem
+===============================================
+
+rule(agentFor ] patient; type [ {HR}; {addNote}; )
+
+===============================================
+
+rule(; type [ {HR}; {addNote}; uid = patient)
+oncPat1, oncPat1HR, addNote
+carPat2, carPat2HR, addNote
+carPat1, carPat1HR, addNote
+oncPat2, oncPat2HR, addNote
+===============================================

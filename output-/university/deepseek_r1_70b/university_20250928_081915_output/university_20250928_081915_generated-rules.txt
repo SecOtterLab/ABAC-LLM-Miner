@@ -1,0 +1,28 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {applicant}; type [ {application}, student [ {applicant1 applicant2}; actions={checkStatus})
+rule(position [ {student}, department [ {cs}, crsTaken [ {cs101 cs601 cs602}; type [ {transcript}, student [ {csStu1 csStu2 csStu3 csStu4 csStu5}; departments [ {cs}; actions={read})
+rule(position [ {student}, department [ {ee}, crsTaken [ {ee101 ee601 ee602}; type [ {transcript}, student [ {eeStu1 eeStu2 eeStu3 eeStu4 eeStu5}; departments [ {ee}; actions={read})
+rule(position [ {student}, department [ {cs}, crsTaught [ {cs101 cs601 cs602}; type [ {gradebook}, crs [ {cs101 cs601 cs602}; departments [ {cs}; actions={addScore readScore})
+rule(position [ {student}, department [ {ee}, crsTaught [ {ee101 ee601 ee602}; type [ {gradebook}, crs [ {ee101 ee601 ee602}; departments [ {ee}; actions={addScore readScore})
+rule(position [ {faculty}, isChair [ {true}; type [ {transcript}, departments [ {cs ee}; actions={read})
+rule(position [ {staff}, department [ {registrar}; type [ {roster transcript}, crs [ {cs101 cs601 cs602 ee101 ee601 ee602}; departments [ {cs ee}; actions={read write})
+rule(position [ {staff}, department [ {admissions}; type [ {application}, student [ {applicant1 applicant2 csStu1 csStu2 csStu3 csStu4 csStu5 eeStu1 eeStu2 eeStu3 eeStu4 eeStu5}; actions={read setStatus})
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {student}, department [ {cs}, crsTaken [ {cs101} ]; type [ {gradebook}, crs [ {cs101}; departments [ {cs}; actions={readScore})
+rule(position [ {student}, department [ {ee}, crsTaken [ {ee602} ]; type [ {gradebook}, crs [ {ee602}; departments [ {ee}; actions={readMyScores})
+rule(position [ {staff}, department [ {registrar}; type [ {roster}, crs [ {cs101}; departments [ {cs}; actions={read})
+rule(position [ {student}, department [ {cs}, crsTaught [ {cs101} ]; type [ {transcript}, student [ {csStu1}; departments [ {cs}; actions={read})
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {student}, department [ {cs}, crsTaken ] cs101; type [ {gradebook}, crs [ {cs101}; departments [ {cs}; actions={readScore})
+rule(position [ {student}, department [ {ee}, crsTaken ] ee602; type [ {gradebook}, crs [ {ee602}; departments [ {ee}; actions={readMyScores})
+rule(position [ {staff}, department [ {registrar}; type [ {roster}, crs [ {cs101}; departments [ {cs}; actions={read})
+rule(position [ {student}, department [ {cs}, crsTaught ] cs101; type [ {transcript}, student [ {csStu1}; departments [ {cs}; actions={read})

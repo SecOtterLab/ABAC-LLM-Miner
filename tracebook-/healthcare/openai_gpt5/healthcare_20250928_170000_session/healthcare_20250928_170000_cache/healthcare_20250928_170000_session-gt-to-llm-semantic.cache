@@ -1,0 +1,30 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)', 1.0)
+rule(; type [ {HRitem}; {read}; uid = author) : ('rule(; type [ {HRitem}; {read}; uid=author)', 1.0)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(; type [ {HR}; {addItem}; teams ] treatingTeam)', 1.0)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 1.0)
+rule(; type [ {HR}; {addNote}; uid = patient) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 1.0)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(; type [ {HR}; {addNote}; agentFor ] patient)', 1.0)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)', 1.0)
+rule(; type [ {HRitem}; {read}; uid = author) : ('rule(; type [ {HRitem}; {read}; uid=author)', 1.0)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(; type [ {HR}; {addItem}; teams ] treatingTeam)', 1.0)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 1.0)
+rule(; type [ {HR}; {addNote}; uid = patient) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 1.0)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(; type [ {HR}; {addNote}; agentFor ] patient)', 1.0)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {doctor}; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam)', 1.0)
+rule(; type [ {HRitem}; {read}; uid = author) : ('rule(; type [ {HRitem}; {read}; uid=author)', 1.0)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(; type [ {HR}; {addItem}; teams ] treatingTeam)', 1.0)
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward)', 1.0)
+rule(; type [ {HR}; {addNote}; uid = patient) : ('rule(; type [ {HR}; {addNote}; uid=patient)', 1.0)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(; type [ {HR}; {addNote}; agentFor ] patient)', 1.0)

@@ -1,0 +1,52 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {nursing}; read)
+rule(position [ {nurse}, ward [ {carWard}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {nursing}; read)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {oncology}; read)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {cardiology}; read)
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {nurse}, ward [ {carWard}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(agentFor ] {oncPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {oncWard}; type [ {HR}; addNote)
+rule(agentFor ] {carPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {carWard}; type [ {HR}; addNote)
+rule(specialties [ {anesthesiology}, teams [ {oncTeam1 carTeam1}; type [ {HR}, patient [ {oncPat1 carPat1}; addItem)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {oncology}; read, addItem)
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {nursing}; read, addItem)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {nursing}; read)
+rule(position [ {nurse}, ward [ {carWard}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {nursing}; read)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {oncology}; read)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {cardiology}; read)
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {nurse}, ward [ {carWard}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(agentFor ] {oncPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {oncWard}; type [ {HR}; addNote)
+rule(agentFor ] {carPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {carWard}; type [ {HR}; addNote)
+rule(specialties [ {anesthesiology}, teams [ {oncTeam1 carTeam1}; type [ {HR}, patient [ {oncPat1 carPat1}; addItem)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}, ward [ {carWard}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {nursing}; read)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {oncology}; read)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HRitem}, patient [ {carPat1 carPat2}, topics [ {cardiology}; read)
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HRitem}, patient [ {oncPat1 oncPat2}, topics [ {nursing}; read)
+rule(position [ {doctor}, specialties [ {oncology}, teams [ {oncTeam1 oncTeam2}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {nurse}, ward [ {oncWard}; type [ {HR}, patient [ {oncPat1 oncPat2}; addItem)
+rule(position [ {doctor}, specialties [ {cardiology}, teams [ {carTeam1 carTeam2}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(position [ {nurse}, ward [ {carWard}; type [ {HR}, patient [ {carPat1 carPat2}; addItem)
+rule(agentFor ] {oncPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {oncWard}; type [ {HR}; addNote)
+rule(agentFor ] {carPat2}, type [ {HR}; addNote)
+rule(position [ {patient}, ward [ {carWard}; type [ {HR}; addNote)
