@@ -5,12 +5,6 @@
 
 # ABAC-LLM-Miner
 
-## Overview
-
-
----
----
-
 ## Data / Resources
 - **Attribute Data Description**  
   - Defines the schema for the ABAC policy  
@@ -36,17 +30,17 @@
 - **Generate ACL**  
   - Evaluates ABAC rules over users, resources, and actions.  
   - **Behavior:** iterate all users × resources × actions, apply rules, deduplicate, write to file  
-  - [generate_acl](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/ground-truth-ACL)
+  - [generate_acl()](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/acl_tools.py)
 
 - **API Call**  
   - Interfaces with the LLM to run mining using prepared prompts and return cleaned `rule(...)` lines.  
   - **Behavior:** sends prompts to the API, removes extraneous text, extracts valid rules, and logs outputs and errors.  
-  - [api.py](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/llm-research)
+  - [api.py](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/api_calls.py)
 
 - **Mining**  
   - Runs to generate prompts, call the LLM, and record results.  
   - **Behavior:** builds prompts, invokes API, captures responses, computes syntactic/semantic similarity, logs metrics, and repeats for multiple iterations.  
-  - [iterate_api_requests.py](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/helper_functions.py)
+  - [mining.py](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/mining.py)
 
 ---
 ---
@@ -75,5 +69,5 @@
 - **Main Runner**  
   - Coordinates full experiments across different APIs and datasets.  
   - **Behavior:** parses config, launches mining runs, logs metadata, saves outputs, and organizes results into output and trace folders.  
-  - [View Script](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/llm_main.py)
+  - [llm_main.py](https://github.com/SecOtterLab/ABAC-LLM-Miner/blob/main/llm-research/llm_main.py)
 
