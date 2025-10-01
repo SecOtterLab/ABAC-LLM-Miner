@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="assets/git_banner.png" alt="ABAC-LLM-Miner Banner" width="100%">
+  <img src="assets/abac-llm-miner.png" alt="ABAC-LLM-Miner Banner" width="100%">
 </p>
 
 # ABAC-LLM-Miner
