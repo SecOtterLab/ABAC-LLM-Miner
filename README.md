@@ -29,7 +29,7 @@ Our contributions:
 - **Attribute Data Description**  
   - Defines the schema for the ABAC policy  
   - Helps interpret the attribute data file and guides LLMs in constructing rules.  
-  - [View Attribute Description]([#](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/DATASETS-for-LLM))
+  - [View Attribute Description](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/DATASETS-for-LLM)
 
 - **Attribute Data**  
   - Contains the actual object model (users and resources with attributes).  
@@ -39,12 +39,12 @@ Our contributions:
 - **Abac Rules**  
   - ABAC rules that define correct access control.  
   - Used to derive the ACL (Access Control List) and for evaluation of LLMs generated rules.  
-  - [View Ground Truth Rules](#https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/ground-truth-ABAC-rules)
+  - [View Ground Truth Rules](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/ground-truth-ABAC-rules)
 
 - **ACL**  
   - The complete ACL derived from the ABAC rules.  
   - Serves as the baseline that LLM-mined rules must replicate.  
-  - [View ACL Files]([#](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/ground-truth-ACL))
+  - [View ACL Files](https://github.com/SecOtterLab/ABAC-LLM-Miner/tree/main/ground-truth-ACL)
 
 #### Code
 - **Generate ACL**  
