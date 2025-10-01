@@ -1,0 +1,40 @@
+# org : healthcare, LLM : gpt_oss_120b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:02:35.823168,
+  acl_jacc_val : 0.4489795918367347,
+  gt_acl : 43,
+  llm_acl : 28,
+  intersection : 22,
+  under_perm : 21,
+  over_perm : 6,
+  syntax_jacc_avg : 0.6875,
+  semantic_jacc_avg : 0.4055555555555556,
+  x_syntax_jacc_avg   : 0.6469907407407407,
+  x_semantic_jacc_avg : 0.35423280423280423
+
+iteration : 1,
+  seconds_elapsed : 0:02:53.944259,
+  acl_jacc_val : 0.9069767441860465,
+  gt_acl : 43,
+  llm_acl : 39,
+  intersection : 39,
+  under_perm : 4,
+  over_perm : 0,
+  syntax_jacc_avg : 0.6805555555555557,
+  semantic_jacc_avg : 0.6746031746031745
+  x_syntax_jacc_avg   : 0.6458333333333335,
+  x_semantic_jacc_avg : 0.615079365079365
+
+iteration : 2,
+  seconds_elapsed : 0:01:01.630124,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.7222222222222223,
+  semantic_jacc_avg : 0.8412698412698413
+  x_syntax_jacc_avg   : 0.6944444444444444,
+  x_semantic_jacc_avg : 0.753968253968254

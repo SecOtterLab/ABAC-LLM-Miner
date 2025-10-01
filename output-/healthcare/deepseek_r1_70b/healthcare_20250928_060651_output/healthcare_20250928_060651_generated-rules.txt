@@ -1,0 +1,27 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position = doctor; type = HRitem, topics = {oncology}, treatingTeam = {oncTeam1 oncTeam2}; read, addItem; teams ] treatingTeam)
+rule(position = nurse; type = HRitem, topics = {nursing}; read, addItem; ward = ward)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position = nurse; type = HRitem, topics = {nursing}; read; ward = ward)
+rule(position = doctor, specialties = {oncology}; type = HRitem, topics = {oncology}, treatingTeam = {oncTeam1 oncTeam2}; read; teams ] treatingTeam)
+rule(position = patient; type = HRitem, author = uid; read)
+rule(position = nurse; type = HR; ward = ward; addItem)
+rule(position = agent; type = HRitem, patient = uid; read; agentFor ] patient)
+rule(position = doctor; type = HR; treatingTeam = {oncTeam1 oncTeam2}; addItem; teams ] treatingTeam)
+rule(position = patient; type = HR; addNote; author = uid)
+rule(position = agent; type = HR, patient = uid; addNote; agentFor ] patient)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position = nurse; type=HRitem, topics={nursing}; read; ward = ward)
+rule(position = doctor, specialties={oncology}; type=HRitem, topics={oncology}, treatingTeam={oncTeam1 oncTeam2}; read; teams ] treatingTeam)
+rule(position = patient; type=HRitem, author=uid; read)
+rule(position = nurse; type=HR; ward = ward; addItem)
+rule(position = agent; type=HRitem, patient=uid; read; agentFor ] patient)

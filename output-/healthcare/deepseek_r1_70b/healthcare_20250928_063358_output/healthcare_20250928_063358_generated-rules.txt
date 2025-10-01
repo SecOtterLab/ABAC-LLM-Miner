@@ -1,0 +1,28 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position = "nurse"; type = "HRitem", ward = treatingTeam; read; )
+rule(position = "nurse"; type = "HR", ward = treatingTeam; addItem; )
+rule(position = "doctor"; type = "HRitem", topics = specialties, treatingTeam = teams; read; )
+rule(position = "doctor"; type = "HR", author = uid, treatingTeam = teams; addItem; )
+rule(position = "patient"; type = "HRitem", patient = uid; addNote; )
+rule(position = "agent"; type = "HRitem", patient = agentFor; addNote; )
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position = "nurse"; type = "HRitem", treatingTeam = ward; read; )
+rule(position = "doctor"; type = "HRitem", topics = specialties, treatingTeam = teams; read; )
+rule(position = "patient"; type = "HRitem", patient = uid; addNote; )
+rule(position = "agent"; type = "HRitem", patient = agentFor; addNote; )
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position = "nurse", ward = "oncWard"; type = "HRitem", patient = "oncPat1", treatingTeam = "oncTeam1"; read; )
+rule(position = "doctor", specialties = {"oncology"}, teams = {"oncTeam1"}; type = "HRitem", patient = "oncPat1", topics = {"oncology"}, treatingTeam = "oncTeam1"; read; )
+rule(position = "nurse", ward = "carWard"; type = "HRitem", patient = "carPat2", treatingTeam = "carTeam2"; read; )
+rule(position = "doctor", specialties = {"cardiology"}; type = "HRitem", patient = "carPat1", topics = {"cardiology"}, treatingTeam = "carTeam1"; read; )
+rule(position = "nurse", ward = "oncWard"; type = "HRitem", patient = "oncPat2", treatingTeam = "oncTeam2"; read; )
+rule(position = "doctor", specialties = {"oncology"}; type = "HRitem", patient = "oncPat2", topics = {"oncology"}, treatingTeam = "oncTeam2"; read; )

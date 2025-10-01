@@ -1,0 +1,1032 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+**READ THE ENTIRE REQUEST BEFORE GENERATING ANYTHING**
+
+The following text is a request to fix ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
+
+	PROMPT section:  This will be the main request we need accomplished through the query.
+
+    ATTRIBUTE_DESCRIPTION section: is a sample policy for a healthcare organization.
+     Analyze this file to better understand ABAC rule attributes for our organization. Also use this section to better understand the ATTRIBUTE_DATA section    
+
+    ATTRIBUTE_DATA_FORMAT_DESCRIPTION: This section explains the format of the ATTRIBUTE DATA described in the attribute data section.
+
+    ATTRIBUTE_DATA section: is the attribute data for our organization. This includes resources and users. Use these to create the ABAC rules being requested. 
+
+    RULES_FORMAT_DESCRIPTION: This section explains the format of the ABAC rules that we need you (the LLM) to generate.
+
+    GROUND_TRUTH_ACL section: This section contains our organizations entire ACL (access Control List), this is the list that needs to be converted into a set of
+     ABAC rules that grant the exact same permissions. 
+     this is also known as the ground truth ACL.
+
+	ADDITIONAL_INSTRUCTIONS section: contains additional instructions you need to follow. instructions that have to do with output results,
+     the process, and other rules to help you (the LLM model) generate the exact results needed.
+    
+    ACL_COMPARISON section: has a comparison between the ground truth ACL and the ACL for the rules that need fixing. It lists sections such as lines that give over permission,
+     lines that give under permissions, and the ones that are correct as well. Use this information to fix the rules that are given to you in the CURRENT_RULES section.
+
+
+    CURRENT_RULES section: contains the rules we currently have. use everyhting in this request to fix the rules. 
+
+## PROMPT ##
+    Our organization needs you (the LLM) to use the 
+    ATTRIBUTE_DESCRIPTION , ATTRIBUTE_DATA_FORMAT_DESCRIPTION, ATTRIBUTE_DATA, RULES_FORMAT_DESCRIPTION, and ADDITIONAL_INSTRUCTIONS sections
+    to generate a set of ABAC Rules that will give the same exact permissions that the GROUND_TRUTH_ACL gives. No less permission and no more permissions
+    than what is in the GROUND_TRUTH_ACL.
+        THE GOAL IS TO CREATE A SET OF ABAC RULES THAT WILL GENERATE THE SAME SET OF PERMISSIONS THAT THE ACL IN THE GROUND_TRUTH_ACL section,
+        ANY PERMISSION THAT IS MISSED, BY YOUR GENERATED ABAC RULES, OR THAT IS OVER PEMRITTED BY YOUR ABAC RULE SET WILL BE CONSIDERED A FAILURE.
+            This is mission critical so accuracy is critical.
+    You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
+    If you detect that you made a mistake in your reasoning at any point, correct yourself.
+
+## ATTRIBUTE_DESCRIPTION ##
+# Policy Description: Healthcare 
+*Vesion: v20250308*
+
+
+This is a sample policy developed by Xu et al. (2015). The policy manages access to electronic health records (HRs) and individual HR items (entries within health records). It defines access rules for nurses, doctors, patients, and authorized agents (such as a patient’s spouse).
+
+**Reference**: Zhongyuan Xu and Scott D. Stoller. *Mining attribute-based access control policies.* IEEE Transactions on Dependable and Secure Computing, 12(5):533–545, September–October 2015.
+
+## Attributes
+
+### Subject/User Attributes
+The subjects of this policy include doctros, nurses, patients, and agents within the healthcare facility. The following attributes are used to describe the subjects.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| uid          | Single, String   | User’s unique identifier.                                  | carNurse1, oncDoc2, oncPat2, etc.                         |
+| position          | Single, String   | The user's position.        | doctor, nurse, patient, agent             |
+| specialties        | Multi, Set\<String>   | The user’s areas of medical expertise (for doctors).                     | {cardiology, oncology}, etc.                      |
+| teams         | Multi, Set\<String>   | Medical teams of which the user is a member (for doctors).             | {oncTeam1, carTeam2}, etc. |
+| ward    | Single, String   | The ward in which the user works (for nurses). | oncWard, carWard, etc.                          |
+| agentFor    | Multi, Set\<String>   | The set of patients for which this user is an agent (for agents).                     | {oncPat2, carPat3}, etc.    |
+
+
+### Resource Attributes
+The resources of this policy include electronic health records (HRs) and individual HR items (entries within health records). The following attributes are used to describe the resources.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| rid      | Single, String   | Resource’s unique identifier                             | oncPat1nursingItem, oncPat1HR, etc.               |
+| type             | Single, String   | Type of resource being accessed.                        | HR, HRitem                       |
+| patient       | Single, String   | The patient associated with the HR or HR item.                 | oncPat1, carPat2, etc.                            |
+| treatingTeam          | Single, String   | The team treating the associated patient.                      | oncTeam1, carTeam2, etc.                           |
+| ward      | Single, String   | The ward in which the associated patient is being treated.            | oncWard, carWard, etc.                             |
+| topics      | Multi, Set\<String>   | Medical areas to which the item is relevant (for HR-item resources).            | {cardiology, oncology}, etc.                              |
+| author      | Single, String   | ID of the user who created the HR item (for HR-items).            | oncDoc1, carNurse2, etc.                             |
+
+
+## ATTRIBUTE_DATA_FORMAT_DESCRIPTION ##
+
+    This section outlines the format of attribute data described in the ATTRIBUTE DATA section. 
+
+   ATTRIBUTE_DATA section contains lines of the forms:
+
+    userAttrib(uid, attribute1=value1, attribute2=value2, ...)
+
+    resourceAttrib(rid, attribute1=value1, attribute2=value2, ...)
+    
+
+    The `userAttrib` and `resourceAttrib` lines define the users (subjects) and resources in the policy, respectively.
+    - The first argument of a `userAttrib` is automatically assigned to an attribute named `uid`, which is the id of the user. 
+    The first argument of a `resourceAttrib` is automatically assigned to an attribute named `rid`, which is the id of the resource.  
+    - `value1`, `value2`, ... are atomic values or sets of atomic values.
+    - An atomic value is a string that starts with a character other than a left curly brace.  
+    - A set has the form `{element1 element2 ...}`. **Note that elements of a set are separated by spaces, not commas.**
+
+## ATTRIBUTE_DATA ##
+# ABAC policy for a healthcare facility, e.g., a hospital.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# nurses
+
+userAttrib(oncNurse1, position=nurse, ward=oncWard)
+userAttrib(oncNurse2, position=nurse, ward=oncWard)
+
+userAttrib(carNurse1, position=nurse, ward=carWard)
+userAttrib(carNurse2, position=nurse, ward=carWard)
+
+# doctors
+
+userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
+userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
+userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
+userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+
+userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
+userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+
+userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+
+# the following doctors are not currently on any teams, but they have
+# access to HR items they authored when they were on a team.
+userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
+userAttrib(doc2, position=doctor, specialties={cardiology neurology})
+
+# patients and agents
+
+userAttrib(oncPat1, ward=oncWard)
+userAttrib(oncPat2, ward=oncWard)
+
+userAttrib(carPat1, ward=carWard)
+userAttrib(carPat2, ward=carWard)
+
+userAttrib(oncAgent1, agentFor={oncPat2})
+userAttrib(oncAgent2, agentFor={oncPat2})
+userAttrib(carAgent1, agentFor={carPat2})
+userAttrib(carAgent2, agentFor={carPat2})
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# resources for oncPat1
+resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+
+# resources for oncPat2
+resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+
+# resources for carPat1
+resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+
+# resources for carPat2
+resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+
+
+## RULES_FORMAT_DESCRIPTION ##
+    All of the output ABAC rules must follow the following format:
+        rule(subCond; resCond; acts; cons)
+    
+    - `subCond` is a subject condition. It is a conjunction, with the conjuncts separated by commas. Each conjunct has the form 
+    `attr [ {value1 value2 ...}`, where `attr` is a single-valued user attribute and `[` denotes the "in" 
+    operator (note that elements of a set are separated by spaces, not commas), or 
+    `attr ] value`
+    , where attr is a muli-valued attribute, value is an atomic value, and `]` denotes the "contains" operator.
+
+    - `resCond` is a resource condition. The syntax is analogous to the syntax for subject condition.
+
+    - `acts` is a set of actions.
+
+    - `cons` is a constraint. It is a conjunction of atomic constraints, with the
+    conjuncts separated by commas. An atomic constraint is a formula of one of the following forms:
+    
+    aum > arm 
+    aus [ arm
+    aum ] ars
+    aus = ars
+    
+    , where `aus` is a single-valued user attribute,
+    `aum` is a multi-valued user attribute,
+    `ars` is a single-valued resource attribute,
+    `arm` is a multi-valued resource attribute. Note that `>` denotes the "supseteq" (⊇) operator.
+
+    This is an example of a rule:
+        rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+
+
+## GROUND_TRUTH_ACL ##
+carNurse2, carPat2nursingItem, read
+doc2, carPat2carItem, read
+carNurse1, carPat1nursingItem, read
+oncNurse1, oncPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+doc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+anesDoc1, oncPat1HR, addItem
+oncAgent2, oncPat2HR, addNote
+oncPat2, oncPat2HR, addNote
+oncNurse1, oncPat2nursingItem, read
+oncDoc1, oncPat1oncItem, read
+oncDoc2, oncPat1HR, addItem
+carNurse2, carPat2HR, addItem
+oncAgent1, oncPat2noteItem, read
+carAgent1, carPat2HR, addNote
+carDoc2, carPat1carItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncPat1, oncPat1noteItem, read
+carNurse1, carPat1HR, addItem
+oncPat1, oncPat1HR, addNote
+carDoc1, carPat1carItem, read
+carPat1, carPat1HR, addNote
+carDoc2, carPat2carItem, read
+carPat1, carPat1noteItem, read
+carDoc2, carPat2HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncNurse2, oncPat1HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+carAgent2, carPat2HR, addNote
+carNurse2, carPat1HR, addItem
+carNurse1, carPat2HR, addItem
+anesDoc1, carPat1HR, addItem
+carPat2, carPat2HR, addNote
+oncDoc3, oncPat2oncItem, read
+oncNurse2, oncPat1nursingItem, read
+oncDoc1, oncPat1HR, addItem
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2noteItem, read
+
+## ACL_COMPARISON ##
+Commong lines / Lines that are correct: 43
+anesDoc1, carPat1HR, addItem
+anesDoc1, oncPat1HR, addItem
+carAgent1, carPat2HR, addNote
+carAgent1, carPat2noteItem, read
+carAgent2, carPat2HR, addNote
+carDoc1, carPat1HR, addItem
+carDoc1, carPat1carItem, read
+carDoc2, carPat1carItem, read
+carDoc2, carPat2HR, addItem
+carDoc2, carPat2carItem, read
+carNurse1, carPat1HR, addItem
+carNurse1, carPat1nursingItem, read
+carNurse1, carPat2HR, addItem
+carNurse2, carPat1HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse2, carPat2nursingItem, read
+carPat1, carPat1HR, addNote
+carPat1, carPat1noteItem, read
+carPat2, carPat2HR, addNote
+doc1, oncPat2oncItem, read
+doc2, carPat2carItem, read
+oncAgent1, oncPat2HR, addNote
+oncAgent1, oncPat2noteItem, read
+oncAgent2, oncPat2HR, addNote
+oncDoc1, oncPat1HR, addItem
+oncDoc1, oncPat1oncItem, read
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+oncDoc2, oncPat1HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc4, oncPat2oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncNurse1, oncPat2HR, addItem
+oncNurse1, oncPat2nursingItem, read
+oncNurse2, oncPat1HR, addItem
+oncNurse2, oncPat1nursingItem, read
+oncNurse2, oncPat2HR, addItem
+oncPat1, oncPat1HR, addNote
+oncPat1, oncPat1noteItem, read
+oncPat2, oncPat2HR, addNote
+
+Only in ACL 1 (under permissions): 0
+
+Only in ACL 2 (over permissions): 0
+
+Total different lines: 0
+
+## CURRENT_RULES ##
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+rule(position [ {doctor}; type [ {HRitem}; {read}; teams ] treatingTeam, specialties > topics)
+
+
+
+## ADDITIONAL_INSTRUCTIONS
+
+        This section provides additional instructions to assist you output propper ABAC rules.
+
+        This is also divided into sections, the following is a description on the sections. 
+        Failure to adhere to any of these rules will result in a failed query on your (the LLM) part.
+
+            OUTPUT_FORMAT section: The output section describes how to format your (the LLMs) response. Including syntax, restrictions, and content. 
+            
+            ABAC_RULES section, is section dedicated to helping you (the LLM) produce more consistent and correct abac rules. You (the LLM) are to follow these rules strictly.
+
+            The LLM_IMPROVEMENT section, has other instructions to help you (the LLM) produce better results.
+
+
+
+        OUTPUT_FORMAT:
+            1. Only respond with the ABAC rules being requested.
+            2. Each rule should follow strict syntax described in the RULES_FORMAT_DESCRIPTION section.
+            3. Each rule should be in its own line.
+                    verify for each line:
+                    line.startswith("rule(") and line.endswith(")")
+                    line.count(";") == 3                
+            4. Respond only with plain text, no mark-up or other type of formatting. 
+                a. unseen values are forbidden.
+            9. DO NOT INCLUDE ANY ``` at the beginnig or end of a response
+         
+
+
+        ABAC_RULES:
+            
+            1. ABAC rules should avoid using uid and rid attributes. 
+                a. Do not hard code any ids, the rules should be dynamic.
+            2. The generated rules must as concise as possible.
+                a. Check all ABAC rules for redundancy, keep rules to strict minimum. 
+                b. Consider removing any conjuncts in subject condition, resource condition, and constraints if that does not affect the permission given by the rule.
+            6. You (the LLM) are allowed to combine rules for actions if they should grant the same access. 
+                a. For example: rule (; subj ] {math}; {read, write, createNote}; class=class )
+            7. ABAC rules do not need to dictate permit or deny as a section.
+                a. INCORRECT = rule (; subj ] {math}; {read}; class=class, PERMIT )
+            8. DO NOT ADD, REMOVE, OR EDIT ATTRIBUTES.
+            9. Do not use synonyms when describing actions, stick to the action on the ACL list ONLY.
+
+
+     
+
+
+
+
+
+
+
+===============================================================
+ITERATION : 1
+===============================================================
+**READ THE ENTIRE REQUEST BEFORE GENERATING ANYTHING**
+
+The following text is a request to fix ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
+
+	PROMPT section:  This will be the main request we need accomplished through the query.
+
+    ATTRIBUTE_DESCRIPTION section: is a sample policy for a healthcare organization.
+     Analyze this file to better understand ABAC rule attributes for our organization. Also use this section to better understand the ATTRIBUTE_DATA section    
+
+    ATTRIBUTE_DATA_FORMAT_DESCRIPTION: This section explains the format of the ATTRIBUTE DATA described in the attribute data section.
+
+    ATTRIBUTE_DATA section: is the attribute data for our organization. This includes resources and users. Use these to create the ABAC rules being requested. 
+
+    RULES_FORMAT_DESCRIPTION: This section explains the format of the ABAC rules that we need you (the LLM) to generate.
+
+    GROUND_TRUTH_ACL section: This section contains our organizations entire ACL (access Control List), this is the list that needs to be converted into a set of
+     ABAC rules that grant the exact same permissions. 
+     this is also known as the ground truth ACL.
+
+	ADDITIONAL_INSTRUCTIONS section: contains additional instructions you need to follow. instructions that have to do with output results,
+     the process, and other rules to help you (the LLM model) generate the exact results needed.
+    
+    ACL_COMPARISON section: has a comparison between the ground truth ACL and the ACL for the rules that need fixing. It lists sections such as lines that give over permission,
+     lines that give under permissions, and the ones that are correct as well. Use this information to fix the rules that are given to you in the CURRENT_RULES section.
+
+
+    CURRENT_RULES section: contains the rules we currently have. use everyhting in this request to fix the rules. 
+
+## PROMPT ##
+    Our organization needs you (the LLM) to use the 
+    ATTRIBUTE_DESCRIPTION , ATTRIBUTE_DATA_FORMAT_DESCRIPTION, ATTRIBUTE_DATA, RULES_FORMAT_DESCRIPTION, and ADDITIONAL_INSTRUCTIONS sections
+    to generate a set of ABAC Rules that will give the same exact permissions that the GROUND_TRUTH_ACL gives. No less permission and no more permissions
+    than what is in the GROUND_TRUTH_ACL.
+        THE GOAL IS TO CREATE A SET OF ABAC RULES THAT WILL GENERATE THE SAME SET OF PERMISSIONS THAT THE ACL IN THE GROUND_TRUTH_ACL section,
+        ANY PERMISSION THAT IS MISSED, BY YOUR GENERATED ABAC RULES, OR THAT IS OVER PEMRITTED BY YOUR ABAC RULE SET WILL BE CONSIDERED A FAILURE.
+            This is mission critical so accuracy is critical.
+    You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
+    If you detect that you made a mistake in your reasoning at any point, correct yourself.
+
+## ATTRIBUTE_DESCRIPTION ##
+# Policy Description: Healthcare 
+*Vesion: v20250308*
+
+
+This is a sample policy developed by Xu et al. (2015). The policy manages access to electronic health records (HRs) and individual HR items (entries within health records). It defines access rules for nurses, doctors, patients, and authorized agents (such as a patient’s spouse).
+
+**Reference**: Zhongyuan Xu and Scott D. Stoller. *Mining attribute-based access control policies.* IEEE Transactions on Dependable and Secure Computing, 12(5):533–545, September–October 2015.
+
+## Attributes
+
+### Subject/User Attributes
+The subjects of this policy include doctros, nurses, patients, and agents within the healthcare facility. The following attributes are used to describe the subjects.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| uid          | Single, String   | User’s unique identifier.                                  | carNurse1, oncDoc2, oncPat2, etc.                         |
+| position          | Single, String   | The user's position.        | doctor, nurse, patient, agent             |
+| specialties        | Multi, Set\<String>   | The user’s areas of medical expertise (for doctors).                     | {cardiology, oncology}, etc.                      |
+| teams         | Multi, Set\<String>   | Medical teams of which the user is a member (for doctors).             | {oncTeam1, carTeam2}, etc. |
+| ward    | Single, String   | The ward in which the user works (for nurses). | oncWard, carWard, etc.                          |
+| agentFor    | Multi, Set\<String>   | The set of patients for which this user is an agent (for agents).                     | {oncPat2, carPat3}, etc.    |
+
+
+### Resource Attributes
+The resources of this policy include electronic health records (HRs) and individual HR items (entries within health records). The following attributes are used to describe the resources.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| rid      | Single, String   | Resource’s unique identifier                             | oncPat1nursingItem, oncPat1HR, etc.               |
+| type             | Single, String   | Type of resource being accessed.                        | HR, HRitem                       |
+| patient       | Single, String   | The patient associated with the HR or HR item.                 | oncPat1, carPat2, etc.                            |
+| treatingTeam          | Single, String   | The team treating the associated patient.                      | oncTeam1, carTeam2, etc.                           |
+| ward      | Single, String   | The ward in which the associated patient is being treated.            | oncWard, carWard, etc.                             |
+| topics      | Multi, Set\<String>   | Medical areas to which the item is relevant (for HR-item resources).            | {cardiology, oncology}, etc.                              |
+| author      | Single, String   | ID of the user who created the HR item (for HR-items).            | oncDoc1, carNurse2, etc.                             |
+
+
+## ATTRIBUTE_DATA_FORMAT_DESCRIPTION ##
+
+    This section outlines the format of attribute data described in the ATTRIBUTE DATA section. 
+
+   ATTRIBUTE_DATA section contains lines of the forms:
+
+    userAttrib(uid, attribute1=value1, attribute2=value2, ...)
+
+    resourceAttrib(rid, attribute1=value1, attribute2=value2, ...)
+    
+
+    The `userAttrib` and `resourceAttrib` lines define the users (subjects) and resources in the policy, respectively.
+    - The first argument of a `userAttrib` is automatically assigned to an attribute named `uid`, which is the id of the user. 
+    The first argument of a `resourceAttrib` is automatically assigned to an attribute named `rid`, which is the id of the resource.  
+    - `value1`, `value2`, ... are atomic values or sets of atomic values.
+    - An atomic value is a string that starts with a character other than a left curly brace.  
+    - A set has the form `{element1 element2 ...}`. **Note that elements of a set are separated by spaces, not commas.**
+
+## ATTRIBUTE_DATA ##
+# ABAC policy for a healthcare facility, e.g., a hospital.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# nurses
+
+userAttrib(oncNurse1, position=nurse, ward=oncWard)
+userAttrib(oncNurse2, position=nurse, ward=oncWard)
+
+userAttrib(carNurse1, position=nurse, ward=carWard)
+userAttrib(carNurse2, position=nurse, ward=carWard)
+
+# doctors
+
+userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
+userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
+userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
+userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+
+userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
+userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+
+userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+
+# the following doctors are not currently on any teams, but they have
+# access to HR items they authored when they were on a team.
+userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
+userAttrib(doc2, position=doctor, specialties={cardiology neurology})
+
+# patients and agents
+
+userAttrib(oncPat1, ward=oncWard)
+userAttrib(oncPat2, ward=oncWard)
+
+userAttrib(carPat1, ward=carWard)
+userAttrib(carPat2, ward=carWard)
+
+userAttrib(oncAgent1, agentFor={oncPat2})
+userAttrib(oncAgent2, agentFor={oncPat2})
+userAttrib(carAgent1, agentFor={carPat2})
+userAttrib(carAgent2, agentFor={carPat2})
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# resources for oncPat1
+resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+
+# resources for oncPat2
+resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+
+# resources for carPat1
+resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+
+# resources for carPat2
+resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+
+
+## RULES_FORMAT_DESCRIPTION ##
+    All of the output ABAC rules must follow the following format:
+        rule(subCond; resCond; acts; cons)
+    
+    - `subCond` is a subject condition. It is a conjunction, with the conjuncts separated by commas. Each conjunct has the form 
+    `attr [ {value1 value2 ...}`, where `attr` is a single-valued user attribute and `[` denotes the "in" 
+    operator (note that elements of a set are separated by spaces, not commas), or 
+    `attr ] value`
+    , where attr is a muli-valued attribute, value is an atomic value, and `]` denotes the "contains" operator.
+
+    - `resCond` is a resource condition. The syntax is analogous to the syntax for subject condition.
+
+    - `acts` is a set of actions.
+
+    - `cons` is a constraint. It is a conjunction of atomic constraints, with the
+    conjuncts separated by commas. An atomic constraint is a formula of one of the following forms:
+    
+    aum > arm 
+    aus [ arm
+    aum ] ars
+    aus = ars
+    
+    , where `aus` is a single-valued user attribute,
+    `aum` is a multi-valued user attribute,
+    `ars` is a single-valued resource attribute,
+    `arm` is a multi-valued resource attribute. Note that `>` denotes the "supseteq" (⊇) operator.
+
+    This is an example of a rule:
+        rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+
+
+## GROUND_TRUTH_ACL ##
+carNurse2, carPat2nursingItem, read
+doc2, carPat2carItem, read
+carNurse1, carPat1nursingItem, read
+oncNurse1, oncPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+doc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+anesDoc1, oncPat1HR, addItem
+oncAgent2, oncPat2HR, addNote
+oncPat2, oncPat2HR, addNote
+oncNurse1, oncPat2nursingItem, read
+oncDoc1, oncPat1oncItem, read
+oncDoc2, oncPat1HR, addItem
+carNurse2, carPat2HR, addItem
+oncAgent1, oncPat2noteItem, read
+carAgent1, carPat2HR, addNote
+carDoc2, carPat1carItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncPat1, oncPat1noteItem, read
+carNurse1, carPat1HR, addItem
+oncPat1, oncPat1HR, addNote
+carDoc1, carPat1carItem, read
+carPat1, carPat1HR, addNote
+carDoc2, carPat2carItem, read
+carPat1, carPat1noteItem, read
+carDoc2, carPat2HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncNurse2, oncPat1HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+carAgent2, carPat2HR, addNote
+carNurse2, carPat1HR, addItem
+carNurse1, carPat2HR, addItem
+anesDoc1, carPat1HR, addItem
+carPat2, carPat2HR, addNote
+oncDoc3, oncPat2oncItem, read
+oncNurse2, oncPat1nursingItem, read
+oncDoc1, oncPat1HR, addItem
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2noteItem, read
+
+## ACL_COMPARISON ##
+Commong lines / Lines that are correct: 43
+anesDoc1, carPat1HR, addItem
+anesDoc1, oncPat1HR, addItem
+carAgent1, carPat2HR, addNote
+carAgent1, carPat2noteItem, read
+carAgent2, carPat2HR, addNote
+carDoc1, carPat1HR, addItem
+carDoc1, carPat1carItem, read
+carDoc2, carPat1carItem, read
+carDoc2, carPat2HR, addItem
+carDoc2, carPat2carItem, read
+carNurse1, carPat1HR, addItem
+carNurse1, carPat1nursingItem, read
+carNurse1, carPat2HR, addItem
+carNurse2, carPat1HR, addItem
+carNurse2, carPat2HR, addItem
+carNurse2, carPat2nursingItem, read
+carPat1, carPat1HR, addNote
+carPat1, carPat1noteItem, read
+carPat2, carPat2HR, addNote
+doc1, oncPat2oncItem, read
+doc2, carPat2carItem, read
+oncAgent1, oncPat2HR, addNote
+oncAgent1, oncPat2noteItem, read
+oncAgent2, oncPat2HR, addNote
+oncDoc1, oncPat1HR, addItem
+oncDoc1, oncPat1oncItem, read
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+oncDoc2, oncPat1HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncDoc3, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc4, oncPat2oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncNurse1, oncPat2HR, addItem
+oncNurse1, oncPat2nursingItem, read
+oncNurse2, oncPat1HR, addItem
+oncNurse2, oncPat1nursingItem, read
+oncNurse2, oncPat2HR, addItem
+oncPat1, oncPat1HR, addNote
+oncPat1, oncPat1noteItem, read
+oncPat2, oncPat2HR, addNote
+
+Only in ACL 1 (under permissions): 0
+
+Only in ACL 2 (over permissions): 0
+
+Total different lines: 0
+
+## CURRENT_RULES ##
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)
+rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)
+rule(; type [ {HR}; {addNote}; uid = patient)
+rule(; type [ {HR}; {addNote}; agentFor ] patient)
+rule(; type [ {HRitem}; {read}; uid = author)
+rule(position [ {doctor}; type [ {HRitem}; {read}; teams ] treatingTeam, specialties > topics)
+
+
+
+## ADDITIONAL_INSTRUCTIONS
+
+        This section provides additional instructions to assist you output propper ABAC rules.
+
+        This is also divided into sections, the following is a description on the sections. 
+        Failure to adhere to any of these rules will result in a failed query on your (the LLM) part.
+
+            OUTPUT_FORMAT section: The output section describes how to format your (the LLMs) response. Including syntax, restrictions, and content. 
+            
+            ABAC_RULES section, is section dedicated to helping you (the LLM) produce more consistent and correct abac rules. You (the LLM) are to follow these rules strictly.
+
+            The LLM_IMPROVEMENT section, has other instructions to help you (the LLM) produce better results.
+
+
+
+        OUTPUT_FORMAT:
+            1. Only respond with the ABAC rules being requested.
+            2. Each rule should follow strict syntax described in the RULES_FORMAT_DESCRIPTION section.
+            3. Each rule should be in its own line.
+                    verify for each line:
+                    line.startswith("rule(") and line.endswith(")")
+                    line.count(";") == 3                
+            4. Respond only with plain text, no mark-up or other type of formatting. 
+                a. unseen values are forbidden.
+            9. DO NOT INCLUDE ANY ``` at the beginnig or end of a response
+         
+
+
+        ABAC_RULES:
+            
+            1. ABAC rules should avoid using uid and rid attributes. 
+                a. Do not hard code any ids, the rules should be dynamic.
+            2. The generated rules must as concise as possible.
+                a. Check all ABAC rules for redundancy, keep rules to strict minimum. 
+                b. Consider removing any conjuncts in subject condition, resource condition, and constraints if that does not affect the permission given by the rule.
+            6. You (the LLM) are allowed to combine rules for actions if they should grant the same access. 
+                a. For example: rule (; subj ] {math}; {read, write, createNote}; class=class )
+            7. ABAC rules do not need to dictate permit or deny as a section.
+                a. INCORRECT = rule (; subj ] {math}; {read}; class=class, PERMIT )
+            8. DO NOT ADD, REMOVE, OR EDIT ATTRIBUTES.
+            9. Do not use synonyms when describing actions, stick to the action on the ACL list ONLY.
+
+
+     
+
+
+
+
+
+
+
+===============================================================
+ITERATION : 0
+===============================================================
+**READ THE ENTIRE REQUEST BEFORE GENERATING ANYTHING**
+
+The following text is a request to GENERATE ABAC rules. The text is separated into sections. To begin the text will name the section and the purpose of the section in this request.
+
+	PROMPT section:  This will be the main request we need accomplished through the query.
+
+    ATTRIBUTE_DESCRIPTION section: is a sample policy for a healthcare organization.
+     Analyze this file to better understand ABAC rule attributes for our organization. Also use this section to better understand the ATTRIBUTE_DATA section    
+
+    ATTRIBUTE_DATA_FORMAT_DESCRIPTION: This section explains the format of the ATTRIBUTE DATA described in the attribute data section.
+
+    ATTRIBUTE_DATA section: is the attribute data for our organization. This includes resources and users. Use these to create the ABAC rules being requested. 
+
+    RULES_FORMAT_DESCRIPTION: This section explains the format of the ABAC rules that we need you (the LLM) to generate.
+
+    GROUND_TRUTH_ACL section: This section contains our organizations entire ACL (access Control List), this is the list that needs to be converted into a set of
+     ABAC rules that grant the exact same permissions. 
+     this is also known as the ground truth ACL.
+
+	ADDITIONAL_INSTRUCTIONS section: contains additional instructions you need to follow. instructions that have to do with output results,
+     the process, and other rules to help you (the LLM model) generate the exact results needed.
+
+
+## PROMPT ##
+    Our organization needs you (the LLM) to use the 
+    ATTRIBUTE_DESCRIPTION , ATTRIBUTE_DATA_FORMAT_DESCRIPTION, ATTRIBUTE_DATA, RULES_FORMAT_DESCRIPTION, and ADDITIONAL_INSTRUCTIONS sections
+    to generate a set of ABAC Rules that will give the same exact permissions that the GROUND_TRUTH_ACL gives. No less permission and no more permissions
+    than what is in the GROUND_TRUTH_ACL.
+        THE GOAL IS TO CREATE A SET OF ABAC RULES THAT WILL GENERATE THE SAME SET OF PERMISSIONS THAT THE ACL IN THE GROUND_TRUTH_ACL section,
+        ANY PERMISSION THAT IS MISSED, BY YOUR GENERATED ABAC RULES, OR THAT IS OVER PEMRITTED BY YOUR ABAC RULE SET WILL BE CONSIDERED A FAILURE.
+            This is mission critical so accuracy is critical.
+    You (the LLM) must generate the fewest amount of rules that give the same exact permissions as the ACL that was provided.
+    If you detect that you made a mistake in your reasoning at any point, correct yourself.
+
+
+## ATTRIBUTE_DESCRIPTION ##
+# Policy Description: Healthcare 
+*Vesion: v20250308*
+
+
+This is a sample policy developed by Xu et al. (2015). The policy manages access to electronic health records (HRs) and individual HR items (entries within health records). It defines access rules for nurses, doctors, patients, and authorized agents (such as a patient’s spouse).
+
+**Reference**: Zhongyuan Xu and Scott D. Stoller. *Mining attribute-based access control policies.* IEEE Transactions on Dependable and Secure Computing, 12(5):533–545, September–October 2015.
+
+## Attributes
+
+### Subject/User Attributes
+The subjects of this policy include doctros, nurses, patients, and agents within the healthcare facility. The following attributes are used to describe the subjects.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| uid          | Single, String   | User’s unique identifier.                                  | carNurse1, oncDoc2, oncPat2, etc.                         |
+| position          | Single, String   | The user's position.        | doctor, nurse, patient, agent             |
+| specialties        | Multi, Set\<String>   | The user’s areas of medical expertise (for doctors).                     | {cardiology, oncology}, etc.                      |
+| teams         | Multi, Set\<String>   | Medical teams of which the user is a member (for doctors).             | {oncTeam1, carTeam2}, etc. |
+| ward    | Single, String   | The ward in which the user works (for nurses). | oncWard, carWard, etc.                          |
+| agentFor    | Multi, Set\<String>   | The set of patients for which this user is an agent (for agents).                     | {oncPat2, carPat3}, etc.    |
+
+
+### Resource Attributes
+The resources of this policy include electronic health records (HRs) and individual HR items (entries within health records). The following attributes are used to describe the resources.
+
+| Attribute Name      | Multiplicity, Type     | Description                                               | Example Values                                     |
+|--------------------|------------------|-----------------------------------------------------------|--------------------------------------------------|
+| rid      | Single, String   | Resource’s unique identifier                             | oncPat1nursingItem, oncPat1HR, etc.               |
+| type             | Single, String   | Type of resource being accessed.                        | HR, HRitem                       |
+| patient       | Single, String   | The patient associated with the HR or HR item.                 | oncPat1, carPat2, etc.                            |
+| treatingTeam          | Single, String   | The team treating the associated patient.                      | oncTeam1, carTeam2, etc.                           |
+| ward      | Single, String   | The ward in which the associated patient is being treated.            | oncWard, carWard, etc.                             |
+| topics      | Multi, Set\<String>   | Medical areas to which the item is relevant (for HR-item resources).            | {cardiology, oncology}, etc.                              |
+| author      | Single, String   | ID of the user who created the HR item (for HR-items).            | oncDoc1, carNurse2, etc.                             |
+
+
+## ATTRIBUTE_DATA_FORMAT_DESCRIPTION ##
+
+    This section outlines the format of attribute data described in the ATTRIBUTE DATA section. 
+
+   ATTRIBUTE_DATA section contains lines of the forms:
+
+    userAttrib(uid, attribute1=value1, attribute2=value2, ...)
+
+    resourceAttrib(rid, attribute1=value1, attribute2=value2, ...)
+    
+
+    The `userAttrib` and `resourceAttrib` lines define the users (subjects) and resources in the policy, respectively.
+    - The first argument of a `userAttrib` is automatically assigned to an attribute named `uid`, which is the id of the user. 
+    The first argument of a `resourceAttrib` is automatically assigned to an attribute named `rid`, which is the id of the resource.  
+    - `value1`, `value2`, ... are atomic values or sets of atomic values.
+    - An atomic value is a string that starts with a character other than a left curly brace.  
+    - A set has the form `{element1 element2 ...}`. **Note that elements of a set are separated by spaces, not commas.**
+
+## ATTRIBUTE_DATA ##
+# ABAC policy for a healthcare facility, e.g., a hospital.
+
+# Note that the two words "user" and "subject" are used interchangeably in this document.
+
+# Please refer to the policy description document for the detailed descriptions subject attributes and resource attributes. Note that some attributes might be irrelevant for some users and resources.
+
+
+#------------------------------------------------------------
+# user attribute data
+#------------------------------------------------------------
+
+# nurses
+
+userAttrib(oncNurse1, position=nurse, ward=oncWard)
+userAttrib(oncNurse2, position=nurse, ward=oncWard)
+
+userAttrib(carNurse1, position=nurse, ward=carWard)
+userAttrib(carNurse2, position=nurse, ward=carWard)
+
+# doctors
+
+userAttrib(oncDoc1, position=doctor, specialties={oncology}, teams={oncTeam1 oncTeam2})
+userAttrib(oncDoc2, position=doctor, specialties={oncology}, teams={oncTeam1})
+userAttrib(oncDoc3, position=doctor, specialties={oncology}, teams={oncTeam2})
+userAttrib(oncDoc4, position=doctor, specialties={oncology}, teams={oncTeam2})
+
+userAttrib(carDoc1, position=doctor, specialties={cardiology}, teams={carTeam1})
+userAttrib(carDoc2, position=doctor, specialties={cardiology}, teams={carTeam2})
+
+userAttrib(anesDoc1, position=doctor, specialties={anesthesiology}, teams={oncTeam1 carTeam1})
+
+# the following doctors are not currently on any teams, but they have
+# access to HR items they authored when they were on a team.
+userAttrib(doc1, position=doctor, specialties={oncology pediatrics})
+userAttrib(doc2, position=doctor, specialties={cardiology neurology})
+
+# patients and agents
+
+userAttrib(oncPat1, ward=oncWard)
+userAttrib(oncPat2, ward=oncWard)
+
+userAttrib(carPat1, ward=carWard)
+userAttrib(carPat2, ward=carWard)
+
+userAttrib(oncAgent1, agentFor={oncPat2})
+userAttrib(oncAgent2, agentFor={oncPat2})
+userAttrib(carAgent1, agentFor={carPat2})
+userAttrib(carAgent2, agentFor={carPat2})
+
+#------------------------------------------------------------
+# resource attribute data
+#------------------------------------------------------------
+
+# resources for oncPat1
+resourceAttrib(oncPat1oncItem, type=HRitem, author=oncDoc1, patient=oncPat1, topics={oncology}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1nursingItem, type=HRitem, author=oncNurse2, patient=oncPat1, topics={nursing}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1noteItem, type=HRitem, author=oncPat1, patient=oncPat1, topics={note}, treatingTeam=oncTeam1, ward=oncWard)
+resourceAttrib(oncPat1HR, type=HR, patient=oncPat1, treatingTeam=oncTeam1, ward=oncWard)
+
+# resources for oncPat2
+resourceAttrib(oncPat2oncItem, type=HRitem, author=doc1, patient=oncPat2, topics={oncology}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2nursingItem, type=HRitem, author=oncNurse1, patient=oncPat2, topics={nursing}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2noteItem, type=HRitem, author=oncAgent1, patient=oncPat2, topics={note}, treatingTeam=oncTeam2, ward=oncWard)
+resourceAttrib(oncPat2HR, type=HR, patient=oncPat2, treatingTeam=oncTeam2, ward=oncWard)
+
+# resources for carPat1
+resourceAttrib(carPat1carItem, type=HRitem, author=carDoc2, patient=carPat1, topics={cardiology}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1nursingItem, type=HRitem, author=carNurse1, patient=carPat1, topics={nursing}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1noteItem, type=HRitem, author=carPat1, patient=carPat1, topics={note}, treatingTeam=carTeam1, ward=carWard)
+resourceAttrib(carPat1HR, type=HR, patient=carPat1, treatingTeam=carTeam1, ward=carWard)
+
+# resources for carPat2
+resourceAttrib(carPat2carItem, type=HRitem, author=doc2, patient=carPat2, topics={cardiology}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2nursingItem, type=HRitem, author=carNurse2, patient=carPat2, topics={nursing}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2noteItem, type=HRitem, author=carAgent1, patient=carPat2, topics={note}, treatingTeam=carTeam2, ward=carWard)
+resourceAttrib(carPat2HR, type=HR, patient=carPat2, treatingTeam=carTeam2, ward=carWard)
+
+
+## RULES_FORMAT_DESCRIPTION ##
+    All of the output ABAC rules must follow the following format:
+        rule(subCond; resCond; acts; cons)
+    
+    - `subCond` is a subject condition. It is a conjunction, with the conjuncts separated by commas. Each conjunct has the form 
+    `attr [ {value1 value2 ...}`, where `attr` is a single-valued user attribute and `[` denotes the "in" 
+    operator (note that elements of a set are separated by spaces, not commas), or 
+    `attr ] value`
+    , where attr is a muli-valued attribute, value is an atomic value, and `]` denotes the "contains" operator.
+
+    - `resCond` is a resource condition. The syntax is analogous to the syntax for subject condition.
+
+    - `acts` is a set of actions.
+
+    - `cons` is a constraint. It is a conjunction of atomic constraints, with the
+    conjuncts separated by commas. An atomic constraint is a formula of one of the following forms:
+    
+    aum > arm 
+    aus [ arm
+    aum ] ars
+    aus = ars
+    
+    , where `aus` is a single-valued user attribute,
+    `aum` is a multi-valued user attribute,
+    `ars` is a single-valued resource attribute,
+    `arm` is a multi-valued resource attribute. Note that `>` denotes the "supseteq" (⊇) operator.
+
+    This is an example of a rule:
+        rule(provider [ {eWorkforce}, position [ {helpdeskOperator}; type [ {contract}, contractStatus [ {active}, tenantType [ {primary}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant)
+
+
+## GROUND_TRUTH_ACL ##
+carNurse2, carPat2nursingItem, read
+doc2, carPat2carItem, read
+carNurse1, carPat1nursingItem, read
+oncNurse1, oncPat2HR, addItem
+oncNurse2, oncPat2HR, addItem
+carDoc1, carPat1HR, addItem
+doc1, oncPat2oncItem, read
+oncDoc4, oncPat2oncItem, read
+anesDoc1, oncPat1HR, addItem
+oncAgent2, oncPat2HR, addNote
+oncPat2, oncPat2HR, addNote
+oncNurse1, oncPat2nursingItem, read
+oncDoc1, oncPat1oncItem, read
+oncDoc2, oncPat1HR, addItem
+carNurse2, carPat2HR, addItem
+oncAgent1, oncPat2noteItem, read
+carAgent1, carPat2HR, addNote
+carDoc2, carPat1carItem, read
+oncDoc4, oncPat2HR, addItem
+oncDoc2, oncPat1oncItem, read
+oncNurse1, oncPat1HR, addItem
+oncPat1, oncPat1noteItem, read
+carNurse1, carPat1HR, addItem
+oncPat1, oncPat1HR, addNote
+carDoc1, carPat1carItem, read
+carPat1, carPat1HR, addNote
+carDoc2, carPat2carItem, read
+carPat1, carPat1noteItem, read
+carDoc2, carPat2HR, addItem
+oncDoc3, oncPat2HR, addItem
+oncNurse2, oncPat1HR, addItem
+oncDoc1, oncPat2HR, addItem
+oncDoc1, oncPat2oncItem, read
+carAgent2, carPat2HR, addNote
+carNurse2, carPat1HR, addItem
+carNurse1, carPat2HR, addItem
+anesDoc1, carPat1HR, addItem
+carPat2, carPat2HR, addNote
+oncDoc3, oncPat2oncItem, read
+oncNurse2, oncPat1nursingItem, read
+oncDoc1, oncPat1HR, addItem
+oncAgent1, oncPat2HR, addNote
+carAgent1, carPat2noteItem, read
+
+## ADDITIONAL_INSTRUCTIONS
+
+        This section provides additional instructions to assist you output propper ABAC rules.
+
+        This is also divided into sections, the following is a description on the sections. 
+        Failure to adhere to any of these rules will result in a failed query on your (the LLM) part.
+
+            OUTPUT_FORMAT section: The output section describes how to format your (the LLMs) response. Including syntax, restrictions, and content. 
+            
+            ABAC_RULES section, is section dedicated to helping you (the LLM) produce more consistent and correct abac rules. You (the LLM) are to follow these rules strictly.
+
+            The LLM_IMPROVEMENT section, has other instructions to help you (the LLM) produce better results.
+
+
+
+        OUTPUT_FORMAT:
+            1. Only respond with the ABAC rules being requested.
+            2. Each rule should follow strict syntax described in the RULES_FORMAT_DESCRIPTION section.
+            3. Each rule should be in its own line.
+                    verify for each line:
+                    line.startswith("rule(") and line.endswith(")")
+                    line.count(";") == 3                
+            4. Respond only with plain text, no mark-up or other type of formatting. 
+                a. unseen values are forbidden.
+            9. DO NOT INCLUDE ANY ``` at the beginnig or end of a response
+         
+
+
+        ABAC_RULES:
+            
+            1. ABAC rules should avoid using uid and rid attributes. 
+                a. Do not hard code any ids, the rules should be dynamic.
+            2. The generated rules must as concise as possible.
+                a. Check all ABAC rules for redundancy, keep rules to strict minimum. 
+                b. Consider removing any conjuncts in subject condition, resource condition, and constraints if that does not affect the permission given by the rule.
+            6. You (the LLM) are allowed to combine rules for actions if they should grant the same access. 
+                a. For example: rule (; subj ] {math}; {read, write, createNote}; class=class )
+            7. ABAC rules do not need to dictate permit or deny as a section.
+                a. INCORRECT = rule (; subj ] {math}; {read}; class=class, PERMIT )
+            8. DO NOT ADD, REMOVE, OR EDIT ATTRIBUTES.
+            9. Do not use synonyms when describing actions, stick to the action on the ACL list ONLY.
+
+
+     
+
+
+
+
+
+

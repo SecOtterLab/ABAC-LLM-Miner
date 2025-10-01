@@ -1,0 +1,36 @@
+
+===============================================================
+ITERATION : 0
+===============================================================
+oncAgent1, oncPat2noteItem, read
+oncDoc3, oncPat1oncItem, read
+oncDoc4, oncPat1oncItem, read
+oncPat1, oncPat1HR, addNote
+carPat1, carPat1HR, addNote
+carPat2, carPat2HR, addNote
+oncDoc2, oncPat2oncItem, read
+oncPat2, oncPat2HR, addNote
+carDoc2, carPat1carItem, read
+carNurse2, carPat1HR, addItem
+oncNurse2, oncPat2HR, addItem
+oncDoc1, oncPat1oncItem, read
+oncDoc4, oncPat2oncItem, read
+oncNurse1, oncPat2HR, addItem
+oncDoc3, oncPat2oncItem, read
+carPat1, carPat1noteItem, read
+doc1, oncPat2oncItem, read
+oncDoc2, oncPat1oncItem, read
+oncNurse2, oncPat1HR, addItem
+carNurse1, carPat1nursingItem, read
+oncNurse1, oncPat1HR, addItem
+carNurse1, carPat1HR, addItem
+oncNurse2, oncPat1nursingItem, read
+oncDoc1, oncPat2oncItem, read
+carAgent1, carPat2noteItem, read
+oncPat1, oncPat1noteItem, read
+carNurse2, carPat2HR, addItem
+oncNurse1, oncPat2nursingItem, read
+carNurse1, carPat2HR, addItem
+carNurse2, carPat2nursingItem, read
+doc2, carPat2carItem, read
+doc1, oncPat1oncItem, read

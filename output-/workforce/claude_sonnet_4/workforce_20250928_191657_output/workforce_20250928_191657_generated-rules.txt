@@ -1,0 +1,30 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {workforceManager}; type [ {task}; {view}; assignedTechnician ] managedStaff)
+rule(position [ {technician}; type [ {task}; {view}; assignedTechnician = uid)
+rule(position [ {workforceManager}; type [ {task}; {complete}; assignedTechnician ] managedStaff)
+rule(position [ {technician}; type [ {task}; {complete}; assignedTechnician = uid)
+rule(position [ {helpdeskOperator, helpdeskManager}; type [ {workOrder}; {modify}; )
+rule(position [ {helpdeskOperator, helpdeskManager}; type [ {workOrder}; {delete}; )
+rule(position [ {helpdeskOperator, helpdeskManager}; type [ {contract}; {createOneTimeWorkOrder, createRecurrentWorkOrder, createAppointment}; )
+rule(position [ {helpdeskManager}; type [ {workOrder}; {view}; )
+rule(position [ {salesManager, maintenanceManager}; type [ {workOrder}; {view}; tenant = assignedTenant)
+rule(position [ {salesManager, maintenanceManager}; type [ {contract}; {createOneTimeWorkOrder, createRecurrentWorkOrder}; tenant = assignedTenant)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; )
+rule(position [ {warehouseOperator}; type [ {resourceRequest}; {view}; assignedEmployee = uid)
+rule(position [ {warehouseOperator}; type [ {resourceRequest}; {complete}; assignedEmployee = uid)
+rule(position [ {warehouseManager}; type [ {resourceRequest}; {view}; assignedEmployee ] managedStaff)
+rule(position [ {warehouseManager}; type [ {resourceRequest}; {complete}; assignedEmployee ] managedStaff)
+rule(position [ {salesManager}; type [ {stockRefillRequest}; {receive}; tenant = assignedTenant)
+rule(position [ {applicationAdmin}; type [ {workOrder}; {modify, delete}; )
+rule(position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )

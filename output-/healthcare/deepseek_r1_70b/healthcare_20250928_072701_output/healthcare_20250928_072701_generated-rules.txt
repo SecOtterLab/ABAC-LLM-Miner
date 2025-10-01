@@ -1,0 +1,36 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position=nurse; type=HRitem, topics={nursing}, patient.ward=ward; read; ward=patient.ward)
+rule(position=nurse; type=HR, patient.ward=ward; addItem; ward=patient.ward)
+rule(position=doctor; type=HRitem, topics=specialty; read; specialties=specialty)
+rule(position=doctor; type=HR, patient.treatingTeam=team; addItem; teams=team)
+rule(agentFor=agentPatient; type=HR, patient=agentPatient; addNote)
+rule(patient=patientId; type=HR, patient=patientId; addNote)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position=nurse; type=HRitem, topics={nursing}, patient.ward=ward; read; ward=patient.ward)
+rule(position=doctor; type=HRitem, topics=specialty; read; specialties=specialty)
+rule(position=nurse; type=HR, patient.ward=ward; addItem; ward=patient.ward)
+rule(position=doctor; type=HR, patient.treatingTeam=team; addItem; teams=team)
+rule(agentFor=agentPatient; type=HR, patient=agentPatient; addNote; )
+rule(patient=patientId; type=HR, patient=patientId; addNote; )
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position=nurse; type=HRitem, topics={nursing}, patient.ward=ward; read; ward=patient.ward)
+rule(position=doctor; type=HRitem, topics=specialty; read; specialties=specialty)
+rule(position=nurse; type=HR, patient.ward=ward; addItem; ward=patient.ward)
+rule(position=doctor; type=HR, patient.treatingTeam=team; addItem; teams=team)
+rule(agentFor=agentPatient; type=HR, patient=agentPatient; addNote; )
+rule(patient=patientId; type=HR, patient=patientId; addNote; )
+rule(position=nurse; type=HRitem, topics={nursing}, patient.ward=ward; read; ward=patient.ward)
+rule(position=doctor; type=HRitem, topics=specialty; read; specialties=specialty)
+rule(position=nurse; type=HR, patient.ward=ward; addItem; ward=patient.ward)
+rule(position=doctor; type=HR, patient.treatingTeam=team; addItem; teams=team)
+rule(agentFor=agentPatient; type=HR, patient=agentPatient; addNote; )
+rule(patient=patientId; type=HR, patient=patientId; addNote; )

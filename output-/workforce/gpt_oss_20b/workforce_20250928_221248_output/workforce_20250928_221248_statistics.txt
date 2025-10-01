@@ -1,0 +1,40 @@
+# org : workforce, LLM : gpt_oss_20b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:05:46.359643,
+  acl_jacc_val : 0.0,
+  gt_acl : 15858,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 15858,
+  over_perm : 0,
+  syntax_jacc_avg : 0.125,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.1875,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:08:29.783190,
+  acl_jacc_val : 0.020656104770572743,
+  gt_acl : 15858,
+  llm_acl : 617750,
+  intersection : 12823,
+  under_perm : 3035,
+  over_perm : 604927,
+  syntax_jacc_avg : 0.2544642857142857,
+  semantic_jacc_avg : 0.006600266374472752
+  x_syntax_jacc_avg   : 0.30952380952380953,
+  x_semantic_jacc_avg : 0.01279271115627056
+
+iteration : 2,
+  seconds_elapsed : 0:06:03.767223,
+  acl_jacc_val : 0.020656104770572743,
+  gt_acl : 15858,
+  llm_acl : 617750,
+  intersection : 12823,
+  under_perm : 3035,
+  over_perm : 604927,
+  syntax_jacc_avg : 0.2544642857142857,
+  semantic_jacc_avg : 0.006600266374472752
+  x_syntax_jacc_avg   : 0.30952380952380953,
+  x_semantic_jacc_avg : 0.01279271115627056

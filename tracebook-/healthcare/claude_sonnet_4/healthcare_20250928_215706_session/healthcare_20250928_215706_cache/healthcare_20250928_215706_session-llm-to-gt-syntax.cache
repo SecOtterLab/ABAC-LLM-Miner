@@ -1,0 +1,30 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 0.75)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(position [ {doctor}; type [ {HR}; {addItem}; teams ] treatingTeam)', 0.75)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(agentFor ] patient; type [ {HR}; {addNote}; )', 0.5)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(agentFor ] patient; type [ {HR}; {addNote}; )', 0.5)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward, uid = author)', 0.375)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(position [ {doctor}, specialties ] oncology; type [ {HRitem}, topics ] oncology; {read}; teams ] treatingTeam)', 0.625)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 0.75)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 0.5)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(uid [ {oncPat1}; type [ {HR}, patient [ {oncPat1}; {addNote}; )', 0.41666666666666663)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(uid [ {oncPat1}; type [ {HR}, patient [ {oncPat1}; {addNote}; )', 0.41666666666666663)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward)', 0.375)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward)', 0.375)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 0.75)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 0.5)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(uid [ {oncPat1}; type [ {HR}, patient [ {oncPat1}; {addNote}; )', 0.41666666666666663)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(uid [ {oncPat1}; type [ {HR}, patient [ {oncPat1}; {addNote}; )', 0.41666666666666663)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward)', 0.375)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(position [ {nurse}; type [ {HRitem}, topics ] nursing; {read}; ward = ward)', 0.375)

@@ -1,0 +1,14 @@
+# org : workforce, LLM : llama3_3_70b, num_ctx : 131072
+
+iteration : 0,
+  seconds_elapsed : 0:33:20.007175,
+  acl_jacc_val : 0.0,
+  gt_acl : 15858,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 15858,
+  over_perm : 0,
+  syntax_jacc_avg : -1.0,
+  semantic_jacc_avg : 0.0,
+  x_syntax_jacc_avg   : -0.5,
+  x_semantic_jacc_avg : 0.0

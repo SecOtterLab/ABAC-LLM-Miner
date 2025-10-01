@@ -1,0 +1,32 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(; type [ {schedule}; {read}; projects ] project)
+rule(; type [ {budget}; {read write}; projectsLed ] project)
+rule(; type [ {schedule}; {write}; projectsLed ] project)
+rule(; type [ {task}; {read}; expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = False, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = True, isEmployee = True, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {setStatus}; expertise ] expertise, projects ] project)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(; type [ {schedule}; {read}; projects ] project)
+rule(; type [ {budget}; {read write}; projectsLed ] project)
+rule(; type [ {schedule}; {write}; projectsLed ] project)
+rule(; type [ {task}; {read}; expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = False, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = True, isEmployee = True, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {setStatus}; expertise ] expertise, projects ] project)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(; type [ {schedule}; {read}; projects ] project)
+rule(; type [ {budget}; {read write}; projectsLed ] project)
+rule(; type [ {task}; {read}; isEmployee = True, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = False, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {request}; proprietary = True, isEmployee = True, expertise ] expertise, projects ] project)
+rule(; type [ {task}; {setStatus}; expertise ] expertise, projects ] project)

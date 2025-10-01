@@ -1,0 +1,40 @@
+# org : university, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:04:25.319535,
+  acl_jacc_val : 1.0,
+  gt_acl : 168,
+  llm_acl : 168,
+  intersection : 168,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.95,
+  semantic_jacc_avg : 1.0,
+  x_syntax_jacc_avg   : 0.95,
+  x_semantic_jacc_avg : 1.0
+
+iteration : 1,
+  seconds_elapsed : 0:00:50.067305,
+  acl_jacc_val : 1.0,
+  gt_acl : 168,
+  llm_acl : 168,
+  intersection : 168,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.95,
+  semantic_jacc_avg : 1.0
+  x_syntax_jacc_avg   : 0.95,
+  x_semantic_jacc_avg : 1.0
+
+iteration : 2,
+  seconds_elapsed : 0:00:42.905096,
+  acl_jacc_val : 1.0,
+  gt_acl : 168,
+  llm_acl : 168,
+  intersection : 168,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.95,
+  semantic_jacc_avg : 1.0
+  x_syntax_jacc_avg   : 0.95,
+  x_semantic_jacc_avg : 1.0

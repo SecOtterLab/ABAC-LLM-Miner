@@ -1,0 +1,8 @@
+# org : university20250927_131456
+# iterations : 1
+# api_called : llama3.3:70b
+# gt_file : ground-truth-ACL/university-gt-ACL.txt
+# gt_abac_rule_file : ground-truth-ABAC-rules/university-abac-rules.txt
+# attribute_data_description_file : DATASETS-for-LLM/university/university-attribute-data-description.txt
+# attribute_data_file : DATASETS-for-LLM/university/university-attribute-data.txt
+

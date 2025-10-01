@@ -1,0 +1,1 @@
+rule(; subj] {role:.*}; {read,write,modifyNote,createNote,deleteNote,markNote,reclassNote,readNote}; class=class)

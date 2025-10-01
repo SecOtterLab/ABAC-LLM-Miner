@@ -1,0 +1,40 @@
+# org : healthcare, LLM : claude_opus_4_1, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:00:14.714967,
+  acl_jacc_val : 0.16568047337278108,
+  gt_acl : 43,
+  llm_acl : 154,
+  intersection : 28,
+  under_perm : 15,
+  over_perm : 126,
+  syntax_jacc_avg : 0.7222222222222222,
+  semantic_jacc_avg : 0.5925925925925926,
+  x_syntax_jacc_avg   : 0.6565656565656566,
+  x_semantic_jacc_avg : 0.4926832426832426
+
+iteration : 1,
+  seconds_elapsed : 0:00:16.484261,
+  acl_jacc_val : 0.7551020408163265,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 37,
+  under_perm : 6,
+  over_perm : 6,
+  syntax_jacc_avg : 0.6805555555555557,
+  semantic_jacc_avg : 0.7592592592592592
+  x_syntax_jacc_avg   : 0.6338383838383839,
+  x_semantic_jacc_avg : 0.6328347578347577
+
+iteration : 2,
+  seconds_elapsed : 0:00:15.353912,
+  acl_jacc_val : 0.9148936170212766,
+  gt_acl : 43,
+  llm_acl : 47,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 4,
+  syntax_jacc_avg : 0.6805555555555557,
+  semantic_jacc_avg : 0.9166666666666666
+  x_syntax_jacc_avg   : 0.6354166666666667,
+  x_semantic_jacc_avg : 0.7465277777777777

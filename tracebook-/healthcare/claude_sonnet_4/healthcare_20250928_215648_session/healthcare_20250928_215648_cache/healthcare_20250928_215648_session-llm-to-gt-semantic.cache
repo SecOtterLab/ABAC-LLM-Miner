@@ -1,0 +1,30 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}, ward = ward; type [ {HR}; {addItem}; )', 0.5)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('EMPTY_BY_DEFAULT', 0)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(; type [ {HR}; {addNote}; uid = patient)', 1.0)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('EMPTY_BY_DEFAULT', 0)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(; type [ {HRitem}, topics [ {note}; {read}; uid = patient)', 0.09090909090909091)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('EMPTY_BY_DEFAULT', 0)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}; type [ {HR}; {addItem}; ward = ward)', 1.0)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('EMPTY_BY_DEFAULT', 0)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(uid = patient; type [ {HR}; {addNote}; )', 0.047619047619047616)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(uid = patient; type [ {HR}; {addNote}; )', 0.047619047619047616)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}; type [ {HRitem}, topics [ {nursing}; {read}; ward = ward)', 0.125)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(uid = patient; type [ {HRitem}, topics [ {note}; {read}; )', 0.027777777777777776)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {nurse}; type [ {HR}; {addItem}; ward=ward) : ('rule(position [ {nurse}, ward = ward; type [ {HR}; {addItem}; )', 0.5)
+rule(; type [ {HR}; {addItem}; teams ] treatingTeam) : ('EMPTY_BY_DEFAULT', 0)
+rule(; type [ {HR}; {addNote}; uid=patient) : ('rule(uid = patient; type [ {HR}; {addNote}; )', 0.047619047619047616)
+rule(; type [ {HR}; {addNote}; agentFor ] patient) : ('rule(uid = patient; type [ {HR}; {addNote}; )', 0.047619047619047616)
+rule(; type [ {HRitem}; {read}; uid=author) : ('rule(position [ {nurse}, ward = ward; type [ {HRitem}, topics [ {nursing}; {read}; )', 0.07142857142857142)
+rule(; type [ {HRitem}; {read}; specialties > topics, teams ] treatingTeam) : ('rule(position [ {doctor}, author = uid; type [ {HRitem}; {read}; )', 0.06481481481481481)

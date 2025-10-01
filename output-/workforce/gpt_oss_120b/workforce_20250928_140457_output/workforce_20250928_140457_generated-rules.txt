@@ -1,0 +1,27 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(; {} ] {} ; {view} ; class=workorder)
+rule(; {role=hdmanager} ] {} ; {modify, delete, create} ; class=workorder)
+rule(; {} ] {} ; {view} ; class=stockrefill)
+rule(; {role=whop} ] {} ; {markComplete} ; class=stockrefill)
+rule(; {} ] {} ; {view} ; class=task)
+rule(; {role=tech} ] {} ; {complete} ; class=task)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(; {} ] {} ; {view} ; class=workorder)
+rule(; {role=hdmanager} ] {} ; {modify, delete, create} ; class=workorder)
+rule(; {} ] {} ; {view} ; class=stockrefill)
+rule(; {role=whop} ] {} ; {markComplete} ; class=stockrefill)
+rule(; {} ] {} ; {view} ; class=task)
+rule(; {role=tech} ] {} ; {complete} ; class=task)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(; {} ] {}; {view, complete, modify, delete, create}; class=workorder)
+rule(; {} ] {}; {view, complete, modify, delete, create}; class=stockrefill)
+rule(; {} ] {}; {view, complete, modify, delete, create}; class=task)

@@ -1,0 +1,40 @@
+# org : project-management, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:06:03.972710,
+  acl_jacc_val : 0.9900990099009901,
+  gt_acl : 101,
+  llm_acl : 100,
+  intersection : 100,
+  under_perm : 1,
+  over_perm : 0,
+  syntax_jacc_avg : 0.9333333333333332,
+  semantic_jacc_avg : 0.7666666666666667,
+  x_syntax_jacc_avg   : 0.8989583333333333,
+  x_semantic_jacc_avg : 0.6470052083333333
+
+iteration : 1,
+  seconds_elapsed : 0:01:24.802470,
+  acl_jacc_val : 1.0,
+  gt_acl : 101,
+  llm_acl : 101,
+  intersection : 101,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.9333333333333332,
+  semantic_jacc_avg : 0.7666666666666667
+  x_syntax_jacc_avg   : 0.9160714285714285,
+  x_semantic_jacc_avg : 0.6869047619047619
+
+iteration : 2,
+  seconds_elapsed : 0:01:14.767471,
+  acl_jacc_val : 1.0,
+  gt_acl : 101,
+  llm_acl : 101,
+  intersection : 101,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.9583333333333333,
+  semantic_jacc_avg : 0.9
+  x_syntax_jacc_avg   : 0.9708333333333333,
+  x_semantic_jacc_avg : 0.9

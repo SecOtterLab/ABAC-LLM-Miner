@@ -1,0 +1,97 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+# org : edocument, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:00:02.724417,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:00:14.432917,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 2,
+  seconds_elapsed : 0:00:14.689264,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0Error in helper_functions.iterate_api_requests.create_session_data: LLM rules file is empty: llm-research/session/session/session-llm-response.txt
+Error in openai_gpt5_api.openai_gpt5_api_call: Error code: 429 - {'error': {'message': 'Request too large for gpt-5 in organization org-sSjJ4vqsF188vOY159MChITU on tokens per min (TPM): Limit 500000, Requested 582858. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+
+===============================================================
+ITERATION : 1
+===============================================================
+# org : edocument, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:00:02.724417,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0
+
+iteration : 1,
+  seconds_elapsed : 0:00:14.432917,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0Error in helper_functions.iterate_api_requests.create_session_data: LLM rules file is empty: llm-research/session/session/session-llm-response.txt
+Error in openai_gpt5_api.openai_gpt5_api_call: Error code: 429 - {'error': {'message': 'Request too large for gpt-5 in organization org-sSjJ4vqsF188vOY159MChITU on tokens per min (TPM): Limit 500000, Requested 582858. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+
+===============================================================
+ITERATION : 0
+===============================================================
+# org : edocument, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:00:02.724417,
+  acl_jacc_val : 0.0,
+  gt_acl : 32961,
+  llm_acl : 0,
+  intersection : 0,
+  under_perm : 32961,
+  over_perm : 0,
+  syntax_jacc_avg : 0.0,
+  semantic_jacc_avg : 0,
+  x_syntax_jacc_avg   : 0.0,
+  x_semantic_jacc_avg : 0.0Error in helper_functions.iterate_api_requests.create_session_data: LLM rules file is empty: llm-research/session/session/session-llm-response.txt
+skipping iteration: payload not received
+Error in openai_gpt5_api.openai_gpt5_api_call: Error code: 400 - {'error': {'message': 'Your input exceeds the context window of this model. Please adjust your input and try again.', 'type': 'invalid_request_error', 'param': 'input', 'code': 'context_length_exceeded'}}

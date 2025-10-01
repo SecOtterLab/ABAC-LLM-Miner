@@ -1,0 +1,47 @@
+
+=====================*****************RAW***********************====================================
+<think>
+Alright, I'm trying to help this user generate ABAC rules that exactly mirror their existing ACL. Let me walk through how I should approach this.
+
+First, I need to understand all the sections they provided. The PROMPT makes it clear that accuracy is mission-critical, so any mistake could be a failure. They want the fewest rules possible without missing or adding permissions beyond the ACL.
+
+Looking at the ATTRIBUTE_DESCRIPTION, there are subject and resource attributes. For subjects, attributes like adminRoles, projects, department, etc., are defined. Resources have type, project, expertise, proprietary status, etc. These will be crucial in forming the conditions for the ABAC rules.
+
+The ATTRIBUTE_DATA section gives specific user and resource details. Users have various roles and project assignments, while resources are tied to specific projects and tasks. I'll need to map these attributes when creating the rules.
+
+RULES_FORMAT_DESCRIPTION explains how each rule should look: subCond; resCond; acts; cons. I must ensure that each condition is correctly formed using the right operators for single or multi-valued attributes.
+
+The GROUND_TRUTH_ACL lists every permission, which I'll need to convert into ABAC rules. Each line here represents a user-resource-action triplet. My goal is to group similar permissions into concise rules without hardcoding uids or rids.
+
+ADDITIONAL_INSTRUCTIONS emphasize avoiding uid/rid in rules, keeping them dynamic and as minimal as possible. Also, actions must exactly match the ACL, so I can't add any extra actions.
+
+Now, looking at the ACL entries, for example, "plan1, proj12sched, read" means user plan1 can read resource proj12sched. But instead of writing a rule for each, I should find patterns. Planners have adminRole={planner} and are assigned to projects. Resources like proj12sched have type=schedule.
+
+I can create a general rule allowing users with adminRole=planner access to schedules in their projects. Similarly, for other roles and resources, grouping by action and common attributes will help minimize the number of rules.
+
+For each resource type (budget, schedule, task), I'll check which actions are allowed and under what conditions. For tasks, especially proprietary ones, I might need constraints like isEmployee=True to ensure only employees can access them.
+
+I also need to handle different actions: read, write, setStatus, request. Each action might require separate rules if the conditions differ significantly.
+
+Throughout this process, I'll make sure each rule is as broad as possible without over-permitting. Testing each rule against the ACL will be crucial to ensure coverage and correctness.
+</think>
+
+rule(adminRoles [ {planner} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(adminRoles [ {planner} ]; type [ {budget} ], project = projects; {write}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, request, setStatus}; isEmployee = True)
+rule(adminRoles [ {projectLeader} ]; type [ {budget} ], project = projectsLed; {write}; department = department)
+rule(adminRoles [ {auditor}, {accountant} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {read, request, setStatus}; isEmployee = True)
+=====================*****************MINOR FORMATTING***********************======================
+rule(adminRoles [ {planner} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(adminRoles [ {planner} ]; type [ {budget} ], project = projects; {write}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = False; {read, request, setStatus}; isEmployee = True)
+rule(adminRoles [ {projectLeader} ]; type [ {budget} ], project = projectsLed; {write}; department = department)
+rule(adminRoles [ {auditor}, {accountant} ]; type [ {schedule} ], project = projects; {read}; department = department)
+rule(expertise [ {design} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {setStatus, request}; isEmployee = True)
+rule(expertise [ {coding} ]; type [ {task} ], project = projects, expertise = expertise, proprietary = True; {read, request, setStatus}; isEmployee = True)
+
+=====================*****************END***********************==================================

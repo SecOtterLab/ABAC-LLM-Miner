@@ -1,0 +1,43 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+Looking at the ground truth ACL, I need to identify the unique actions and analyze the access patterns.
+
+From the ACL, I can see the following actions:
+- view
+- modify  
+- delete
+- complete
+- createOneTimeWorkOrder
+- createRecurrentWorkOrder
+- createAppointment
+- markComplete
+- receive
+
+Let me analyze the patterns and create the minimal set of ABAC rules:
+
+rule(position [ {applicationAdmin}; ; {view modify delete complete createOneTimeWorkOrder createRecurrentWorkOrder createAppointment markComplete receive}; )
+rule(position [ {workforceManager}; type [ {task}; {view complete}; assignedTechnician [ managedStaff)
+rule(position [ {workforceManager}; type [ {workOrder}; {view modify delete}; assignedTechnician [ managedStaff)
+rule(position [ {technician}; type [ {task}; {view complete}; assignedTechnician = uid)
+rule(position [ {helpdeskManager}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; tenant = assignedTenant)
+rule(position [ {helpdeskOperator}; type [ {workOrder}; {modify delete}; tenant = assignedTenant)
+rule(position [ {maintenanceManager}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; tenant = assignedTenant)
+rule(position [ {salesManager}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; tenant = assignedTenant)
+rule(position [ {salesManager}; type [ {stockRefillRequest}; {receive}; tenant = assignedTenant)
+rule(position [ {salesManager}; type [ {workOrder}; {view}; tenant = assignedTenant)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; tenant = assignedTenant)
+rule(position [ {warehouseManager}; type [ {resourceRequest}; {view complete}; assignedEmployee [ managedStaff)
+rule(position [ {warehouseOperator}; type [ {resourceRequest}; {view complete}; assignedEmployee = uid)
+rule(position [ {helpdeskManager}; type [ {workOrder}; {view}; tenant = assignedTenant)
+rule(position [ {applicationAdmin}; type [ {workOrder}; {delete}; )
+rule(position [ {applicationAdmin}; type [ {contract}; {createAppointment}; )

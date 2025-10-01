@@ -1,0 +1,91 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+# org : healthcare, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:04:30.690292,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0,
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0
+
+iteration : 1,
+  seconds_elapsed : 0:01:05.496829,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0
+
+iteration : 2,
+  seconds_elapsed : 0:00:51.831276,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0
+===============================================================
+ITERATION : 1
+===============================================================
+# org : healthcare, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:04:30.690292,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0,
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0
+
+iteration : 1,
+  seconds_elapsed : 0:01:05.496829,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0
+===============================================================
+ITERATION : 0
+===============================================================
+# org : healthcare, LLM : openai_gpt5, num_ctx : 0
+
+iteration : 0,
+  seconds_elapsed : 0:04:30.690292,
+  acl_jacc_val : 1.0,
+  gt_acl : 43,
+  llm_acl : 43,
+  intersection : 43,
+  under_perm : 0,
+  over_perm : 0,
+  syntax_jacc_avg : 0.875,
+  semantic_jacc_avg : 1.0,
+  x_syntax_jacc_avg   : 0.8819444444444444,
+  x_semantic_jacc_avg : 1.0

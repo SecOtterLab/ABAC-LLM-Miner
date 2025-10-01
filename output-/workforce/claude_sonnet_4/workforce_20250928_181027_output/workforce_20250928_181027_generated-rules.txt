@@ -1,0 +1,32 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+
+===============================================================
+ITERATION : 1
+===============================================================
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(position [ {applicationAdmin}; ; {createAppointment delete modify view}; )
+rule(position [ {workforceManager}; type [ {task}; {view}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {workforceManager}; type [ {task}; {complete}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {workforceManager}; type [ {task}; {view complete}; managedStaff ] assignedTechnician)
+rule(position [ {workforceManager}; type [ {workOrder}; {view}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {workforceManager}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {workforceManager}; type [ {stockRefillRequest}; {markComplete}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {workforceManager}; type [ {resourceRequest}; {view complete}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {technician}; type [ {task}; {view}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {technician}; type [ {task}; {view complete}; assignedTechnician = uid)
+rule(position [ {technician}; type [ {task}; {view}; certifications > requiredCertifications)
+rule(position [ {helpdeskManager}; type [ {workOrder}; {view}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {helpdeskOperator}; type [ {workOrder}; {delete modify}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {helpdeskOperator}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {warehouseManager}; type [ {stockRefillRequest}; {markComplete}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {warehouseManager}; type [ {resourceRequest}; {view complete}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {warehouseOperator}; type [ {resourceRequest}; {view complete}; assignedEmployee = uid)
+rule(position [ {salesManager}; type [ {workOrder}; {view}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {salesManager}; type [ {stockRefillRequest}; {receive}; assignedTenant = tenant, assignedRegion = resourceRegion)
+rule(position [ {maintenanceManager}; type [ {contract}; {createOneTimeWorkOrder createRecurrentWorkOrder}; assignedTenant = tenant, assignedRegion = resourceRegion)

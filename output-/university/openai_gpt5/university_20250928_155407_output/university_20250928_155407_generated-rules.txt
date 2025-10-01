@@ -1,0 +1,42 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(department [ {admissions}; type [ {application}; {read setStatus}; )
+rule(; type [ {application}; {checkStatus}; uid = student)
+rule(department [ {registrar}; type [ {roster}; {read write}; )
+rule(department [ {registrar}; type [ {transcript}; {read}; )
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs)
+rule(position [ {faculty}; type [ {gradebook}; {assignGrade changeScore}; crsTaught ] crs)
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+rule(; type [ {transcript}; {read}; uid = student)
+
+===============================================================
+ITERATION : 1
+===============================================================
+rule(department [ {admissions}; type [ {application}; {read setStatus}; )
+rule(; type [ {application}; {checkStatus}; uid = student)
+rule(department [ {registrar}; type [ {roster}; {read write}; )
+rule(department [ {registrar}; type [ {transcript}; {read}; )
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs)
+rule(position [ {faculty}; type [ {gradebook}; {assignGrade changeScore}; crsTaught ] crs)
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+rule(; type [ {transcript}; {read}; uid = student)
+
+===============================================================
+ITERATION : 0
+===============================================================
+rule(department [ {admissions}; type [ {application}; {read setStatus}; )
+rule(; type [ {application}; {checkStatus}; uid = student)
+rule(department [ {registrar}; type [ {roster}; {read write}; )
+rule(department [ {registrar}; type [ {transcript}; {read}; )
+rule(isChair [ {True}; type [ {transcript}; {read}; department [ departments)
+rule(position [ {faculty}; type [ {roster}; {read}; crsTaught ] crs)
+rule(; type [ {gradebook}; {addScore readScore}; crsTaught ] crs)
+rule(position [ {faculty}; type [ {gradebook}; {assignGrade changeScore}; crsTaught ] crs)
+rule(; type [ {gradebook}; {readMyScores}; crsTaken ] crs)
+rule(; type [ {transcript}; {read}; uid = student)

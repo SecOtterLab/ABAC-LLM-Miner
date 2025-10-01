@@ -1,0 +1,8 @@
+# org : project-management20250927_110246
+# iterations : 1
+# api_called : gpt-oss:120b
+# gt_file : ground-truth-ACL/project-management-gt-ACL.txt
+# gt_abac_rule_file : ground-truth-ABAC-rules/project-management-abac-rules.txt
+# attribute_data_description_file : DATASETS-for-LLM/project-management/project-management-attribute-data-description.txt
+# attribute_data_file : DATASETS-for-LLM/project-management/project-management-attribute-data.txt
+

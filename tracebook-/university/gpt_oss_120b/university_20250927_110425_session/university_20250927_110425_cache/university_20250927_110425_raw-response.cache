@@ -1,0 +1,27 @@
+
+=====================*****************RAW***********************====================================
+rule(position[ {student} ]; type[ {gradebook} ]; {readScore readMyScores}; crsTaken] crs)
+rule(position[ {student} ]; type[ {gradebook} ]; {addScore readScore}; crsTaught] crs)
+rule(position[ {faculty} ]; type[ {gradebook} ]; {assignGrade changeScore readScore addScore}; crsTaught] crs)
+rule(position[ {faculty} ]; type[ {roster} ]; {read}; crsTaught] crs)
+rule(position[ {staff} ], department[ {registrar} ]; type[ {transcript} ]; {read}; )
+rule(position[ {staff} ], department[ {registrar} ]; type[ {roster} ]; {read write}; )
+rule(position[ {faculty} ], isChair[ {True} ], department[ {cs} ]; type[ {transcript} ]; {read}; departments[ {cs} ])
+rule(position[ {faculty} ], isChair[ {True} ], department[ {ee} ]; type[ {transcript} ]; {read}; departments[ {ee} ])
+rule(position[ {staff} ], department[ {admissions} ]; type[ {application} ]; {read setStatus}; )
+rule(position[ {applicant} ]; type[ {application} ]; {checkStatus}; uid = student)
+rule(position[ {student} ]; type[ {application} ]; {checkStatus}; uid = student)
+=====================*****************MINOR FORMATTING***********************======================
+rule(position[ {student} ]; type[ {gradebook} ]; {readScore readMyScores}; crsTaken] crs)
+rule(position[ {student} ]; type[ {gradebook} ]; {addScore readScore}; crsTaught] crs)
+rule(position[ {faculty} ]; type[ {gradebook} ]; {assignGrade changeScore readScore addScore}; crsTaught] crs)
+rule(position[ {faculty} ]; type[ {roster} ]; {read}; crsTaught] crs)
+rule(position[ {staff} ], department[ {registrar} ]; type[ {transcript} ]; {read}; )
+rule(position[ {staff} ], department[ {registrar} ]; type[ {roster} ]; {read write}; )
+rule(position[ {faculty} ], isChair[ {True} ], department[ {cs} ]; type[ {transcript} ]; {read}; departments[ {cs} ])
+rule(position[ {faculty} ], isChair[ {True} ], department[ {ee} ]; type[ {transcript} ]; {read}; departments[ {ee} ])
+rule(position[ {staff} ], department[ {admissions} ]; type[ {application} ]; {read setStatus}; )
+rule(position[ {applicant} ]; type[ {application} ]; {checkStatus}; uid = student)
+rule(position[ {student} ]; type[ {application} ]; {checkStatus}; uid = student)
+
+=====================*****************END***********************==================================

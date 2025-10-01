@@ -1,0 +1,46 @@
+
+===============================================================
+ITERATION : 2
+===============================================================
+rule(adminRoles ] accountant; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request}; projects ] project)
+rule(projects ] project; type [ {schedule}; {read}; )
+===============================================================
+ITERATION : 1
+===============================================================
+Looking at the ACL comparison, I can see that the current rules have two main issues:
+
+1. **Over permissions**: Accountants and auditors are getting read access to budgets, which they shouldn't have according to the ground truth ACL
+2. **Under permissions**: All the technical workers (designers and coders) and project leaders are missing their permissions entirely
+
+Let me fix these issues by correcting the problematic rules and ensuring all required permissions are covered:
+
+rule(adminRoles ] accountant; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] manager; type [ {budget schedule}; {read write}; department = department)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request}; projects ] project)
+rule(projects ] project; type [ {schedule}; {read}; )
+===============================================================
+ITERATION : 0
+===============================================================
+rule(adminRoles ] accountant; type [ {budget schedule}; {read}; projects ] project)
+rule(adminRoles ] auditor; type [ {budget schedule}; {read}; projects ] project)
+rule(adminRoles ] planner; type [ {schedule}; {read}; projects ] project)
+rule(adminRoles ] manager; type [ {budget schedule}; {read write}; adminRoles ] manager, department = department)
+rule(projectsLed ] project; type [ {budget schedule}; {read write}; )
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request setStatus}; projects ] project, tasks ] rid)
+rule(expertise ] expertise, isEmployee [ {True}; type [ {task}, proprietary [ {True}; {read request}; projects ] project)
+rule(expertise ] expertise; type [ {task}, proprietary [ {False}; {read request}; projects ] project)
+rule(projects ] project; type [ {schedule}; {read}; )
